@@ -1,0 +1,36 @@
+# Directorios de dependencias
+node_modules/
+
+# Directorios de compilación/salida
+dist/
+.angular/
+.nest/
+out/
+
+# Archivos de configuración de entorno (Contienen credenciales privadas)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos temporales de logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Configuraciones de editores / IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Archivos del Sistema Operativo
+Thumbs.db
+db.db
+Desktop.ini
+.DS_Store
