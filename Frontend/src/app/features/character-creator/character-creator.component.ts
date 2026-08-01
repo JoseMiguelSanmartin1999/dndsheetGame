@@ -226,6 +226,18 @@ interface GuideTab {
               </div>
               <span class="text-xs font-bold transition" [ngClass]="currentStep === 5 ? 'text-[#d4af37]' : 'text-neutral-400'">Equipo</span>
             </button>
+            <div class="w-6 h-px bg-neutral-800"></div>
+
+            <!-- Paso 6: Resumen -->
+            <button (click)="goToStep(6)" [disabled]="!equipmentChosen" class="flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
+              <div 
+                class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-md transition"
+                [ngClass]="currentStep >= 6 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-[#d4af37]/50 shadow-red-900/30' : 'bg-neutral-855 border border-neutral-700 text-neutral-400'"
+              >
+                6
+              </div>
+              <span class="text-xs font-bold transition" [ngClass]="currentStep === 6 ? 'text-[#d4af37]' : 'text-neutral-400'">Resumen</span>
+            </button>
           </div>
         </div>
 
@@ -292,8 +304,9 @@ interface GuideTab {
           </main>
 
           <!-- Columna 3: Características y Botón de Avance -->
-          <section class="lg:col-span-4 bg-[#121215] border border-neutral-800/80 rounded-xl p-6 shadow-xl h-[680px] flex flex-col justify-between overflow-y-auto">
-            <div class="space-y-6">
+          <section class="lg:col-span-4 bg-[#121215] border border-neutral-800/80 rounded-xl p-6 shadow-xl h-[680px] flex flex-col justify-between overflow-hidden">
+            <!-- Contenedor Scrollable -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar space-y-6 pr-1 pb-4 text-left">
               <div class="border-b border-neutral-900 pb-3">
                 <h3 class="text-[#d4af37] font-serif font-bold text-base tracking-wider uppercase">Características de Clase</h3>
                 <p class="text-[10px] text-neutral-500">Mecánicas base y requisitos de rol.</p>
@@ -365,10 +378,12 @@ interface GuideTab {
               </div>
 
               <!-- Competencias Iniciales de la Clase (Basado en la Tabla del Manual) -->
-              <div class="space-y-2.5 bg-[#18181c]/60 border border-neutral-800 p-4 rounded-lg text-xs leading-relaxed text-neutral-300 text-left">
+              <div class="space-y-2.5 bg-[#18181c]/60 border border-neutral-800 p-4 rounded-lg text-xs leading-relaxed text-neutral-300">
                 <h4 class="text-[10px] font-bold text-[#d4af37] uppercase tracking-wider mb-1.5 border-b border-neutral-800 pb-1">Competencias Iniciales</h4>
                 <div><strong>Salvaciones:</strong> {{ getClassDetailsByClassName(activeClass.name).savingThrows }}</div>
-                <div class="mt-1.5 border-t border-neutral-900/60 pt-2.5 space-y-2">
+                
+                <!-- Habilidades a elegir -->
+                <div class="mt-1.5 border-t border-neutral-900/60 pt-2 space-y-2">
                   <div class="flex justify-between items-center">
                     <span class="text-[10px] uppercase font-bold text-neutral-450 tracking-wider">Habilidades a elegir:</span>
                     <span class="text-[9px] bg-red-950/80 border border-red-800/80 px-2 py-0.5 rounded text-red-400 font-mono font-bold select-none">
@@ -376,10 +391,13 @@ interface GuideTab {
                     </span>
                   </div>
                   
+                  <!-- Checkboxes sin Tooltips Clipeables -->
                   <div class="grid grid-cols-2 gap-2 pt-1 max-h-[140px] overflow-y-auto pr-1 custom-scrollbar">
                     <div 
                       *ngFor="let skill of getClassSkillList(activeClass.name)"
-                      class="flex items-center gap-1.5 p-1.5 rounded border transition-all duration-150 relative group/skillItem cursor-pointer select-none"
+                      (mouseenter)="hoveredSkill = skill"
+                      (mouseleave)="hoveredSkill = null"
+                      class="flex items-center gap-1.5 p-1.5 rounded border transition-all duration-150 relative cursor-pointer select-none"
                       [ngClass]="isClassSkillSelected(skill) ? 'bg-amber-950/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-400'"
                     >
                       <input 
@@ -395,21 +413,32 @@ interface GuideTab {
                       >
                         {{ skill }}
                       </span>
+                    </div>
+                  </div>
 
-                      <!-- Tooltip de Habilidad (Hover) -->
-                      <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-64 p-3.5 bg-[#0c0c0f] border border-[#d4af37]/35 rounded-xl shadow-2xl opacity-0 pointer-events-none group-hover/skillItem:opacity-100 transition-opacity duration-200 z-50 text-left whitespace-normal backdrop-blur-sm">
-                        <div class="flex justify-between items-center border-b border-neutral-800 pb-1 mb-2">
-                          <strong class="text-[#d4af37] text-[11px] font-serif uppercase tracking-wider font-extrabold">{{ skill }}</strong>
-                          <span class="text-[9px] bg-neutral-900 text-neutral-400 border border-neutral-800 px-1.5 py-0.5 rounded font-bold uppercase tracking-wide">{{ getSkillAttribute(skill) }}</span>
-                        </div>
-                        <p class="text-[10px] text-neutral-350 leading-relaxed font-light font-sans">
-                          {{ getSkillDescription(skill) }}
-                        </p>
+                  <!-- Detalle de la Habilidad Dinámico (No se corta, Estilo Baldur's Gate 3) -->
+                  <div class="mt-2 bg-[#0d0d0f] border border-neutral-850 rounded-lg p-3.5 min-h-[85px] flex flex-col justify-center transition-all duration-200">
+                    <div *ngIf="hoveredSkill" class="space-y-1 animate-fade-in text-left">
+                      <div class="flex justify-between items-center border-b border-neutral-800 pb-1">
+                        <strong class="text-[#d4af37] text-[10px] font-serif uppercase tracking-wider font-extrabold">
+                          {{ hoveredSkill }}
+                        </strong>
+                        <span class="text-[8px] bg-neutral-900 text-neutral-450 border border-neutral-800 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">
+                          {{ getSkillAttribute(hoveredSkill) }}
+                        </span>
                       </div>
+                      <p class="text-[9px] text-neutral-350 leading-relaxed font-light font-sans mt-1">
+                        {{ getSkillDescription(hoveredSkill) }}
+                      </p>
+                    </div>
+                    
+                    <div *ngIf="!hoveredSkill" class="text-center text-[9px] text-neutral-500 italic select-none">
+                      Pasa el cursor sobre una habilidad para ver su uso y atributo.
                     </div>
                   </div>
                 </div>
-                <div class="mt-1"><strong>Herramientas:</strong> {{ getClassDetailsByClassName(activeClass.name).tools }}</div>
+
+                <div class="mt-1 border-t border-neutral-900/60 pt-2"><strong>Herramientas:</strong> {{ getClassDetailsByClassName(activeClass.name).tools }}</div>
                 <div class="mt-1"><strong>Armaduras:</strong> {{ getClassDetailsByClassName(activeClass.name).armor }}</div>
                 <div class="mt-1"><strong>Armas:</strong> {{ getClassDetailsByClassName(activeClass.name).weapons }}</div>
               </div>
@@ -423,13 +452,16 @@ interface GuideTab {
               </div>
             </div>
 
-            <button 
-              (click)="onConfirmClass()"
-              [disabled]="selectedClassSkills.length < getClassSkillLimit(activeClass.name)"
-              class="w-full mt-6 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition duration-300 uppercase tracking-widest shadow-xl hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] text-sm border-t border-red-500/20 font-serif cursor-pointer"
-            >
-              Elegir {{ activeClass.name }} y Continuar
-            </button>
+            <!-- Botón de Continuar Fijo Abajo -->
+            <div class="border-t border-neutral-900 pt-4 bg-[#121215] shrink-0">
+              <button 
+                (click)="onConfirmClass()"
+                [disabled]="selectedClassSkills.length < getClassSkillLimit(activeClass.name)"
+                class="w-full bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition duration-300 uppercase tracking-widest shadow-xl hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] text-sm border-t border-red-500/20 font-serif cursor-pointer"
+              >
+                Elegir {{ activeClass.name }} y Continuar
+              </button>
+            </div>
           </section>
 
         </div>
@@ -511,8 +543,9 @@ interface GuideTab {
           </main>
 
           <!-- Columna 3: Características del Trasfondo -->
-          <section class="lg:col-span-4 bg-[#121215] border border-neutral-800/80 rounded-xl p-6 shadow-xl h-[680px] flex flex-col justify-between overflow-y-auto">
-            <div class="space-y-6">
+          <section class="lg:col-span-4 bg-[#121215] border border-neutral-800/80 rounded-xl p-6 shadow-xl h-[680px] flex flex-col justify-between overflow-hidden">
+            <!-- Contenedor Scrollable -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar space-y-6 pr-1 pb-4 text-left">
               <div class="border-b border-neutral-900 pb-3">
                 <h3 class="text-[#d4af37] font-serif font-bold text-base tracking-wider uppercase">Dotes y Habilidades</h3>
                 <p class="text-[10px] text-neutral-500">Beneficios mecánicos de tu historia personal.</p>
@@ -550,7 +583,7 @@ interface GuideTab {
                   <!-- Dropdown descriptivo -->
                   <div 
                     *ngIf="featExpanded" 
-                    class="mt-3 pt-3 border-t border-neutral-800/80 text-[11px] text-neutral-350 leading-relaxed animate-fade-in bg-amber-950/15 p-3.5 rounded-lg border border-amber-900/30 space-y-2 text-left"
+                    class="mt-3 pt-3 border-t border-neutral-800/80 text-[11px] text-neutral-355 leading-relaxed animate-fade-in bg-[#0d0d0f] p-3.5 rounded-lg border border-amber-900/15 space-y-2 text-left"
                   >
                     <p class="font-bold text-amber-400 font-serif uppercase tracking-wider text-[9px] mb-1">Beneficios de la Dote:</p>
                     <ul class="space-y-1.5 list-none pl-0">
@@ -599,8 +632,8 @@ interface GuideTab {
               </div>
             </div>
 
-            <!-- Botones -->
-            <div class="flex gap-3 mt-6">
+            <!-- Botones de Acción Fijos Abajo -->
+            <div class="flex gap-3 border-t border-neutral-900 pt-4 bg-[#121215] shrink-0">
               <button 
                 (click)="goToStep(1)"
                 class="flex-1 bg-[#18181c] hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-3 rounded-lg text-xs font-serif uppercase tracking-wider cursor-pointer transition duration-200"
@@ -1672,6 +1705,7 @@ export class CharacterCreatorComponent implements OnInit {
   selectedOriginIdx = 0;
   selectedBackgroundIdx = 0;
   selectedClassSkills: string[] = [];
+  hoveredSkill: string | null = null;
 
   skillsMetadata: { [key: string]: { attribute: string, description: string } } = {
     'Acrobacias': { attribute: 'Destreza', description: 'Conservar el equilibrio en situaciones difíciles o realizar una proeza acrobática.' },
@@ -2098,6 +2132,8 @@ export class CharacterCreatorComponent implements OnInit {
       this.currentStep = 4;
     } else if (step === 5 && this.attributesChosen) {
       this.currentStep = 5;
+    } else if (step === 6 && this.equipmentChosen) {
+      this.currentStep = 6;
     }
   }
 
