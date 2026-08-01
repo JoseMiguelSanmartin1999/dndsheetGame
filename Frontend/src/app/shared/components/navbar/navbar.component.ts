@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
+import { AuthService } from '../../../data/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -46,21 +47,43 @@ import { RouterModule, Router } from '@angular/router';
 
         <!-- Sección de Usuario / Acción (Derecha) -->
         <div class="hidden md:flex items-center gap-4">
-          <!-- Perfil ficticio o Aventurero -->
-          <div class="flex items-center gap-2 border-l border-neutral-800 pl-4">
-            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-red-700 to-amber-500 flex items-center justify-center font-serif text-white font-bold text-sm border border-[#d4af37]/30 shadow-md">
-              A
+          <ng-container *ngIf="authService.currentUser() as user; else noUser">
+            <!-- Perfil del Aventurero Logueado -->
+            <div class="flex items-center gap-2 border-l border-neutral-800 pl-4">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-red-700 to-amber-500 flex items-center justify-center font-serif text-white font-bold text-sm border border-[#d4af37]/30 shadow-md uppercase">
+                {{ user.username.charAt(0) }}
+              </div>
+              <div class="flex flex-col">
+                <span class="text-xs font-semibold text-neutral-200 leading-tight">{{ user.username }}</span>
+                <span class="text-[9px] uppercase tracking-wider text-[#d4af37] font-semibold leading-none mt-0.5">
+                  {{ user.role === 'admin' ? 'DM' : 'Jugador' }}
+                </span>
+              </div>
             </div>
-            <span class="text-xs font-semibold text-neutral-300">Aventurero</span>
-          </div>
 
-          <!-- Botón Salir -->
-          <a 
-            routerLink="/register"
-            class="text-xs bg-[#1e1e24] hover:bg-red-950 border border-neutral-700 hover:border-red-500/50 text-neutral-300 hover:text-red-300 px-3 py-1.5 rounded transition duration-200 cursor-pointer"
-          >
-            Salir de Campaña
-          </a>
+            <!-- Botón Salir -->
+            <button 
+              (click)="onLogout()"
+              class="text-xs bg-[#1e1e24] hover:bg-red-950 border border-neutral-700 hover:border-red-500/50 text-neutral-300 hover:text-red-300 px-3 py-1.5 rounded transition duration-200 cursor-pointer"
+            >
+              Salir de Campaña
+            </button>
+          </ng-container>
+
+          <ng-template #noUser>
+            <a 
+              routerLink="/login"
+              class="text-xs font-semibold text-neutral-300 hover:text-amber-400 transition"
+            >
+              Iniciar Sesión
+            </a>
+            <a 
+              routerLink="/register"
+              class="text-xs bg-gradient-to-r from-red-800 to-amber-600 hover:from-red-700 hover:to-amber-500 text-white font-semibold px-3 py-1.5 rounded border border-[#d4af37]/20 shadow-md transition"
+            >
+              Unirse
+            </a>
+          </ng-template>
         </div>
 
         <!-- Botón del Menú Móvil (Hamburguesa) -->
@@ -108,23 +131,49 @@ import { RouterModule, Router } from '@angular/router';
           Conjuros
         </a>
 
-        <div class="h-px bg-neutral-800 my-2"></div>
-
-        <!-- Usuario Móvil -->
-        <div class="flex items-center justify-between pt-1">
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-red-700 to-amber-500 flex items-center justify-center text-white font-bold text-sm border border-[#d4af37]/30">
-              A
+        <!-- Sección de Usuario Móvil -->
+        <div class="h-px bg-neutral-850 my-2"></div>
+        <div class="pt-1">
+          <ng-container *ngIf="authService.currentUser() as user; else noUserMobile">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-red-700 to-amber-500 flex items-center justify-center text-white font-bold text-sm border border-[#d4af37]/30 uppercase">
+                  {{ user.username.charAt(0) }}
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-sm font-semibold text-neutral-200 leading-tight">{{ user.username }}</span>
+                  <span class="text-[9px] uppercase tracking-wider text-[#d4af37] font-semibold leading-none mt-0.5">
+                    {{ user.role === 'admin' ? 'DM' : 'Jugador' }}
+                  </span>
+                </div>
+              </div>
+              <button 
+                (click)="onLogout()"
+                class="text-xs bg-[#1e1e24] hover:bg-red-950 border border-neutral-700 hover:border-red-500/50 text-neutral-300 hover:text-red-300 px-3 py-1.5 rounded transition"
+              >
+                Salir de Campaña
+              </button>
             </div>
-            <span class="text-sm font-semibold text-neutral-300">Aventurero</span>
-          </div>
-          <a 
-            routerLink="/register"
-            (click)="closeMenu()"
-            class="text-xs bg-[#1e1e24] hover:bg-red-950 border border-neutral-700 hover:border-red-500/50 text-neutral-300 hover:text-red-300 px-3 py-1.5 rounded transition"
-          >
-            Salir de Campaña
-          </a>
+          </ng-container>
+
+          <ng-template #noUserMobile>
+            <div class="flex items-center justify-between gap-4 pt-1">
+              <a 
+                routerLink="/login"
+                (click)="closeMenu()"
+                class="text-sm font-semibold text-neutral-300 hover:text-amber-400 transition"
+              >
+                Iniciar Sesión
+              </a>
+              <a 
+                routerLink="/register"
+                (click)="closeMenu()"
+                class="text-xs bg-gradient-to-r from-red-800 to-amber-600 hover:from-red-700 hover:to-amber-500 text-white font-semibold px-3 py-1.5 rounded border border-[#d4af37]/20 shadow-md transition"
+              >
+                Unirse
+              </a>
+            </div>
+          </ng-template>
         </div>
       </div>
     </nav>
@@ -140,6 +189,8 @@ import { RouterModule, Router } from '@angular/router';
   `]
 })
 export class NavbarComponent {
+  authService = inject(AuthService);
+  router = inject(Router);
   isMenuOpen = false;
 
   toggleMenu(): void {
@@ -148,5 +199,11 @@ export class NavbarComponent {
 
   closeMenu(): void {
     this.isMenuOpen = false;
+  }
+
+  onLogout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+    this.closeMenu();
   }
 }
