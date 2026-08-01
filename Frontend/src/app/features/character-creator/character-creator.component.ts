@@ -368,7 +368,47 @@ interface GuideTab {
               <div class="space-y-2.5 bg-[#18181c]/60 border border-neutral-800 p-4 rounded-lg text-xs leading-relaxed text-neutral-300 text-left">
                 <h4 class="text-[10px] font-bold text-[#d4af37] uppercase tracking-wider mb-1.5 border-b border-neutral-800 pb-1">Competencias Iniciales</h4>
                 <div><strong>Salvaciones:</strong> {{ getClassDetailsByClassName(activeClass.name).savingThrows }}</div>
-                <div class="mt-1"><strong>Habilidades:</strong> {{ getClassDetailsByClassName(activeClass.name).skills }}</div>
+                <div class="mt-1.5 border-t border-neutral-900/60 pt-2.5 space-y-2">
+                  <div class="flex justify-between items-center">
+                    <span class="text-[10px] uppercase font-bold text-neutral-450 tracking-wider">Habilidades a elegir:</span>
+                    <span class="text-[9px] bg-red-950/80 border border-red-800/80 px-2 py-0.5 rounded text-red-400 font-mono font-bold select-none">
+                      Elige {{ getClassSkillLimit(activeClass.name) }}
+                    </span>
+                  </div>
+                  
+                  <div class="grid grid-cols-2 gap-2 pt-1 max-h-[140px] overflow-y-auto pr-1 custom-scrollbar">
+                    <div 
+                      *ngFor="let skill of getClassSkillList(activeClass.name)"
+                      class="flex items-center gap-1.5 p-1.5 rounded border transition-all duration-150 relative group/skillItem cursor-pointer select-none"
+                      [ngClass]="isClassSkillSelected(skill) ? 'bg-amber-950/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-400'"
+                    >
+                      <input 
+                        type="checkbox"
+                        [checked]="isClassSkillSelected(skill)"
+                        (change)="toggleClassSkill(skill)"
+                        [disabled]="!isClassSkillSelected(skill) && selectedClassSkills.length >= getClassSkillLimit(activeClass.name)"
+                        class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40"
+                      />
+                      <span 
+                        class="text-[10px] font-medium truncate"
+                        (click)="toggleClassSkill(skill)"
+                      >
+                        {{ skill }}
+                      </span>
+
+                      <!-- Tooltip de Habilidad (Hover) -->
+                      <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-64 p-3.5 bg-[#0c0c0f] border border-[#d4af37]/35 rounded-xl shadow-2xl opacity-0 pointer-events-none group-hover/skillItem:opacity-100 transition-opacity duration-200 z-50 text-left whitespace-normal backdrop-blur-sm">
+                        <div class="flex justify-between items-center border-b border-neutral-800 pb-1 mb-2">
+                          <strong class="text-[#d4af37] text-[11px] font-serif uppercase tracking-wider font-extrabold">{{ skill }}</strong>
+                          <span class="text-[9px] bg-neutral-900 text-neutral-400 border border-neutral-800 px-1.5 py-0.5 rounded font-bold uppercase tracking-wide">{{ getSkillAttribute(skill) }}</span>
+                        </div>
+                        <p class="text-[10px] text-neutral-350 leading-relaxed font-light font-sans">
+                          {{ getSkillDescription(skill) }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div class="mt-1"><strong>Herramientas:</strong> {{ getClassDetailsByClassName(activeClass.name).tools }}</div>
                 <div class="mt-1"><strong>Armaduras:</strong> {{ getClassDetailsByClassName(activeClass.name).armor }}</div>
                 <div class="mt-1"><strong>Armas:</strong> {{ getClassDetailsByClassName(activeClass.name).weapons }}</div>
@@ -385,7 +425,8 @@ interface GuideTab {
 
             <button 
               (click)="onConfirmClass()"
-              class="w-full mt-6 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 uppercase tracking-widest shadow-xl hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] text-sm border-t border-red-500/20 font-serif cursor-pointer"
+              [disabled]="selectedClassSkills.length < getClassSkillLimit(activeClass.name)"
+              class="w-full mt-6 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition duration-300 uppercase tracking-widest shadow-xl hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] text-sm border-t border-red-500/20 font-serif cursor-pointer"
             >
               Elegir {{ activeClass.name }} y Continuar
             </button>
@@ -1630,6 +1671,28 @@ export class CharacterCreatorComponent implements OnInit {
   selectedClassIdx = 0;
   selectedOriginIdx = 0;
   selectedBackgroundIdx = 0;
+  selectedClassSkills: string[] = [];
+
+  skillsMetadata: { [key: string]: { attribute: string, description: string } } = {
+    'Acrobacias': { attribute: 'Destreza', description: 'Conservar el equilibrio en situaciones difíciles o realizar una proeza acrobática.' },
+    'Atletismo': { attribute: 'Fuerza', description: 'Saltar más lejos de lo normal, mantenerse a flote en aguas revueltas o romper algo.' },
+    'Conocimiento arcano': { attribute: 'Inteligencia', description: 'Recordar información acerca de conjuros, objetos mágicos y los planos de existencia.' },
+    'Engaño': { attribute: 'Carisma', description: 'Contar una mentira convincente o llevar un disfraz de manera creíble.' },
+    'Historia': { attribute: 'Inteligencia', description: 'Recordar información sobre acontecimientos, personas, naciones y culturas de carácter histórico.' },
+    'Interpretación': { attribute: 'Carisma', description: 'Actuar, contar una historia, tocar un instrumento o bailar.' },
+    'Intimidación': { attribute: 'Carisma', description: 'Asustar o amenazar a alguien para que haga lo que tú quieres.' },
+    'Investigación': { attribute: 'Inteligencia', description: 'Encontrar información oculta en libros o deducir cómo funciona algo.' },
+    'Juego de manos': { attribute: 'Destreza', description: 'Vaciar los bolsillos a alguien, ocultar un objeto que llevas en la mano o hacer trucos de prestidigitación.' },
+    'Medicina': { attribute: 'Sabiduría', description: 'Diagnosticar una enfermedad o determinar de qué ha muerto un fallecido reciente.' },
+    'Naturaleza': { attribute: 'Inteligencia', description: 'Recordar información acerca del terreno, la flora, la fauna y el clima.' },
+    'Percepción': { attribute: 'Sabiduría', description: 'Mediante una combinación de sentidos, darse cuenta de algo que es fácil pasar por alto.' },
+    'Perspicacia': { attribute: 'Sabiduría', description: 'Discernir el estado de ánimo y las intenciones de una persona.' },
+    'Persuasión': { attribute: 'Carisma', description: 'Convencer a alguien de algo de una manera sincera y amable.' },
+    'Religión': { attribute: 'Inteligencia', description: 'Recordar información sobre dioses, rituales religiosos y símbolos sagrados.' },
+    'Sigilo': { attribute: 'Destreza', description: 'Pasar desapercibido al caminar en silencio y ocultarse detrás de las cosas.' },
+    'Supervivencia': { attribute: 'Sabiduría', description: 'Seguir huellas, forrajear, encontrar un camino o evitar peligros naturales.' },
+    'Trato con animales': { attribute: 'Sabiduría', description: 'Tranquilizar o adiestrar a un animal, conseguir que se comporte de una determinada forma.' }
+  };
 
   // Carga e Interfaces
   loading = true;
@@ -1859,6 +1922,7 @@ export class CharacterCreatorComponent implements OnInit {
   selectClass(index: number): void {
     if (this.selectedClassIdx !== index) {
       this.selectedClassIdx = index;
+      this.selectedClassSkills = [];
       this.imageLoaded = false;
     }
   }
@@ -2059,6 +2123,11 @@ export class CharacterCreatorComponent implements OnInit {
     this.classChosen = false;
     this.backgroundChosen = false;
     this.originChosen = false;
+    this.attributesChosen = false;
+    this.equipmentChosen = false;
+    this.selectedEquipmentOption = null;
+    this.selectedEquipmentDescription = '';
+    this.selectedClassSkills = [];
     this.attributePointsPool = 15;
     this.selectedClassIdx = 0;
     this.selectedOriginIdx = 0;
@@ -2100,8 +2169,11 @@ export class CharacterCreatorComponent implements OnInit {
   }
 
   hasSkillProficiency(skillName: string): boolean {
-    if (!this.activeBackground || !this.activeBackground.skills) return false;
     const cleanSkill = skillName.toLowerCase().trim();
+    if (this.selectedClassSkills.some(s => s.toLowerCase().trim() === cleanSkill)) {
+      return true;
+    }
+    if (!this.activeBackground || !this.activeBackground.skills) return false;
     const skillsList = this.activeBackground.skills.toLowerCase().split(',').map(s => s.trim());
     return skillsList.some(s => s === cleanSkill || s.includes(cleanSkill));
   }
@@ -2478,5 +2550,88 @@ export class CharacterCreatorComponent implements OnInit {
     const desc = this.getClassEquipmentOptions(this.activeClass.name).optionA;
     const match = desc.match(/(\d+)\s*po/i);
     return match ? match[1] : '0';
+  }
+
+  getClassSkillLimit(className: string): number {
+    if (!className) return 2;
+    const n = className.toLowerCase();
+    if (n.includes('bardo')) return 3;
+    if (n.includes('explorador')) return 3;
+    if (n.includes('pícaro') || n.includes('picaro')) return 4;
+    return 2;
+  }
+
+  getClassSkillList(className: string): string[] {
+    if (!className) return [];
+    const n = className.toLowerCase();
+    if (n.includes('bárbaro') || n.includes('barbaro')) {
+      return ['Atletismo', 'Intimidación', 'Naturaleza', 'Percepción', 'Supervivencia', 'Trato con animales'];
+    }
+    if (n.includes('bardo')) {
+      return Object.keys(this.skillsMetadata);
+    }
+    if (n.includes('brujo')) {
+      return ['Conocimiento arcano', 'Engaño', 'Historia', 'Intimidación', 'Investigación', 'Naturaleza', 'Religión'];
+    }
+    if (n.includes('clérigo') || n.includes('clerigo')) {
+      return ['Conocimiento arcano', 'Historia', 'Medicina', 'Persuasión', 'Religión'];
+    }
+    if (n.includes('druida')) {
+      return ['Conocimiento arcano', 'Medicina', 'Naturaleza', 'Percepción', 'Perspicacia', 'Religión', 'Supervivencia', 'Trato con animales'];
+    }
+    if (n.includes('explorador')) {
+      return ['Atletismo', 'Investigación', 'Naturaleza', 'Percepción', 'Perspicacia', 'Sigilo', 'Supervivencia', 'Trato con animales'];
+    }
+    if (n.includes('guerrero')) {
+      return ['Acrobacias', 'Atletismo', 'Historia', 'Intimidación', 'Percepción', 'Perspicacia', 'Supervivencia'];
+    }
+    if (n.includes('hechicero')) {
+      return ['Conocimiento arcano', 'Engaño', 'Intimidación', 'Persuasión', 'Religión'];
+    }
+    if (n.includes('mago')) {
+      return ['Conocimiento arcano', 'Historia', 'Investigación', 'Medicina', 'Religión'];
+    }
+    if (n.includes('monje')) {
+      return ['Acrobacias', 'Atletismo', 'Historia', 'Percepción', 'Perspicacia', 'Sigilo'];
+    }
+    if (n.includes('paladín') || n.includes('paladin')) {
+      return ['Atletismo', 'Intimidación', 'Medicina', 'Percepción', 'Persuasión', 'Religión'];
+    }
+    if (n.includes('pícaro') || n.includes('picaro')) {
+      return ['Acrobacias', 'Atletismo', 'Engaño', 'Interpretación', 'Intimidación', 'Investigación', 'Percepción', 'Perspicacia', 'Persuasión', 'Juego de manos', 'Sigilo'];
+    }
+    return [];
+  }
+
+  isClassSkillSelected(skill: string): boolean {
+    return this.selectedClassSkills.includes(skill);
+  }
+
+  toggleClassSkill(skill: string): void {
+    const limit = this.getClassSkillLimit(this.activeClass.name);
+    const index = this.selectedClassSkills.indexOf(skill);
+    if (index > -1) {
+      this.selectedClassSkills.splice(index, 1);
+    } else if (this.selectedClassSkills.length < limit) {
+      this.selectedClassSkills.push(skill);
+    }
+  }
+
+  getSkillAttribute(skillName: string): string {
+    const clean = skillName.trim();
+    const key = Object.keys(this.skillsMetadata).find(k => k.toLowerCase() === clean.toLowerCase());
+    if (key && this.skillsMetadata[key]) {
+      return this.skillsMetadata[key].attribute;
+    }
+    return '—';
+  }
+
+  getSkillDescription(skillName: string): string {
+    const clean = skillName.trim();
+    const key = Object.keys(this.skillsMetadata).find(k => k.toLowerCase() === clean.toLowerCase());
+    if (key && this.skillsMetadata[key]) {
+      return this.skillsMetadata[key].description;
+    }
+    return '—';
   }
 }
