@@ -906,64 +906,136 @@ interface GuideTab {
             <h2 class="text-3xl font-serif font-extrabold text-[#d4af37] tracking-wider uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               Selección de Equipo Inicial
             </h2>
-            <p class="text-xs text-neutral-455">Tu clase determina las pertenencias y riquezas con las que comenzarás tu viaje.</p>
+            <p class="text-xs text-neutral-455">Tu clase y tu trasfondo determinan las pertenencias y riquezas con las que comenzarás tu viaje.</p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch relative z-10">
-            <!-- Opción A: Paquete Predefinido -->
-            <div 
-              (click)="selectEquipmentOption('A')"
-              class="bg-gradient-to-b from-[#18181c] to-[#121215] border rounded-xl p-6 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.02] shadow-xl text-left"
-              [ngClass]="selectedEquipmentOption === 'A' ? 'border-[#d4af37] shadow-[0_0_20px_rgba(212,175,55,0.15)] bg-[#1c1c22]/50' : 'border-neutral-850 hover:border-neutral-700'"
-            >
-              <div class="space-y-4">
-                <div class="flex justify-between items-center border-b border-neutral-900 pb-3">
-                  <div>
-                    <h3 class="text-lg font-serif font-bold text-neutral-200">Opción A: Equipo Predefinido</h3>
-                    <p class="text-[10px] text-neutral-500">Mochila equipada lista para la acción.</p>
+          <div class="space-y-8 relative z-10">
+            <!-- SECCIÓN 1: EQUIPO DE CLASE -->
+            <div class="space-y-4">
+              <h3 class="text-sm font-serif font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-900/60 pb-2">
+                1. Equipo de Clase: {{ activeClass.name }}
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                <!-- Opción A: Paquete Predefinido -->
+                <div 
+                  (click)="selectEquipmentOption('A')"
+                  class="bg-gradient-to-b from-[#18181c] to-[#121215] border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
+                  [ngClass]="selectedEquipmentOption === 'A' ? 'border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.12)] bg-[#1c1c22]/30' : 'border-neutral-850 hover:border-neutral-700'"
+                >
+                  <div class="space-y-3">
+                    <div class="flex justify-between items-center border-b border-neutral-900 pb-2">
+                      <div>
+                        <h4 class="text-sm font-serif font-bold text-neutral-200">Opción A: Equipo Predefinido</h4>
+                        <p class="text-[9px] text-neutral-500">Mochila equipada de clase.</p>
+                      </div>
+                      <span class="text-xl select-none" [class.text-[#d4af37]]="selectedEquipmentOption === 'A'">
+                        {{ selectedEquipmentOption === 'A' ? '✦' : '◇' }}
+                      </span>
+                    </div>
+                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center">
+                      {{ getClassEquipmentOptions(activeClass.name).optionA }}
+                    </p>
                   </div>
-                  <span class="text-2xl select-none" [class.text-[#d4af37]]="selectedEquipmentOption === 'A'">
-                    {{ selectedEquipmentOption === 'A' ? '✦' : '◇' }}
-                  </span>
+                  <button 
+                    class="w-full mt-4 py-2 rounded-lg text-[10px] font-serif uppercase tracking-widest transition duration-200"
+                    [ngClass]="selectedEquipmentOption === 'A' ? 'bg-[#d4af37] text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
+                  >
+                    {{ selectedEquipmentOption === 'A' ? 'Seleccionado' : 'Elegir Paquete' }}
+                  </button>
                 </div>
-                <p class="text-xs text-neutral-300 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-4 rounded-lg min-h-[100px] flex items-center">
-                  {{ getClassEquipmentOptions(activeClass.name).optionA }}
-                </p>
+
+                <!-- Opción B: Oro Inicial -->
+                <div 
+                  (click)="selectEquipmentOption('B')"
+                  class="bg-gradient-to-b from-[#18181c] to-[#121215] border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
+                  [ngClass]="selectedEquipmentOption === 'B' ? 'border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.12)] bg-[#1c1c22]/30' : 'border-neutral-850 hover:border-neutral-700'"
+                >
+                  <div class="space-y-3">
+                    <div class="flex justify-between items-center border-b border-neutral-900 pb-2">
+                      <div>
+                        <h4 class="text-sm font-serif font-bold text-neutral-200">Opción B: Oro Inicial</h4>
+                        <p class="text-[9px] text-neutral-500">Monedas de oro de inicio.</p>
+                      </div>
+                      <span class="text-xl select-none" [class.text-[#d4af37]]="selectedEquipmentOption === 'B'">
+                        {{ selectedEquipmentOption === 'B' ? '✦' : '◇' }}
+                      </span>
+                    </div>
+                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center justify-center text-center">
+                      Recibes <strong class="text-[#d4af37] text-sm mx-1.5 font-mono">{{ getClassEquipmentOptions(activeClass.name).optionB }}</strong> para comprar inventario inicial.
+                    </p>
+                  </div>
+                  <button 
+                    class="w-full mt-4 py-2 rounded-lg text-[10px] font-serif uppercase tracking-widest transition duration-200"
+                    [ngClass]="selectedEquipmentOption === 'B' ? 'bg-[#d4af37] text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
+                  >
+                    {{ selectedEquipmentOption === 'B' ? 'Seleccionado' : 'Elegir Oro' }}
+                  </button>
+                </div>
               </div>
-              <button 
-                class="w-full mt-6 py-2.5 rounded-lg text-xs font-serif uppercase tracking-widest transition duration-200"
-                [ngClass]="selectedEquipmentOption === 'A' ? 'bg-[#d4af37] text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
-              >
-                {{ selectedEquipmentOption === 'A' ? 'Seleccionado' : 'Elegir Paquete' }}
-              </button>
             </div>
 
-            <!-- Opción B: Oro Inicial -->
-            <div 
-              (click)="selectEquipmentOption('B')"
-              class="bg-gradient-to-b from-[#18181c] to-[#121215] border rounded-xl p-6 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.02] shadow-xl text-left"
-              [ngClass]="selectedEquipmentOption === 'B' ? 'border-[#d4af37] shadow-[0_0_20px_rgba(212,175,55,0.15)] bg-[#1c1c22]/50' : 'border-neutral-850 hover:border-neutral-700'"
-            >
-              <div class="space-y-4">
-                <div class="flex justify-between items-center border-b border-neutral-900 pb-3">
-                  <div>
-                    <h3 class="text-lg font-serif font-bold text-neutral-200">Opción B: Oro Inicial (Riqueza)</h3>
-                    <p class="text-[10px] text-neutral-500">Para adquirir tu propio equipo en las tiendas.</p>
+            <!-- SECCIÓN 2: EQUIPO DE TRASFONDO -->
+            <div class="space-y-4">
+              <h3 class="text-sm font-serif font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-900/60 pb-2">
+                2. Equipo de Trasfondo: {{ activeBackground.name }}
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                <!-- Opción A: Paquete Predefinido -->
+                <div 
+                  (click)="selectBgEquipmentOption('A')"
+                  class="bg-gradient-to-b from-[#18181c] to-[#121215] border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
+                  [ngClass]="selectedBgEquipmentOption === 'A' ? 'border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.12)] bg-[#1c1c22]/30' : 'border-neutral-850 hover:border-neutral-700'"
+                >
+                  <div class="space-y-3">
+                    <div class="flex justify-between items-center border-b border-neutral-900 pb-2">
+                      <div>
+                        <h4 class="text-sm font-serif font-bold text-neutral-200">Opción A: Equipo Temático</h4>
+                        <p class="text-[9px] text-neutral-500">Pertenencias asociadas a tu vida pasada.</p>
+                      </div>
+                      <span class="text-xl select-none" [class.text-[#d4af37]]="selectedBgEquipmentOption === 'A'">
+                        {{ selectedBgEquipmentOption === 'A' ? '✦' : '◇' }}
+                      </span>
+                    </div>
+                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center text-left">
+                      {{ getBgEquipmentOptions(activeBackground.name).optionA }}
+                    </p>
                   </div>
-                  <span class="text-2xl select-none" [class.text-[#d4af37]]="selectedEquipmentOption === 'B'">
-                    {{ selectedEquipmentOption === 'B' ? '✦' : '◇' }}
-                  </span>
+                  <button 
+                    class="w-full mt-4 py-2 rounded-lg text-[10px] font-serif uppercase tracking-widest transition duration-200"
+                    [ngClass]="selectedBgEquipmentOption === 'A' ? 'bg-[#d4af37] text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
+                  >
+                    {{ selectedBgEquipmentOption === 'A' ? 'Seleccionado' : 'Elegir Temático' }}
+                  </button>
                 </div>
-                <p class="text-xs text-neutral-300 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-4 rounded-lg min-h-[100px] flex items-center justify-center text-center">
-                  Recibes <strong class="text-[#d4af37] text-lg mx-1.5 font-mono">{{ getClassEquipmentOptions(activeClass.name).optionB }}</strong> para comprar y personalizar tu inventario inicial.
-                </p>
+
+                <!-- Opción B: Oro Inicial -->
+                <div 
+                  (click)="selectBgEquipmentOption('B')"
+                  class="bg-gradient-to-b from-[#18181c] to-[#121215] border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
+                  [ngClass]="selectedBgEquipmentOption === 'B' ? 'border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.12)] bg-[#1c1c22]/30' : 'border-neutral-850 hover:border-neutral-700'"
+                >
+                  <div class="space-y-3">
+                    <div class="flex justify-between items-center border-b border-neutral-900 pb-2">
+                      <div>
+                        <h4 class="text-sm font-serif font-bold text-neutral-200">Opción B: Oro de Trasfondo</h4>
+                        <p class="text-[9px] text-neutral-500">Riquezas acumuladas de tu trasfondo.</p>
+                      </div>
+                      <span class="text-xl select-none" [class.text-[#d4af37]]="selectedBgEquipmentOption === 'B'">
+                        {{ selectedBgEquipmentOption === 'B' ? '✦' : '◇' }}
+                      </span>
+                    </div>
+                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center justify-center text-center">
+                      Recibes <strong class="text-[#d4af37] text-sm mx-1.5 font-mono">{{ getBgEquipmentOptions(activeBackground.name).optionB }}</strong> adicionales de inicio.
+                    </p>
+                  </div>
+                  <button 
+                    class="w-full mt-4 py-2 rounded-lg text-[10px] font-serif uppercase tracking-widest transition duration-200"
+                    [ngClass]="selectedBgEquipmentOption === 'B' ? 'bg-[#d4af37] text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
+                  >
+                    {{ selectedBgEquipmentOption === 'B' ? 'Seleccionado' : 'Elegir Oro' }}
+                  </button>
+                </div>
               </div>
-              <button 
-                class="w-full mt-6 py-2.5 rounded-lg text-xs font-serif uppercase tracking-widest transition duration-200"
-                [ngClass]="selectedEquipmentOption === 'B' ? 'bg-[#d4af37] text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
-              >
-                {{ selectedEquipmentOption === 'B' ? 'Seleccionado' : 'Elegir Oro' }}
-              </button>
             </div>
           </div>
 
@@ -977,7 +1049,7 @@ interface GuideTab {
             </button>
             <button 
               (click)="onConfirmEquipment()"
-              [disabled]="!selectedEquipmentOption"
+              [disabled]="!selectedEquipmentOption || !selectedBgEquipmentOption"
               class="w-full sm:w-2/3 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg text-sm border-t border-red-500/20 font-serif cursor-pointer transition duration-300 uppercase tracking-widest shadow-xl hover:shadow-[0_0_25px_rgba(239,68,68,0.4)]"
             >
               Confirmar Equipo y Continuar
@@ -1099,21 +1171,25 @@ interface GuideTab {
           </div>
 
           <!-- Equipo Inicial Seleccionado (Resumen) -->
-          <div class="bg-[#18181c] border border-neutral-850 p-6 rounded-xl space-y-3 relative z-10 text-left">
+          <div class="bg-[#18181c] border border-neutral-855 p-6 rounded-xl space-y-4 relative z-10 text-left">
             <h4 class="text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Equipo Inicial Seleccionado</h4>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-              <div class="md:col-span-1 space-y-1">
-                <span class="text-[10px] text-neutral-450 uppercase block">Método de Inicio</span>
-                <span class="text-sm font-serif font-bold text-[#d4af37] tracking-wider uppercase block">
-                  {{ selectedEquipmentOption === 'A' ? 'Paquete Predefinido' : 'Oro Inicial' }}
-                </span>
-              </div>
-              <div class="md:col-span-3 space-y-1">
-                <span class="text-[10px] text-neutral-455 uppercase block">Inventario de Aventuras</span>
-                <p class="text-xs text-neutral-300 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg">
-                  {{ selectedEquipmentDescription }}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-1">
+                <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Equipo de Clase ({{ activeClass.name }}):</span>
+                <p class="text-xs text-neutral-300 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[60px] flex items-center">
+                  {{ selectedEquipmentOption === 'A' ? getClassEquipmentOptions(activeClass.name).optionA : 'Oro Inicial (' + getClassEquipmentOptions(activeClass.name).optionB + ')' }}
                 </p>
               </div>
+              <div class="space-y-1">
+                <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Equipo de Trasfondo ({{ activeBackground.name }}):</span>
+                <p class="text-xs text-neutral-300 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[60px] flex items-center">
+                  {{ selectedBgEquipmentOption === 'A' ? getBgEquipmentOptions(activeBackground.name).optionA : 'Oro Inicial (' + getBgEquipmentOptions(activeBackground.name).optionB + ')' }}
+                </p>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-neutral-900 flex justify-between items-center text-xs">
+              <span class="text-neutral-455 font-bold uppercase">Total Oro Inicial:</span>
+              <span class="text-sm font-bold text-amber-400 font-mono">{{ getStartingGold() }} po</span>
             </div>
           </div>
 
@@ -1619,10 +1695,11 @@ interface GuideTab {
 
                 <!-- Lista de Equipo -->
                 <div class="bg-neutral-900/30 border border-neutral-855 p-4 rounded-xl space-y-2 text-left">
-                  <span class="text-[9px] text-neutral-450 uppercase font-bold tracking-wider block">Inventario Inicial</span>
-                  <p class="text-xs text-neutral-350 leading-relaxed font-light">
-                    {{ selectedEquipmentOption ? selectedEquipmentDescription : getClassEquipmentOptions(activeClass.name).optionA }}
-                  </p>
+                  <span class="text-[9px] text-neutral-455 uppercase font-bold tracking-wider block">Inventario Inicial</span>
+                  <div class="text-xs text-neutral-350 space-y-2 leading-relaxed font-light">
+                    <p><strong>Equipo de Clase:</strong> {{ selectedEquipmentOption === 'A' ? getClassEquipmentOptions(activeClass.name).optionA : 'Oro Inicial de Clase (' + getClassEquipmentOptions(activeClass.name).optionB + ')' }}</p>
+                    <p class="border-t border-neutral-900/60 pt-1.5"><strong>Equipo de Trasfondo:</strong> {{ selectedBgEquipmentOption === 'A' ? getBgEquipmentOptions(activeBackground.name).optionA : 'Oro Inicial de Trasfondo (' + getBgEquipmentOptions(activeBackground.name).optionB + ')' }}</p>
+                  </div>
                 </div>
 
                 <!-- Resumen Conceptual Narrativo -->
@@ -1745,6 +1822,8 @@ export class CharacterCreatorComponent implements OnInit {
   equipmentChosen = false;
   selectedEquipmentOption: 'A' | 'B' | null = null;
   selectedEquipmentDescription = '';
+  selectedBgEquipmentOption: 'A' | 'B' | null = null;
+  selectedBgEquipmentDescription = '';
 
   // Pool de puntos de atributos base
   attributePointsPool = 15;
@@ -2163,6 +2242,8 @@ export class CharacterCreatorComponent implements OnInit {
     this.equipmentChosen = false;
     this.selectedEquipmentOption = null;
     this.selectedEquipmentDescription = '';
+    this.selectedBgEquipmentOption = null;
+    this.selectedBgEquipmentDescription = '';
     this.selectedClassSkills = [];
     this.attributePointsPool = 15;
     this.selectedClassIdx = 0;
@@ -2570,25 +2651,39 @@ export class CharacterCreatorComponent implements OnInit {
   }
 
   onConfirmEquipment(): void {
-    if (this.selectedEquipmentOption) {
+    if (this.selectedEquipmentOption && this.selectedBgEquipmentOption) {
       this.equipmentChosen = true;
       this.currentStep = 6;
     } else {
-      alert('Por favor, selecciona una opción de equipo inicial antes de continuar.');
+      alert('Por favor, selecciona una opción de equipo de clase y una de trasfondo antes de continuar.');
     }
   }
 
   getStartingGold(): string {
+    let classGold = 0;
     if (this.selectedEquipmentOption === 'B') {
       const goldStr = this.getClassEquipmentOptions(this.activeClass.name).optionB;
-      return goldStr.replace('po', '').trim();
+      classGold = Number(goldStr.replace('po', '').trim()) || 0;
+    } else if (this.selectedEquipmentOption === 'A') {
+      const desc = this.getClassEquipmentOptions(this.activeClass.name).optionA;
+      const match = desc.match(/(\d+)\s*po/i);
+      classGold = match ? Number(match[1]) : 0;
     }
-    const desc = this.getClassEquipmentOptions(this.activeClass.name).optionA;
-    const match = desc.match(/(\d+)\s*po/i);
-    return match ? match[1] : '0';
+
+    let bgGold = 0;
+    if (this.selectedBgEquipmentOption === 'B') {
+      const goldStr = this.getBgEquipmentOptions(this.activeBackground.name).optionB;
+      bgGold = Number(goldStr.replace('po', '').trim()) || 0;
+    } else if (this.selectedBgEquipmentOption === 'A') {
+      const desc = this.getBgEquipmentOptions(this.activeBackground.name).optionA;
+      const match = desc.match(/(\d+)\s*po/i);
+      bgGold = match ? Number(match[1]) : 0;
+    }
+
+    return String(classGold + bgGold);
   }
 
-  getClassSkillLimit(className: string): number {
+getClassSkillLimit(className: string): number {
     if (!className) return 2;
     const n = className.toLowerCase();
     if (n.includes('bardo')) return 3;
@@ -2669,5 +2764,114 @@ export class CharacterCreatorComponent implements OnInit {
       return this.skillsMetadata[key].description;
     }
     return '—';
+  }
+
+  getBgEquipmentOptions(name: string): { optionA: string, optionB: string } {
+    if (!name) return { optionA: '—', optionB: '—' };
+    const n = name.toLowerCase();
+    
+    if (n.includes('acólito') || n.includes('acolito')) {
+      return {
+        optionA: 'Suministros de calígrafo, libro (de oraciones), pergamino (10 hojas), símbolo sagrado, túnica y 8 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('animador')) {
+      return {
+        optionA: 'Instrumento musical (a tu elección), 2 disfraces, espejo, perfume, ropas de viaje y 11 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('artesano')) {
+      return {
+        optionA: 'Herramientas de artesano (a tu elección), 2 bolsas, ropas de viaje y 32 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('campesino')) {
+      return {
+        optionA: 'Hoz, herramientas de carpintero, útiles de sanador, olla de hierro, pala, ropas de viaje y 30 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('charlatán') || n.includes('charlatan')) {
+      return {
+        optionA: 'Útiles para falsificar, disfraz, ropas de calidad y 15 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('comerciante')) {
+      return {
+        optionA: 'Herramientas de navegante, 2 bolsas, ropas de viaje y 22 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('criminal')) {
+      return {
+        optionA: '2 dagas, herramientas de ladrón, 2 bolsas, palanqueta, ropas de viaje y 16 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('ermitaño') || n.includes('ermitanno')) {
+      return {
+        optionA: 'Bastón, útiles de herborista, aceite (3 frascos), lámpara, libro (de filosofía), petate, ropas de viaje y 16 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('erudito')) {
+      return {
+        optionA: 'Bastón, suministros de calígrafo, libro (de historia), pergamino (8 hojas), túnica y 8 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('escriba')) {
+      return {
+        optionA: 'Suministros de calígrafo, aceite (3 frascos), lámpara, pergamino (12 hojas), ropas de calidad y 23 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('guardia')) {
+      return {
+        optionA: 'Lanza, ballesta ligera, 20 virotes, juego (a tu elección), aljaba, esposas, linterna sorda, ropas de viaje y 12 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('guía') || n.includes('guia')) {
+      return {
+        optionA: 'Arco corto, 20 flechas, herramientas de cartógrafo, aljaba, petate, tienda de campaña, ropas de viaje y 3 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('marinero')) {
+      return {
+        optionA: 'Daga, herramientas de navegante, cuerda, ropas de viaje y 20 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('noble')) {
+      return {
+        optionA: 'Juego (a tu elección), perfume, ropas de calidad y 29 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('soldado')) {
+      return {
+        optionA: 'Lanza, arco corto, 20 flechas, aljaba, juego (a tu elección), útiles de sanador, ropas de viaje y 14 po.',
+        optionB: '50 po'
+      };
+    }
+    if (n.includes('vagabundo')) {
+      return {
+        optionA: '2 dagas, herramientas de ladrón, juego (a tu elección), 2 bolsas, petate, ropas de viaje y 16 po.',
+        optionB: '50 po'
+      };
+    }
+    return { optionA: '—', optionB: '—' };
+  }
+
+  selectBgEquipmentOption(opt: 'A' | 'B'): void {
+    this.selectedBgEquipmentOption = opt;
+    const opts = this.getBgEquipmentOptions(this.activeBackground.name);
+    this.selectedBgEquipmentDescription = opt === 'A' ? opts.optionA : opts.optionB;
   }
 }
