@@ -19,6 +19,15 @@ export class UserMongooseEntity {
 
   @Prop({ required: true, default: false })
   hasPlayedBefore: boolean;
+
+  @Prop({ required: true, default: 'user' })
+  role: string;
+
+  @Prop({ required: true, default: 0 })
+  failedLoginAttempts: number;
+
+  @Prop({ required: false })
+  lockUntil?: Date;
 }
 
 export const UserSchema = SchemaFactory.createForClass(UserMongooseEntity);

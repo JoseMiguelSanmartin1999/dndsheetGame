@@ -5,5 +5,8 @@ export class User {
   dateOfBirth: Date;
   passwordHash: string;
   hasPlayedBefore: boolean;
+  role: string;
+  failedLoginAttempts: number;
+  lockUntil?: Date;
   createdAt?: Date;
 }

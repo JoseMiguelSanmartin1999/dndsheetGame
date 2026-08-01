@@ -19,6 +19,9 @@ export class MongoUserRepository implements IUserRepository {
       dateOfBirth: user.dateOfBirth,
       passwordHash: user.passwordHash,
       hasPlayedBefore: user.hasPlayedBefore,
+      role: user.role || 'user',
+      failedLoginAttempts: user.failedLoginAttempts || 0,
+      lockUntil: user.lockUntil,
     });
     const saved = await createdUser.save();
     return this.toDomain(saved);
@@ -34,6 +37,27 @@ export class MongoUserRepository implements IUserRepository {
     return userDoc ? this.toDomain(userDoc) : null;
   }
 
+  async update(user: User): Promise<User> {
+    const updated = await this.userModel.findByIdAndUpdate(
+      user.id,
+      {
+        email: user.email,
+        username: user.username,
+        dateOfBirth: user.dateOfBirth,
+        passwordHash: user.passwordHash,
+        hasPlayedBefore: user.hasPlayedBefore,
+        role: user.role,
+        failedLoginAttempts: user.failedLoginAttempts,
+        lockUntil: user.lockUntil,
+      },
+      { new: true }
+    ).exec();
+    if (!updated) {
+      throw new Error('Usuario no encontrado para actualizar.');
+    }
+    return this.toDomain(updated);
+  }
+
   private toDomain(doc: UserDocument): User {
     return {
       id: doc._id.toString(),
@@ -42,6 +66,9 @@ export class MongoUserRepository implements IUserRepository {
       dateOfBirth: doc.dateOfBirth,
       passwordHash: doc.passwordHash,
       hasPlayedBefore: doc.hasPlayedBefore,
+      role: doc.role,
+      failedLoginAttempts: doc.failedLoginAttempts,
+      lockUntil: doc.lockUntil,
       createdAt: (doc as any).createdAt,
     };
   }
