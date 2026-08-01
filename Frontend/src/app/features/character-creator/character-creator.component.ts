@@ -551,15 +551,64 @@ interface GuideTab {
                 <p class="text-[10px] text-neutral-500">Beneficios mecánicos de tu historia personal.</p>
               </div>
 
+              <!-- Habilidades de Clase Ya Seleccionadas -->
+              <div class="bg-neutral-900/50 border border-neutral-850/60 p-4 rounded-xl space-y-2">
+                <h4 class="text-[10px] font-bold text-[#d4af37] uppercase tracking-wider">Habilidades ya elegidas (Clase)</h4>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span *ngIf="selectedClassSkills.length === 0" class="text-[10px] text-neutral-500 italic">Ninguna seleccionada</span>
+                  <span 
+                    *ngFor="let s of selectedClassSkills" 
+                    class="text-[9px] bg-neutral-900/80 text-neutral-300 border border-neutral-800 px-2 py-0.5 rounded font-medium"
+                  >
+                    {{ s }}
+                  </span>
+                </div>
+              </div>
+
               <!-- Puntuaciones que Mejora -->
-              <div class="space-y-2">
-                <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Atributos que potencia</h4>
-                <div class="flex items-center gap-3 bg-[#18181c] border border-neutral-800 px-4 py-3 rounded-lg">
-                  <span class="text-xl">🌟</span>
-                  <div>
-                    <p class="text-xs font-bold text-neutral-200">{{ activeBackground.statImprovement }}</p>
-                    <p class="text-[9px] text-neutral-500 leading-tight">Atributos a los que esta vida pasada confiere mejoras iniciales.</p>
+              <div class="space-y-3">
+                <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider flex justify-between items-center">
+                  <span>Atributos que potencia</span>
+                  <span class="text-[10px] text-amber-500 font-bold bg-amber-950/30 border border-amber-900/40 px-2 py-0.5 rounded">
+                    Reserva: {{ 3 - getUsedBackgroundStatsPoints() }} pts
+                  </span>
+                </h4>
+                <div class="space-y-2 bg-[#18181c] border border-neutral-800 p-4 rounded-lg">
+                  <p class="text-[10px] text-[#d4af37] font-bold font-serif uppercase tracking-wider mb-1">
+                    {{ activeBackground.statImprovement }}
+                  </p>
+                  <p class="text-[9px] text-neutral-400 leading-tight mb-2">
+                    Distribuye +2/+1 o +1/+1/+1 entre estos atributos (máx +2 por atributo):
+                  </p>
+                  
+                  <div class="space-y-2">
+                    <div *ngFor="let statKey of getAvailableBackgroundStats()" class="flex items-center justify-between bg-neutral-900/60 border border-neutral-800 px-3 py-1.5 rounded-md text-left">
+                      <span class="text-xs font-bold text-neutral-300">{{ getFullAttributeName(statKey) }}</span>
+                      
+                      <div class="flex items-center gap-2">
+                        <button 
+                          (click)="modifyBackgroundStat(statKey, -1)"
+                          [disabled]="(backgroundStatsAllocation[statKey] || 0) <= 0"
+                          class="w-6 h-6 rounded bg-neutral-800 hover:bg-neutral-700 text-neutral-300 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center font-bold text-xs cursor-pointer transition select-none"
+                        >
+                          -
+                        </button>
+                        <span class="text-sm font-bold text-amber-400 font-mono w-6 text-center">
+                          +{{ backgroundStatsAllocation[statKey] || 0 }}
+                        </span>
+                        <button 
+                          (click)="modifyBackgroundStat(statKey, 1)"
+                          [disabled]="(backgroundStatsAllocation[statKey] || 0) >= 2 || getUsedBackgroundStatsPoints() >= 3"
+                          class="w-6 h-6 rounded bg-neutral-800 hover:bg-neutral-700 text-neutral-300 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center font-bold text-xs cursor-pointer transition select-none"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
                   </div>
+                  <span *ngIf="getUsedBackgroundStatsPoints() < 3" class="text-[9px] text-red-400 font-bold block mt-1 animate-pulse">
+                    ⚠️ Debes asignar los 3 puntos antes de continuar.
+                  </span>
                 </div>
               </div>
 
@@ -642,7 +691,8 @@ interface GuideTab {
               </button>
               <button 
                 (click)="onConfirmBackground()"
-                class="flex-2 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 text-white font-semibold py-3 px-4 rounded-lg text-sm border-t border-red-500/20 font-serif cursor-pointer transition duration-300 uppercase tracking-wider shadow-lg hover:shadow-[0_0_15px_rgba(239,68,68,0.3)]"
+                [disabled]="getUsedBackgroundStatsPoints() !== 3"
+                class="flex-2 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 text-white font-semibold py-3 px-4 rounded-lg text-sm border-t border-red-500/20 font-serif cursor-pointer transition duration-300 uppercase tracking-wider shadow-lg hover:shadow-[0_0_15px_rgba(239,68,68,0.3)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none"
               >
                 Confirmar Trasfondo
               </button>
@@ -860,10 +910,14 @@ interface GuideTab {
 
                   <div class="text-center w-16">
                     <div class="text-2xl font-serif font-bold text-[#d4af37]">
-                      {{ attr.value + getOriginModifier(attr.key) }}
+                      {{ getFinalAttributeScore(attr.key) }}
                     </div>
-                    <div class="text-[9px] text-neutral-500 uppercase tracking-widest leading-none mt-0.5">
-                      Base: {{ attr.value }} <span *ngIf="getOriginModifier(attr.key) > 0" class="text-emerald-500">+{{ getOriginModifier(attr.key) }}</span>
+                    <div class="text-[9px] text-neutral-500 uppercase tracking-widest leading-none mt-0.5 space-y-0.5">
+                      <div>Base: {{ attr.value }}</div>
+                      <div class="flex flex-col gap-0.5">
+                        <span *ngIf="getOriginModifier(attr.key) > 0" class="text-emerald-500 font-bold">+{{ getOriginModifier(attr.key) }} Or.</span>
+                        <span *ngIf="(backgroundStatsAllocation[attr.key] || 0) > 0" class="text-amber-500 font-bold">+{{ backgroundStatsAllocation[attr.key] }} Tras.</span>
+                      </div>
                     </div>
                   </div>
 
@@ -1037,8 +1091,117 @@ interface GuideTab {
                 </div>
               </div>
             </div>
-          </div>
 
+            <!-- SECCIÓN 3: DOTE CLAVE "HABILIDOSO" (Si aplica) -->
+            <div *ngIf="hasSkilledFeat()" class="space-y-4 border-t border-neutral-900 pt-6 text-left">
+              <div class="flex justify-between items-center border-b border-neutral-900/60 pb-2">
+                <div>
+                  <h3 class="text-sm font-serif font-bold text-[#d4af37] uppercase tracking-wider">
+                    3. Beneficio de Dote: Habilidoso (Skilled)
+                  </h3>
+                  <p class="text-[10px] text-neutral-450 leading-relaxed">
+                    Tu dote de trasfondo te otorga entrenamiento en cualquier combinación de <strong class="text-amber-500">3 Habilidades o Herramientas</strong> a tu elección.
+                  </p>
+                </div>
+                <span class="text-xs bg-red-950/80 border border-red-800/80 px-2 py-0.5 rounded text-red-400 font-mono font-bold select-none shrink-0">
+                  Elige {{ 3 - skilledFeatSelection.length }} restantes
+                </span>
+              </div>
+
+              <!-- Listas de Habilidades y Herramientas a elegir -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Columna Habilidades -->
+                <div class="space-y-3 bg-[#18181c] border border-neutral-800 p-4 rounded-xl">
+                  <h4 class="text-[11px] font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-850 pb-1.5">
+                    Habilidades Disponibles
+                  </h4>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
+                    <div 
+                      *ngFor="let skill of allSkillsList"
+                      [class.opacity-40]="hasProficiency(skill)"
+                      class="flex items-center gap-1.5 p-1.5 rounded border transition select-none"
+                      [ngClass]="{
+                        'bg-amber-950/20 border-amber-600/50 text-[#d4af37]': skilledFeatSelection.includes(skill),
+                        'bg-neutral-900/30 border-neutral-850 text-neutral-400': !skilledFeatSelection.includes(skill)
+                      }"
+                    >
+                      <input 
+                        type="checkbox"
+                        [checked]="skilledFeatSelection.includes(skill)"
+                        [disabled]="hasProficiency(skill) || (!skilledFeatSelection.includes(skill) && skilledFeatSelection.length >= 3)"
+                        (change)="toggleSkilledFeatSelection(skill)"
+                        class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40"
+                      />
+                      <span 
+                        class="text-[10px] font-medium truncate cursor-pointer"
+                        (click)="!hasProficiency(skill) && toggleSkilledFeatSelection(skill)"
+                      >
+                        {{ skill }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Columna Herramientas -->
+                <div class="space-y-3 bg-[#18181c] border border-neutral-800 p-4 rounded-xl">
+                  <h4 class="text-[11px] font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-850 pb-1.5">
+                    Herramientas / Juegos Disponibles
+                  </h4>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
+                    <div 
+                      *ngFor="let tool of allToolsList"
+                      [class.opacity-40]="hasProficiency(tool)"
+                      class="flex items-center gap-1.5 p-1.5 rounded border transition select-none"
+                      [ngClass]="{
+                        'bg-amber-950/20 border-amber-600/50 text-[#d4af37]': skilledFeatSelection.includes(tool),
+                        'bg-neutral-900/30 border-neutral-850 text-neutral-400': !skilledFeatSelection.includes(tool)
+                      }"
+                    >
+                      <input 
+                        type="checkbox"
+                        [checked]="skilledFeatSelection.includes(tool)"
+                        [disabled]="hasProficiency(tool) || (!skilledFeatSelection.includes(tool) && skilledFeatSelection.length >= 3)"
+                        (change)="toggleSkilledFeatSelection(tool)"
+                        class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40"
+                      />
+                      <span 
+                        class="text-[10px] font-medium truncate cursor-pointer"
+                        (click)="!hasProficiency(tool) && toggleSkilledFeatSelection(tool)"
+                      >
+                        {{ tool }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Habilidades/Herramientas ya elegidas (Clase + Trasfondo) para recordarle al usuario -->
+              <div class="bg-neutral-900/40 border border-neutral-850 p-4 rounded-xl space-y-2">
+                <span class="text-[9px] text-neutral-500 uppercase font-bold tracking-wider">Tus Competencias actuales (No elegibles):</span>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span 
+                    *ngFor="let s of getAlreadySelectedSkills()" 
+                    class="text-[9px] bg-neutral-900 text-neutral-400 border border-neutral-850 px-2 py-0.5 rounded"
+                  >
+                    {{ s }}
+                  </span>
+                  <span 
+                    *ngIf="activeBackground.tools"
+                    class="text-[9px] bg-neutral-900 text-neutral-400 border border-neutral-850 px-2 py-0.5 rounded italic font-medium"
+                  >
+                    🛠️ {{ activeBackground.tools }}
+                  </span>
+                  <span 
+                    *ngIf="getClassDetailsByClassName(activeClass.name).tools"
+                    class="text-[9px] bg-neutral-900 text-neutral-400 border border-neutral-850 px-2 py-0.5 rounded italic font-medium"
+                  >
+                    🛠️ {{ getClassDetailsByClassName(activeClass.name).tools }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+ 
           <!-- Botones de Acción -->
           <div class="flex flex-col sm:flex-row gap-4 border-t border-neutral-900 pt-6 relative z-10">
             <button 
@@ -1049,7 +1212,7 @@ interface GuideTab {
             </button>
             <button 
               (click)="onConfirmEquipment()"
-              [disabled]="!selectedEquipmentOption || !selectedBgEquipmentOption"
+              [disabled]="!selectedEquipmentOption || !selectedBgEquipmentOption || (hasSkilledFeat() && skilledFeatSelection.length !== 3)"
               class="w-full sm:w-2/3 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg text-sm border-t border-red-500/20 font-serif cursor-pointer transition duration-300 uppercase tracking-widest shadow-xl hover:shadow-[0_0_25px_rgba(239,68,68,0.4)]"
             >
               Confirmar Equipo y Continuar
@@ -1107,7 +1270,7 @@ interface GuideTab {
                 >
                   <span class="font-bold text-neutral-300">{{ attr.key }}</span>
                   <span class="text-sm font-bold text-[#d4af37] font-serif">
-                    {{ attr.value + getOriginModifier(attr.key) }}
+                    {{ getFinalAttributeScore(attr.key) }}
                   </span>
                 </div>
               </div>
@@ -1156,8 +1319,8 @@ interface GuideTab {
                 </div>
               </div>
               <div class="text-[10px] text-neutral-500 space-y-1">
-                <div><strong>Habilidades:</strong> {{ activeBackground.skills }}</div>
-                <div><strong>Herramientas:</strong> {{ activeBackground.tools }}</div>
+                <div><strong>Habilidades:</strong> {{ activeBackground.skills }} <span *ngIf="hasSkilledFeat() && getSkilledSkillsOnly().length > 0" class="text-amber-500 font-bold">(+{{ getSkilledSkillsOnly().join(', ') }})</span></div>
+                <div><strong>Herramientas:</strong> {{ activeBackground.tools }} <span *ngIf="hasSkilledFeat() && getSkilledToolsOnly().length > 0" class="text-amber-500 font-bold">(+{{ getSkilledToolsOnly().join(', ') }})</span></div>
                 
                 <button 
                   (click)="showPreview = true"
@@ -1582,6 +1745,9 @@ interface GuideTab {
                     <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider">Herramientas</span>
                     <p class="text-[10px] text-neutral-350 leading-relaxed font-light">
                       {{ activeBackground.tools || 'Herramientas básicas de oficio' }}
+                      <span *ngIf="hasSkilledFeat() && getSkilledToolsOnly().length > 0" class="text-amber-500 font-semibold">
+                        , {{ getSkilledToolsOnly().join(', ') }} (Dote)
+                      </span>
                     </p>
                   </div>
 
@@ -1837,6 +2003,51 @@ export class CharacterCreatorComponent implements OnInit {
     { name: 'Carisma', key: 'CAR', value: 10, description: 'Confianza, elocuencia, aplomo y encanto.' }
   ];
 
+  backgroundStatsAllocation: { [key: string]: number } = {
+    FUE: 0,
+    DES: 0,
+    CON: 0,
+    INT: 0,
+    SAB: 0,
+    CAR: 0
+  };
+
+  skilledFeatSelection: string[] = [];
+
+  allSkillsList: string[] = [
+    'Atletismo',
+    'Acrobacias',
+    'Juego de manos',
+    'Sigilo',
+    'Conocimiento arcano',
+    'Historia',
+    'Investigación',
+    'Naturaleza',
+    'Religión',
+    'Medicina',
+    'Percepción',
+    'Perspicacia',
+    'Supervivencia',
+    'Trato con animales',
+    'Engaño',
+    'Interpretación',
+    'Intimidación',
+    'Persuasión'
+  ];
+
+  allToolsList: string[] = [
+    'Herramientas de ladrón',
+    'Herramientas de navegante',
+    'Útiles de herborista',
+    'Útiles para falsificar',
+    'Suministros de calígrafo',
+    'Herramientas de carpintero',
+    'Herramientas de cartógrafo',
+    'Instrumentos musicales',
+    'Herramientas de artesano',
+    'Útiles de juego'
+  ];
+
   guideTabs: GuideTab[] = [
     {
       title: '1. Estilo de Juego Ideal',
@@ -2053,6 +2264,15 @@ export class CharacterCreatorComponent implements OnInit {
       this.imageLoaded = false;
       this.isFallbackBg = false;
       this.featExpanded = false;
+      this.backgroundStatsAllocation = {
+        FUE: 0,
+        DES: 0,
+        CON: 0,
+        INT: 0,
+        SAB: 0,
+        CAR: 0
+      };
+      this.skilledFeatSelection = [];
     }
   }
 
@@ -2220,6 +2440,56 @@ export class CharacterCreatorComponent implements OnInit {
     return this.activeOrigin.statModifiers ? (this.activeOrigin.statModifiers[key] || 0) : 0;
   }
 
+  getAvailableBackgroundStats(): string[] {
+    if (!this.activeBackground || !this.activeBackground.statImprovement) return [];
+    const statsStr = this.activeBackground.statImprovement;
+    return statsStr.split(',').map(s => {
+      const clean = s.trim().toLowerCase();
+      if (clean.startsWith('fue')) return 'FUE';
+      if (clean.startsWith('des')) return 'DES';
+      if (clean.startsWith('con')) return 'CON';
+      if (clean.startsWith('int')) return 'INT';
+      if (clean.startsWith('sab')) return 'SAB';
+      if (clean.startsWith('car')) return 'CAR';
+      return '';
+    }).filter(k => k !== '');
+  }
+
+  getUsedBackgroundStatsPoints(): number {
+    const keys = this.getAvailableBackgroundStats();
+    let sum = 0;
+    keys.forEach(k => {
+      sum += this.backgroundStatsAllocation[k] || 0;
+    });
+    return sum;
+  }
+
+  modifyBackgroundStat(key: string, amount: number): void {
+    const currentVal = this.backgroundStatsAllocation[key] || 0;
+    const totalUsed = this.getUsedBackgroundStatsPoints();
+
+    if (amount > 0) {
+      if (currentVal >= 2) return;
+      if (totalUsed >= 3) return;
+      this.backgroundStatsAllocation[key] = currentVal + 1;
+    } else if (amount < 0) {
+      if (currentVal <= 0) return;
+      this.backgroundStatsAllocation[key] = currentVal - 1;
+    }
+  }
+
+  getFullAttributeName(key: string): string {
+    const names: { [key: string]: string } = {
+      FUE: 'Fuerza',
+      DES: 'Destreza',
+      CON: 'Constitución',
+      INT: 'Inteligencia',
+      SAB: 'Sabiduría',
+      CAR: 'Carisma'
+    };
+    return names[key] || '';
+  }
+
   modifyAttribute(key: string, amount: number): void {
     const attr = this.attributes.find(a => a.key === key);
     if (!attr) return;
@@ -2231,6 +2501,65 @@ export class CharacterCreatorComponent implements OnInit {
       attr.value -= 1;
       this.attributePointsPool += 1;
     }
+  }
+
+  hasSkilledFeat(): boolean {
+    if (!this.activeBackground || !this.activeBackground.keyFeat) return false;
+    const cleanFeat = this.activeBackground.keyFeat.toLowerCase();
+    return cleanFeat.includes('skilled') || cleanFeat.includes('habilidoso');
+  }
+
+  toggleSkilledFeatSelection(item: string): void {
+    const idx = this.skilledFeatSelection.indexOf(item);
+    if (idx >= 0) {
+      this.skilledFeatSelection.splice(idx, 1);
+    } else {
+      if (this.skilledFeatSelection.length < 3) {
+        this.skilledFeatSelection.push(item);
+      }
+    }
+  }
+
+  hasProficiency(name: string): boolean {
+    const clean = name.toLowerCase().trim();
+    if (this.selectedClassSkills.some(s => s.toLowerCase().trim() === clean)) {
+      return true;
+    }
+    if (this.activeBackground && this.activeBackground.skills) {
+      const bgSkills = this.activeBackground.skills.toLowerCase().split(',').map(s => s.trim());
+      if (bgSkills.includes(clean)) return true;
+    }
+    if (this.activeBackground && this.activeBackground.tools) {
+      const bgTools = this.activeBackground.tools.toLowerCase().split(',').map(s => s.trim());
+      if (bgTools.some(t => t.includes(clean) || clean.includes(t))) return true;
+    }
+    const classDetails = this.getClassDetailsByClassName(this.activeClass.name);
+    if (classDetails && classDetails.tools) {
+      const classTools = classDetails.tools.toLowerCase().split(',').map(s => s.trim());
+      if (classTools.some(t => t.includes(clean) || clean.includes(t))) return true;
+    }
+    return false;
+  }
+
+  getSkilledSkillsOnly(): string[] {
+    return this.skilledFeatSelection.filter(s => this.allSkillsList.includes(s));
+  }
+
+  getSkilledToolsOnly(): string[] {
+    return this.skilledFeatSelection.filter(t => this.allToolsList.includes(t));
+  }
+
+  getAlreadySelectedSkills(): string[] {
+    const list: string[] = [...this.selectedClassSkills];
+    if (this.activeBackground && this.activeBackground.skills) {
+      this.activeBackground.skills.split(',').forEach(s => {
+        const clean = s.trim();
+        if (clean && !list.includes(clean)) {
+          list.push(clean);
+        }
+      });
+    }
+    return list;
   }
 
   restartCreator(): void {
@@ -2251,18 +2580,29 @@ export class CharacterCreatorComponent implements OnInit {
     this.selectedBackgroundIdx = 0;
     this.attributes.forEach(a => a.value = 10);
     this.isFallbackBg = false;
+    this.backgroundStatsAllocation = {
+      FUE: 0,
+      DES: 0,
+      CON: 0,
+      INT: 0,
+      SAB: 0,
+      CAR: 0
+    };
+    this.skilledFeatSelection = [];
   }
 
   saveCharacter(): void {
     const finalStats = this.attributes.map(a => ({
       name: a.name,
-      value: a.value + this.getOriginModifier(a.key)
+      value: this.getFinalAttributeScore(a.key)
     }));
     console.log('Guardando personaje forjado:', {
       clase: this.activeClass.name,
       trasfondo: this.activeBackground.name,
       origen: this.activeOrigin.name,
-      atributos: finalStats
+      atributos: finalStats,
+      habilidadesClase: this.selectedClassSkills,
+      doteHabilidosoSeleccion: this.hasSkilledFeat() ? this.skilledFeatSelection : []
     });
     alert(`¡Felicidades! Tu aventurero (${this.characterName || 'Héroe'} - ${this.activeClass.name} ${this.activeOrigin.name}, Trasfondo: ${this.activeBackground.name}) ha sido registrado en la mesa de juego.`);
     this.restartCreator();
@@ -2272,7 +2612,7 @@ export class CharacterCreatorComponent implements OnInit {
   getFinalAttributeScore(key: string): number {
     const attr = this.attributes.find(a => a.key === key);
     if (!attr) return 10;
-    return attr.value + this.getOriginModifier(key);
+    return attr.value + this.getOriginModifier(key) + (this.backgroundStatsAllocation[key] || 0);
   }
 
   getFinalModifierValue(key: string): number {
@@ -2290,7 +2630,6 @@ export class CharacterCreatorComponent implements OnInit {
     if (this.selectedClassSkills.some(s => s.toLowerCase().trim() === cleanSkill)) {
       return true;
     }
-    if (!this.activeBackground || !this.activeBackground.skills) return false;
     const skillsList = this.activeBackground.skills.toLowerCase().split(',').map(s => s.trim());
     return skillsList.some(s => s === cleanSkill || s.includes(cleanSkill));
   }

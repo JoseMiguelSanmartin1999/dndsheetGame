@@ -1,0 +1,11 @@
+{
+  "name": "dndsheet-game",
+  "version": "1.0.0",
+  "description": "D&D Sheet Game root configuration to launch backend and frontend together",
+  "scripts": {
+    "start": "node start.js",
+    "start:backend": "npm start --prefix Backend",
+    "start:frontend": "npm start --prefix Frontend"
+  },
+  "private": true
+}
