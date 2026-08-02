@@ -366,11 +366,16 @@ export class GameDataSeeder implements OnApplicationBootstrap {
   private async seedOrigins() {
     const count = await this.originModel.countDocuments();
     if (count > 0) {
-      this.logger.log('Los orígenes de D&D ya se encuentran sembrados.');
-      return;
+      if (count < 11) {
+        await this.originModel.deleteMany({});
+        this.logger.log('Reiniciando orígenes para sembrar los nuevos linajes (10 en total)...');
+      } else {
+        this.logger.log('Los orígenes de D&D ya se encuentran sembrados.');
+        return;
+      }
     }
 
-    this.logger.log('Sembrando 6 orígenes en la base de datos...');
+    this.logger.log('Sembrando 10 orígenes en la base de datos...');
     const origins = [
       {
         name: 'Humano',
@@ -423,7 +428,7 @@ export class GameDataSeeder implements OnApplicationBootstrap {
         speed: '30 pies (9m)',
         language: 'Común y Dracónico',
         trait: 'Arma de Aliento (Exhalas energía elemental destructiva de dragón).',
-        image: 'Draconido.png',
+        image: 'Draconidos.png',
         description: 'Orgullosos descendientes de los dragones, caminan con honor. Poseen escamas gruesas que resisten un elemento y exhalan aliento elemental destructivo.',
         statModifiers: { FUE: 2, DES: 0, CON: 0, INT: 0, SAB: 0, CAR: 1 }
       },
@@ -434,12 +439,56 @@ export class GameDataSeeder implements OnApplicationBootstrap {
         speed: '30 pies (9m)',
         language: 'Común e Infernal',
         trait: 'Resistencia Elemental (Resistente al fuego) y Magia Innata.',
-        image: 'Tiflin.png',
+        image: 'Tiefling.png',
         description: 'Portadores de un linaje infernal antiguo debido a pactos pasados en sus familias. Son astutos, carismáticos y poseen un control innato sobre la magia de las sombras.',
         statModifiers: { FUE: 0, DES: 0, CON: 0, INT: 1, SAB: 0, CAR: 2 }
+      },
+      {
+        name: 'Gnomo',
+        icon: '🧙',
+        bonus: '+2 Inteligencia, +1 Destreza',
+        speed: '30 pies (9m)',
+        language: 'Común y Gnomo',
+        trait: 'Astucia Gnoma (Ventaja en tiradas de salvación de Inteligencia, Sabiduría y Carisma).',
+        image: 'Gnomo.png',
+        description: 'Los gnomos son un pueblo mágico creado por los dioses de la inventiva, las ilusiones y la vida en el subsuelo. Destacan por su ingenio técnico y su agudeza mental.',
+        statModifiers: { FUE: 0, DES: 1, CON: 0, INT: 2, SAB: 0, CAR: 0 }
+      },
+      {
+        name: 'Goliat',
+        icon: '🏔️',
+        bonus: '+2 Fuerza, +1 Constitución',
+        speed: '35 pies (10.5m)',
+        language: 'Común y Gigante',
+        trait: 'Constitución Poderosa (Ventaja en salvaciones contra agarre, doble capacidad de carga).',
+        image: 'Goliath.png',
+        description: 'Los goliats son descendientes lejanos de los gigantes y sobrepasan en altura a la mayoría de especies. Poseen una increíble resistencia física y la herencia elemental de los gigantes.',
+        statModifiers: { FUE: 2, DES: 0, CON: 1, INT: 0, SAB: 0, CAR: 0 }
+      },
+      {
+        name: 'Orco',
+        icon: '🐗',
+        bonus: '+2 Fuerza, +1 Constitución',
+        speed: '30 pies (9m)',
+        language: 'Común y Orco',
+        trait: 'Aguante Incansable (Cuando caes a 0 HP, te recuperas a 1 HP de forma gratuita).',
+        image: 'Orco.png',
+        description: 'Fuertes y corpulentos, los orcos son guerreros natos que poseen una vitalidad incansable y ráfagas de adrenalina que les permiten arremeter con fiereza en el fragor de la batalla.',
+        statModifiers: { FUE: 2, DES: 0, CON: 1, INT: 0, SAB: 0, CAR: 0 }
+      },
+      {
+        name: 'Aasimar',
+        icon: '👼',
+        bonus: '+2 Carisma, +1 Sabiduría',
+        speed: '30 pies (9m)',
+        language: 'Común y Celestial',
+        trait: 'Manos Curativas, Resistencia Celestial (Daño Necrótico y Radiante) y Revelación Celestial.',
+        image: 'Aasimar.png',
+        description: 'Los aasimars son mortales cuyas almas albergan una chispa de los Planos Superiores. Descendientes de ángeles o bendecidos por poderes divinos, pueden canalizar su herencia celestial para sanar o desatar la revelación celestial.',
+        statModifiers: { FUE: 0, DES: 0, CON: 0, INT: 0, SAB: 1, CAR: 2 }
       }
     ];
     await this.originModel.insertMany(origins);
-    this.logger.log('¡6 Orígenes sembrados correctamente en MongoDB!');
+    this.logger.log('¡10 Orígenes sembrados correctamente en MongoDB!');
   }
 }
