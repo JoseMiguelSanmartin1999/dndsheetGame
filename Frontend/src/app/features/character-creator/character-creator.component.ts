@@ -18,6 +18,37 @@ interface GuideTab {
   content: string;
 }
 
+const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
+  'paquete de artista': {
+    title: 'Paquete de Artista',
+    items: ['Campana', 'Cantimplora', '3 disfraces', 'Espejo', '8 frascos de aceite', 'Linterna de ojo de buey', 'Mochila', 'Petate', 'Raciones para 9 días', 'Yesquero']
+  },
+  'paquete de diplomático': {
+    title: 'Paquete de Diplomático',
+    items: ['Cofre', '2 estuches para mapas o pergaminos', '4 frascos de aceite', '5 hojas de papel', '5 hojas de pergamino', 'Lámpara', 'Perfume', '5 plumas', 'Ropas de calidad', 'Tinta', 'Yesquero']
+  },
+  'paquete de erudito': {
+    title: 'Paquete de Erudito',
+    items: ['10 frascos de aceite', '10 hojas de pergamino', 'Lámpara', 'Libro', 'Mochila', 'Pluma', 'Tinta', 'Yesquero']
+  },
+  'paquete de explorador': {
+    title: 'Paquete de Explorador',
+    items: ['10 antorchas', 'Cantimplora', 'Cuerda', '2 frascos de aceite', 'Mochila', 'Petate', 'Raciones para 10 días', 'Yesquero']
+  },
+  'paquete de explorador de mazmorras': {
+    title: 'Paquete de Explorador de Mazmorras',
+    items: ['Abrojos', '10 antorchas', 'Cantimplora', 'Cuerda', '2 frascos de aceite', 'Mochila', 'Palanqueta', 'Raciones para 10 días', 'Yesquero']
+  },
+  'paquete de ladrón': {
+    title: 'Paquete de Ladrón',
+    items: ['Bolas de metal', 'Campana', 'Cantimplora', 'Cuerda', '7 frascos de aceite', 'Linterna sorda', 'Mochila', 'Palanqueta', 'Raciones para 5 días', '10 velas', 'Yesquero']
+  },
+  'paquete de sacerdote': {
+    title: 'Paquete de Sacerdote',
+    items: ['Agua bendita', 'Lámpara', 'Manta', 'Mochila', 'Raciones para 7 días', 'Túnica', 'Yesquero']
+  }
+};
+
 @Component({
   selector: 'app-character-creator',
   standalone: true,
@@ -738,7 +769,7 @@ interface GuideTab {
 
               <div class="flex-1 relative overflow-hidden bg-gradient-to-b from-[#141416] to-[#0c0c0f] flex items-center justify-center p-4">
                 <img 
-                  [src]="'/assets/razas/' + activeOrigin.image" 
+                  [src]="'/assets/Razas/' + activeOrigin.image" 
                   [alt]="activeOrigin.name" 
                   class="max-w-full max-h-[550px] object-contain transition-all duration-500 select-none group-hover:scale-102 drop-shadow-[0_12px_24px_rgba(0,0,0,0.85)]"
                   (load)="onImageLoad()"
@@ -772,18 +803,6 @@ interface GuideTab {
                 <p class="text-[10px] text-neutral-500">Beneficios raciales de tu linaje ancestral.</p>
               </div>
 
-              <!-- Incremento de Atributos -->
-              <div class="space-y-2">
-                <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Incremento de Atributo</h4>
-                <div class="flex items-center gap-3 bg-[#18181c] border border-neutral-800 px-4 py-3 rounded-lg">
-                  <span class="text-xl">📈</span>
-                  <div>
-                    <p class="text-sm font-bold text-neutral-200">{{ activeOrigin.bonus }}</p>
-                    <p class="text-[10px] text-neutral-500 leading-tight">Mejora directa aplicada a tus puntuaciones de característica.</p>
-                  </div>
-                </div>
-              </div>
-
               <!-- Velocidad de Movimiento -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Velocidad Base</h4>
@@ -802,12 +821,151 @@ interface GuideTab {
                 </div>
               </div>
 
-              <!-- Rasgo Especial -->
+              <!-- Selección de Linaje o Ancestro Dracónico (Si aplica) -->
+              <div *ngIf="isOriginLineageRequired()" class="space-y-3 bg-[#18181c] border border-[#d4af37]/30 p-4 rounded-xl text-left">
+                <span class="text-[10px] uppercase font-bold text-[#d4af37] tracking-wider block">
+                  <span *ngIf="activeOrigin.name.toLowerCase().includes('elfo')">Selecciona tu Linaje Élfico</span>
+                  <span *ngIf="activeOrigin.name.toLowerCase().includes('dracónido') || activeOrigin.name.toLowerCase().includes('draconido')">Selecciona tu Ancestro Dracónico</span>
+                  <span *ngIf="activeOrigin.name.toLowerCase().includes('gnomo')">Selecciona tu Linaje Gnomo</span>
+                  <span *ngIf="activeOrigin.name.toLowerCase().includes('goliat')">Selecciona tu Linaje Gigante</span>
+                  <span *ngIf="activeOrigin.name.toLowerCase().includes('tiflin') || activeOrigin.name.toLowerCase().includes('tiefling')">Selecciona tu Legado Infernal</span>
+                  <span *ngIf="activeOrigin.name.toLowerCase().includes('aasimar')">Selecciona tu Revelación Celestial</span>
+                </span>
+                <p class="text-[10px] text-neutral-400 leading-tight">
+                  Este origen define tus dotes adicionales, conjuros iniciales o resistencias elementales.
+                </p>
+
+                <!-- Elfo Lineages -->
+                <div *ngIf="activeOrigin.name.toLowerCase().includes('elfo')" class="space-y-2">
+                  <div 
+                    *ngFor="let el of elvenLineages"
+                    (click)="selectedOriginLineage = el.name"
+                    class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5"
+                    [ngClass]="selectedOriginLineage === el.name ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200 shadow-[0_0_10px_rgba(212,175,55,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                  >
+                    <span class="text-xs font-bold text-neutral-250 flex items-center gap-1.5">
+                      <span class="text-xs" [class.text-[#d4af37]]="selectedOriginLineage === el.name">
+                        {{ selectedOriginLineage === el.name ? '✦' : '◇' }}
+                      </span>
+                      {{ el.name }}
+                    </span>
+                    <span class="text-[10px] text-neutral-450 leading-relaxed font-light pl-4">{{ el.desc }}</span>
+                  </div>
+                </div>
+
+                <!-- Dragonborn Lineages -->
+                <div *ngIf="activeOrigin.name.toLowerCase().includes('dracónido') || activeOrigin.name.toLowerCase().includes('draconido')" class="grid grid-cols-2 gap-2">
+                  <button 
+                    *ngFor="let drag of dragonLineages"
+                    type="button"
+                    (click)="selectedOriginLineage = drag.name + ' (' + drag.element + ')'"
+                    class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5 w-full focus:outline-none"
+                    [ngClass]="selectedOriginLineage.startsWith(drag.name) ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                  >
+                    <span class="text-xs font-bold text-neutral-250 flex items-center gap-1">
+                      <span class="text-[10px]" [class.text-[#d4af37]]="selectedOriginLineage.startsWith(drag.name)">
+                        {{ selectedOriginLineage.startsWith(drag.name) ? '✦' : '◇' }}
+                      </span>
+                      {{ drag.name }}
+                    </span>
+                    <span class="text-[9px] text-neutral-550 font-mono pl-3">Daño: {{ drag.element }}</span>
+                  </button>
+                </div>
+
+                <!-- Gnome Lineages -->
+                <div *ngIf="activeOrigin.name.toLowerCase().includes('gnomo')" class="space-y-2">
+                  <div 
+                    *ngFor="let gn of gnomeLineages"
+                    (click)="selectedOriginLineage = gn.name"
+                    class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5"
+                    [ngClass]="selectedOriginLineage === gn.name ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200 shadow-[0_0_10px_rgba(212,175,55,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                  >
+                    <span class="text-xs font-bold text-neutral-250 flex items-center gap-1.5">
+                      <span class="text-xs" [class.text-[#d4af37]]="selectedOriginLineage === gn.name">
+                        {{ selectedOriginLineage === gn.name ? '✦' : '◇' }}
+                      </span>
+                      {{ gn.name }}
+                    </span>
+                    <span class="text-[10px] text-neutral-450 leading-relaxed font-light pl-4">{{ gn.desc }}</span>
+                  </div>
+                </div>
+
+                <!-- Goliath Lineages -->
+                <div *ngIf="activeOrigin.name.toLowerCase().includes('goliat')" class="space-y-2 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
+                  <div 
+                    *ngFor="let gol of goliathLineages"
+                    (click)="selectedOriginLineage = gol.name"
+                    class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5 mb-2 last:mb-0"
+                    [ngClass]="selectedOriginLineage === gol.name ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200 shadow-[0_0_10px_rgba(212,175,55,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                  >
+                    <span class="text-xs font-bold text-neutral-250 flex items-center gap-1.5">
+                      <span class="text-xs" [class.text-[#d4af37]]="selectedOriginLineage === gol.name">
+                        {{ selectedOriginLineage === gol.name ? '✦' : '◇' }}
+                      </span>
+                      {{ gol.name }}
+                    </span>
+                    <span class="text-[10px] text-neutral-450 leading-relaxed font-light pl-4">{{ gol.desc }}</span>
+                  </div>
+                </div>
+
+                <!-- Tiefling Lineages -->
+                <div *ngIf="activeOrigin.name.toLowerCase().includes('tiflin') || activeOrigin.name.toLowerCase().includes('tiefling')" class="space-y-2">
+                  <div 
+                    *ngFor="let tf of tieflingLineages"
+                    (click)="selectedOriginLineage = tf.name"
+                    class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5"
+                    [ngClass]="selectedOriginLineage === tf.name ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200 shadow-[0_0_10px_rgba(212,175,55,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                  >
+                    <span class="text-xs font-bold text-neutral-250 flex items-center gap-1.5">
+                      <span class="text-xs" [class.text-[#d4af37]]="selectedOriginLineage === tf.name">
+                        {{ selectedOriginLineage === tf.name ? '✦' : '◇' }}
+                      </span>
+                      {{ tf.name }}
+                    </span>
+                    <span class="text-[10px] text-neutral-450 leading-relaxed font-light pl-4">{{ tf.desc }}</span>
+                  </div>
+                </div>
+
+                <!-- Aasimar Lineages -->
+                <div *ngIf="activeOrigin.name.toLowerCase().includes('aasimar')" class="space-y-2">
+                  <div 
+                    *ngFor="let aa of aasimarLineages"
+                    (click)="selectedOriginLineage = aa.name"
+                    class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5"
+                    [ngClass]="selectedOriginLineage === aa.name ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200 shadow-[0_0_10px_rgba(212,175,55,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                  >
+                    <span class="text-xs font-bold text-neutral-250 flex items-center gap-1.5">
+                      <span class="text-xs" [class.text-[#d4af37]]="selectedOriginLineage === aa.name">
+                        {{ selectedOriginLineage === aa.name ? '✦' : '◇' }}
+                      </span>
+                      {{ aa.name }}
+                    </span>
+                    <span class="text-[10px] text-neutral-450 leading-relaxed font-light pl-4">{{ aa.desc }}</span>
+                  </div>
+                </div>
+                
+                <span *ngIf="!selectedOriginLineage" class="text-[9px] text-red-400 font-bold block mt-1 animate-pulse">
+                  ⚠️ Debes seleccionar un linaje antes de continuar.
+                </span>
+              </div>
+
+              <!-- Rasgo Especial del Origen en DB -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Rasgo de Linaje Especial</h4>
                 <div class="flex flex-col bg-[#18181c] border border-neutral-850 p-4 rounded-lg space-y-1">
                   <span class="text-xs font-bold text-[#d4af37]">{{ activeOrigin.trait.split('(')[0] }}</span>
                   <span class="text-[11px] text-neutral-400 leading-normal">{{ activeOrigin.trait }}</span>
+                </div>
+              </div>
+
+              <!-- Atributos Detallados del Manual (D&D 2024) -->
+              <div *ngIf="getOriginManualAttributes(activeOrigin.name).length > 0" class="space-y-2.5">
+                <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Atributos del Manual (D&D 2024)</h4>
+                <div class="space-y-3 bg-[#18181c] border border-neutral-850 p-4 rounded-lg text-left">
+                  <div *ngFor="let attr of getOriginManualAttributes(activeOrigin.name)" class="border-b border-neutral-900 pb-2.5 last:border-0 last:pb-0 space-y-0.5">
+                    <span class="text-[10px] font-bold text-[#d4af37] uppercase tracking-wider block">{{ attr.title }}</span>
+                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light">{{ attr.desc }}</p>
+                  </div>
                 </div>
               </div>
 
@@ -821,7 +979,7 @@ interface GuideTab {
             </div>
 
             <!-- Botones -->
-            <div class="flex gap-3 mt-6">
+            <div class="flex gap-3 mt-6 shrink-0">
               <button 
                 (click)="goToStep(2)"
                 class="flex-1 bg-[#18181c] hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-3 rounded-lg text-xs font-serif uppercase tracking-wider cursor-pointer transition duration-200"
@@ -830,7 +988,8 @@ interface GuideTab {
               </button>
               <button 
                 (click)="onConfirmOrigin()"
-                class="flex-2 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 text-white font-semibold py-3 px-4 rounded-lg text-sm border-t border-red-500/20 font-serif cursor-pointer transition duration-300 uppercase tracking-wider shadow-lg hover:shadow-[0_0_15px_rgba(239,68,68,0.3)]"
+                [disabled]="isOriginLineageRequired() && !selectedOriginLineage"
+                class="flex-2 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 text-white font-semibold py-3 px-4 rounded-lg text-sm border-t border-red-500/20 font-serif cursor-pointer transition duration-300 uppercase tracking-wider shadow-lg hover:shadow-[0_0_15px_rgba(239,68,68,0.3)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none"
               >
                 Confirmar Origen
               </button>
@@ -860,15 +1019,7 @@ interface GuideTab {
               </p>
             </div>
             
-            <div class="bg-[#18181c] border border-neutral-800 p-4 rounded-lg space-y-2 text-xs">
-              <div class="flex justify-between border-b border-neutral-900 pb-1.5 mb-1.5">
-                <span class="font-bold text-amber-500">Tu Origen Elegido:</span>
-                <span class="text-neutral-300 font-semibold">{{ activeOrigin.name }}</span>
-              </div>
-              <p class="text-neutral-450 leading-relaxed">
-                Tu linaje de origen te confiere un bono inicial gratuito: <strong class="text-amber-400">{{ activeOrigin.bonus }}</strong>. Este incremento se suma automáticamente al final de tus atributos base.
-              </p>
-            </div>
+
           </div>
 
           <!-- Panel Central -->
@@ -915,7 +1066,6 @@ interface GuideTab {
                     <div class="text-[9px] text-neutral-500 uppercase tracking-widest leading-none mt-0.5 space-y-0.5">
                       <div>Base: {{ attr.value }}</div>
                       <div class="flex flex-col gap-0.5">
-                        <span *ngIf="getOriginModifier(attr.key) > 0" class="text-emerald-500 font-bold">+{{ getOriginModifier(attr.key) }} Or.</span>
                         <span *ngIf="(backgroundStatsAllocation[attr.key] || 0) > 0" class="text-amber-500 font-bold">+{{ backgroundStatsAllocation[attr.key] }} Tras.</span>
                       </div>
                     </div>
@@ -1250,7 +1400,7 @@ interface GuideTab {
                   <div class="text-xs text-neutral-455 uppercase">Origen Ancestral:</div>
                   <div class="text-lg font-serif font-bold text-neutral-200 flex items-center gap-2">
                     <span>{{ activeOrigin.icon }}</span>
-                    <span>{{ activeOrigin.name }}</span>
+                    <span>{{ selectedOriginLineage ? activeOrigin.name + ' (' + selectedOriginLineage + ')' : activeOrigin.name }}</span>
                   </div>
                 </div>
               </div>
@@ -1460,7 +1610,7 @@ interface GuideTab {
                 <div class="space-y-1">
                   <label class="text-[9px] text-neutral-455 uppercase font-bold tracking-wider">Origen / Raza</label>
                   <div class="text-xs text-neutral-200 font-bold bg-neutral-900/80 border border-neutral-850 px-3 py-1.5 rounded truncate min-h-[30px] flex items-center">
-                    {{ activeOrigin.name || 'Ninguno' }}
+                    {{ selectedOriginLineage ? activeOrigin.name + ' (' + selectedOriginLineage + ')' : (activeOrigin.name || 'Ninguno') }}
                   </div>
                 </div>
                 <div class="space-y-1">
@@ -1501,7 +1651,7 @@ interface GuideTab {
                       <span class="text-[10px] font-bold text-neutral-455 uppercase">{{ attr.name }}</span>
                       <div class="text-base font-bold text-neutral-200 flex items-baseline gap-1.5">
                         <span>{{ getFinalAttributeScore(attr.key) }}</span>
-                        <span class="text-[9px] text-neutral-500 font-normal">({{ attr.value }}+{{ getOriginModifier(attr.key) }})</span>
+                        <span class="text-[9px] text-neutral-500 font-normal">({{ attr.value }}+{{ backgroundStatsAllocation[attr.key] || 0 }})</span>
                       </div>
                     </div>
                     <div class="bg-[#18181c] border border-neutral-800 text-amber-400 font-mono font-bold text-xs w-10 h-10 flex items-center justify-center rounded-lg shadow-inner select-none">
@@ -1990,6 +2140,7 @@ export class CharacterCreatorComponent implements OnInit {
   selectedEquipmentDescription = '';
   selectedBgEquipmentOption: 'A' | 'B' | null = null;
   selectedBgEquipmentDescription = '';
+  selectedOriginLineage = '';
 
   // Pool de puntos de atributos base
   attributePointsPool = 15;
@@ -2255,6 +2406,7 @@ export class CharacterCreatorComponent implements OnInit {
     if (this.selectedOriginIdx !== index) {
       this.selectedOriginIdx = index;
       this.imageLoaded = false;
+      this.selectedOriginLineage = '';
     }
   }
 
@@ -2406,6 +2558,10 @@ export class CharacterCreatorComponent implements OnInit {
   }
 
   onConfirmOrigin(): void {
+    if (this.isOriginLineageRequired() && !this.selectedOriginLineage) {
+      alert('Por favor, selecciona un linaje o ancestro dracónico antes de continuar.');
+      return;
+    }
     this.originChosen = true;
     this.currentStep = 4;
   }
@@ -2437,7 +2593,7 @@ export class CharacterCreatorComponent implements OnInit {
   }
 
   getOriginModifier(key: string): number {
-    return this.activeOrigin.statModifiers ? (this.activeOrigin.statModifiers[key] || 0) : 0;
+    return 0;
   }
 
   getAvailableBackgroundStats(): string[] {
@@ -2578,6 +2734,7 @@ export class CharacterCreatorComponent implements OnInit {
     this.selectedClassIdx = 0;
     this.selectedOriginIdx = 0;
     this.selectedBackgroundIdx = 0;
+    this.selectedOriginLineage = '';
     this.attributes.forEach(a => a.value = 10);
     this.isFallbackBg = false;
     this.backgroundStatsAllocation = {
@@ -2600,11 +2757,13 @@ export class CharacterCreatorComponent implements OnInit {
       clase: this.activeClass.name,
       trasfondo: this.activeBackground.name,
       origen: this.activeOrigin.name,
+      linaje: this.selectedOriginLineage,
       atributos: finalStats,
       habilidadesClase: this.selectedClassSkills,
       doteHabilidosoSeleccion: this.hasSkilledFeat() ? this.skilledFeatSelection : []
     });
-    alert(`¡Felicidades! Tu aventurero (${this.characterName || 'Héroe'} - ${this.activeClass.name} ${this.activeOrigin.name}, Trasfondo: ${this.activeBackground.name}) ha sido registrado en la mesa de juego.`);
+    const originDisplayName = this.selectedOriginLineage ? `${this.activeOrigin.name} (${this.selectedOriginLineage})` : this.activeOrigin.name;
+    alert(`¡Felicidades! Tu aventurero (${this.characterName || 'Héroe'} - ${this.activeClass.name} ${originDisplayName}, Trasfondo: ${this.activeBackground.name}) ha sido registrado en la mesa de juego.`);
     this.restartCreator();
   }
 
@@ -3213,4 +3372,335 @@ getClassSkillLimit(className: string): number {
     const opts = this.getBgEquipmentOptions(this.activeBackground.name);
     this.selectedBgEquipmentDescription = opt === 'A' ? opts.optionA : opts.optionB;
   }
+
+  parseEquipmentText(text: string): { individualItems: string[], packages: { title: string, items: string[] }[] } {
+    const individualItems: string[] = [];
+    const packages: { title: string, items: string[] }[] = [];
+
+    if (!text || text === '—' || text.startsWith('Oro Inicial')) {
+      return { individualItems, packages };
+    }
+
+    let normalizedText = text.trim();
+    if (normalizedText.endsWith('.')) {
+      normalizedText = normalizedText.substring(0, normalizedText.length - 1);
+    }
+    
+    // Replace " y " (and) with a comma so we can split easily
+    let processed = normalizedText.replace(/,\s*y\s+/gi, ',').replace(/\s+y\s+/gi, ',');
+    const parts = processed.split(',');
+
+    for (let part of parts) {
+      part = part.trim();
+      if (!part) continue;
+
+      let matchedPack = false;
+      const lowerPart = part.toLowerCase();
+
+      // Check if it's one of the packages
+      for (const key of Object.keys(DND_PACKAGES)) {
+        if (lowerPart.includes(key)) {
+          packages.push({
+            title: DND_PACKAGES[key].title,
+            items: [...DND_PACKAGES[key].items]
+          });
+          matchedPack = true;
+          break;
+        }
+      }
+
+      if (!matchedPack) {
+        // Capitalize first letter of the individual item
+        const capitalized = part.charAt(0).toUpperCase() + part.slice(1);
+        individualItems.push(capitalized);
+      }
+    }
+
+    return { individualItems, packages };
+  }
+
+  getMergedIndividualItems(): { name: string, quantity: number }[] {
+    const itemsMap = new Map<string, number>();
+
+    const addIndividualItems = (text: string) => {
+      const { individualItems } = this.parseEquipmentText(text);
+      for (const item of individualItems) {
+        let qty = 1;
+        let itemName = item;
+        
+        // Match starting number (e.g., "6 jabalinas")
+        const numStartMatch = item.match(/^(\d+)\s+(.+)$/);
+        if (numStartMatch) {
+          qty = parseInt(numStartMatch[1], 10);
+          itemName = numStartMatch[2];
+        } else {
+          // Match parenthesis quantity (e.g. "aceite (3 frascos)", "pergamino (10 hojas)")
+          const parenMatch = item.match(/^(.+)\s*\((\d+)\s+([^)]+)\)$/);
+          if (parenMatch) {
+            const base = parenMatch[1].trim().toLowerCase();
+            const unit = parenMatch[3].trim().toLowerCase();
+            if (base === 'pergamino') {
+              itemName = 'hoja de pergamino';
+            } else if (base === 'aceite') {
+              itemName = 'frasco de aceite';
+            } else {
+              itemName = `${base} (${unit})`;
+            }
+            qty = parseInt(parenMatch[2], 10);
+          }
+        }
+        
+        itemName = itemName.trim().toLowerCase();
+        itemName = itemName.replace(/^(un|una|unos|unas)\s+/, '');
+        
+        // Filter out gold/coins from the final list
+        if (/^\d+\s*po$/i.test(itemName) || itemName === 'po' || itemName.includes('po')) {
+          continue;
+        }
+        
+        // Normalize names for duplication detection
+        if (itemName === 'dagas') itemName = 'daga';
+        if (itemName === 'flechas') itemName = 'flecha';
+        if (itemName === 'virotes') itemName = 'virote';
+        if (itemName === 'bolsas') itemName = 'bolsa';
+        if (itemName === 'jabalinas') itemName = 'jabalina';
+        if (itemName === 'disfraces') itemName = 'disfraz';
+        if (itemName === 'hachas de mano') itemName = 'hacha de mano';
+        if (itemName === 'hojas de pergamino' || itemName === 'pergamino (hojas)' || itemName === 'pergamino') itemName = 'hoja de pergamino';
+        if (itemName === 'frascos de aceite' || itemName === 'aceite (frascos)' || itemName === 'aceite') itemName = 'frasco de aceite';
+        if (itemName === 'útiles de herborista' || itemName === 'útiles para herborista') itemName = 'útiles de herborista';
+        if (itemName === 'carcaj' || itemName === 'aljaba') itemName = 'carcaj / aljaba';
+        if (itemName === 'ropa de viaje' || itemName === 'ropas de viaje') itemName = 'ropas de viaje';
+        if (itemName === 'ropa de calidad' || itemName === 'ropas de calidad') itemName = 'ropas de calidad';
+        
+        const existingQty = itemsMap.get(itemName) || 0;
+        itemsMap.set(itemName, existingQty + qty);
+      }
+    };
+
+    if (this.selectedEquipmentOption === 'A') {
+      const classEquip = this.getClassEquipmentOptions(this.activeClass.name).optionA;
+      addIndividualItems(classEquip);
+    }
+    if (this.selectedBgEquipmentOption === 'A') {
+      const bgEquip = this.getBgEquipmentOptions(this.activeBackground.name).optionA;
+      addIndividualItems(bgEquip);
+    }
+
+    const mergedList: { name: string, quantity: number }[] = [];
+    itemsMap.forEach((qty, name) => {
+      let displayName = name.charAt(0).toUpperCase() + name.slice(1);
+      
+      if (qty > 1) {
+        if (displayName === 'Arco corto') displayName = 'Arcos cortos';
+        else if (displayName === 'Daga') displayName = 'Dagas';
+        else if (displayName === 'Escudo') displayName = 'Escudos';
+        else if (displayName === 'Espada corta') displayName = 'Espadas cortas';
+        else if (displayName === 'Espada larga') displayName = 'Espadas largas';
+        else if (displayName === 'Bastón') displayName = 'Bastones';
+        else if (displayName === 'Lanza') displayName = 'Lanzas';
+        else if (displayName === 'Carcaj / aljaba') displayName = 'Carcajes / aljabas';
+        else if (displayName === 'Bolsa') displayName = 'Bolsas';
+        else if (displayName === 'Disfraz') displayName = 'Disfraces';
+        else if (displayName === 'Hacha de mano') displayName = 'Hachas de mano';
+        else if (displayName === 'Hoja de pergamino') displayName = 'Hojas de pergamino';
+        else if (displayName === 'Frasco de aceite') displayName = 'Frascos de aceite';
+        else if (displayName === 'Paquete de explorador') displayName = 'Paquetes de explorador';
+        else if (displayName === 'Paquete de artista') displayName = 'Paquetes de artista';
+        else if (displayName === 'Paquete de erudito') displayName = 'Paquetes de erudito';
+        else if (displayName === 'Paquete de sacerdote') displayName = 'Paquetes de sacerdote';
+        else if (displayName === 'Paquete de ladrón') displayName = 'Paquetes de ladrón';
+      }
+      
+      mergedList.push({ name: displayName, quantity: qty });
+    });
+
+    return mergedList;
+  }
+
+  getSelectedPackages(): { title: string, items: string[] }[] {
+    const packages: { title: string, items: string[] }[] = [];
+
+    if (this.selectedEquipmentOption === 'A') {
+      const classEquip = this.getClassEquipmentOptions(this.activeClass.name).optionA;
+      const parsed = this.parseEquipmentText(classEquip);
+      packages.push(...parsed.packages);
+    }
+    if (this.selectedBgEquipmentOption === 'A') {
+      const bgEquip = this.getBgEquipmentOptions(this.activeBackground.name).optionA;
+      const parsed = this.parseEquipmentText(bgEquip);
+      packages.push(...parsed.packages);
+    }
+
+    return packages;
+  }
+
+  isOriginLineageRequired(): boolean {
+    if (!this.activeOrigin || !this.activeOrigin.name) return false;
+    const name = this.activeOrigin.name.toLowerCase();
+    return name.includes('elfo') || 
+           name.includes('dracónido') || 
+           name.includes('draconido') || 
+           name.includes('gnomo') || 
+           name.includes('goliat') ||
+           name.includes('tiflin') ||
+           name.includes('tiefling');
+  }
+
+  getOriginManualAttributes(name: string): { title: string, desc: string }[] {
+    if (!name) return [];
+    const n = name.toLowerCase();
+    if (n.includes('elfo')) {
+      return [
+        { title: 'Tipo de Criatura', desc: 'Humanoide' },
+        { title: 'Tamaño', desc: 'Mediano (entre 1,5 y 1,8 m de altura)' },
+        { title: 'Velocidad', desc: '9 m' },
+        { title: 'Linaje Feérico', desc: 'Tienes ventaja en las tiradas de salvación para evitar o poner fin al estado de hechizado.' },
+        { title: 'Sentidos Agudos', desc: 'Tienes competencia en la habilidad de Percepción, Perspicacia o Supervivencia.' },
+        { title: 'Trance', desc: 'No necesitas dormir y la magia no puede dormirte. Finalizas un descanso largo en 4 horas de meditación.' },
+        { title: 'Visión en la Oscuridad', desc: 'Tienes visión en la oscuridad hasta 18 m.' }
+      ];
+    }
+    if (n.includes('enano')) {
+      return [
+        { title: 'Tipo de Criatura', desc: 'Humanoide' },
+        { title: 'Tamaño', desc: 'Mediano (entre 1,2 y 1,5 m de altura)' },
+        { title: 'Velocidad', desc: '9 m' },
+        { title: 'Afinidad con la Piedra', desc: 'Como acción adicional, ganas la capacidad de sentir vibraciones con un alcance de 18 m durante 10 minutos (usos igual a tu bonificador de competencia, se recuperan con descanso largo).' },
+        { title: 'Aguante Enano', desc: 'Tus puntos de golpe máximos se incrementan en 1 y aumentarán en 1 más cada vez que subas un nivel.' },
+        { title: 'Resistencia Enana', desc: 'Resistencia al daño por veneno y ventaja en tiradas de salvación contra envenenado.' },
+        { title: 'Visión en la Oscuridad', desc: 'Tienes visión en la oscuridad hasta 36 m.' }
+      ];
+    }
+    if (n.includes('dracónido') || n.includes('draconido')) {
+      return [
+        { title: 'Tipo de Criatura', desc: 'Humanoide' },
+        { title: 'Tamaño', desc: 'Mediano (entre 1,5 y 2,1 m de altura)' },
+        { title: 'Velocidad', desc: '9 m' },
+        { title: 'Ataque de Aliento', desc: 'Exhalación elemental en cono de 4.5m o línea de 9m (daño 1d10, tirada Destreza CD 8 + Constitución + Competencia).' },
+        { title: 'Resistencia al Daño', desc: 'Resistencia al daño determinado por tu ancestro dracónico.' },
+        { title: 'Visión en la Oscuridad', desc: 'Tienes visión en la oscuridad hasta 18 m.' },
+        { title: 'Vuelo Dracónico', desc: 'A partir de nivel 5, puedes canalizar magia dracónica para brotar alas espectrales y volar durante 10 minutos (1 vez por descanso largo).' }
+      ];
+    }
+    if (n.includes('humano')) {
+      return [
+        { title: 'Tipo de Criatura', desc: 'Humanoide' },
+        { title: 'Tamaño', desc: 'Mediano (entre 1,2 y 2,1 m) o Pequeño (entre 60 cm y 1,2 m), elegido al seleccionar la especie.' },
+        { title: 'Velocidad', desc: '9 m' },
+        { title: 'Diestro', desc: 'Ganas competencia en una habilidad de tu elección.' },
+        { title: 'Ingenioso', desc: 'Obtienes inspiración heroica tras finalizar un descanso largo.' },
+        { title: 'Versátil', desc: 'Obtienes una dote de origen de tu elección (se recomienda la dote Habilidoso).' }
+      ];
+    }
+    if (n.includes('mediano')) {
+      return [
+        { title: 'Tipo de Criatura', desc: 'Humanoide' },
+        { title: 'Tamaño', desc: 'Pequeño (entre 60 y 90 cm de altura)' },
+        { title: 'Velocidad', desc: '9 m' },
+        { title: 'Agilidad de Mediano', desc: 'Puedes moverte a través del espacio ocupado por cualquier criatura de tamaño superior al tuyo (no puedes terminar tu movimiento en su espacio).' },
+        { title: 'Fortuna', desc: 'Cuando sacas un 1 natural en una prueba de d20 (ataque, habilidad o salvación), puedes volver a tirar el dado y usar el nuevo resultado.' },
+        { title: 'Sigiloso por Naturaleza', desc: 'Puedes realizar la acción de esconderte incluso si estás oculto tras una criatura de al menos una categoría de tamaño superior a la tuya.' },
+        { title: 'Valiente', desc: 'Tienes ventaja en tiradas de salvación para evitar o poner fin al estado de asustado.' }
+      ];
+    }
+    if (n.includes('orco')) {
+      return [
+        { title: 'Tipo de Criatura', desc: 'Humanoide' },
+        { title: 'Tamaño', desc: 'Mediano (entre 1,8 y 2,1 m de altura)' },
+        { title: 'Velocidad', desc: '9 m' },
+        { title: 'Aguante Incansable', desc: 'Cuando tus puntos de golpe se reducen a 0 pero no mueres, puedes recuperar 1 punto de golpe (1 vez por descanso largo).' },
+        { title: 'Descarga de Adrenalina', desc: 'Puedes realizar la acción de Correr como acción adicional. Al hacerlo, ganas puntos de golpe temporales igual a tu bonificador por competencia (usos por competencia, se recuperan con descanso corto o largo).' },
+        { title: 'Visión en la Oscuridad', desc: 'Tienes visión en la oscuridad hasta 36 m.' }
+      ];
+    }
+    if (n.includes('gnomo')) {
+      return [
+        { title: 'Tipo de Criatura', desc: 'Humanoide' },
+        { title: 'Tamaño', desc: 'Pequeño (entre 90 cm y 1,2 m de altura)' },
+        { title: 'Velocidad', desc: '9 m' },
+        { title: 'Astucia Gnoma', desc: 'Tienes ventaja en las tiradas de salvación de Inteligencia, Sabiduría y Carisma.' },
+        { title: 'Linaje Gnomo', desc: 'Elige un linaje que te otorga capacidades sobrenaturales adicionales. Tu Inteligencia, Sabiduría o Carisma será tu aptitud mágica para los conjuros de linaje.' },
+        { title: 'Visión en la Oscuridad', desc: 'Tienes visión en la oscuridad hasta 18 m.' }
+      ];
+    }
+    if (n.includes('goliat')) {
+      return [
+        { title: 'Tipo de Criatura', desc: 'Humanoide' },
+        { title: 'Tamaño', desc: 'Mediano (entre 2,1 y 2,4 m de altura)' },
+        { title: 'Velocidad', desc: '10,5 m' },
+        { title: 'Constitución Poderosa', desc: 'Tienes ventaja en salvaciones para poner fin al estado de agarrado. Para la capacidad de carga, cuentas como si fueses una categoría de tamaño superior.' },
+        { title: 'Forma Grande', desc: 'A partir de nivel 5, puedes cambiar tu tamaño a Grande como acción adicional (dura 10 mins). Obtienes ventaja en pruebas de Fuerza y +3m de velocidad (1 uso por descanso largo).' },
+        { title: 'Linaje Gigante', desc: 'Elige un linaje de ancestro gigante que te otorga un beneficio sobrenatural activo por competencia veces al día.' }
+      ];
+    }
+    if (n.includes('tiefling') || n.includes('tiflin')) {
+      return [
+        { title: 'Tipo de Criatura', desc: 'Humanoide' },
+        { title: 'Tamaño', desc: 'Mediano (entre 1,2 y 2,1 m) o Pequeño (entre 90 cm y 1,2 m), elegido al seleccionar la especie.' },
+        { title: 'Velocidad', desc: '9 m' },
+        { title: 'Legado Infernal', desc: 'Elige un legado de la tabla "Legados infernales" (Abisal, Ctónico o Infernal). Obtienes resistencias y conjuros según el legado seleccionado. Inteligencia, Sabiduría o Carisma es tu aptitud mágica para ellos.' },
+        { title: 'Presencia Sobrenatural', desc: 'Conoces el truco taumaturgia (usa la misma aptitud mágica que Legado Infernal).' },
+        { title: 'Visión en la Oscuridad', desc: 'Tienes visión en la oscuridad hasta 18 m.' }
+      ];
+    }
+    if (n.includes('aasimar')) {
+      return [
+        { title: 'Tipo de Criatura', desc: 'Humanoide' },
+        { title: 'Tamaño', desc: 'Mediano (entre 1,2 y 2,1 m de altura) o Pequeño (entre 60 cm y 1,2 m de altura), elegido al seleccionar la especie.' },
+        { title: 'Velocidad', desc: '9 m' },
+        { title: 'Manos Curativas', desc: 'Como acción de magia, tocas a una criatura y tiras d4s igual a tu bonificador por competencia. Se recuperan Puntos de Golpe igual al total (1 vez por descanso largo).' },
+        { title: 'Portador de Luz', desc: 'Conoces el truco luz (Carisma es tu aptitud mágica).' },
+        { title: 'Resistencia Celestial', desc: 'Resistencia al daño necrótico y al daño radiante.' },
+        { title: 'Visión en la Oscuridad', desc: 'Tienes visión en la oscuridad hasta 18 m.' },
+        { title: 'Revelación Celestial', desc: 'A partir de nivel 3, puedes transformarte como acción adicional durante 1 minuto. Puedes infligir daño adicional igual a tu BC una vez por turno (daño necrótico o radiante según la opción de transformación). Se recupera con descanso largo.' }
+      ];
+    }
+    return [];
+  }
+
+  elvenLineages = [
+    { name: 'Alto elfo', desc: 'Truco prestidigitación. Nivel 3: Detectar magia, Nivel 5: Paso brumoso.' },
+    { name: 'Drow', desc: 'Visión en la oscuridad 36m, truco luces danzantes. Nivel 3: Fuego feérico, Nivel 5: Oscuridad.' },
+    { name: 'Elfo de los bosques', desc: 'Velocidad +1.5m (10.5m total), truco saber druídico. Nivel 3: Zancada prodigiosa, Nivel 5: Pasar sin rastro.' }
+  ];
+
+  dragonLineages = [
+    { name: 'Rojo', element: 'Fuego' },
+    { name: 'Oro', element: 'Fuego' },
+    { name: 'Oropel', element: 'Fuego' },
+    { name: 'Azul', element: 'Relámpago' },
+    { name: 'Bronce', element: 'Relámpago' },
+    { name: 'Blanco', element: 'Frío' },
+    { name: 'Plata', element: 'Frío' },
+    { name: 'Cobre', element: 'Ácido' },
+    { name: 'Negro', element: 'Ácido' },
+    { name: 'Verde', element: 'Veneno' }
+  ];
+
+  gnomeLineages = [
+    { name: 'Gnomo de las rocas', desc: 'Trucos prestidigitación y reparar. Crea un dispositivo mecánico Diminuto (CA 5, 1 pg) con efecto mágico.' },
+    { name: 'Gnomo de los bosques', desc: 'Truco ilusión menor. Lanza hablar con los animales de forma gratuita un número de veces igual a tu bonificador por competencia.' }
+  ];
+
+  goliathLineages = [
+    { name: 'Gigante de Fuego (Abrasión del fuego)', desc: 'Al golpear a un objetivo, puedes causarle 1d10 daño de fuego adicional (usos igual a tu bonificador por competencia).' },
+    { name: 'Gigante de las Colinas (Caída de las colinas)', desc: 'Al golpear a una criatura Grande o menor, puedes infligirle el estado de derribada (usos igual a tu bonificador por competencia).' },
+    { name: 'Gigante de las Nubes (Excursión de las nubes)', desc: 'Acción adicional: te teletransportas mágicamente hasta 9 m a un espacio vacío (usos igual a tu bonificador por competencia).' },
+    { name: 'Gigante de Escarcha (Frío de la escarcha)', desc: 'Al golpear a un objetivo, causas 1d6 daño de frío y reduces su velocidad 3m (usos igual a tu bonificador por competencia).' },
+    { name: 'Gigante de Piedra (Resistencia de la piedra)', desc: 'Reacción al recibir daño: tiras 1d12 + mod Constitución y reduces el daño recibido en ese total (usos igual a tu bonificador por competencia).' },
+    { name: 'Gigante de las Tormentas (Trueno de la tormenta)', desc: 'Reacción cuando una criatura a 18 m o menos te causa daño: le infliges 1d8 daño de trueno (usos igual a tu bonificador por competencia).' }
+  ];
+
+  tieflingLineages = [
+    { name: 'Abisal', desc: 'Resistencia al veneno y truco rociada venenosa. Nivel 3: Rayo nauseabundo. Nivel 5: Inmovilizar persona.' },
+    { name: 'Ctónico', desc: 'Resistencia a necrótico y truco toque helado. Nivel 3: Falsa vida. Nivel 5: Rayo debilitador.' },
+    { name: 'Infernal', desc: 'Resistencia al fuego y truco descarga de fuego. Nivel 3: Reprensión infernal. Nivel 5: Oscuridad.' }
+  ];
+
+  aasimarLineages = [
+    { name: 'Alas celestiales', desc: 'Dos alas espectrales brotan temporalmente. Obtienes una velocidad de vuelo igual a tu velocidad actual y tu daño adicional es radiante.' },
+    { name: 'Fulgor interior', desc: 'Emites luz brillante en radio de 3m. Al final de tu turno, enemigos a 3m o menos reciben daño radiante igual a tu BC. Daño adicional es radiante.' },
+    { name: 'Mortaja necrótica', desc: 'Tus ojos se vuelven pozos de oscuridad. Criaturas a 3m o menos deben superar salvación de Carisma (CD 8 + Car + BC) o asustarse. Daño adicional es necrótico.' }
+  ];
 }
