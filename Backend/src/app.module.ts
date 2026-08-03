@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './infrastructure/security/auth.module';
 import { GameDataModule } from './infrastructure/persistence/game-data.module';
+import { GameRulesController } from './presentation/controllers/game-rules.controller';
+import { GameRulesService } from './application/services/game-rules.service';
 
 @Module({
   imports: [
@@ -11,7 +13,7 @@ import { GameDataModule } from './infrastructure/persistence/game-data.module';
     AuthModule,
     GameDataModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, GameRulesController],
+  providers: [AppService, GameRulesService],
 })
 export class AppModule {}
