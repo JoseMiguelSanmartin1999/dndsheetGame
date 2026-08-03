@@ -14,8 +14,10 @@ Una aplicación web moderna e interactiva diseñada para la creación, gestión 
 ## 📸 Vista Previa
 
 > [!NOTE]
-> *Próximamente se añadirán capturas de pantalla de la interfaz interactiva y el flujo de creación de personajes.*
-
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
 ---
 
 ## ✨ Características Principales
