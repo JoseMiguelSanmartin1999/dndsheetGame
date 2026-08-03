@@ -1743,6 +1743,145 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </div>
           </div>
 
+          <!-- Detalles Estadísticos del Equipo Equipado -->
+          <div *ngIf="selectedEquipmentOption === 'A' || selectedBgEquipmentOption === 'A'" class="space-y-4 relative z-10">
+            <!-- Tabla de Armas -->
+            <div *ngIf="getEquippedWeaponsDetails().length > 0" class="bg-[#18181c] border border-neutral-855 p-6 rounded-xl space-y-4 text-left">
+              <h4 class="text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Especificaciones de Armas Equipadas</h4>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr class="border-b border-neutral-800 text-[10px] uppercase font-bold text-neutral-500 tracking-wider">
+                      <th class="py-2 pr-4">Nombre / Cant</th>
+                      <th class="py-2 pr-4 text-center">Bono de Ataque</th>
+                      <th class="py-2 pr-4 text-center">Daño / Tipo</th>
+                      <th class="py-2 pr-4">Propiedades</th>
+                      <th *ngIf="hasWeaponMastery()" class="py-2 pr-4 text-center">Maestría</th>
+                      <th class="py-2 pr-4 text-center">Peso</th>
+                      <th class="py-2 text-right">Precio</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let weapon of getEquippedWeaponsDetails()" class="border-b border-neutral-900/60 hover:bg-neutral-900/20 transition">
+                      <td class="py-3 pr-4 font-bold text-neutral-200 flex items-center gap-2">
+                        <span class="bg-[#121215] border border-neutral-800 text-neutral-400 font-mono text-[9px] px-1.5 py-0.5 rounded font-bold">
+                          {{ weapon.quantity }}x
+                        </span>
+                        <span>{{ weapon.name }}</span>
+                      </td>
+                      <td class="py-3 pr-4 text-center font-bold text-amber-500 font-mono text-[12px]">
+                        {{ weapon.attackBonus }}
+                        <span class="text-[8px] text-neutral-500 block font-sans font-light mt-0.5 whitespace-nowrap">
+                          1d20 + {{ weapon.abilityModValue }} ({{ weapon.abilityModKey }}) + {{ weapon.profBonus }} (Comp)
+                        </span>
+                      </td>
+                      <td class="py-3 pr-4 text-center">
+                        <span class="font-semibold text-red-400 font-mono text-[12px] block">
+                          {{ weapon.fullDamage }}
+                        </span>
+                        <span class="text-[9px] text-neutral-450 block font-sans font-light mt-0.5">
+                          {{ weapon.damageType }}
+                        </span>
+                      </td>
+                      <td class="py-3 pr-4 text-neutral-400 leading-snug font-light text-[11px]">{{ weapon.properties }}</td>
+                      <td *ngIf="hasWeaponMastery()" class="py-3 pr-4 text-center">
+                        <span class="bg-amber-955/20 border border-amber-600/30 text-amber-500 px-2 py-0.5 rounded text-[10px] font-bold cursor-help" [title]="weapon.description">
+                          {{ weapon.mastery }}
+                        </span>
+                      </td>
+                      <td class="py-3 pr-4 text-center font-mono text-[11px] text-neutral-400">{{ weapon.weight }}</td>
+                      <td class="py-3 text-right font-mono text-[11px] text-amber-450">{{ weapon.price }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <!-- Glosario de Maestría con Armas (Solo si tiene Maestría) -->
+              <div *ngIf="hasWeaponMastery()" class="mt-4 bg-[#121215] border border-amber-600/15 p-4 rounded-xl space-y-2">
+                <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Propiedades de Maestría con Armas (Especialización)</span>
+                <p class="text-[10px] text-neutral-450 leading-relaxed font-light">
+                  Como tu clase posee <strong>Maestría con Armas</strong> al nivel 1, puedes aprovechar estas propiedades de maestría adicionales cuando atacas con ellas:
+                </p>
+                <div class="space-y-2 pt-1">
+                  <div *ngFor="let weapon of getEquippedWeaponsDetails()" class="text-[10px] bg-[#18181c] p-2.5 rounded-lg border border-neutral-900 flex flex-col gap-0.5">
+                    <div class="flex justify-between items-center">
+                      <span class="font-bold text-neutral-350">{{ weapon.name }}</span>
+                      <span class="text-amber-500 font-bold uppercase text-[9px]">{{ weapon.mastery }}</span>
+                    </div>
+                    <p class="text-neutral-450 font-light leading-snug mt-1">{{ weapon.description }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabla de Armaduras y Escudo -->
+            <div *ngIf="getEquippedArmorsDetails().length > 0" class="bg-[#18181c] border border-neutral-855 p-6 rounded-xl space-y-4 text-left">
+              <h4 class="text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Especificaciones de Armaduras & Escudos</h4>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr class="border-b border-neutral-800 text-[10px] uppercase font-bold text-neutral-500 tracking-wider">
+                      <th class="py-2 pr-4">Armadura</th>
+                      <th class="py-2 pr-4">Categoría / Tipo</th>
+                      <th class="py-2 pr-4 text-center">CA (Clase Armadura)</th>
+                      <th class="py-2 pr-4 text-center">Fuerza Requerida</th>
+                      <th class="py-2 pr-4 text-center">Sigilo</th>
+                      <th class="py-2 pr-4 text-center">Peso</th>
+                      <th class="py-2 text-right">Precio</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let armor of getEquippedArmorsDetails()" class="border-b border-neutral-900/60 hover:bg-neutral-900/20 transition">
+                      <td class="py-2.5 pr-4 font-bold text-neutral-200">{{ armor.name }}</td>
+                      <td class="py-2.5 pr-4 text-neutral-400 font-light text-[11px]">{{ armor.type }}</td>
+                      <td class="py-2.5 pr-4 text-center font-bold text-amber-400 font-mono text-[13px]">{{ armor.ca }}</td>
+                      <td class="py-2.5 pr-4 text-center font-mono text-[11px] text-neutral-400">{{ armor.strength }}</td>
+                      <td class="py-2.5 pr-4 text-center">
+                        <span *ngIf="armor.stealth === 'Desventaja'" class="bg-red-955/20 border border-red-800/40 text-red-500 px-2 py-0.5 rounded text-[10px] font-bold">
+                          Desventaja
+                        </span>
+                        <span *ngIf="armor.stealth !== 'Desventaja'" class="text-neutral-500">—</span>
+                      </td>
+                      <td class="py-2.5 pr-4 text-center font-mono text-[11px] text-neutral-400">{{ armor.weight }}</td>
+                      <td class="py-2.5 text-right font-mono text-[11px] text-amber-450">{{ armor.price }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sugerencias de Adjetivos Narrativos por Atributos -->
+          <div class="bg-[#18181c]/55 border border-[#d4af37]/20 p-6 rounded-xl space-y-3 text-left relative z-10">
+            <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block border-b border-neutral-900 pb-1.5">
+              💡 Sugerencias para tu Descripción e Historia (basado en tus atributos)
+            </span>
+            <p class="text-[10px] text-neutral-450 leading-relaxed font-light">
+              Tus características físicas y mentales sugieren ciertos adjetivos que puedes elegir y combinar si lo deseas para describir físicamente a tu personaje o guiar su historia (no es obligatorio usarlos, son solo una orientación):
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 pt-1">
+              <div 
+                *ngFor="let suggestion of getSuggestedAdjectives()" 
+                class="bg-[#121215] border border-neutral-800 p-2.5 rounded-lg text-center flex flex-col justify-between hover:border-[#d4af37]/15 transition duration-200"
+              >
+                <div>
+                  <span class="text-[9px] text-neutral-500 uppercase font-bold block">{{ suggestion.attribute }}</span>
+                  <span class="text-xs font-bold block font-mono mt-0.5" [ngClass]="suggestion.type === 'Alta' ? 'text-amber-400' : 'text-neutral-400'">
+                    {{ suggestion.score }} ({{ suggestion.type }})
+                  </span>
+                </div>
+                <div class="mt-2 space-y-1">
+                  <span 
+                    *ngFor="let adj of suggestion.adjectives" 
+                    class="block text-[9px] text-neutral-300 bg-[#18181c] border border-neutral-900 px-1 py-0.5 rounded font-light"
+                  >
+                    {{ adj }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Detalles de la Leyenda y Aspecto -->
           <div class="bg-[#18181c]/55 border border-neutral-850 p-6 rounded-xl space-y-6 relative z-10 text-left">
             <h3 class="text-sm font-serif font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-900 pb-2 flex items-center gap-2">
@@ -2460,6 +2599,111 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <div class="text-xs text-neutral-350 space-y-2 leading-relaxed font-light">
                     <p><strong>Equipo de Clase:</strong> {{ selectedEquipmentOption === 'A' ? getClassEquipmentOptions(activeClass.name).optionA : 'Oro Inicial de Clase (' + getClassEquipmentOptions(activeClass.name).optionB + ')' }}</p>
                     <p class="border-t border-neutral-900/60 pt-1.5"><strong>Equipo de Trasfondo:</strong> {{ selectedBgEquipmentOption === 'A' ? getBgEquipmentOptions(activeBackground.name).optionA : 'Oro Inicial de Trasfondo (' + getBgEquipmentOptions(activeBackground.name).optionB + ')' }}</p>
+                  </div>
+                </div>
+
+                <!-- Detalles Estadísticos del Equipo Equipado en Ficha -->
+                <div *ngIf="selectedEquipmentOption === 'A' || selectedBgEquipmentOption === 'A'" class="space-y-4">
+                  <!-- Tabla de Armas -->
+                  <div *ngIf="getEquippedWeaponsDetails().length > 0" class="bg-neutral-900/35 border border-neutral-855 p-4 rounded-xl space-y-3 text-left">
+                    <span class="text-[9px] text-neutral-455 uppercase font-bold tracking-wider block border-b border-neutral-900 pb-1">Especificaciones de Armas</span>
+                    <div class="overflow-x-auto">
+                      <table class="w-full text-left text-[11px] border-collapse">
+                        <thead>
+                          <tr class="border-b border-neutral-800 text-[8px] uppercase font-bold text-neutral-500 tracking-wider">
+                            <th class="py-1.5 pr-2">Nombre / Cant</th>
+                            <th class="py-1.5 pr-2 text-center">Bono de Ataque</th>
+                            <th class="py-1.5 pr-2 text-center">Daño / Tipo</th>
+                            <th class="py-1.5 pr-2">Propiedades</th>
+                            <th *ngIf="hasWeaponMastery()" class="py-1.5 pr-2 text-center">Maestría</th>
+                            <th class="py-1.5 pr-2 text-center">Peso</th>
+                            <th class="py-1.5 text-right">Precio</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let weapon of getEquippedWeaponsDetails()" class="border-b border-neutral-900/60 hover:bg-neutral-900/10 transition duration-150">
+                            <td class="py-2.5 pr-2 font-bold text-neutral-200 flex items-center gap-1.5">
+                              <span class="bg-[#121215] border border-neutral-800 text-neutral-400 font-mono text-[8px] px-1 py-0.5 rounded font-bold">
+                                {{ weapon.quantity }}x
+                              </span>
+                              <span>{{ weapon.name }}</span>
+                            </td>
+                            <td class="py-2.5 pr-2 text-center font-bold text-amber-500 font-mono text-[11px]">
+                              {{ weapon.attackBonus }}
+                              <span class="text-[8px] text-neutral-500 block font-sans font-light mt-0.5 whitespace-nowrap">
+                                1d20 + {{ weapon.abilityModValue }} ({{ weapon.abilityModKey }}) + {{ weapon.profBonus }} (Comp)
+                              </span>
+                            </td>
+                            <td class="py-2.5 pr-2 text-center">
+                              <span class="font-semibold text-red-400 font-mono text-[11px] block">
+                                {{ weapon.fullDamage }}
+                              </span>
+                              <span class="text-[9px] text-neutral-450 block font-sans font-light mt-0.5">
+                                {{ weapon.damageType }}
+                              </span>
+                            </td>
+                            <td class="py-2.5 pr-2 text-neutral-400 text-[10px] leading-tight font-light">{{ weapon.properties }}</td>
+                            <td *ngIf="hasWeaponMastery()" class="py-2.5 pr-2 text-center">
+                              <span class="bg-amber-955/20 border border-amber-600/30 text-amber-500 px-1.5 py-0.5 rounded text-[9px] font-bold cursor-help" [title]="weapon.description">
+                                {{ weapon.mastery }}
+                              </span>
+                            </td>
+                            <td class="py-2.5 pr-2 text-center font-mono text-[10px] text-neutral-400">{{ weapon.weight }}</td>
+                            <td class="py-2 text-right font-mono text-[10px] text-amber-450">{{ weapon.price }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    
+                    <!-- Glosario de Maestría con Armas (Solo si tiene Maestría) -->
+                    <div *ngIf="hasWeaponMastery()" class="mt-2 bg-[#121215] border border-amber-600/15 p-3 rounded-lg space-y-1.5">
+                      <span class="text-[8px] text-[#d4af37] uppercase font-bold tracking-wider block">Propiedades de Maestría con Armas</span>
+                      <div class="space-y-1.5">
+                        <div *ngFor="let weapon of getEquippedWeaponsDetails()" class="text-[10px] bg-[#18181c] p-2 rounded border border-neutral-900/50">
+                          <div class="flex justify-between items-center text-[9px]">
+                            <span class="font-bold text-neutral-355">{{ weapon.name }}</span>
+                            <span class="text-amber-500 font-bold uppercase">{{ weapon.mastery }}</span>
+                          </div>
+                          <p class="text-neutral-450 font-light leading-snug mt-1 text-[9px]">{{ weapon.description }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Tabla de Armaduras y Escudo -->
+                  <div *ngIf="getEquippedArmorsDetails().length > 0" class="bg-neutral-900/35 border border-neutral-855 p-4 rounded-xl space-y-3 text-left">
+                    <span class="text-[9px] text-neutral-455 uppercase font-bold tracking-wider block border-b border-neutral-900 pb-1">Especificaciones de Armaduras & Escudos</span>
+                    <div class="overflow-x-auto">
+                      <table class="w-full text-left text-[11px] border-collapse">
+                        <thead>
+                          <tr class="border-b border-neutral-800 text-[8px] uppercase font-bold text-neutral-500 tracking-wider">
+                            <th class="py-1.5 pr-2">Armadura</th>
+                            <th class="py-1.5 pr-2">Tipo</th>
+                            <th class="py-1.5 pr-2 text-center">CA</th>
+                            <th class="py-1.5 pr-2 text-center">Fuerza</th>
+                            <th class="py-1.5 pr-2 text-center">Sigilo</th>
+                            <th class="py-1.5 pr-2 text-center">Peso</th>
+                            <th class="py-1.5 text-right">Precio</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let armor of getEquippedArmorsDetails()" class="border-b border-neutral-900/60">
+                            <td class="py-2 pr-2 font-bold text-neutral-200">{{ armor.name }}</td>
+                            <td class="py-2 pr-2 text-neutral-400 text-[10px] leading-tight font-light">{{ armor.type }}</td>
+                            <td class="py-2 pr-2 text-center font-bold text-amber-400 font-mono text-[12px]">{{ armor.ca }}</td>
+                            <td class="py-2 pr-2 text-center font-mono text-[10px] text-neutral-400">{{ armor.strength }}</td>
+                            <td class="py-2 pr-2 text-center">
+                              <span *ngIf="armor.stealth === 'Desventaja'" class="bg-red-955/20 border border-red-800/40 text-red-500 px-1.5 py-0.5 rounded text-[9px] font-bold">
+                                Desventaja
+                              </span>
+                              <span *ngIf="armor.stealth !== 'Desventaja'" class="text-neutral-500">—</span>
+                            </td>
+                            <td class="py-2 pr-2 text-center font-mono text-[10px] text-neutral-400">{{ armor.weight }}</td>
+                            <td class="py-2 text-right font-mono text-[10px] text-amber-450">{{ armor.price }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
 
@@ -3468,7 +3712,10 @@ export class CharacterCreatorComponent implements OnInit {
   }
 
   getHitDieValue(): number {
-    return this.activeClass && this.activeClass.hitDie ? Number(this.activeClass.hitDie) : 8;
+    if (!this.activeClass || !this.activeClass.hitDie) return 8;
+    const clean = this.activeClass.hitDie.replace(/[^0-9]/g, '');
+    const num = Number(clean);
+    return isNaN(num) || num === 0 ? 8 : num;
   }
 
   hasClassArmorProficiency(type: 'ligeras' | 'medias' | 'pesadas' | 'escudos'): boolean {
@@ -4519,5 +4766,327 @@ getClassSkillLimit(className: string): number {
     const roll = this.rolledStats[rollIndex];
     if (!roll || roll.discardedIdx === undefined || roll.discardedIdx === -1) return 0;
     return roll.dice[roll.discardedIdx] || 0;
+  }
+
+  getSuggestedAdjectives(): { attribute: string; score: number; type: 'Alta' | 'Baja'; adjectives: string[] }[] {
+    const list = [];
+    const adjMap: { [key: string]: { high: string[], low: string[] } } = {
+      FUE: { high: ['Musculoso', 'Fibroso', 'Protector', 'Directo'], low: ['Débil', 'Flaco', 'Apocado', 'Evasivo'] },
+      DES: { high: ['Ágil', 'Dinámico', 'Inquieto', 'Equilibrado'], low: ['Nervioso', 'Torpe', 'Indeciso', 'Inseguro'] },
+      CON: { high: ['Enérgico', 'Saludable', 'Afable', 'Estable'], low: ['Frágil', 'Aprensivo', 'Apático', 'Vulnerable'] },
+      INT: { high: ['Decidido', 'Lógico', 'Instructivo', 'Curioso'], low: ['Tosco', 'Ilógico', 'Ignorante', 'Frívolo'] },
+      SAB: { high: ['Sereno', 'Considerado', 'Atento', 'Precavido'], low: ['Impulsivo', 'Distraído', 'Impasible', 'Ingenuo'] },
+      CAR: { high: ['Encantador', 'Dominante', 'Divertido', 'Inspirador'], low: ['Pedante', 'Soso', 'Reservado', 'Insensible'] }
+    };
+
+    for (const attr of this.attributes) {
+      const score = this.getFinalAttributeScore(attr.key);
+      const isHigh = score >= 11;
+      list.push({
+        attribute: attr.name,
+        score,
+        type: isHigh ? 'Alta' as const : 'Baja' as const,
+        adjectives: isHigh ? adjMap[attr.key].high : adjMap[attr.key].low
+      });
+    }
+    return list;
+  }
+
+  hasWeaponMastery(): boolean {
+    if (!this.activeClass || !this.activeClass.name) return false;
+    const name = this.activeClass.name.toLowerCase().trim();
+    return name.includes('guerrero') || 
+           name.includes('bárbaro') || name.includes('barbaro') || 
+           name.includes('explorador') || 
+           name.includes('paladín') || name.includes('paladin') || 
+           name.includes('pícaro') || name.includes('picaro');
+  }
+
+  isProficientWithWeapon(weaponName: string, category: 'sencilla' | 'marcial'): boolean {
+    if (!this.activeClass || !this.activeClass.name) return false;
+    const className = this.activeClass.name.toLowerCase();
+    
+    if (className.includes('guerrero') || className.includes('bárbaro') || className.includes('barbaro') ||
+        className.includes('paladín') || className.includes('paladin') || className.includes('explorador')) {
+      return true;
+    }
+    
+    if (className.includes('pícaro') || className.includes('picaro')) {
+      return true;
+    }
+
+    if (category === 'sencilla') return true;
+
+    if (className.includes('bardo')) {
+      const lower = weaponName.toLowerCase();
+      return lower.includes('estoque') || lower.includes('espada corta') || lower.includes('espada larga') || lower.includes('daga');
+    }
+
+    return false;
+  }
+
+  getEquippedWeaponsDetails(): any[] {
+    const list = this.getMergedIndividualItems();
+    const weaponTable: { [key: string]: { name: string; damageDie: string; damageType: string; properties: string; mastery: string; weight: string; price: string; description: string; category: 'sencilla' | 'marcial'; type: 'cuerpo a cuerpo' | 'a distancia'; finesse: boolean } } = {
+      'espada larga': {
+        name: 'Espada larga',
+        damageDie: '1d8',
+        damageType: 'Cortante',
+        properties: 'Versátil (1d10)',
+        mastery: 'Debilitar',
+        weight: '1,5 kg',
+        price: '15 po',
+        description: 'Debilitar: Si aciertas a una criatura con esta arma, tendrá desventaja en su próxima tirada de ataque antes del principio de tu siguiente turno.',
+        category: 'marcial',
+        type: 'cuerpo a cuerpo',
+        finesse: false
+      },
+      'ballesta ligera': {
+        name: 'Ballesta ligera',
+        damageDie: '1d8',
+        damageType: 'Perforante',
+        properties: 'A dos manos, munición (alcance 24/96; virote), recarga',
+        mastery: 'Ralentizar',
+        weight: '2,5 kg',
+        price: '25 po',
+        description: 'Ralentizar: Si aciertas a una criatura con esta arma y le causas daño, puedes reducir su velocidad en 3 m hasta el principio de tu siguiente turno.',
+        category: 'sencilla',
+        type: 'a distancia',
+        finesse: false
+      },
+      'lanza': {
+        name: 'Lanza',
+        damageDie: '1d6',
+        damageType: 'Perforante',
+        properties: 'Arrojadiza (alcance 6/18), versátil (1d8)',
+        mastery: 'Debilitar',
+        weight: '1,5 kg',
+        price: '1 po',
+        description: 'Debilitar: Si aciertas a una criatura con esta arma, tendrá desventaja en su próxima tirada de ataque antes del principio de tu siguiente turno.',
+        category: 'sencilla',
+        type: 'cuerpo a cuerpo',
+        finesse: false
+      },
+      'daga': {
+        name: 'Daga',
+        damageDie: '1d4',
+        damageType: 'Perforante',
+        properties: 'Arrojadiza (alcance 6/18), ligera, sutil',
+        mastery: 'Mellar',
+        weight: '0,5 kg',
+        price: '2 po',
+        description: 'Mellar: Cuando hagas el ataque extra de la propiedad "ligera", puedes hacerlo como parte de la acción de atacar en vez de como acción adicional. Solo puedes hacer este ataque extra una vez por turno.',
+        category: 'sencilla',
+        type: 'cuerpo a cuerpo',
+        finesse: true
+      },
+      'arco corto': {
+        name: 'Arco corto',
+        damageDie: '1d6',
+        damageType: 'Perforante',
+        properties: 'A dos manos, munición (alcance 24/96; flecha)',
+        mastery: 'Molestar',
+        weight: '1 kg',
+        price: '25 po',
+        description: 'Molestar: Si aciertas a una criatura con esta arma y le causas daño, tendrás ventaja en tu siguiente tirada de ataque contra esa criatura antes del final de tu siguiente turno.',
+        category: 'sencilla',
+        type: 'a distancia',
+        finesse: false
+      },
+      'bastón': {
+        name: 'Bastón',
+        damageDie: '1d6',
+        damageType: 'Contundente',
+        properties: 'Versátil (1d8)',
+        mastery: 'Derribar',
+        weight: '2 kg',
+        price: '2 pp',
+        description: 'Derribar: Si aciertas a una criatura con esta arma, puedes obligarla a hacer una tirada de salvación de Constitución (CD 8 + mod. Característica + BC). Si la falla, quedará derribada.',
+        category: 'sencilla',
+        type: 'cuerpo a cuerpo',
+        finesse: false
+      },
+      'hacha de mano': {
+        name: 'Hacha de mano',
+        damageDie: '1d6',
+        damageType: 'Cortante',
+        properties: 'Arrojadiza (alcance 6/18), ligera',
+        mastery: 'Molestar',
+        weight: '1 kg',
+        price: '5 po',
+        description: 'Molestar: Si aciertas a una criatura con esta arma y le causas daño, tendrás ventaja en tu siguiente tirada de ataque contra esa criatura antes del final de tu siguiente turno.',
+        category: 'sencilla',
+        type: 'cuerpo a cuerpo',
+        finesse: false
+      },
+      'hoz': {
+        name: 'Hoz',
+        damageDie: '1d4',
+        damageType: 'Cortante',
+        properties: 'Ligera',
+        mastery: 'Mellar',
+        weight: '1 kg',
+        price: '1 po',
+        description: 'Mellar: Cuando hagas el ataque extra de la propiedad "ligera", puedes hacerlo como parte de la acción de atacar en vez de como acción adicional.',
+        category: 'sencilla',
+        type: 'cuerpo a cuerpo',
+        finesse: false
+      },
+      'jabalina': {
+        name: 'Jabalina',
+        damageDie: '1d6',
+        damageType: 'Perforante',
+        properties: 'Arrojadiza (alcance 9/36)',
+        mastery: 'Ralentizar',
+        weight: '1 kg',
+        price: '5 pp',
+        description: 'Ralentizar: Si aciertas a una criatura con esta arma y le causas daño, puedes reducir su velocidad en 3 m hasta el principio de tu siguiente turno.',
+        category: 'sencilla',
+        type: 'cuerpo a cuerpo',
+        finesse: false
+      },
+      'garrote': {
+        name: 'Garrote',
+        damageDie: '1d4',
+        damageType: 'Contundente',
+        properties: 'Ligero',
+        mastery: 'Ralentizar',
+        weight: '1 kg',
+        price: '1 pp',
+        description: 'Ralentizar: Si aciertas a una criatura con esta arma y le causas daño, puedes reducir su velocidad en 3 m hasta el principio de tu siguiente turno.',
+        category: 'sencilla',
+        type: 'cuerpo a cuerpo',
+        finesse: false
+      },
+      'maza': {
+        name: 'Maza',
+        damageDie: '1d6',
+        damageType: 'Contundente',
+        properties: '—',
+        mastery: 'Debilitar',
+        weight: '2 kg',
+        price: '5 po',
+        description: 'Debilitar: Si aciertas a una criatura con esta arma, tendrá desventaja en su próxima tirada de ataque antes del principio de tu siguiente turno.',
+        category: 'sencilla',
+        type: 'cuerpo a cuerpo',
+        finesse: false
+      }
+    };
+
+    const details: any[] = [];
+    list.forEach(item => {
+      const nameLower = item.name.toLowerCase().trim();
+      const matchKey = Object.keys(weaponTable).find(k => nameLower.includes(k) || k.includes(nameLower));
+      if (matchKey) {
+        const weaponData = { ...weaponTable[matchKey] };
+        const quantity = item.quantity || 1;
+        const isProficient = this.isProficientWithWeapon(weaponData.name, weaponData.category);
+        const profBonus = isProficient ? 2 : 0;
+        
+        let abilityModKey = 'FUE';
+        let abilityModValue = this.getFinalModifierValue('FUE');
+        
+        if (weaponData.type === 'a distancia') {
+          abilityModKey = 'DES';
+          abilityModValue = this.getFinalModifierValue('DES');
+        } else if (weaponData.finesse) {
+          const strMod = this.getFinalModifierValue('FUE');
+          const dexMod = this.getFinalModifierValue('DES');
+          if (dexMod > strMod) {
+            abilityModKey = 'DES';
+            abilityModValue = dexMod;
+          }
+        }
+        
+        const attackBonusNum = abilityModValue + profBonus;
+        const attackBonus = attackBonusNum >= 0 ? `+${attackBonusNum}` : `${attackBonusNum}`;
+        
+        const dmgBonusNum = abilityModValue;
+        const dmgBonusStr = dmgBonusNum > 0 ? `+${dmgBonusNum}` : (dmgBonusNum < 0 ? `${dmgBonusNum}` : '');
+        const fullDamage = `${weaponData.damageDie}${dmgBonusStr}`;
+        
+        details.push({
+          ...weaponData,
+          quantity,
+          isProficient,
+          abilityModKey,
+          abilityModValue,
+          profBonus,
+          attackBonus,
+          fullDamage
+        });
+      }
+    });
+    return details;
+  }
+
+  getEquippedArmorsDetails(): any[] {
+    const list = this.getMergedIndividualItems();
+    const armorTable: { [key: string]: { name: string; type: string; ca: string; strength: string; stealth: string; weight: string; price: string } } = {
+      'cota de malla': {
+        name: 'Cota de malla',
+        type: 'Pesada (10 min de poner, 5 min de quitar)',
+        ca: '16',
+        strength: 'Fue 13',
+        stealth: 'Desventaja',
+        weight: '27,5 kg',
+        price: '75 po'
+      },
+      'cota de escamas': {
+        name: 'Cota de escamas',
+        type: 'Media (5 min de poner, 1 min de quitar)',
+        ca: '14 + mod. Des (máx. 2)',
+        strength: '—',
+        stealth: 'Desventaja',
+        weight: '22,5 kg',
+        price: '50 po'
+      },
+      'armadura de cuero': {
+        name: 'Armadura de cuero',
+        type: 'Ligera (1 min de poner/quitar)',
+        ca: '11 + mod. Des',
+        strength: '—',
+        stealth: '—',
+        weight: '5 kg',
+        price: '10 po'
+      },
+      'armadura acolchada': {
+        name: 'Armadura acolchada',
+        type: 'Ligera (1 min de poner/quitar)',
+        ca: '11 + mod. Des',
+        strength: '—',
+        stealth: 'Desventaja',
+        weight: '4 kg',
+        price: '5 po'
+      },
+      'cuero tachonado': {
+        name: 'Armadura de cuero tachonado',
+        type: 'Ligera (1 min de poner/quitar)',
+        ca: '12 + mod. Des',
+        strength: '—',
+        stealth: '—',
+        weight: '6,5 kg',
+        price: '45 po'
+      },
+      'escudo': {
+        name: 'Escudo',
+        type: 'Escudo (acción de equipar/desequipar)',
+        ca: '+2',
+        strength: '—',
+        stealth: '—',
+        weight: '3 kg',
+        price: '10 po'
+      }
+    };
+
+    const details: any[] = [];
+    list.forEach(item => {
+      const nameLower = item.name.toLowerCase().trim();
+      const matchKey = Object.keys(armorTable).find(k => nameLower.includes(k) || k.includes(nameLower));
+      if (matchKey) {
+        details.push(armorTable[matchKey]);
+      }
+    });
+    return details;
   }
 }
