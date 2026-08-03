@@ -1006,9 +1006,71 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <h3 class="text-[#d4af37] font-serif font-bold text-base tracking-wider uppercase border-b border-neutral-900 pb-2 mb-3">
               Asignación de Atributos
             </h3>
-            <p class="text-xs text-neutral-400 leading-relaxed">
-              Tienes un total de <strong class="text-amber-400">15 puntos de forja</strong> para gastar y mejorar las puntuaciones físicas e intelectuales de tu héroe.
-            </p>
+            
+            <div *ngIf="attributeMethod === 'array'" class="space-y-4">
+              <p class="text-xs text-neutral-400 leading-relaxed">
+                El <strong class="text-amber-400">Conjunto Estándar</strong> ofrece un balance equilibrado de puntuaciones: <strong class="text-[#d4af37]">15, 14, 13, 12, 10 y 8</strong>. 
+              </p>
+              <p class="text-xs text-neutral-450 leading-relaxed">
+                Asigna cada una de estas puntuaciones a tus características en la derecha. Te sugerimos poner los valores más altos en el atributo recomendado de tu clase.
+              </p>
+            </div>
+
+            <div *ngIf="attributeMethod === 'random'" class="space-y-4">
+              <p class="text-xs text-neutral-400 leading-relaxed">
+                La <strong class="text-amber-400">Generación Aleatoria</strong> introduce el azar. Lanzas <strong class="text-amber-400">4d6</strong> para cada una de las 6 características y **sumas los 3 dados más altos**, descartando el menor.
+              </p>
+              <p class="text-xs text-neutral-450 leading-relaxed">
+                Una vez completes las 6 tiradas de dados obligatorias, podrás asignar los resultados libremente a tus atributos mediante los menús desplegables.
+              </p>
+            </div>
+
+            <div *ngIf="attributeMethod === 'buy'" class="space-y-4">
+              <p class="text-xs text-neutral-400 leading-relaxed">
+                En la <strong class="text-amber-400">Compra de Puntos</strong>, dispones de un presupuesto de <strong class="text-[#d4af37]">27 puntos</strong>. Todas tus características comienzan en 8 y puedes comprarlas hasta un máximo de 15.
+              </p>
+              
+              <!-- Tabla de costos oficial -->
+              <div class="bg-[#18181c] border border-neutral-800 rounded-lg p-3">
+                <span class="text-[9px] uppercase font-bold text-[#d4af37] block mb-2 text-center tracking-wider">Tabla de Costos de D&D 5e</span>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[10px] font-mono">
+                  <div class="flex justify-between border-b border-neutral-900/50 pb-0.5">
+                    <span class="text-neutral-400">Punt. 8:</span>
+                    <span class="text-amber-400 font-bold">Coste 0</span>
+                  </div>
+                  <div class="flex justify-between border-b border-neutral-900/50 pb-0.5">
+                    <span class="text-neutral-400">Punt. 12:</span>
+                    <span class="text-amber-400 font-bold">Coste 4</span>
+                  </div>
+                  <div class="flex justify-between border-b border-neutral-900/50 pb-0.5">
+                    <span class="text-neutral-400">Punt. 9:</span>
+                    <span class="text-amber-400 font-bold">Coste 1</span>
+                  </div>
+                  <div class="flex justify-between border-b border-neutral-900/50 pb-0.5">
+                    <span class="text-neutral-400">Punt. 13:</span>
+                    <span class="text-amber-400 font-bold">Coste 5</span>
+                  </div>
+                  <div class="flex justify-between border-b border-neutral-900/50 pb-0.5">
+                    <span class="text-neutral-400">Punt. 10:</span>
+                    <span class="text-amber-400 font-bold">Coste 2</span>
+                  </div>
+                  <div class="flex justify-between border-b border-neutral-900/50 pb-0.5">
+                    <span class="text-neutral-400">Punt. 14:</span>
+                    <span class="text-amber-400 font-bold">Coste 7</span>
+                  </div>
+                  <div class="flex justify-between border-b border-neutral-900/50 pb-0.5">
+                    <span class="text-neutral-400">Punt. 11:</span>
+                    <span class="text-amber-400 font-bold">Coste 3</span>
+                  </div>
+                  <div class="flex justify-between border-b border-neutral-900/50 pb-0.5">
+                    <span class="text-neutral-400">Punt. 15:</span>
+                    <span class="text-amber-400 font-bold">Coste 9</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caja dinámica de recomendación de clase -->
             <div class="bg-[#18181c] border border-neutral-800 p-4 rounded-lg space-y-2 text-xs">
               <div class="flex justify-between border-b border-neutral-900 pb-1.5 mb-1.5">
                 <span class="font-bold text-[#d4af37]">Tu Clase Recomendada:</span>
@@ -1018,30 +1080,156 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 El atributo primario de tu clase es la <strong class="text-[#d4af37]">{{ activeClass.primaryStat }}</strong>. Intenta concentrar tus puntos en ella para potenciar tu efectividad en combate y lanzamiento de conjuros.
               </p>
             </div>
-            
-
           </div>
 
           <!-- Panel Central -->
           <main class="lg:col-span-8 bg-[#121215] border border-neutral-800/80 rounded-xl p-6 shadow-2xl space-y-6">
+            
+            <!-- Selector de Métodos de Generación -->
+            <div class="flex bg-neutral-950/60 p-1 border border-neutral-850 rounded-lg max-w-md mx-auto relative z-10">
+              <button 
+                (click)="changeAttributeMethod('array')"
+                class="flex-1 text-center py-1.5 rounded text-[10px] font-serif uppercase tracking-wider transition cursor-pointer select-none"
+                [class.bg-amber-600]="attributeMethod === 'array'"
+                [class.text-white]="attributeMethod === 'array'"
+                [class.text-neutral-455]="attributeMethod !== 'array'"
+              >
+                Conjunto Estándar
+              </button>
+              <button 
+                (click)="changeAttributeMethod('random')"
+                class="flex-1 text-center py-1.5 rounded text-[10px] font-serif uppercase tracking-wider transition cursor-pointer select-none"
+                [class.bg-amber-600]="attributeMethod === 'random'"
+                [class.text-white]="attributeMethod === 'random'"
+                [class.text-neutral-455]="attributeMethod !== 'random'"
+              >
+                Tirada Aleatoria
+              </button>
+              <button 
+                (click)="changeAttributeMethod('buy')"
+                class="flex-1 text-center py-1.5 rounded text-[10px] font-serif uppercase tracking-wider transition cursor-pointer select-none"
+                [class.bg-amber-600]="attributeMethod === 'buy'"
+                [class.text-white]="attributeMethod === 'buy'"
+                [class.text-neutral-455]="attributeMethod !== 'buy'"
+              >
+                Compra de Puntos
+              </button>
+            </div>
+
+            <!-- Cabecera de Puntuación -->
             <div class="flex items-center justify-between border-b border-neutral-900 pb-4">
               <div>
-                <h3 class="text-lg font-serif font-extrabold text-[#d4af37] uppercase tracking-wider">Tus Puntuaciones</h3>
-                <p class="text-xs text-neutral-500">Distribuye tus puntos. Límite base: min 8, max 18.</p>
+                <h3 class="text-base font-serif font-extrabold text-[#d4af37] uppercase tracking-wider">Tus Puntuaciones</h3>
+                <p class="text-xs text-neutral-500">
+                  <span *ngIf="attributeMethod === 'array'">Asigna las puntuaciones del conjunto estándar.</span>
+                  <span *ngIf="attributeMethod === 'random' && activeRollIndex < 6">Lanza los dados 6 veces para rellenar la reserva.</span>
+                  <span *ngIf="attributeMethod === 'random' && activeRollIndex === 6">Asigna las puntuaciones de tus dados lanzados.</span>
+                  <span *ngIf="attributeMethod === 'buy'">Usa los 27 puntos para comprar. Máx base: 15.</span>
+                </p>
               </div>
-              <div class="bg-red-950/40 border border-red-800/50 rounded-lg px-4 py-2 text-center shadow-inner">
+              
+              <!-- Puntos Restantes o Asignados -->
+              <div *ngIf="attributeMethod === 'buy'" class="bg-red-950/40 border border-red-800/50 rounded-lg px-4 py-2 text-center shadow-inner">
                 <div class="text-[9px] uppercase font-bold text-red-400 tracking-widest">Puntos Restantes</div>
                 <div class="text-2xl font-serif font-bold text-[#d4af37]">{{ attributePointsPool }}</div>
               </div>
+              <div *ngIf="attributeMethod === 'array' || attributeMethod === 'random'" class="bg-amber-950/40 border border-amber-800/50 rounded-lg px-4 py-2 text-center shadow-inner">
+                <div class="text-[9px] uppercase font-bold text-amber-400 tracking-widest">Asignadas</div>
+                <div class="text-2xl font-serif font-bold text-neutral-200">
+                  {{ attributePool.filter(item => item.assignedTo !== null).length }} / 6
+                </div>
+              </div>
             </div>
 
-            <!-- Lista de Atributos -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Reservorio de Puntos (Standard Array & Random Roll) -->
+            <div *ngIf="attributeMethod === 'array' || (attributeMethod === 'random' && attributePool.length > 0)" class="bg-neutral-900/35 border border-neutral-855 p-4 rounded-xl">
+              <span class="text-[9px] text-neutral-450 uppercase font-bold tracking-wider block mb-3 text-center">Reserva de Puntuaciones Disponibles</span>
+              <div class="flex gap-3 justify-center">
+                <div 
+                  *ngFor="let item of attributePool; let i = index" 
+                  class="w-12 h-12 rounded-lg border flex flex-col items-center justify-center relative shadow transition-all duration-200"
+                  [ngClass]="{
+                    'border-amber-600/60 bg-amber-950/10 text-[#d4af37] font-bold': item.assignedTo === null,
+                    'border-neutral-900 bg-neutral-950/50 text-neutral-600': item.assignedTo !== null
+                  }"
+                >
+                  <span class="text-sm font-mono font-bold">{{ item.value }}</span>
+                  <span *ngIf="item.assignedTo" class="text-[7px] uppercase font-bold text-neutral-500 absolute bottom-1 leading-none">
+                    {{ item.assignedTo }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tablero de Tirada Aleatoria (4d6) -->
+            <div *ngIf="attributeMethod === 'random' && activeRollIndex < 6" class="bg-[#18181c] border border-neutral-800/80 p-6 rounded-xl space-y-6 text-center">
+              <div class="space-y-1">
+                <span class="text-[10px] text-neutral-450 uppercase font-bold tracking-wider block">Sistema 4d6 Drop Lowest</span>
+                <h4 class="text-base font-serif font-extrabold text-[#d4af37]">TIRADA {{ activeRollIndex + 1 }} DE 6</h4>
+              </div>
+
+              <!-- Animación de Dados -->
+              <div class="flex gap-4 justify-center items-center py-4">
+                <div 
+                  *ngFor="let die of rolledStats[activeRollIndex]?.dice; let dIdx = index" 
+                  class="w-16 h-16 rounded-xl border-2 flex items-center justify-center text-2xl font-bold font-mono transition-all duration-75 select-none"
+                  [ngClass]="{
+                    'bg-[#0e0e11] border-neutral-850 text-neutral-600': !rolledStats[activeRollIndex]?.completed && !rolledStats[activeRollIndex]?.rolling,
+                    'bg-amber-955/20 border-amber-600/70 text-amber-500 animate-bounce scale-105 shadow-[0_0_15px_rgba(212,175,55,0.15)]': rolledStats[activeRollIndex]?.rolling,
+                    'bg-amber-900/10 border-amber-500 text-amber-400 font-bold shadow-[0_0_12px_rgba(212,175,55,0.25)]': rolledStats[activeRollIndex]?.completed && dIdx !== getDiscardedIdx(activeRollIndex),
+                    'bg-red-955/20 border-red-900/60 text-red-500/50 line-through scale-90 opacity-40': rolledStats[activeRollIndex]?.completed && dIdx === getDiscardedIdx(activeRollIndex)
+                  }"
+                >
+                  {{ die }}
+                </div>
+              </div>
+
+              <!-- Resultados de Tirada -->
+              <div *ngIf="rolledStats[activeRollIndex]?.completed" class="bg-neutral-950/60 border border-neutral-900 p-4 rounded-lg inline-block text-center mx-auto space-y-1">
+                <span class="text-[9px] uppercase font-bold text-neutral-500 tracking-wider">Puntuación Obtenida</span>
+                <div class="text-3xl font-serif font-bold text-[#d4af37] font-mono leading-none">
+                  {{ rolledStats[activeRollIndex]?.sum }}
+                </div>
+                <span class="text-[9px] text-neutral-500 block leading-tight pt-1">
+                  Suma de los 3 mayores (Descartado el {{ getDiscardedDieValue(activeRollIndex) }})
+                </span>
+              </div>
+
+              <div>
+                <button 
+                  (click)="rollDiceStats()"
+                  [disabled]="isRollingAll || activeRollIndex >= 6"
+                  class="bg-gradient-to-r from-[#d4af37] to-amber-600 hover:from-amber-500 hover:to-[#d4af37] text-neutral-950 font-serif uppercase tracking-widest font-extrabold px-8 py-3 rounded-lg text-xs cursor-pointer shadow-lg hover:shadow-[0_0_15px_rgba(212,175,55,0.35)] transition disabled:opacity-40 disabled:cursor-not-allowed select-none"
+                >
+                  {{ isRollingAll ? 'Lanzando Dados...' : 'Lanzar Dados (4d6)' }}
+                </button>
+              </div>
+            </div>
+
+            <!-- Caja de Reinicio de Tiradas Aleatorias -->
+            <div *ngIf="attributeMethod === 'random' && activeRollIndex === 6" class="bg-[#18181c] border border-neutral-800 p-4 rounded-xl flex items-center justify-between gap-4">
+              <div class="flex items-center gap-2.5">
+                <span class="text-lg">🎲</span>
+                <div class="text-left">
+                  <span class="text-xs font-bold text-neutral-200 block">Tiradas de dados completadas</span>
+                  <span class="text-[10px] text-neutral-500">Asigna estos 6 valores a tus características abajo</span>
+                </div>
+              </div>
+              <button 
+                (click)="changeAttributeMethod('random')"
+                class="px-4 py-2 rounded bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700 text-[10px] font-bold uppercase transition cursor-pointer select-none"
+              >
+                Volver a Tirar
+              </button>
+            </div>
+
+            <!-- Listado de Atributos (Point Buy) -->
+            <div *ngIf="attributeMethod === 'buy'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div 
                 *ngFor="let attr of attributes" 
-                class="bg-[#18181c] border border-neutral-800/80 p-4 rounded-xl flex items-center justify-between shadow-md relative group hover:border-[#d4af37]/15 transition"
+                class="bg-[#18181c] border border-neutral-800/80 p-4 rounded-xl flex items-center justify-between shadow-md hover:border-[#d4af37]/15 transition"
               >
-                <div class="space-y-1 pr-4">
+                <div class="space-y-1 pr-4 text-left">
                   <h4 class="text-sm font-bold text-neutral-200 uppercase tracking-wide">
                     {{ attr.name }}
                   </h4>
@@ -1052,9 +1240,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
                 <div class="flex items-center gap-3 shrink-0">
                   <button 
-                    (click)="modifyAttribute(attr.key, -1)"
+                    (click)="modifyAttributePointBuy(attr.key, -1)"
                     [disabled]="attr.value <= 8"
-                    class="w-8 h-8 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center font-bold text-lg cursor-pointer transition"
+                    class="w-8 h-8 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center font-bold text-lg cursor-pointer transition select-none"
                   >
                     -
                   </button>
@@ -1072,12 +1260,61 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   </div>
 
                   <button 
-                    (click)="modifyAttribute(attr.key, 1)"
-                    [disabled]="attributePointsPool <= 0 || attr.value >= 18"
-                    class="w-8 h-8 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center font-bold text-lg cursor-pointer transition"
+                    (click)="modifyAttributePointBuy(attr.key, 1)"
+                    [disabled]="attr.value >= 15"
+                    class="w-8 h-8 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center font-bold text-lg cursor-pointer transition select-none"
                   >
                     +
                   </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Listado de Atributos (Standard Array / Random Roll) -->
+            <div *ngIf="attributeMethod === 'array' || (attributeMethod === 'random' && activeRollIndex === 6)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div 
+                *ngFor="let attr of attributes" 
+                class="bg-[#18181c] border border-neutral-800/80 p-4 rounded-xl flex items-center justify-between shadow-md hover:border-[#d4af37]/15 transition animate-fade-in"
+              >
+                <div class="space-y-1 pr-4 text-left">
+                  <h4 class="text-sm font-bold text-neutral-200 uppercase tracking-wide">
+                    {{ attr.name }}
+                  </h4>
+                  <p class="text-[10px] text-neutral-500 leading-snug">
+                    {{ attr.description }}
+                  </p>
+                </div>
+
+                <div class="flex items-center gap-4 shrink-0">
+                  <!-- Asignador de Puntuación Dropdown -->
+                  <div class="space-y-1 text-right">
+                    <label class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block">Asignar</label>
+                    <select 
+                      [ngModel]="getAttributePoolIndexFor(attr.key)"
+                      (ngModelChange)="assignPoolValue(attr.key, $event)"
+                      class="bg-neutral-900 border border-neutral-800 text-[#d4af37] font-mono text-xs font-bold rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#d4af37]/45 cursor-pointer max-w-[120px]"
+                    >
+                      <option [value]="''">-- Elegir --</option>
+                      <option 
+                        *ngFor="let item of attributePool; let i = index" 
+                        [value]="i"
+                        [disabled]="item.assignedTo !== null && item.assignedTo !== attr.key"
+                      >
+                        {{ item.value }} {{ item.assignedTo && item.assignedTo !== attr.key ? '(' + item.assignedTo + ')' : '' }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <!-- Visualizador del Valor Final -->
+                  <div class="text-center w-14">
+                    <div class="text-2xl font-serif font-bold text-[#d4af37]">
+                      {{ getFinalAttributeScore(attr.key) }}
+                    </div>
+                    <div class="text-[9px] text-neutral-500 uppercase tracking-widest leading-none mt-0.5">
+                      <div>Base: {{ attr.value }}</div>
+                      <div *ngIf="(backgroundStatsAllocation[attr.key] || 0) > 0" class="text-amber-500 font-bold mt-0.5">+{{ backgroundStatsAllocation[attr.key] }} Tras.</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1092,7 +1329,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </button>
               <button 
                 (click)="onConfirmAttributes()"
-                [disabled]="attributePointsPool > 0"
+                [disabled]="!isAttributesSelectionValid()"
                 class="flex-2 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 text-white font-semibold py-3 px-6 rounded-lg text-sm border-t border-red-500/20 font-serif cursor-pointer transition duration-300 uppercase tracking-wider shadow-lg hover:shadow-[0_0_15px_rgba(239,68,68,0.3)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
               >
                 Confirmar Atributos y Finalizar
@@ -1506,6 +1743,167 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </div>
           </div>
 
+          <!-- Detalles de la Leyenda y Aspecto -->
+          <div class="bg-[#18181c]/55 border border-neutral-850 p-6 rounded-xl space-y-6 relative z-10 text-left">
+            <h3 class="text-sm font-serif font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-900 pb-2 flex items-center gap-2">
+              <span>✍️</span> Detalles de la Leyenda y Aspecto
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Historia de Origen -->
+              <div class="space-y-2">
+                <label class="text-[10px] text-neutral-455 uppercase font-bold tracking-wider block">Historia de Origen</label>
+                <textarea
+                  [(ngModel)]="characterHistory"
+                  rows="4"
+                  placeholder="Escribe aquí cómo comenzó tu viaje, tus motivaciones, o los secretos de tu pasado..."
+                  class="w-full bg-[#0e0e11] border border-neutral-800 hover:border-neutral-750 focus:border-[#d4af37]/50 focus:outline-none p-3 rounded-lg text-xs text-neutral-350 leading-relaxed resize-none custom-scrollbar"
+                ></textarea>
+                <span *ngIf="!characterHistory.trim()" class="text-[9px] text-amber-500/80 italic block">
+                  * Cuéntanos qué motiva a tu aventurero a arriesgar su vida.
+                </span>
+              </div>
+              
+              <!-- Descripción Física -->
+              <div class="space-y-2">
+                <label class="text-[10px] text-neutral-455 uppercase font-bold tracking-wider block">Apariencia y Descripción Física</label>
+                <textarea
+                  [(ngModel)]="characterPhysicalDesc"
+                  rows="4"
+                  placeholder="Describe los rasgos físicos más llamativos: cicatrices, color de ojos, vestimenta, complexión..."
+                  class="w-full bg-[#0e0e11] border border-neutral-800 hover:border-neutral-750 focus:border-[#d4af37]/50 focus:outline-none p-3 rounded-lg text-xs text-neutral-350 leading-relaxed resize-none custom-scrollbar"
+                ></textarea>
+                <span *ngIf="!characterPhysicalDesc.trim()" class="text-[9px] text-amber-500/80 italic block">
+                  * Describe rasgos particulares, marcas de nacimiento o apariencia singular.
+                </span>
+              </div>
+            </div>
+
+            <!-- Selección de Categoría de Tamaño y Altura -->
+            <div class="border-t border-neutral-900/60 pt-4 space-y-4">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 bg-[#121215] border border-neutral-800/80 p-4 rounded-xl">
+                
+                <!-- Categoría de Tamaño -->
+                <div class="space-y-1.5 min-w-[200px]">
+                  <span class="text-[10px] text-neutral-455 uppercase font-bold tracking-wider block">Categoría de Tamaño</span>
+                  
+                  <!-- Si la raza tiene elección de tamaño (Humano, Aasimar, Tiefling) -->
+                  <div *ngIf="activeSizeInfo?.hasChoice" class="flex gap-2">
+                    <label 
+                      *ngFor="let size of activeSizeInfo?.sizes"
+                      class="flex-1 text-center py-2 px-3 rounded-lg border text-xs font-semibold cursor-pointer transition select-none flex items-center justify-center gap-1.5"
+                      [ngClass]="selectedSizeClass === size.name ? 'bg-amber-955/20 border-[#d4af37] text-[#d4af37]' : 'bg-[#18181c] border-neutral-800 text-neutral-400 hover:border-neutral-700'"
+                    >
+                      <input 
+                        type="radio" 
+                        name="sizeClassRadio"
+                        [(ngModel)]="selectedSizeClass"
+                        [value]="size.name"
+                        (change)="onSizeClassChange()"
+                        class="hidden"
+                      />
+                      <span>{{ size.name }}</span>
+                    </label>
+                  </div>
+
+                  <!-- Si la raza tiene tamaño fijo -->
+                  <div *ngIf="!activeSizeInfo?.hasChoice" class="text-xs font-bold text-[#d4af37] bg-[#18181c] border border-neutral-800 px-4 py-2 rounded-lg inline-block uppercase tracking-wider">
+                    Tamaño: {{ selectedSizeClass }}
+                  </div>
+                </div>
+
+                <!-- Slider de Altura -->
+                <div class="flex-1 w-full space-y-2">
+                  <div class="flex justify-between items-center text-xs">
+                    <span class="text-neutral-455 uppercase font-bold tracking-wider text-[10px]">Altura del Personaje</span>
+                    <span class="text-sm font-bold text-amber-400 font-mono bg-[#0e0e11] px-3 py-0.5 border border-neutral-800 rounded">
+                      {{ characterHeight }} m
+                    </span>
+                  </div>
+                  
+                  <div class="flex items-center gap-4">
+                    <span class="text-[10px] text-neutral-500 font-mono shrink-0">
+                      {{ getMinHeight() }} m
+                    </span>
+                    
+                    <input 
+                      type="range"
+                      [(ngModel)]="characterHeight"
+                      [min]="getMinHeight()"
+                      [max]="getMaxHeight()"
+                      step="0.01"
+                      class="flex-1 h-1.5 bg-[#0e0e11] border border-neutral-800 rounded-lg appearance-none cursor-pointer accent-amber-600"
+                    />
+                    
+                    <span class="text-[10px] text-neutral-500 font-mono shrink-0">
+                      {{ getMaxHeight() }} m
+                    </span>
+                  </div>
+                  
+                  <!-- Texto descriptivo del rango -->
+                  <div class="text-[9px] text-neutral-500 italic">
+                    Rango para un {{ activeOrigin.name }} ({{ selectedSizeClass }}): {{ getSizeDescription() }}
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Ficha Técnica de Carga y Categoría Identificada -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-[#121215]/80 border border-neutral-850 p-4 rounded-xl items-center mt-4">
+                <!-- Identificador de Tamaño -->
+                <div class="flex items-center gap-3">
+                  <span class="text-[10px] text-neutral-450 uppercase font-bold tracking-wider block">Identificador:</span>
+                  <div class="relative group">
+                    <span 
+                      class="w-10 h-10 rounded-full border-2 border-amber-600/70 text-[#d4af37] bg-[#0c0c0e] flex items-center justify-center font-serif font-bold text-sm cursor-help hover:bg-amber-600/20 hover:border-amber-500 transition shadow-md select-none"
+                      [title]="'Categoría de tamaño de criatura: ' + selectedSizeClass"
+                    >
+                      {{ getSizeLetter(selectedSizeClass) }}
+                    </span>
+                    <!-- Custom tooltip visual -->
+                    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 bg-[#16161a] border border-[#d4af37]/45 text-neutral-355 text-[10px] rounded px-3 py-1.5 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 transition duration-200 z-50 whitespace-nowrap">
+                      Tamaño: <strong class="text-amber-400 font-semibold">{{ selectedSizeClass }}</strong>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="text-[9px] text-neutral-500 block leading-tight">Pasa el cursor para ver el tamaño completo</span>
+                  </div>
+                </div>
+
+                <!-- Capacidad de Carga Máxima -->
+                <div class="bg-neutral-900/40 border border-neutral-850 p-3 rounded-lg flex items-center justify-between">
+                  <div>
+                    <span class="text-[9px] text-neutral-455 uppercase font-bold tracking-wider block">Capacidad de Carga</span>
+                    <span class="text-xs font-mono font-bold text-neutral-200 mt-0.5 block">
+                      {{ carryingCapacity.maxKg }} kg / {{ carryingCapacity.maxLb }} lb
+                    </span>
+                  </div>
+                  <span class="text-lg select-none">🎒</span>
+                </div>
+
+                <!-- Arrastrar, levantar o empujar -->
+                <div class="bg-neutral-900/40 border border-neutral-850 p-3 rounded-lg flex items-center justify-between">
+                  <div>
+                    <span class="text-[9px] text-neutral-455 uppercase font-bold tracking-wider block">Arrastrar / Levantar / Empujar</span>
+                    <span class="text-xs font-mono font-bold text-neutral-200 mt-0.5 block">
+                      {{ carryingCapacity.dragKg }} kg / {{ carryingCapacity.dragLb }} lb
+                    </span>
+                  </div>
+                  <span class="text-lg select-none">💪</span>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+          <!-- Advertencia de campos incompletos -->
+          <div *ngIf="!characterHistory.trim() || !characterPhysicalDesc.trim()" class="bg-red-955/10 border border-red-800/40 p-4 rounded-xl text-left relative z-10 flex items-center gap-3">
+            <span class="text-xl">⚠️</span>
+            <div class="text-xs text-red-300 leading-relaxed font-light">
+              Debes rellenar la <strong class="text-red-200">Historia de Origen</strong> y la <strong class="text-red-200">Apariencia Física</strong> antes de poder registrar a tu aventurero en la campaña.
+            </div>
+          </div>
+
           <!-- Acciones de Guardar / Reiniciar -->
           <div class="flex flex-col sm:flex-row gap-4 border-t border-neutral-900 pt-6 relative z-10">
             <button 
@@ -1516,7 +1914,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </button>
             <button 
               (click)="saveCharacter()"
-              class="w-full sm:w-2/3 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 text-white font-semibold py-3 px-6 rounded-lg text-sm border-t border-red-500/20 font-serif cursor-pointer transition duration-300 uppercase tracking-widest shadow-xl hover:shadow-[0_0_25px_rgba(239,68,68,0.4)]"
+              [disabled]="!characterHistory.trim() || !characterPhysicalDesc.trim()"
+              class="w-full sm:w-2/3 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg text-sm border-t border-red-500/20 font-serif cursor-pointer transition duration-300 uppercase tracking-widest shadow-xl hover:shadow-[0_0_25px_rgba(239,68,68,0.4)]"
             >
               Registrar Personaje en la Campaña
             </button>
@@ -1566,6 +1965,15 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 [class.text-neutral-455]="previewTab !== 2"
               >
                 Grimorio y Equipo
+              </button>
+              <button 
+                (click)="previewTab = 3"
+                class="px-4 py-1.5 rounded text-[10px] font-serif uppercase tracking-wider cursor-pointer transition select-none"
+                [class.bg-amber-600]="previewTab === 3"
+                [class.text-white]="previewTab === 3"
+                [class.text-neutral-455]="previewTab !== 3"
+              >
+                Biografía y Aspecto
               </button>
             </div>
 
@@ -1835,6 +2243,43 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   </div>
                 </div>
 
+                <!-- Capacidad de Carga y Tamaño -->
+                <div class="bg-neutral-900/30 border border-neutral-855 p-4 rounded-xl space-y-3 text-left">
+                  <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5">
+                    <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Carga y Tamaño de Criatura</span>
+                    
+                    <!-- Letra de tamaño con tooltip -->
+                    <div class="relative group select-none">
+                      <span 
+                        class="w-6 h-6 rounded-full border border-amber-600/70 text-amber-500 bg-[#0c0c0e] flex items-center justify-center font-serif font-bold text-[10px] cursor-help hover:bg-amber-600/20 transition shadow"
+                        [title]="'Tamaño de criatura: ' + (selectedSizeClass || 'Mediano')"
+                      >
+                        {{ getSizeLetter(selectedSizeClass || 'Mediano') }}
+                      </span>
+                      <!-- Tooltip visual del tamaño -->
+                      <div class="absolute bottom-8 right-0 bg-[#16161a] border border-[#d4af37]/45 text-neutral-355 text-[9px] rounded px-2.5 py-1 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 transition duration-150 whitespace-nowrap z-50">
+                        Tamaño: <strong class="text-amber-400 font-semibold">{{ selectedSizeClass || 'Mediano' }}</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-3 text-[10px]">
+                    <div class="bg-[#121215] border border-neutral-850 p-2 rounded relative">
+                      <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block mb-0.5">Carga Máxima</span>
+                      <span class="font-mono font-bold text-neutral-200 block">
+                        {{ carryingCapacity.maxKg }} kg / {{ carryingCapacity.maxLb }} lb
+                      </span>
+                    </div>
+
+                    <div class="bg-[#121215] border border-neutral-850 p-2 rounded relative">
+                      <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block mb-0.5">Arrastrar/Levantar/Empujar</span>
+                      <span class="font-mono font-bold text-neutral-200 block">
+                        {{ carryingCapacity.dragKg }} kg / {{ carryingCapacity.dragLb }} lb
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- Rasgos de Clase -->
                 <div class="bg-neutral-900/40 border border-[#d4af37]/10 p-4 rounded-xl space-y-2">
                   <div class="flex items-center justify-between border-b border-neutral-900 pb-1">
@@ -2030,6 +2475,71 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
             </div>
 
+            <!-- PESTAÑA 3: BIOGRAFÍA Y ASPECTO -->
+            <div *ngIf="previewTab === 3" class="grid grid-cols-1 md:grid-cols-12 gap-6 animate-fade-in">
+              
+              <!-- COLUMNA 1: DETALLES DE APARIENCIA (md:col-span-4) -->
+              <div class="md:col-span-4 space-y-4">
+                <h3 class="text-[10px] font-bold text-neutral-455 uppercase tracking-widest border-b border-neutral-900 pb-1.5 mb-2">Aspecto Físico</h3>
+                
+                <div class="bg-[#121215] border border-neutral-850 p-5 rounded-xl space-y-4">
+                  <!-- Altura -->
+                  <div class="space-y-1">
+                    <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Altura</span>
+                    <div class="text-sm font-bold text-neutral-200 bg-[#18181c] border border-neutral-800 px-3 py-2 rounded font-mono">
+                      {{ characterHeight ? characterHeight + ' m' : 'No seleccionada' }}
+                    </div>
+                  </div>
+
+                  <!-- Categoría de Tamaño -->
+                  <div class="space-y-1">
+                    <span class="text-[9px] text-neutral-455 uppercase font-bold tracking-wider block">Categoría de Tamaño</span>
+                    <div class="text-xs font-bold text-neutral-200 bg-[#18181c] border border-neutral-800 px-3 py-2 rounded uppercase tracking-wider">
+                      {{ selectedSizeClass || 'Ninguno' }}
+                    </div>
+                  </div>
+
+                  <!-- Raza/Origen -->
+                  <div class="space-y-1">
+                    <span class="text-[9px] text-neutral-455 uppercase font-bold tracking-wider block">Especie / Raza</span>
+                    <div class="text-xs font-bold text-neutral-250 bg-[#18181c] border border-neutral-800 px-3 py-2 rounded">
+                      {{ activeOrigin.name }}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Resumen de Rasgos Físicos -->
+                <div class="bg-neutral-900/30 border border-neutral-855 p-4 rounded-xl space-y-2 text-left">
+                  <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Detalles de Apariencia</span>
+                  <div class="text-xs text-neutral-300 leading-relaxed font-light whitespace-pre-wrap max-h-[220px] overflow-y-auto custom-scrollbar">
+                    {{ characterPhysicalDesc.trim() || 'Sin descripción física escrita aún.' }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- COLUMNA 2: NARRATIVA E HISTORIA (md:col-span-8) -->
+              <div class="md:col-span-8 space-y-4">
+                <h3 class="text-[10px] font-bold text-neutral-455 uppercase tracking-widest border-b border-neutral-900 pb-1.5 mb-2">Historia de Origen</h3>
+                
+                <div class="bg-[#121215] border border-neutral-850 p-6 rounded-xl relative overflow-hidden min-h-[300px] flex flex-col justify-between">
+                  <!-- Decoración de pergamino/libro -->
+                  <div class="absolute top-4 right-4 text-4xl opacity-10 select-none">📜</div>
+                  
+                  <div class="space-y-4">
+                    <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Crónica del Aventurero</span>
+                    <p class="text-xs text-neutral-300 leading-relaxed font-serif italic whitespace-pre-wrap pl-4 border-l-2 border-[#d4af37]/35 max-h-[380px] overflow-y-auto custom-scrollbar">
+                      "{{ characterHistory.trim() || 'Esta historia aún no ha sido escrita en los anales del reino...' }}"
+                    </p>
+                  </div>
+
+                  <div class="pt-4 border-t border-neutral-900/60 mt-4 text-[9px] text-neutral-500 font-serif italic text-right">
+                    — Forjado como {{ activeClass.name }} con trasfondo de {{ activeBackground.name }}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
           </div>
 
           <!-- PIE DE LA VISTA PREVIA -->
@@ -2092,6 +2602,10 @@ export class CharacterCreatorComponent implements OnInit {
   previewTab = 1;
   characterName = 'Héroe de la Forja';
   characterSubclass = '';
+  characterHistory = '';
+  characterPhysicalDesc = '';
+  selectedSizeClass = '';
+  characterHeight = 0;
 
   // Estado de Selección
   selectedClassIdx = 0;
@@ -2143,15 +2657,42 @@ export class CharacterCreatorComponent implements OnInit {
   selectedOriginLineage = '';
 
   // Pool de puntos de atributos base
-  attributePointsPool = 15;
+  attributePointsPool = 27; // 27 points for Point Buy
+  attributeMethod: 'array' | 'random' | 'buy' = 'array';
+  attributePool: { value: number; assignedTo: string | null }[] = [
+    { value: 15, assignedTo: 'FUE' },
+    { value: 14, assignedTo: 'DES' },
+    { value: 13, assignedTo: 'CON' },
+    { value: 12, assignedTo: 'INT' },
+    { value: 10, assignedTo: 'SAB' },
+    { value: 8, assignedTo: 'CAR' }
+  ];
+  pointBuyCosts: { [key: number]: number } = { 8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7, 15: 9 };
+  rolledStats: { dice: number[]; sortedDice: number[]; sum: number; rolling: boolean; completed: boolean; discardedIdx: number }[] = Array.from({ length: 6 }, () => ({
+    dice: [1, 1, 1, 1],
+    sortedDice: [1, 1, 1, 1],
+    sum: 0,
+    rolling: false,
+    completed: false,
+    discardedIdx: -1
+  }));
+  activeRollIndex = 0;
+  isRollingAll = false;
+  activeSizeInfo: any = {
+    hasChoice: false,
+    sizes: [
+      { name: 'Mediano', min: 1.0, max: 2.0, description: 'Mediano (entre 1.0 y 2.0 m)' }
+    ]
+  };
+  carryingCapacity = { maxKg: 75, maxLb: 150, dragKg: 150, dragLb: 300 };
 
   attributes: Attribute[] = [
-    { name: 'Fuerza', key: 'FUE', value: 10, description: 'Poderío físico y fuerza muscular.' },
-    { name: 'Destreza', key: 'DES', value: 10, description: 'Agilidad, reflejos y equilibrio.' },
-    { name: 'Constitución', key: 'CON', value: 10, description: 'Salud, aguante y puntos de golpe.' },
-    { name: 'Inteligencia', key: 'INT', value: 10, description: 'Raciocinio, memoria y erudición.' },
+    { name: 'Fuerza', key: 'FUE', value: 15, description: 'Poderío físico y fuerza muscular.' },
+    { name: 'Destreza', key: 'DES', value: 14, description: 'Agilidad, reflejos y equilibrio.' },
+    { name: 'Constitución', key: 'CON', value: 13, description: 'Salud, aguante y puntos de golpe.' },
+    { name: 'Inteligencia', key: 'INT', value: 12, description: 'Raciocinio, memoria y erudición.' },
     { name: 'Sabiduría', key: 'SAB', value: 10, description: 'Perspicacia, percepción y fortaleza mental.' },
-    { name: 'Carisma', key: 'CAR', value: 10, description: 'Confianza, elocuencia, aplomo y encanto.' }
+    { name: 'Carisma', key: 'CAR', value: 8, description: 'Confianza, elocuencia, aplomo y encanto.' }
   ];
 
   backgroundStatsAllocation: { [key: string]: number } = {
@@ -2564,10 +3105,12 @@ export class CharacterCreatorComponent implements OnInit {
     }
     this.originChosen = true;
     this.currentStep = 4;
+    this.loadRaceSizeInfo();
+    this.updateCarryingCapacity();
   }
 
   onConfirmAttributes(): void {
-    if (this.attributePointsPool === 0) {
+    if (this.isAttributesSelectionValid()) {
       this.attributesChosen = true;
       this.currentStep = 5;
     }
@@ -2585,10 +3128,13 @@ export class CharacterCreatorComponent implements OnInit {
       this.imageLoaded = false;
     } else if (step === 4 && this.originChosen) {
       this.currentStep = 4;
+      this.loadRaceSizeInfo();
+      this.updateCarryingCapacity();
     } else if (step === 5 && this.attributesChosen) {
       this.currentStep = 5;
     } else if (step === 6 && this.equipmentChosen) {
       this.currentStep = 6;
+      this.initializeBiographicalData();
     }
   }
 
@@ -2730,12 +3276,31 @@ export class CharacterCreatorComponent implements OnInit {
     this.selectedBgEquipmentOption = null;
     this.selectedBgEquipmentDescription = '';
     this.selectedClassSkills = [];
-    this.attributePointsPool = 15;
+    this.attributePointsPool = 27;
     this.selectedClassIdx = 0;
     this.selectedOriginIdx = 0;
     this.selectedBackgroundIdx = 0;
     this.selectedOriginLineage = '';
-    this.attributes.forEach(a => a.value = 10);
+    this.attributeMethod = 'array';
+    this.attributePool = [
+      { value: 15, assignedTo: 'FUE' },
+      { value: 14, assignedTo: 'DES' },
+      { value: 13, assignedTo: 'CON' },
+      { value: 12, assignedTo: 'INT' },
+      { value: 10, assignedTo: 'SAB' },
+      { value: 8, assignedTo: 'CAR' }
+    ];
+    this.syncAttributesFromPool();
+    this.rolledStats = Array.from({ length: 6 }, () => ({
+      dice: [1, 1, 1, 1],
+      sortedDice: [1, 1, 1, 1],
+      sum: 0,
+      rolling: false,
+      completed: false,
+      discardedIdx: -1
+    }));
+    this.activeRollIndex = 0;
+    this.isRollingAll = false;
     this.isFallbackBg = false;
     this.backgroundStatsAllocation = {
       FUE: 0,
@@ -2746,6 +3311,10 @@ export class CharacterCreatorComponent implements OnInit {
       CAR: 0
     };
     this.skilledFeatSelection = [];
+    this.characterHistory = '';
+    this.characterPhysicalDesc = '';
+    this.characterHeight = 0;
+    this.selectedSizeClass = '';
   }
 
   saveCharacter(): void {
@@ -2754,16 +3323,21 @@ export class CharacterCreatorComponent implements OnInit {
       value: this.getFinalAttributeScore(a.key)
     }));
     console.log('Guardando personaje forjado:', {
+      nombre: this.characterName,
       clase: this.activeClass.name,
       trasfondo: this.activeBackground.name,
       origen: this.activeOrigin.name,
       linaje: this.selectedOriginLineage,
       atributos: finalStats,
       habilidadesClase: this.selectedClassSkills,
-      doteHabilidosoSeleccion: this.hasSkilledFeat() ? this.skilledFeatSelection : []
+      doteHabilidosoSeleccion: this.hasSkilledFeat() ? this.skilledFeatSelection : [],
+      historia: this.characterHistory,
+      descripcionFisica: this.characterPhysicalDesc,
+      altura: this.characterHeight + ' m',
+      tamaño: this.selectedSizeClass
     });
     const originDisplayName = this.selectedOriginLineage ? `${this.activeOrigin.name} (${this.selectedOriginLineage})` : this.activeOrigin.name;
-    alert(`¡Felicidades! Tu aventurero (${this.characterName || 'Héroe'} - ${this.activeClass.name} ${originDisplayName}, Trasfondo: ${this.activeBackground.name}) ha sido registrado en la mesa de juego.`);
+    alert(`¡Felicidades! Tu aventurero (${this.characterName || 'Héroe'} - ${this.activeClass.name} ${originDisplayName}, Trasfondo: ${this.activeBackground.name}, Altura: ${this.characterHeight} m) ha sido registrado en la mesa de juego.`);
     this.restartCreator();
   }
 
@@ -3152,6 +3726,7 @@ export class CharacterCreatorComponent implements OnInit {
     if (this.selectedEquipmentOption && this.selectedBgEquipmentOption) {
       this.equipmentChosen = true;
       this.currentStep = 6;
+      this.initializeBiographicalData();
     } else {
       alert('Por favor, selecciona una opción de equipo de clase y una de trasfondo antes de continuar.');
     }
@@ -3703,4 +4278,246 @@ getClassSkillLimit(className: string): number {
     { name: 'Fulgor interior', desc: 'Emites luz brillante en radio de 3m. Al final de tu turno, enemigos a 3m o menos reciben daño radiante igual a tu BC. Daño adicional es radiante.' },
     { name: 'Mortaja necrótica', desc: 'Tus ojos se vuelven pozos de oscuridad. Criaturas a 3m o menos deben superar salvación de Carisma (CD 8 + Car + BC) o asustarse. Daño adicional es necrótico.' }
   ];
+
+  initializeBiographicalData(): void {
+    const sizeInfo = this.activeSizeInfo || { sizes: [{ name: 'Mediano', min: 1.0, max: 2.0, description: 'Mediano' }] };
+    if (!this.selectedSizeClass || !sizeInfo.sizes.some((s: any) => s.name === this.selectedSizeClass)) {
+      this.selectedSizeClass = sizeInfo.sizes[0].name;
+    }
+    const currentSize = sizeInfo.sizes.find((s: any) => s.name === this.selectedSizeClass) || sizeInfo.sizes[0];
+    if (this.characterHeight < currentSize.min || this.characterHeight > currentSize.max) {
+      this.characterHeight = Math.round(((currentSize.min + currentSize.max) / 2) * 100) / 100;
+    }
+    this.updateCarryingCapacity();
+  }
+
+  onSizeClassChange(): void {
+    const sizeInfo = this.activeSizeInfo || { sizes: [{ name: 'Mediano', min: 1.0, max: 2.0, description: 'Mediano' }] };
+    const currentSize = sizeInfo.sizes.find((s: any) => s.name === this.selectedSizeClass) || sizeInfo.sizes[0];
+    this.characterHeight = Math.round(((currentSize.min + currentSize.max) / 2) * 100) / 100;
+    this.updateCarryingCapacity();
+  }
+
+  getMinHeight(): number {
+    const sizeInfo = this.activeSizeInfo || { sizes: [{ name: 'Mediano', min: 1.0, max: 2.0, description: 'Mediano' }] };
+    const size = sizeInfo.sizes.find((s: any) => s.name === this.selectedSizeClass) || sizeInfo.sizes[0];
+    return size ? size.min : 0.6;
+  }
+
+  getMaxHeight(): number {
+    const sizeInfo = this.activeSizeInfo || { sizes: [{ name: 'Mediano', min: 1.0, max: 2.0, description: 'Mediano' }] };
+    const size = sizeInfo.sizes.find((s: any) => s.name === this.selectedSizeClass) || sizeInfo.sizes[0];
+    return size ? size.max : 2.4;
+  }
+
+  getSizeDescription(): string {
+    const sizeInfo = this.activeSizeInfo || { sizes: [{ name: 'Mediano', min: 1.0, max: 2.0, description: 'Mediano' }] };
+    const size = sizeInfo.sizes.find((s: any) => s.name === this.selectedSizeClass) || sizeInfo.sizes[0];
+    return size ? size.description : '';
+  }
+
+  getSizeLetter(sizeName: string): string {
+    const s = (sizeName || '').toLowerCase().trim();
+    if (s === 'diminuto') return 'D';
+    if (s === 'pequeño') return 'P';
+    if (s === 'mediano') return 'M';
+    if (s === 'grande') return 'G';
+    if (s === 'enorme') return 'E';
+    if (s === 'gargantuesco') return 'Gr';
+    return 'M';
+  }
+
+  getSizeFullName(letter: string): string {
+    const l = (letter || '').trim();
+    if (l === 'D') return 'Diminuto';
+    if (l === 'P') return 'Pequeño';
+    if (l === 'M') return 'Mediano';
+    if (l === 'G') return 'Grande';
+    if (l === 'E') return 'Enorme';
+    if (l === 'Gr') return 'Gargantuesco';
+    return 'Mediano';
+  }
+
+  loadRaceSizeInfo(): void {
+    if (!this.activeOrigin || !this.activeOrigin.name) return;
+    this.gameDataService.getRaceSizeInfo(this.activeOrigin.name).subscribe(info => {
+      this.activeSizeInfo = info;
+      this.initializeBiographicalData();
+      this.cdr.detectChanges();
+    });
+  }
+
+  updateCarryingCapacity(): void {
+    const strength = this.getFinalAttributeScore('FUE');
+    const sizeClass = this.selectedSizeClass || 'Mediano';
+    const isGoliath = (this.activeOrigin?.name || '').toLowerCase().includes('goliat');
+    
+    this.gameDataService.calculateCarryingCapacity(strength, sizeClass, isGoliath).subscribe(cap => {
+      this.carryingCapacity = cap;
+      this.cdr.detectChanges();
+    });
+  }
+
+  changeAttributeMethod(method: 'array' | 'random' | 'buy'): void {
+    this.attributeMethod = method;
+    if (method === 'array') {
+      this.attributePool = [
+        { value: 15, assignedTo: 'FUE' },
+        { value: 14, assignedTo: 'DES' },
+        { value: 13, assignedTo: 'CON' },
+        { value: 12, assignedTo: 'INT' },
+        { value: 10, assignedTo: 'SAB' },
+        { value: 8, assignedTo: 'CAR' }
+      ];
+      this.syncAttributesFromPool();
+    } else if (method === 'random') {
+      this.attributePool = [];
+      this.rolledStats = Array.from({ length: 6 }, () => ({
+        dice: [1, 1, 1, 1],
+        sortedDice: [1, 1, 1, 1],
+        sum: 0,
+        rolling: false,
+        completed: false,
+        discardedIdx: -1
+      }));
+      this.activeRollIndex = 0;
+      this.isRollingAll = false;
+      this.attributes.forEach(a => a.value = 8);
+    } else if (method === 'buy') {
+      this.attributes.forEach(a => a.value = 8);
+      this.attributePointsPool = 27;
+    }
+    this.updateCarryingCapacity();
+  }
+
+  assignPoolValue(attrKey: string, poolIndex: number | string): void {
+    const idx = poolIndex === '' || poolIndex === null ? null : Number(poolIndex);
+    const prevItemIdx = this.attributePool.findIndex(item => item.assignedTo === attrKey);
+    
+    if (idx === null) {
+      if (prevItemIdx !== -1) {
+        this.attributePool[prevItemIdx].assignedTo = null;
+      }
+    } else {
+      const newAssignedAttr = this.attributePool[idx].assignedTo;
+      if (newAssignedAttr && newAssignedAttr !== attrKey) {
+        if (prevItemIdx !== -1) {
+          this.attributePool[prevItemIdx].assignedTo = newAssignedAttr;
+        } else {
+          this.attributePool[idx].assignedTo = null;
+        }
+      } else {
+        if (prevItemIdx !== -1) {
+          this.attributePool[prevItemIdx].assignedTo = null;
+        }
+      }
+      this.attributePool[idx].assignedTo = attrKey;
+    }
+    this.syncAttributesFromPool();
+    this.updateCarryingCapacity();
+  }
+
+  syncAttributesFromPool(): void {
+    this.attributes.forEach(attr => {
+      const poolItem = this.attributePool.find(item => item.assignedTo === attr.key);
+      attr.value = poolItem ? poolItem.value : 8;
+    });
+  }
+
+  modifyAttributePointBuy(key: string, amount: number): void {
+    const attr = this.attributes.find(a => a.key === key);
+    if (!attr) return;
+    
+    const currentVal = attr.value;
+    const newVal = currentVal + amount;
+    
+    if (newVal < 8 || newVal > 15) return;
+    
+    const currentCost = this.pointBuyCosts[currentVal] || 0;
+    const newCost = this.pointBuyCosts[newVal] || 0;
+    const costDiff = newCost - currentCost;
+    
+    const currentSpent = this.getPointBuyPointsSpent();
+    if (currentSpent + costDiff > 27) {
+      return;
+    }
+    
+    attr.value = newVal;
+    this.attributePointsPool = 27 - this.getPointBuyPointsSpent();
+    this.updateCarryingCapacity();
+  }
+
+  getPointBuyPointsSpent(): number {
+    let total = 0;
+    this.attributes.forEach(attr => {
+      total += this.pointBuyCosts[attr.value] || 0;
+    });
+    return total;
+  }
+
+  isAttributesSelectionValid(): boolean {
+    if (this.attributeMethod === 'buy') {
+      return this.getPointBuyPointsSpent() === 27;
+    }
+    const assignedCount = this.attributePool.filter(item => item.assignedTo !== null).length;
+    return assignedCount === 6;
+  }
+
+  getAttributePoolIndexFor(attrKey: string): number | string {
+    const idx = this.attributePool.findIndex(item => item.assignedTo === attrKey);
+    return idx === -1 ? '' : idx;
+  }
+
+  rollDiceStats(): void {
+    if (this.activeRollIndex >= 6 || this.isRollingAll) return;
+    
+    this.isRollingAll = true;
+    const currentRoll = this.rolledStats[this.activeRollIndex];
+    currentRoll.rolling = true;
+    currentRoll.completed = false;
+    
+    const interval = setInterval(() => {
+      currentRoll.dice = Array.from({ length: 4 }, () => Math.floor(Math.random() * 6) + 1);
+    }, 60);
+
+    this.gameDataService.rollSingleStat().subscribe({
+      next: (res) => {
+        setTimeout(() => {
+          clearInterval(interval);
+          
+          currentRoll.dice = res.dice;
+          currentRoll.sortedDice = res.sortedDice;
+          currentRoll.sum = res.sum;
+          currentRoll.discardedIdx = res.discardedIdx;
+          
+          currentRoll.rolling = false;
+          currentRoll.completed = true;
+          this.isRollingAll = false;
+          
+          this.attributePool.push({ value: res.sum, assignedTo: null });
+          
+          this.activeRollIndex++;
+          this.updateCarryingCapacity();
+          this.cdr.detectChanges();
+        }, 1000);
+      },
+      error: (err) => {
+        clearInterval(interval);
+        currentRoll.rolling = false;
+        this.isRollingAll = false;
+        alert('Error al lanzar los dados en el servidor.');
+      }
+    });
+  }
+
+  getDiscardedIdx(rollIndex: number): number {
+    const roll = this.rolledStats[rollIndex];
+    return roll ? roll.discardedIdx : -1;
+  }
+
+  getDiscardedDieValue(rollIndex: number): number {
+    const roll = this.rolledStats[rollIndex];
+    if (!roll || roll.discardedIdx === undefined || roll.discardedIdx === -1) return 0;
+    return roll.dice[roll.discardedIdx] || 0;
+  }
 }

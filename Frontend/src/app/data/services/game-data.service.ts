@@ -57,4 +57,16 @@ export class GameDataService {
   getOrigins(): Observable<DndOrigin[]> {
     return this.http.get<DndOrigin[]>(`${this.apiUrl}/origins`);
   }
+
+  getRaceSizeInfo(raceName: string): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/game-rules/sizes?raceName=${encodeURIComponent(raceName)}`);
+  }
+
+  calculateCarryingCapacity(strength: number, sizeClass: string, isGoliath: boolean): Observable<any> {
+    return this.http.post<any>(`http://localhost:3000/game-rules/carrying-capacity`, { strength, sizeClass, isGoliath });
+  }
+
+  rollSingleStat(): Observable<any> {
+    return this.http.post<any>(`http://localhost:3000/game-rules/roll-dice`, {});
+  }
 }
