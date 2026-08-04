@@ -1,9 +1,11 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { forkJoin, tap, combineLatest } from 'rxjs';
 import { GameDataService, DndClass, DndOrigin, DndBackground } from '../../data/services/game-data.service';
+import { CharacterService, Character } from '../../data/services/character.service';
+import { AuthService } from '../../data/services/auth.service';
 
 interface Attribute {
   name: string;
@@ -1887,6 +1889,37 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <h3 class="text-sm font-serif font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-900 pb-2 flex items-center gap-2">
               <span>✍️</span> Detalles de la Leyenda y Aspecto
             </h3>
+
+            <!-- Nombre del Aventurero y Nivel Inicial -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-4 border-b border-neutral-900/60">
+              <div class="space-y-2">
+                <label class="text-[10px] text-neutral-455 uppercase font-bold tracking-wider block">Nombre del Aventurero <span class="text-red-500">*</span></label>
+                <input
+                  type="text"
+                  [(ngModel)]="characterName"
+                  placeholder="Escribe el nombre de tu aventurero..."
+                  class="w-full bg-[#0e0e11] border border-neutral-850 hover:border-neutral-750 focus:border-[#d4af37]/50 focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold"
+                />
+                <span *ngIf="!characterName.trim()" class="text-[9px] text-amber-500/80 italic block">
+                  * El nombre es obligatorio para registrar al aventurero.
+                </span>
+              </div>
+              
+              <div class="space-y-2">
+                <label class="text-[10px] text-neutral-455 uppercase font-bold tracking-wider block">Nivel Inicial de Aventura (1 - 20)</label>
+                <select
+                  [(ngModel)]="characterLevel"
+                  class="w-full bg-[#0e0e11] border border-neutral-850 hover:border-neutral-750 focus:border-[#d4af37]/50 focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                >
+                  <option *ngFor="let lvl of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [value]="lvl">
+                    Nivel {{ lvl }}
+                  </option>
+                </select>
+                <span class="text-[9px] text-neutral-500 italic block">
+                  Elige un nivel superior si la campaña comienza en un rango más alto.
+                </span>
+              </div>
+            </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <!-- Historia de Origen -->
@@ -2036,10 +2069,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </div>
 
           <!-- Advertencia de campos incompletos -->
-          <div *ngIf="!characterHistory.trim() || !characterPhysicalDesc.trim()" class="bg-red-955/10 border border-red-800/40 p-4 rounded-xl text-left relative z-10 flex items-center gap-3">
+          <div *ngIf="!characterName.trim() || !characterHistory.trim() || !characterPhysicalDesc.trim()" class="bg-red-955/10 border border-red-800/40 p-4 rounded-xl text-left relative z-10 flex items-center gap-3">
             <span class="text-xl">⚠️</span>
             <div class="text-xs text-red-300 leading-relaxed font-light">
-              Debes rellenar la <strong class="text-red-200">Historia de Origen</strong> y la <strong class="text-red-200">Apariencia Física</strong> antes de poder registrar a tu aventurero en la campaña.
+              Debes rellenar el <strong class="text-red-200">Nombre del Aventurero</strong>, la <strong class="text-red-200">Historia de Origen</strong> y la <strong class="text-red-200">Apariencia Física</strong> antes de poder registrar a tu aventurero en la campaña.
             </div>
           </div>
 
@@ -2053,7 +2086,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </button>
             <button 
               (click)="saveCharacter()"
-              [disabled]="!characterHistory.trim() || !characterPhysicalDesc.trim()"
+              [disabled]="!characterName.trim() || !characterHistory.trim() || !characterPhysicalDesc.trim()"
               class="w-full sm:w-2/3 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg text-sm border-t border-red-500/20 font-serif cursor-pointer transition duration-300 uppercase tracking-widest shadow-xl hover:shadow-[0_0_25px_rgba(239,68,68,0.4)]"
             >
               Registrar Personaje en la Campaña
@@ -2369,16 +2402,16 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <div class="space-y-0.5">
                     <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block">PG Máximos</span>
                     <span class="text-lg font-bold text-neutral-200 font-mono">
-                      {{ getHitDieValue() + getFinalModifierValue('CON') }}
+                      {{ calculateMaxHp() }}
                     </span>
-                    <span class="text-[8px] text-neutral-600 block">Dado: 1d{{ getHitDieValue() }} + Con</span>
+                    <span class="text-[8px] text-neutral-600 block">Nivel {{ characterLevel }} • Con: {{ getFinalModifier('CON') }}</span>
                   </div>
                   <div class="space-y-0.5">
                     <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block">Dado de Golpe</span>
                     <span class="text-sm font-bold text-[#d4af37] font-mono mt-1 block">
-                      1d{{ getHitDieValue() }}
+                      {{ characterLevel }}d{{ getHitDieValue() }}
                     </span>
-                    <span class="text-[8px] text-neutral-600 block">Nivel 1</span>
+                    <span class="text-[8px] text-neutral-600 block">Dado Clase</span>
                   </div>
                 </div>
 
@@ -2832,6 +2865,10 @@ export class CharacterCreatorComponent implements OnInit {
   // Servicios Inyectados
   private gameDataService = inject(GameDataService);
   private cdr = inject(ChangeDetectorRef);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private characterService = inject(CharacterService);
+  private authService = inject(AuthService);
 
   // Datos Dinámicos de la BD
   classes: DndClass[] = [];
@@ -2844,7 +2881,9 @@ export class CharacterCreatorComponent implements OnInit {
   // Estado de la Vista Previa de la Ficha
   showPreview = false;
   previewTab = 1;
-  characterName = 'Héroe de la Forja';
+  characterId: string | null = null;
+  characterLevel = 1;
+  characterName = '';
   characterSubclass = '';
   characterHistory = '';
   characterPhysicalDesc = '';
@@ -3063,6 +3102,12 @@ export class CharacterCreatorComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const editId = params['edit'];
+      if (editId) {
+        this.characterId = editId;
+      }
+    });
     this.loadGameData();
   }
 
@@ -3155,7 +3200,12 @@ export class CharacterCreatorComponent implements OnInit {
 
         this.debugStatus = 'Carga completa.';
         this.loading = false;
-        this.cdr.detectChanges();
+        
+        if (this.characterId) {
+          this.loadCharacterForEdit(this.characterId);
+        } else {
+          this.cdr.detectChanges();
+        }
       },
       error: (err) => {
         console.error('Error general cargando los datos de juego:', err);
@@ -3559,30 +3609,204 @@ export class CharacterCreatorComponent implements OnInit {
     this.characterPhysicalDesc = '';
     this.characterHeight = 0;
     this.selectedSizeClass = '';
+    this.characterId = null;
+    this.characterLevel = 1;
+    this.characterName = '';
+  }
+
+  loadCharacterForEdit(id: string): void {
+    this.characterService.getCharacterById(id).subscribe({
+      next: (char) => {
+        this.characterName = char.name;
+        this.characterLevel = char.level;
+        this.characterHistory = char.history;
+        this.characterPhysicalDesc = char.physicalDesc;
+        this.characterHeight = char.height;
+        this.selectedSizeClass = char.sizeClass;
+
+        // Find and select Class
+        const classIdx = this.classes.findIndex(c => c.name === char.class);
+        if (classIdx !== -1) {
+          this.selectedClassIdx = classIdx;
+          this.classChosen = true;
+        }
+
+        // Find and select Background
+        const bgIdx = this.backgrounds.findIndex(b => b.name === char.background);
+        if (bgIdx !== -1) {
+          this.selectedBackgroundIdx = bgIdx;
+          this.backgroundChosen = true;
+        }
+
+        // Find and select Origin
+        const originIdx = this.origins.findIndex(o => o.name === char.race);
+        if (originIdx !== -1) {
+          this.selectedOriginIdx = originIdx;
+          this.originChosen = true;
+        }
+
+        this.selectedOriginLineage = char.originLineage || '';
+
+        // Restore Attributes
+        if (char.baseStats) {
+          this.attributes.forEach(a => {
+            const keyMap: { [key: string]: keyof typeof char.baseStats } = {
+              'FUE': 'strength',
+              'DES': 'dexterity',
+              'CON': 'constitution',
+              'INT': 'intelligence',
+              'SAB': 'wisdom',
+              'CAR': 'charisma'
+            };
+            const mappedKey = keyMap[a.key];
+            if (mappedKey && char.baseStats[mappedKey] !== undefined) {
+              a.value = char.baseStats[mappedKey];
+            }
+          });
+        }
+
+        // Restore Background Stats Allocation
+        if (char.backgroundStatsAllocation) {
+          const keyMap: { [key: string]: keyof typeof char.backgroundStatsAllocation } = {
+            'FUE': 'strength',
+            'DES': 'dexterity',
+            'CON': 'constitution',
+            'INT': 'intelligence',
+            'SAB': 'wisdom',
+            'CAR': 'charisma'
+          };
+          Object.keys(this.backgroundStatsAllocation).forEach((key) => {
+            const mappedKey = keyMap[key];
+            if (mappedKey && char.backgroundStatsAllocation[mappedKey] !== undefined) {
+              this.backgroundStatsAllocation[key as any] = char.backgroundStatsAllocation[mappedKey];
+            }
+          });
+        }
+
+        // Restore skills selection
+        this.selectedClassSkills = [...char.classSkills];
+        this.skilledFeatSelection = char.skilledFeatSelection ? [...char.skilledFeatSelection] : [];
+
+        // Equipment options
+        this.equipmentChosen = true;
+        this.selectedEquipmentOption = 'A';
+        this.selectedBgEquipmentOption = 'A';
+
+        // Go directly to step 6 (Summary)
+        this.currentStep = 6;
+        this.updateCarryingCapacity();
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error('Error loading character for edit:', err);
+        alert('No se pudo cargar el personaje para editar.');
+      }
+    });
+  }
+
+  calculateMaxHp(): number {
+    const hitDie = this.getHitDieValue();
+    const conMod = this.getFinalModifierValue('CON');
+    const level = this.characterLevel || 1;
+    
+    let baseHp = hitDie + conMod;
+    if (level > 1) {
+      const avgHitDie = Math.floor(hitDie / 2) + 1;
+      baseHp += (avgHitDie + conMod) * (level - 1);
+    }
+    
+    // Bonificadores adicionales
+    const isDwarf = (this.activeOrigin?.name || '').toLowerCase().includes('enano');
+    if (isDwarf) {
+      baseHp += level;
+    }
+    
+    const hasTough = (this.activeBackground?.keyFeat || '').toLowerCase().includes('duro');
+    if (hasTough) {
+      baseHp += 2 * level;
+    }
+    
+    return baseHp;
   }
 
   saveCharacter(): void {
-    const finalStats = this.attributes.map(a => ({
-      name: a.name,
-      value: this.getFinalAttributeScore(a.key)
-    }));
-    console.log('Guardando personaje forjado:', {
-      nombre: this.characterName,
-      clase: this.activeClass.name,
-      trasfondo: this.activeBackground.name,
-      origen: this.activeOrigin.name,
-      linaje: this.selectedOriginLineage,
-      atributos: finalStats,
-      habilidadesClase: this.selectedClassSkills,
-      doteHabilidosoSeleccion: this.hasSkilledFeat() ? this.skilledFeatSelection : [],
-      historia: this.characterHistory,
-      descripcionFisica: this.characterPhysicalDesc,
-      altura: this.characterHeight + ' m',
-      tamaño: this.selectedSizeClass
-    });
-    const originDisplayName = this.selectedOriginLineage ? `${this.activeOrigin.name} (${this.selectedOriginLineage})` : this.activeOrigin.name;
-    alert(`¡Felicidades! Tu aventurero (${this.characterName || 'Héroe'} - ${this.activeClass.name} ${originDisplayName}, Trasfondo: ${this.activeBackground.name}, Altura: ${this.characterHeight} m) ha sido registrado en la mesa de juego.`);
-    this.restartCreator();
+    const userId = this.authService.currentUser()?.id || (this.authService.currentUser() as any)?._id || '';
+    if (!userId) {
+      alert('Debes iniciar sesión para guardar un personaje.');
+      return;
+    }
+
+    const finalStatsObj = {
+      strength: this.getFinalAttributeScore('FUE'),
+      dexterity: this.getFinalAttributeScore('DES'),
+      constitution: this.getFinalAttributeScore('CON'),
+      intelligence: this.getFinalAttributeScore('INT'),
+      wisdom: this.getFinalAttributeScore('SAB'),
+      charisma: this.getFinalAttributeScore('CAR'),
+    };
+
+    const baseStatsObj = {
+      strength: this.attributes.find(a => a.key === 'FUE')?.value || 8,
+      dexterity: this.attributes.find(a => a.key === 'DES')?.value || 8,
+      constitution: this.attributes.find(a => a.key === 'CON')?.value || 8,
+      intelligence: this.attributes.find(a => a.key === 'INT')?.value || 8,
+      wisdom: this.attributes.find(a => a.key === 'SAB')?.value || 8,
+      charisma: this.attributes.find(a => a.key === 'CAR')?.value || 8,
+    };
+
+    const backgroundStatsAllocationObj = {
+      strength: this.backgroundStatsAllocation['FUE'] || 0,
+      dexterity: this.backgroundStatsAllocation['DES'] || 0,
+      constitution: this.backgroundStatsAllocation['CON'] || 0,
+      intelligence: this.backgroundStatsAllocation['INT'] || 0,
+      wisdom: this.backgroundStatsAllocation['SAB'] || 0,
+      charisma: this.backgroundStatsAllocation['CAR'] || 0,
+    };
+
+    const characterData: Character = {
+      userId,
+      name: this.characterName,
+      class: this.activeClass.name,
+      race: this.activeOrigin.name,
+      level: Number(this.characterLevel),
+      avatar: '', 
+      hp: this.calculateMaxHp(),
+      stats: finalStatsObj,
+      baseStats: baseStatsObj,
+      backgroundStatsAllocation: backgroundStatsAllocationObj,
+      background: this.activeBackground.name,
+      originLineage: this.selectedOriginLineage || undefined,
+      classSkills: this.selectedClassSkills,
+      skilledFeatSelection: this.hasSkilledFeat() ? this.skilledFeatSelection : undefined,
+      history: this.characterHistory,
+      physicalDesc: this.characterPhysicalDesc,
+      height: this.characterHeight,
+      sizeClass: this.selectedSizeClass,
+    };
+
+    if (this.characterId) {
+      this.characterService.updateCharacter(this.characterId, characterData).subscribe({
+        next: (res) => {
+          alert(`¡Personaje ${res.name} actualizado con éxito!`);
+          this.router.navigate(['/dashboard']);
+        },
+        error: (err) => {
+          console.error(err);
+          alert('Error al actualizar el personaje: ' + (err.error?.message || err.message));
+        }
+      });
+    } else {
+      this.characterService.createCharacter(characterData).subscribe({
+        next: (res) => {
+          alert(`¡Personaje ${res.name} forjado y guardado con éxito!`);
+          this.router.navigate(['/dashboard']);
+        },
+        error: (err) => {
+          console.error(err);
+          alert('Error al crear el personaje: ' + (err.error?.message || err.message));
+        }
+      });
+    }
   }
 
   // Métodos de cálculo de atributos y habilidades para la Vista Previa

@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/character-creator/character-creator.component').then(m => m.CharacterCreatorComponent)
   },
   {
+    path: 'character-sheet/:id',
+    loadComponent: () => import('./features/character-sheet/character-sheet.component').then(m => m.CharacterSheetComponent)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'

@@ -1,3 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
-
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;750;900&family=Inter:wght@300;400;550;700&display=swap');
 @import 'tailwindcss';
+
+@media print {
+  /* Hides web-specific layouts like navigation bars and footers */
+  app-navbar,
+  app-footer,
+  .no-print,
+  header,
+  footer {
+    display: none !important;
+  }
+
+  /* Reset layout borders and backgrounds for standard paper style */
+  body, html, .min-h-screen {
+    background: white !important;
+    background-color: white !important;
+    color: black !important;
+  }
+
+  /* Disable scrollbars globally in print mode */
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
+  * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  /* Make sure container overlays and tables expand fully horizontally */
+  .overflow-x-auto,
+  .overflow-y-auto,
+  .custom-scrollbar {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  table {
+    width: 100% !important;
+    table-layout: auto !important;
+  }
+}
+
+/* Transición para el acordeón de rasgos */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+.accordion-content.expanded {
+  max-height: 500px; /* Suficiente para descripciones largas */
+  transition: max-height 0.3s ease-in, padding 0.3s ease-in;
+}
+.accordion-arrow {
+  transition: transform 0.2s ease-in-out;
+}
+.accordion-arrow.rotated {
+  transform: rotate(90deg);
+}

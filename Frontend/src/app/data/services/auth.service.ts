@@ -49,6 +49,9 @@ export class AuthService {
   login(email: string, password: string): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { email, password }).pipe(
       tap((res) => {
+        if (res.user && !res.user.id && (res.user as any)._id) {
+          res.user.id = (res.user as any)._id;
+        }
         localStorage.setItem('adventure_token', res.token);
         localStorage.setItem('adventure_user', JSON.stringify(res.user));
         this.userSignal.set(res.user);
@@ -69,6 +72,9 @@ export class AuthService {
     if (token && userStr) {
       try {
         const user = JSON.parse(userStr) as User;
+        if (user && !user.id && (user as any)._id) {
+          user.id = (user as any)._id;
+        }
         this.userSignal.set(user);
       } catch (e) {
         this.logout();
