@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { ClassMongooseEntity, ClassSchemaName } from './class.schema';
 import { BackgroundMongooseEntity, BackgroundSchemaName } from './background.schema';
 import { OriginMongooseEntity, OriginSchemaName } from './origin.schema';
+import { RaceMongooseEntity, RaceSchemaName } from './race.schema';
 
 @Injectable()
 export class GameDataSeeder implements OnApplicationBootstrap {
@@ -13,6 +14,7 @@ export class GameDataSeeder implements OnApplicationBootstrap {
     @InjectModel(ClassSchemaName) private readonly classModel: Model<ClassMongooseEntity>,
     @InjectModel(BackgroundSchemaName) private readonly backgroundModel: Model<BackgroundMongooseEntity>,
     @InjectModel(OriginSchemaName) private readonly originModel: Model<OriginMongooseEntity>,
+    @InjectModel(RaceSchemaName) private readonly raceModel: Model<RaceMongooseEntity>,
   ) {}
 
   async onApplicationBootstrap() {
@@ -21,6 +23,7 @@ export class GameDataSeeder implements OnApplicationBootstrap {
       await this.seedClasses();
       await this.seedBackgrounds();
       await this.seedOrigins();
+      await this.seedRaces();
       this.logger.log('Verificación de siembra de datos de juego completada con éxito.');
     } catch (error) {
       this.logger.error('Error durante la siembra de datos de juego:', error);
@@ -490,5 +493,134 @@ export class GameDataSeeder implements OnApplicationBootstrap {
     ];
     await this.originModel.insertMany(origins);
     this.logger.log('¡10 Orígenes sembrados correctamente en MongoDB!');
+  }
+
+  private async seedRaces() {
+    const count = await this.raceModel.countDocuments();
+    if (count > 0) {
+      if (count < 10) {
+        await this.raceModel.deleteMany({});
+        this.logger.log('Reiniciando razas para sembrar los nuevos linajes (10 en total)...');
+      } else {
+        this.logger.log('Las razas de D&D ya se encuentran sembradas.');
+        return;
+      }
+    }
+
+    this.logger.log('Sembrando 10 razas en la base de datos...');
+    const races = [
+      {
+        name: 'Humano',
+        icon: '👤',
+        bonus: '+1 a todas las puntuaciones',
+        speed: '30 pies (9m)',
+        language: 'Común y un idioma extra',
+        trait: 'Versatilidad Humana (Competencias extra).',
+        image: 'Humano.png',
+        description: 'Los humanos son los más adaptables y diversos de todos los pueblos. No tienen una inclinación extrema hacia la magia o la fuerza, sino que destacan en todas las disciplinas por su inmensa ambición y resiliencia.',
+        statModifiers: { FUE: 1, DES: 1, CON: 1, INT: 1, SAB: 1, CAR: 1 }
+      },
+      {
+        name: 'Elfo',
+        icon: '🧝',
+        bonus: '+2 Destreza, +1 Inteligencia',
+        speed: '30 pies (9m)',
+        language: 'Común y Élfico',
+        trait: 'Ancestros Feéricos (Inmunidad al sueño mágico, ventaja contra encantamientos).',
+        image: 'Elfo.png',
+        description: 'Seres mágicos de gracia sobrenatural, los elfos viven en comunión con la naturaleza y la magia antigua. Tienen vidas extremadamente largas y dominan el tiro con arco, la agilidad y las artes arcanas.',
+        statModifiers: { FUE: 0, DES: 2, CON: 0, INT: 1, SAB: 0, CAR: 0 }
+      },
+      {
+        name: 'Enano',
+        icon: '🧔',
+        bonus: '+2 Constitución, +1 Fuerza',
+        speed: '25 pies (7.5m)',
+        language: 'Común y Enano',
+        trait: 'Resistencia Enana (Resistencia al daño por veneno).',
+        image: 'Enano.png',
+        description: 'Fuertes, tenaces y orgullosos, los enanos son conocidos por su destreza en la herrería, su maestría con las hachas y su resistencia inquebrantable a las adversidades físicas.',
+        statModifiers: { FUE: 1, DES: 0, CON: 2, INT: 0, SAB: 0, CAR: 0 }
+      },
+      {
+        name: 'Mediano',
+        icon: '🍀',
+        bonus: '+2 Destreza, +1 Carisma',
+        speed: '25 pies (7.5m)',
+        language: 'Común y Mediano',
+        trait: 'Afortunado (Puedes repetir un 1 natural en dados de d20).',
+        image: 'Mediano.png',
+        description: 'Los medianos prefieren una vida tranquila, pero su tamaño pequeño, agilidad innata y sorprendente suerte los convierte en increíbles pícaros y aventureros.',
+        statModifiers: { FUE: 0, DES: 2, CON: 0, INT: 0, SAB: 0, CAR: 1 }
+      },
+      {
+        name: 'Dracónido',
+        icon: '🐲',
+        bonus: '+2 Fuerza, +1 Carisma',
+        speed: '30 pies (9m)',
+        language: 'Común y Dracónico',
+        trait: 'Arma de Aliento (Exhalas energía elemental destructiva de dragón).',
+        image: 'Draconidos.png',
+        description: 'Orgullosos descendientes de los dragones, caminan con honor. Poseen escamas gruesas que resisten un elemento y exhalan aliento elemental destructivo.',
+        statModifiers: { FUE: 2, DES: 0, CON: 0, INT: 0, SAB: 0, CAR: 1 }
+      },
+      {
+        name: 'Tiflin',
+        icon: '😈',
+        bonus: '+2 Carisma, +1 Inteligencia',
+        speed: '30 pies (9m)',
+        language: 'Común e Infernal',
+        trait: 'Resistencia Elemental (Resistente al fuego) y Magia Innata.',
+        image: 'Tiefling.png',
+        description: 'Portadores de un linaje infernal antiguo debido a pactos pasados en sus familias. Son astutos, carismáticos y poseen un control innato sobre la magia de las sombras.',
+        statModifiers: { FUE: 0, DES: 0, CON: 0, INT: 1, SAB: 0, CAR: 2 }
+      },
+      {
+        name: 'Gnomo',
+        icon: '🧙',
+        bonus: '+2 Inteligencia, +1 Destreza',
+        speed: '30 pies (9m)',
+        language: 'Común y Gnomo',
+        trait: 'Astucia Gnoma (Ventaja en tiradas de salvación de Inteligencia, Sabiduría y Carisma).',
+        image: 'Gnomo.png',
+        description: 'Los gnomos son un pueblo mágico creado por los dioses de la inventiva, las ilusiones y la vida en el subsuelo. Destacan por su ingenio técnico y su agudeza mental.',
+        statModifiers: { FUE: 0, DES: 1, CON: 0, INT: 2, SAB: 0, CAR: 0 }
+      },
+      {
+        name: 'Goliat',
+        icon: '🏔️',
+        bonus: '+2 Fuerza, +1 Constitución',
+        speed: '35 pies (10.5m)',
+        language: 'Común y Gigante',
+        trait: 'Constitución Poderosa (Ventaja en salvaciones contra agarre, doble capacidad de carga).',
+        image: 'Goliath.png',
+        description: 'Los goliats son descendientes lejanos de los gigantes y sobrepasan en altura a la mayoría de especies. Poseen una increíble resistencia física y la herencia elemental de los gigantes.',
+        statModifiers: { FUE: 2, DES: 0, CON: 1, INT: 0, SAB: 0, CAR: 0 }
+      },
+      {
+        name: 'Orco',
+        icon: '🐗',
+        bonus: '+2 Fuerza, +1 Constitución',
+        speed: '30 pies (9m)',
+        language: 'Común y Orco',
+        trait: 'Aguante Incansable (Cuando caes a 0 HP, te recuperas a 1 HP de forma gratuita).',
+        image: 'Orco.png',
+        description: 'Fuertes y corpulentos, los orcos son guerreros natos que poseen una vitalidad incansable y ráfagas de adrenalina que les permiten arremeter con fiereza en el fragor de la batalla.',
+        statModifiers: { FUE: 2, DES: 0, CON: 1, INT: 0, SAB: 0, CAR: 0 }
+      },
+      {
+        name: 'Aasimar',
+        icon: '👼',
+        bonus: '+2 Carisma, +1 Sabiduría',
+        speed: '30 pies (9m)',
+        language: 'Común y Celestial',
+        trait: 'Manos Curativas, Resistencia Celestial (Daño Necrótico y Radiante) y Revelación Celestial.',
+        image: 'Aasimar.png',
+        description: 'Los aasimars son mortales cuyas almas albergan una chispa de los Planos Superiores. Descendientes de ángeles o bendecidos por poderes divinos, pueden canalizar su herencia celestial para sanar o desatar la revelación celestial.',
+        statModifiers: { FUE: 0, DES: 0, CON: 0, INT: 0, SAB: 1, CAR: 2 }
+      }
+    ];
+    await this.raceModel.insertMany(races);
+    this.logger.log('¡10 Razas sembradas correctamente en MongoDB!');
   }
 }
