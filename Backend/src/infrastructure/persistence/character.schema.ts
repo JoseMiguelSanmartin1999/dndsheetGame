@@ -62,11 +62,32 @@ export class CharacterMongooseEntity {
   @Prop({ required: false })
   originLineage?: string;
 
+  @Prop({ required: false })
+  subclass?: string;
+
   @Prop({ type: [String], required: true, default: [] })
   classSkills: string[];
 
   @Prop({ type: [String], required: false, default: [] })
   skilledFeatSelection?: string[];
+
+  @Prop({ type: [String], required: false, default: [] })
+  preparedSpells?: string[];
+
+  @Prop({ type: [String], required: false, default: [] })
+  warlockInvocations?: string[];
+
+  @Prop({ required: false })
+  clericDivineOrder?: string;
+
+  @Prop({ required: false })
+  druidPrimalOrder?: string;
+
+  @Prop({ required: false })
+  rangerFeyGift?: string;
+
+  @Prop({ required: false })
+  rangerPrimalCompanion?: string;
 
   @Prop({ required: false, default: '' })
   history: string;
@@ -79,6 +100,9 @@ export class CharacterMongooseEntity {
 
   @Prop({ required: true })
   sizeClass: string;
+
+  @Prop({ required: false, default: '' })
+  personalNotes?: string;
 }
 
 export const CharacterSchema = SchemaFactory.createForClass(CharacterMongooseEntity);
