@@ -37,12 +37,20 @@ export interface Character {
   };
   background: string;
   originLineage?: string;
+  subclass?: string;
   classSkills: string[];
   skilledFeatSelection?: string[];
+  preparedSpells?: string[];
+  warlockInvocations?: string[];
+  clericDivineOrder?: string;
+  druidPrimalOrder?: string;
+  rangerFeyGift?: string;
+  rangerPrimalCompanion?: string;
   history: string;
   physicalDesc: string;
   height: number;
   sizeClass: string;
+  personalNotes?: string;
   createdAt?: string;
 }
 
