@@ -941,6 +941,265 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 </div>
               </div>
 
+              <!-- Configuración de Hechizos del Paladín (D&D 2024) -->
+              <div *ngIf="isPaladin()" class="space-y-4 md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl animate-fade-in text-left">
+                <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5 shrink-0">
+                  <span class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">🛡️ Hechizos de Paladín</span>
+                  <span class="text-[8px] text-neutral-500 italic block mt-0.5">
+                    * Modificar el nivel ajustará el límite de conjuros preparados.
+                  </span>
+                </div>
+
+                <p class="text-[9px] text-neutral-455 leading-normal font-light font-sans pt-2">
+                  De acuerdo con las reglas de D&D 2024, a nivel {{ characterLevel }} preparas exactamente **{{ getPaladinSpellsLimit() }} conjuros** de nivel inferior o igual a **{{ getPaladinMaxSpellLevel() }}**:
+                </p>
+
+                <!-- Selección de Conjuros -->
+                <div class="space-y-2 pt-2 border-t border-neutral-900">
+                  <div class="flex justify-between items-center">
+                    <span class="text-[9px] uppercase font-bold text-neutral-355 tracking-wider">Conjuros Preparados (Elige exactamente {{ getPaladinSpellsLimit() }}):</span>
+                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedPaladinSpells.length }} / {{ getPaladinSpellsLimit() }}</span>
+                  </div>
+                  
+                  <div class="grid grid-cols-1 gap-3 max-h-[250px] overflow-y-auto pr-1 custom-scrollbar">
+                    <div *ngFor="let lvl of getPaladinAvailableSpellLevels()" class="space-y-1.5">
+                      <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
+                      
+                      <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+                        <div 
+                          *ngFor="let spell of getPaladinSpellsForLevel(lvl)"
+                          class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
+                          [ngClass]="selectedPaladinSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                        >
+                          <input 
+                            type="checkbox"
+                            [checked]="selectedPaladinSpells.includes(spell.name)"
+                            (change)="togglePaladinSpell(spell.name)"
+                            [disabled]="!selectedPaladinSpells.includes(spell.name) && selectedPaladinSpells.length >= getPaladinSpellsLimit()"
+                            class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
+                          />
+                          <div class="text-[8.5px] leading-snug w-full h-full" (click)="togglePaladinSpell(spell.name)">
+                            <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                            <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Configuración de Hechizos y Metamagia del Hechicero (D&D 2024) -->
+              <div *ngIf="isSorcerer()" class="space-y-4 md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl text-left animate-fade-in">
+                <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5 shrink-0">
+                  <span class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">✨ Hechizos y Metamagia del Hechicero</span>
+                  <span class="text-[8px] bg-amber-955/20 border border-amber-600/30 px-2 py-0.5 rounded text-amber-500 font-mono font-bold select-none">
+                    Nivel {{ characterLevel }}
+                  </span>
+                </div>
+
+                <!-- Selector de Nivel Inicial -->
+                <div class="space-y-1 bg-amber-955/10 border border-amber-500/20 p-2.5 rounded-lg">
+                  <label class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Establecer Nivel de Hechicero:</label>
+                  <select
+                    [(ngModel)]="characterLevel"
+                    (change)="onLevelChange()"
+                    class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold cursor-pointer"
+                  >
+                    <option *ngFor="let lvl of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [value]="lvl">
+                      Nivel {{ lvl }}
+                    </option>
+                  </select>
+                  <span class="text-[8px] text-neutral-500 italic block mt-0.5">
+                    * Modificar el nivel ajustará el límite de trucos, conjuros preparados y opciones de metamagia.
+                  </span>
+                </div>
+
+                <p class="text-[9px] text-neutral-400 leading-normal font-light font-sans">
+                  A nivel {{ characterLevel }} preparas exactamente **{{ getSorcererCantripsLimit() }} trucos**, **{{ getSorcererSpellsLimit() }} conjuros** de nivel inferior o igual a **{{ getSorcererMaxSpellLevel() }}**, y seleccionas **{{ getSorcererMetamagicLimit() }} opción(es) de Metamagia**:
+                </p>
+
+                <!-- Selección de Trucos (Cantrips) -->
+                <div class="space-y-2 pt-2 border-t border-neutral-900">
+                  <div class="flex justify-between items-center">
+                    <span class="text-[9px] uppercase font-bold text-neutral-350 tracking-wider">Trucos de Hechicero (Elige exactamente {{ getSorcererCantripsLimit() }}):</span>
+                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedSorcererCantrips.length }} / {{ getSorcererCantripsLimit() }}</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5 max-h-[140px] overflow-y-auto pr-1 custom-scrollbar">
+                    <div 
+                      *ngFor="let cantrip of getSorcererCantrips()"
+                      class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
+                      [ngClass]="selectedSorcererCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                    >
+                      <input 
+                        type="checkbox"
+                        [checked]="selectedSorcererCantrips.includes(cantrip.name)"
+                        (change)="toggleSorcererCantrip(cantrip.name)"
+                        [disabled]="!selectedSorcererCantrips.includes(cantrip.name) && selectedSorcererCantrips.length >= getSorcererCantripsLimit()"
+                        class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
+                      />
+                      <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleSorcererCantrip(cantrip.name)">
+                        <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
+                        <span class="text-neutral-400 text-[8px] font-light">{{ cantrip.desc }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Selección de Conjuros -->
+                <div class="space-y-2 pt-2 border-t border-neutral-900">
+                  <div class="flex justify-between items-center">
+                    <span class="text-[9px] uppercase font-bold text-neutral-355 tracking-wider">Conjuros Preparados (Elige exactamente {{ getSorcererSpellsLimit() }}):</span>
+                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedSorcererSpells.length }} / {{ getSorcererSpellsLimit() }}</span>
+                  </div>
+                  
+                  <div class="grid grid-cols-1 gap-3 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
+                    <div *ngFor="let lvl of getAvailableSpellLevelsForSorcerer()" class="space-y-1.5">
+                      <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
+                      
+                      <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+                        <div 
+                          *ngFor="let spell of getSorcererSpellsForLevel(lvl)"
+                          class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
+                          [ngClass]="selectedSorcererSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                        >
+                          <input 
+                            type="checkbox"
+                            [checked]="selectedSorcererSpells.includes(spell.name)"
+                            (change)="toggleSorcererSpell(spell.name)"
+                            [disabled]="!selectedSorcererSpells.includes(spell.name) && selectedSorcererSpells.length >= getSorcererSpellsLimit()"
+                            class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
+                          />
+                          <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleSorcererSpell(spell.name)">
+                            <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                            <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Selección de Metamagia (Nivel 2+) -->
+                <div *ngIf="characterLevel >= 2" class="space-y-2 pt-2 border-t border-neutral-900">
+                  <div class="flex justify-between items-center">
+                    <span class="text-[9px] uppercase font-bold text-[#d4af37] tracking-wider">Metamagia (Elige exactamente {{ getSorcererMetamagicLimit() }}):</span>
+                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedSorcererMetamagic.length }} / {{ getSorcererMetamagicLimit() }}</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5 max-h-[180px] overflow-y-auto pr-1 custom-scrollbar">
+                    <div 
+                      *ngFor="let meta of sorcererMetamagicList"
+                      class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
+                      [ngClass]="selectedSorcererMetamagic.includes(meta.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                    >
+                      <input 
+                        type="checkbox"
+                        [checked]="selectedSorcererMetamagic.includes(meta.name)"
+                        (change)="toggleSorcererMetamagic(meta.name)"
+                        [disabled]="!selectedSorcererMetamagic.includes(meta.name) && selectedSorcererMetamagic.length >= getSorcererMetamagicLimit()"
+                        class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
+                      />
+                      <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleSorcererMetamagic(meta.name)">
+                        <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ meta.name }} (Coste: {{ meta.cost }} po)</strong>
+                        <span class="text-neutral-400 text-[8px] font-light">{{ meta.desc }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Configuración de Hechizos del Mago (D&D 2024) -->
+              <div *ngIf="isMago()" class="space-y-4 md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl text-left animate-fade-in">
+                <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5 shrink-0">
+                  <span class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">📖 Libro de Conjuros del Mago (D&D 2024)</span>
+                  <span class="text-[8px] bg-amber-955/20 border border-amber-600/30 px-2 py-0.5 rounded text-amber-500 font-mono font-bold select-none">
+                    Nivel {{ characterLevel }}
+                  </span>
+                </div>
+
+                <!-- Selector de Nivel Inicial -->
+                <div class="space-y-1 bg-amber-955/10 border border-amber-500/20 p-2.5 rounded-lg">
+                  <label class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Establecer Nivel de Mago:</label>
+                  <select
+                    [(ngModel)]="characterLevel"
+                    (change)="onLevelChange()"
+                    class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold cursor-pointer"
+                  >
+                    <option *ngFor="let lvl of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [value]="lvl">
+                      Nivel {{ lvl }}
+                    </option>
+                  </select>
+                  <span class="text-[8px] text-neutral-500 italic block mt-0.5">
+                    * Modificar el nivel ajustará el límite de trucos y conjuros en tu Libro de Conjuros.
+                  </span>
+                </div>
+
+                <p class="text-[9px] text-neutral-400 leading-normal font-light font-sans">
+                  A nivel {{ characterLevel }} tu Libro de Conjuros contiene **{{ getMagoCantripsLimit() }} trucos** y **{{ getMagoSpellsLimit() }} conjuros** de nivel inferior o igual a **{{ getMagoMaxSpellLevel() }}**:
+                </p>
+
+                <!-- Selección de Trucos (Cantrips) -->
+                <div class="space-y-2 pt-2 border-t border-neutral-900">
+                  <div class="flex justify-between items-center">
+                    <span class="text-[9px] uppercase font-bold text-neutral-350 tracking-wider">Trucos de Mago (Elige exactamente {{ getMagoCantripsLimit() }}):</span>
+                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedMagoCantrips.length }} / {{ getMagoCantripsLimit() }}</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5 max-h-[140px] overflow-y-auto pr-1 custom-scrollbar">
+                    <div 
+                      *ngFor="let cantrip of magoCantripsList"
+                      class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
+                      [ngClass]="selectedMagoCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                    >
+                      <input 
+                        type="checkbox"
+                        [checked]="selectedMagoCantrips.includes(cantrip.name)"
+                        (change)="toggleMagoCantrip(cantrip.name)"
+                        [disabled]="!selectedMagoCantrips.includes(cantrip.name) && selectedMagoCantrips.length >= getMagoCantripsLimit()"
+                        class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
+                      />
+                      <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleMagoCantrip(cantrip.name)">
+                        <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
+                        <span class="text-neutral-400 text-[8px] font-light">{{ cantrip.desc }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Selección de Conjuros para el Libro de Conjuros -->
+                <div class="space-y-2 pt-2 border-t border-neutral-900">
+                  <div class="flex justify-between items-center">
+                    <span class="text-[9px] uppercase font-bold text-neutral-355 tracking-wider">Conjuros del Libro (Elige exactamente {{ getMagoSpellsLimit() }}):</span>
+                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedMagoSpells.length }} / {{ getMagoSpellsLimit() }}</span>
+                  </div>
+                  
+                  <div class="grid grid-cols-1 gap-3 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
+                    <div *ngFor="let lvl of getMagoAvailableSpellLevels()" class="space-y-1.5">
+                      <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
+                      
+                      <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
+                        <div 
+                          *ngFor="let spell of getMagoSpellsForLevel(lvl)"
+                          class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
+                          [ngClass]="selectedMagoSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                        >
+                          <input 
+                            type="checkbox"
+                            [checked]="selectedMagoSpells.includes(spell.name)"
+                            (change)="toggleMagoSpell(spell.name)"
+                            [disabled]="!selectedMagoSpells.includes(spell.name) && selectedMagoSpells.length >= getMagoSpellsLimit()"
+                            class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
+                          />
+                          <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleMagoSpell(spell.name)">
+                            <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                            <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <!-- Descripción Completa -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Descripción de tu Senda</h4>
@@ -958,7 +1217,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                             (isWarlock() && (selectedWarlockCantrips.length !== getWarlockCantripsLimit() || selectedWarlockSpells.length !== getWarlockSpellsLimit() || selectedWarlockInvocations.length !== getWarlockInvocationsLimit())) ||
                             (isCleric() && (!selectedClericDivineOrder || selectedClericCantrips.length !== getClericCantripsLimit() || selectedClericSpells.length !== getClericSpellsLimit())) ||
                             (isDruid() && (!selectedDruidPrimalOrder || selectedDruidCantrips.length !== getDruidCantripsLimit() || selectedDruidSpells.length !== getDruidSpellsLimit())) ||
-                            (isRanger() && (selectedRangerSpells.length !== getRangerSpellsLimit()))"
+                            (isSorcerer() && (selectedSorcererCantrips.length !== getSorcererCantripsLimit() || selectedSorcererSpells.length !== getSorcererSpellsLimit() || selectedSorcererMetamagic.length !== getSorcererMetamagicLimit())) ||
+                            (isRanger() && (selectedRangerSpells.length !== getRangerSpellsLimit())) ||
+                            (isPaladin() && (selectedPaladinSpells.length !== getPaladinSpellsLimit())) ||
+                            (isMago() && (selectedMagoCantrips.length !== getMagoCantripsLimit() || selectedMagoSpells.length !== getMagoSpellsLimit()))"
                 class="w-full bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition duration-300 uppercase tracking-widest shadow-xl hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] text-sm border-t border-red-500/20 font-serif cursor-pointer"
               >
                 Elegir {{ activeClass.name }} y Continuar
@@ -2461,6 +2723,24 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 </span>
               </div>
 
+              <!-- Selector de Subclase Hechicero para Nivel >= 3 -->
+              <div *ngIf="isSorcererLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
+                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Origen de Subclase (Nivel 3+)</label>
+                <select
+                  [(ngModel)]="selectedSubclass"
+                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                >
+                  <option value="">-- Selecciona tu Origen del Hechicero --</option>
+                  <option value="Hechicería aberrante">Hechicería aberrante</option>
+                  <option value="Hechicería de magia salvaje">Hechicería de magia salvaje</option>
+                  <option value="Hechicería dracónica">Hechicería dracónica</option>
+                  <option value="Hechicería mecánica">Hechicería mecánica</option>
+                </select>
+                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                  * Has seleccionado un Hechicero de nivel 3 o superior. Elige tu origen de subclase para desbloquear tus poderes.
+                </span>
+              </div>
+
               <!-- Selector de Subclase Druida para Nivel >= 3 -->
               <div *ngIf="isDruidLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
                 <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Círculo Druídico de Subclase (Nivel 3+)</label>
@@ -2617,6 +2897,42 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   </div>
                 </div>
               </div>
+
+              <!-- Selector de Subclase Mago para Nivel >= 3 -->
+              <div *ngIf="isMagoLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
+                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Escuela de Magia (Nivel 3+)</label>
+                <select
+                  [(ngModel)]="selectedSubclass"
+                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                >
+                  <option value="">-- Selecciona tu Escuela del Mago --</option>
+                  <option value="Abjurador">Abjurador</option>
+                  <option value="Adivino">Adivino</option>
+                  <option value="Evocador">Evocador</option>
+                  <option value="Ilusionista">Ilusionista</option>
+                </select>
+                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                  * Has seleccionado un Mago de nivel 3 o superior. Elige tu escuela de magia para especializarte.
+                </span>
+              </div>
+
+              <!-- Selector de Subclase Paladín para Nivel >= 3 -->
+              <div *ngIf="isPaladinLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
+                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Juramento Sagrado (Nivel 3+)</label>
+                <select
+                  [(ngModel)]="selectedSubclass"
+                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                >
+                  <option value="">-- Selecciona tu Juramento del Paladín --</option>
+                  <option value="Juramento de la Devoción">Juramento de la Devoción</option>
+                  <option value="Juramento de las Antiguas">Juramento de las Antiguas</option>
+                  <option value="Juramento de la Venganza">Juramento de la Venganza</option>
+                  <option value="Juramento de la Gloria">Juramento de la Gloria</option>
+                </select>
+                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                  * Has seleccionado un Paladín de nivel 3 o superior. Elige tu juramento de subclase para desbloquear tus rasgos.
+                </span>
+              </div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -2766,8 +3082,117 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
             </div>
 
+            <!-- Selector de Dote: Iniciado en la Magia -->
+            <div *ngIf="hasMagicInitiateFeat()" class="space-y-4 mt-6 animate-fade-in md:col-span-2 bg-[#121215]/90 border border-amber-500/40 p-5 rounded-xl text-left shadow-lg relative z-10">
+              <div class="border-b border-amber-500/25 pb-3 flex justify-between items-center">
+                <div>
+                  <h3 class="text-sm font-serif font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2">
+                    <span>✨</span> Dote Clave: Iniciado en la Magia
+                  </h3>
+                  <p class="text-[10px] text-neutral-400 mt-0.5">
+                    Has obtenido la dote <strong>Iniciado en la Magia</strong> por tu trasfondo. Debes elegir la lista de clase, tu aptitud mágica, 2 trucos y 1 conjuro de nivel 1.
+                  </p>
+                </div>
+                <span class="text-xs font-mono font-bold text-amber-400 bg-amber-955/40 border border-amber-600/30 px-2.5 py-1 rounded">
+                  D&D 2024
+                </span>
+              </div>
+
+              <!-- Configuración 1: Lista de Clase y Aptitud Mágica -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#0e0e11] border border-neutral-850 p-3.5 rounded-lg">
+                <div class="space-y-1.5">
+                  <label class="text-[9.5px] text-amber-300 font-bold uppercase tracking-wider block">1. Lista de Clase de Hechizos</label>
+                  <select
+                    [(ngModel)]="magicInitiateClass"
+                    (change)="onMagicInitiateClassChange()"
+                    class="w-full bg-[#18181c] border border-amber-600/30 focus:border-amber-400 focus:outline-none px-3 py-2 rounded text-xs text-neutral-200 cursor-pointer font-semibold"
+                  >
+                    <option value="Clérigo">Clérigo</option>
+                    <option value="Druida">Druida</option>
+                    <option value="Mago">Mago</option>
+                  </select>
+                </div>
+
+                <div class="space-y-1.5">
+                  <label class="text-[9.5px] text-amber-300 font-bold uppercase tracking-wider block">2. Aptitud Mágica (Atributo de Lanzamiento)</label>
+                  <select
+                    [(ngModel)]="magicInitiateAbility"
+                    class="w-full bg-[#18181c] border border-amber-600/30 focus:border-amber-400 focus:outline-none px-3 py-2 rounded text-xs text-neutral-200 cursor-pointer font-semibold"
+                  >
+                    <option value="">-- Elige Aptitud Mágica --</option>
+                    <option value="Inteligencia">Inteligencia (INT)</option>
+                    <option value="Sabiduría">Sabiduría (SAB)</option>
+                    <option value="Carisma">Carisma (CAR)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Configuración 2: Selección de 2 Trucos -->
+              <div class="space-y-2 pt-2 border-t border-neutral-900">
+                <div class="flex justify-between items-center">
+                  <span class="text-[9px] uppercase font-bold text-neutral-300 tracking-wider">
+                    3. Trucos de {{ getEffectiveMagicInitiateClass() }} (Elige exactamente 2):
+                  </span>
+                  <span class="text-[9px] font-mono text-amber-400 font-bold">
+                    {{ magicInitiateCantrips.length }} / 2
+                  </span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[200px] overflow-y-auto custom-scrollbar pr-1">
+                  <div 
+                    *ngFor="let cantrip of getMagicInitiateCantripsList()"
+                    class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
+                    [ngClass]="magicInitiateCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/60 text-amber-300' : 'bg-[#0e0e11] border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                  >
+                    <input 
+                      type="checkbox"
+                      [checked]="magicInitiateCantrips.includes(cantrip.name)"
+                      (change)="toggleMagicInitiateCantrip(cantrip.name)"
+                      [disabled]="!magicInitiateCantrips.includes(cantrip.name) && magicInitiateCantrips.length >= 2"
+                      class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
+                    />
+                    <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleMagicInitiateCantrip(cantrip.name)">
+                      <strong class="font-fantasy text-amber-400 tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
+                      <span class="text-neutral-400 text-[8px] font-light">{{ cantrip.desc }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Configuración 3: Selección de 1 Conjuro de Nivel 1 -->
+              <div class="space-y-2 pt-2 border-t border-neutral-900">
+                <div class="flex justify-between items-center">
+                  <span class="text-[9px] uppercase font-bold text-neutral-300 tracking-wider">
+                    4. Conjuro Nivel 1 de {{ getEffectiveMagicInitiateClass() }} (Elige exactamente 1):
+                  </span>
+                  <span class="text-[9px] font-mono text-amber-400 font-bold">
+                    {{ magicInitiateSpell ? '1 / 1 (' + magicInitiateSpell + ')' : '0 / 1' }}
+                  </span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[220px] overflow-y-auto custom-scrollbar pr-1">
+                  <div 
+                    *ngFor="let spell of getMagicInitiateSpellsList()"
+                    class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
+                    [ngClass]="magicInitiateSpell === spell.name ? 'bg-amber-955/20 border-amber-600/60 text-amber-300' : 'bg-[#0e0e11] border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                  >
+                    <input 
+                      type="radio"
+                      name="magicInitiateSpellRadio"
+                      [checked]="magicInitiateSpell === spell.name"
+                      (change)="selectMagicInitiateSpell(spell.name)"
+                      class="w-3.5 h-3.5 accent-amber-600 cursor-pointer mt-0.5 shrink-0"
+                    />
+                    <div class="text-[8.5px] leading-snug w-full h-full" (click)="selectMagicInitiateSpell(spell.name)">
+                      <strong class="font-fantasy text-amber-400 tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                      <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
           <!-- Advertencia de campos incompletos -->
-          <div *ngIf="!characterName.trim() || !characterHistory.trim() || !characterPhysicalDesc.trim() || (isSubclassRequired() && !selectedSubclass) || !isRangerSubclassConfigComplete() || !isFighterSubclassConfigComplete()" class="bg-red-955/10 border border-red-800/40 p-4 rounded-xl text-left relative z-10 flex items-center gap-3">
+          <div *ngIf="!characterName.trim() || !characterHistory.trim() || !characterPhysicalDesc.trim() || (isSubclassRequired() && !selectedSubclass) || !isRangerSubclassConfigComplete() || !isFighterSubclassConfigComplete() || !isMagicInitiateConfigComplete()" class="bg-red-955/10 border border-red-800/40 p-4 rounded-xl text-left relative z-10 flex items-center gap-3">
             <span class="text-xl">⚠️</span>
             <div class="text-xs text-red-300 leading-relaxed font-light">
               <span *ngIf="!characterName.trim() || !characterHistory.trim() || !characterPhysicalDesc.trim()">
@@ -2785,6 +3210,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <span *ngIf="isFighter() && selectedSubclass === 'Caballero Arcano' && !isFighterSubclassConfigComplete()" class="block mt-1">
                 Además, debes seleccionar todos tus <strong class="text-red-200">Trucos y Conjuros Preparados de Caballero Arcano</strong> ({{ selectedEldritchKnightCantrips.length }}/{{ getEldritchKnightCantripsLimit() }} trucos y {{ selectedEldritchKnightSpells.length }}/{{ getEldritchKnightSpellsLimit() }} conjuros).
               </span>
+              <span *ngIf="hasMagicInitiateFeat() && !isMagicInitiateConfigComplete()" class="block mt-1">
+                Además, debes seleccionar la <strong class="text-red-200">Aptitud Mágica</strong>, los <strong class="text-red-200">2 Trucos</strong> y el <strong class="text-red-200">Conjuro de Nivel 1</strong> de tu dote <strong class="text-amber-300">Iniciado en la Magia</strong> ({{ magicInitiateCantrips.length }}/2 trucos y {{ magicInitiateSpell ? 1 : 0 }}/1 conjuro).
+              </span>
             </div>
           </div>
 
@@ -2798,7 +3226,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </button>
             <button 
               (click)="saveCharacter()"
-              [disabled]="!characterName.trim() || !characterHistory.trim() || !characterPhysicalDesc.trim() || (isSubclassRequired() && !selectedSubclass) || !isRangerSubclassConfigComplete() || !isFighterSubclassConfigComplete()"
+              [disabled]="!characterName.trim() || !characterHistory.trim() || !characterPhysicalDesc.trim() || (isSubclassRequired() && !selectedSubclass) || !isRangerSubclassConfigComplete() || !isFighterSubclassConfigComplete() || !isMagicInitiateConfigComplete()"
               class="w-full sm:w-2/3 bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg text-sm border-t border-red-500/20 font-serif cursor-pointer transition duration-300 uppercase tracking-widest shadow-xl hover:shadow-[0_0_25px_rgba(239,68,68,0.4)]"
             >
               Registrar Personaje en la Campaña
@@ -3631,6 +4059,298 @@ export class CharacterCreatorComponent implements OnInit {
   selectedClericCantrips: string[] = ['Llama sagrada', 'Luz', 'Taumaturgia'];
   selectedClericSpells: string[] = ['Bendición', 'Curar heridas', 'Escudo de fe', 'Saeta guía'];
 
+  // Estado de Conjuros y Metamagia del Hechicero (D&D 2024)
+  selectedSorcererCantrips: string[] = ['Agarre electrizante', 'Estallido mágico', 'Luz', 'Prestidigitación'];
+  selectedSorcererSpells: string[] = ['Detectar magia', 'Manos ardientes'];
+  selectedSorcererMetamagic: string[] = [];
+
+  // Estado de Conjuros del Paladín (D&D 2024)
+  selectedPaladinSpells: string[] = ['Bendición', 'Curar heridas'];
+
+  paladinSpellsList = [
+    // Nivel 1
+    { level: 1, name: 'Bendición', desc: 'Encantamiento (Concentración). Bendice a tres criaturas, añadiendo 1d4 a sus ataques y salvaciones.' },
+    { level: 1, name: 'Castigo abrasador', desc: 'Evocación (Concentración). Tu próximo ataque cuerpo a cuerpo causa 1d6 de daño por fuego y prende fuego al objetivo.' },
+    { level: 1, name: 'Castigo divino', desc: 'Evocación. Tu ataque causa 2d8 de daño radiante adicional a un enemigo.' },
+    { level: 1, name: 'Curar heridas', desc: 'Abjuración. Cura 2d8 + modificador de Carisma a una criatura al tocarla.' },
+    { level: 1, name: 'Detectar el bien y el mal', desc: 'Adivinación (Concentración). Detectas celestiales, elementales, feéricos, fiordos, no muertos y aberraciones.' },
+    { level: 1, name: 'Duelo compelido', desc: 'Encantamiento (Concentración). Obligas a un enemigo a centrar sus ataques en ti.' },
+    { level: 1, name: 'Escudo de fe', desc: 'Abjuración (Concentración, Acción adicional). Otorga +2 a la CA a una criatura elegida.' },
+    { level: 1, name: 'Favor divino', desc: 'Evocación (Concentración, Acción adicional). Tus ataques con armas infligen 1d4 daño radiante extra.' },
+    { level: 1, name: 'Heroísmo', desc: 'Encantamiento (Concentración). Da inmunidad al miedo y puntos de golpe temporales por turno.' },
+    { level: 1, name: 'Protección contra el bien y el mal', desc: 'Abjuración (Concentración). Protege a una criatura de aberraciones, celestiales, elementales, etc.' },
+    { level: 1, name: 'Purificar comida y bebida', desc: 'Transmutación (Ritual). Purifica toda la comida y bebida no mágica en un radio de 1.5 metros.' },
+
+    // Nivel 2
+    { level: 2, name: 'Arma mágica', desc: 'Transmutación (Concentración). El arma se vuelve mágica con un bonificador de +1 a ataques y daño.' },
+    { level: 2, name: 'Auxilio', desc: 'Abjuración. Incrementa los puntos de golpe máximos y actuales de tres criaturas en 5.' },
+    { level: 2, name: 'Castigo marcado', desc: 'Evocación (Concentración). Tu próximo ataque causa 2d6 daño radiante y revela al objetivo invisible.' },
+    { level: 2, name: 'Encontrar corcel', desc: 'Conjuración. Convocas un espíritu divino que toma forma de un corcel leal.' },
+    { level: 2, name: 'Localizar objeto', desc: 'Adivinación (Concentración). Sientes la dirección de un objeto conocido a 300 metros.' },
+    { level: 2, name: 'Protección contra veneno', desc: 'Abjuración. Da resistencia al veneno y neutraliza venenos activos.' },
+    { level: 2, name: 'Restablecimiento menor', desc: 'Abjuración. Cura ceguedad, sordera, parálisis o envenenamiento.' },
+    { level: 2, name: 'Zona de la verdad', desc: 'Encantamiento. Impide mentir en una esfera de 4.5 metros.' },
+
+    // Nivel 3
+    { level: 3, name: 'Arma de energía', desc: 'Transmutación (Concentración). El arma inflige 1d4 de daño elemental adicional.' },
+    { level: 3, name: 'Castigo deslumbrante', desc: 'Evocación (Concentración). Tu próximo ataque causa 3d8 daño radiante y ciega al objetivo.' },
+    { level: 3, name: 'Disipar magia', desc: 'Abjuración. Cancela conjuros o efectos mágicos activos de nivel 3 o inferior.' },
+    { level: 3, name: 'Luz del día', desc: 'Evocación. Esfera de 18 m emite luz brillante equivalente a la luz solar.' },
+    { level: 3, name: 'Manto del cruzado', desc: 'Evocación (Concentración). Otorga a tus aliados cercanos +1d4 daño radiante en sus ataques.' },
+    { level: 3, name: 'Revivir', desc: 'Nigromancia. Devuelve la vida a una criatura muerta en el último minuto con 1 HP.' },
+    { level: 3, name: 'Sudario de espíritus', desc: 'Nigromancia (Concentración). Espíritus te rodean, dañando a tus enemigos y evitando su curación.' },
+
+    // Nivel 4
+    { level: 4, name: 'Aura de vida', desc: 'Abjuración (Concentración). Aura protege a aliados de reducciones de HP y los levanta si caen a 0 HP.' },
+    { level: 4, name: 'Aura de pureza', desc: 'Abjuración (Concentración). Protege a aliados de enfermedades, venenos y condiciones mentales.' },
+    { level: 4, name: 'Destierro', desc: 'Abjuración (Concentración). Desplazas a una criatura a un semiplano o su plano de origen.' },
+    { level: 4, name: 'Castigo estupefaciente', desc: 'Evocación (Concentración). Tu próximo ataque causa 4d6 daño psíquico y desventaja en tiradas.' },
+    { level: 4, name: 'Localizar criatura', desc: 'Adivinación (Concentración). Sientes la dirección de una criatura conocida a 300 metros.' },
+
+    // Nivel 5
+    { level: 5, name: 'Castigo desterrador', desc: 'Abjuración (Concentración). Tu próximo ataque causa 5d10 daño por fuerza y puede desterrar al objetivo.' },
+    { level: 5, name: 'Círculo de poder', desc: 'Abjuración (Concentración). Esfera de 9 m protege a aliados, dándoles ventaja en salvaciones mágicas.' },
+    { level: 5, name: 'Ola destructiva', desc: 'Evocación. Creas una onda de fuerza que inflige 5d6 daño radiante y 5d6 daño de trueno.' },
+    { level: 5, name: 'Geas', desc: 'Encantamiento. Mandato mágico obliga a criatura a seguir tus órdenes bajo pena de daño.' },
+    { level: 5, name: 'Revivir a los muertos', desc: 'Nigromancia. Devuelve la vida a un cadáver muerto hace menos de 10 días.' }
+  ];
+
+  // Estado de Conjuros del Mago / Libro de Conjuros (D&D 2024)
+  selectedMagoCantrips: string[] = ['Rayo de escarcha', 'Prestidigitación', 'Salpicadura ácida'];
+  selectedMagoSpells: string[] = ['Proyectil mágico', 'Escudo', 'Detectar magia', 'Armadura de mago', 'Dormir', 'Grasa'];
+
+  magoCantripsList = [
+    { name: 'Agarre electrizante', desc: 'Evocación. Toque cargado con 1d8 de daño de relámpago.' },
+    { name: 'Amistad', desc: 'Encantamiento. Ventaja en pruebas de Carisma contra un objetivo no hostil (Concentración).' },
+    { name: 'Apretón electrizante', desc: 'Evocación. Ataque de toque; 1d8 daño de relámpago. El objetivo con armadura metálica sufre desventaja.' },
+    { name: 'Descarga de fuego', desc: 'Evocación. Ataque de conjuro a 36 m; 1d10 daño de fuego.' },
+    { name: 'Elementalismo', desc: 'Transmutación. Crea efectos elementales menores (brisas, chispas, vapor, calor).' },
+    { name: 'Fragmento mental', desc: 'Encantamiento. Causa 1d6 daño psíquico y resta 1d4 a la próxima salvación del objetivo.' },
+    { name: 'Guardia de cuchillas', desc: 'Abjuración. Resistencia a daño físico hasta el final de tu próximo turno.' },
+    { name: 'Impacto certero', desc: 'Adivinación. Ventaja en tu próxima tirada de ataque contra un objetivo a tu alcance.' },
+    { name: 'Ilusión menor', desc: 'Ilusionismo. Creas un sonido o imagen hasta tu siguiente turno o 1 minuto.' },
+    { name: 'Luz', desc: 'Evocación. Un objeto emite luz brillante en 6 m durante 1 hora.' },
+    { name: 'Mano de mago', desc: 'Conjuración. Mano espectral para manipular objetos o abrir puertas a 9 m.' },
+    { name: 'Mensaje', desc: 'Transmutación. Susurras un mensaje a distancia a una criatura que puede responderte.' },
+    { name: 'Prestidigitación', desc: 'Transmutación. Trucos mágicos menores: limpiar, colorear, encender o enfriar objetos.' },
+    { name: 'Rayo de escarcha', desc: 'Evocación (Recomendado). Ataque de conjuro a 18 m; 1d8 daño de frío y reduce velocidad en 3 m.' },
+    { name: 'Reparar', desc: 'Transmutación. Repara una fisura en un objeto de menos de 30 cm.' },
+    { name: 'Rociado venenoso', desc: 'Conjuración. Proyectas gas venenoso; el objetivo sufre 1d12 daño de veneno (Salvador de Constitución).' },
+    { name: 'Salpicadura ácida', desc: 'Evocación (Recomendado). Burbuja de ácido; uno o dos objetivos sufren 1d6 daño ácido.' },
+    { name: 'Tañido para los muertos', desc: 'Nigromancia. Envuelve a un objetivo en energía espectral; 1d8 daño necrótico (Salvador de Sabiduría).' },
+    { name: 'Toque helado', desc: 'Nigromancia. Ataque de conjuro a 36 m; 1d8 daño necrótico y el objetivo no puede recuperar PG.' },
+    { name: 'Tronar', desc: 'Evocación. 1d8 daño de trueno en una onda de fuerza y empuja 3 m.' }
+  ];
+
+  magoSpellsList: { level: number, name: string, desc: string }[] = [
+    // Nivel 1
+    { level: 1, name: 'Alarma', desc: 'Abjuración (Ritual). Creas una alarma mágica que avisa si alguien cruza un área de 6 m.' },
+    { level: 1, name: 'Armadura de mago', desc: 'Abjuración (Recomendado). CA base = 13 + mod. Des hasta que te pongas armadura o el conjuro acabe.' },
+    { level: 1, name: 'Caída de pluma', desc: 'Transmutación (Reacción). Hasta 5 criaturas descienden a 18 m/ronda y no reciben daño de caída.' },
+    { level: 1, name: 'Comprender idiomas', desc: 'Adivinación (Ritual). Entiendes cualquier idioma hablado o escrito durante 1 hora.' },
+    { level: 1, name: 'Detectar magia', desc: 'Adivinación (Ritual, Recomendado). Percibes magia y su escuela a 9 m (Concentración).' },
+    { level: 1, name: 'Disfrazarse', desc: 'Ilusionismo. Cambias tu apariencia (ropa, rasgos) durante 1 hora.' },
+    { level: 1, name: 'Dormir', desc: 'Encantamiento. Duerme criaturas que sumen hasta 5d8 PG en un área de 4,5 m.' },
+    { level: 1, name: 'Encontrar familiar', desc: 'Conjuración (Ritual). Convocas un espíritu feérico como animal familiar permanente.' },
+    { level: 1, name: 'Entender idiomas', desc: 'Adivinación (Ritual). Comprendes literalmente cualquier idioma hablado o escrito durante 1 hora.' },
+    { level: 1, name: 'Escudo', desc: 'Abjuración (Reacción). +5 a la CA e inmunidad a proyectil mágico hasta el inicio de tu turno.' },
+    { level: 1, name: 'Falso vida', desc: 'Nigromancia. Ganas 1d4+4 PG temporales durante 1 hora.' },
+    { level: 1, name: 'Grasa', desc: 'Conjuración. Terreno resbaladizo en un área de 3 m; las criaturas que fallen Destreza caen derribadas.' },
+    { level: 1, name: 'Identificar', desc: 'Adivinación (Ritual). Determinas las propiedades mágicas de un objeto o conjuro activo.' },
+    { level: 1, name: 'Imagen silenciosa', desc: 'Ilusionismo (Concentración). Creas una imagen tridimensional inmóvil a 18 m.' },
+    { level: 1, name: 'Manos ardientes', desc: 'Evocación. Cono de fuego de 4,5 m que inflige 3d6 daño de fuego (Salvador Destreza mitad).' },
+    { level: 1, name: 'Nube de oscurecimiento', desc: 'Conjuración (Concentración). Nube opaca en esfera de 6 m a 18 m durante 10 min.' },
+    { level: 1, name: 'Proyectil mágico', desc: 'Evocación (Recomendado). Tres dardos infalibles de 1d4+1 daño de fuerza cada uno.' },
+    { level: 1, name: 'Rayo de enfermedad', desc: 'Nigromancia. Ataque de conjuro; 2d8 daño veneno y envenenado (Salvador Constitución).' },
+    { level: 1, name: 'Rociada de color', desc: 'Ilusionismo. Destello de luz que ciega criaturas en un cono de 4,5 m.' },
+    { level: 1, name: 'Salto', desc: 'Transmutación. Triplica la distancia de salto de un objetivo durante 1 min.' },
+
+    // Nivel 2
+    { level: 2, name: 'Aura mágica de Nystul', desc: 'Ilusionismo. Oculta o falsifica el aura mágica de un objeto o criatura durante 24 h.' },
+    { level: 2, name: 'Cerradura arcana', desc: 'Abjuración. Sella mágicamente una puerta o contenedor; solo tú puedes abrirlo.' },
+    { level: 2, name: 'Contorno borroso', desc: 'Ilusionismo (Concentración). Tu cuerpo se vuelve borroso; los ataques contra ti tienen desventaja.' },
+    { level: 2, name: 'Corona de locura', desc: 'Encantamiento (Concentración). Obliga a un humanoide a atacar a sus aliados.' },
+    { level: 2, name: 'Detectar pensamientos', desc: 'Adivinación (Concentración). Lees los pensamientos superficiales de criaturas a 9 m.' },
+    { level: 2, name: 'Flecha ácida de Melf', desc: 'Evocación. Proyectil de ácido; 4d4 daño más 2d4 al inicio de tu próximo turno.' },
+    { level: 2, name: 'Fuerza fantasmal', desc: 'Ilusionismo (Concentración). Creas una ilusión que el objetivo cree real e inflige daño psíquico.' },
+    { level: 2, name: 'Imagen múltiple', desc: 'Ilusionismo. Creas tres duplicados ilusorios que confunden los ataques enemigos.' },
+    { level: 2, name: 'Invisibilidad', desc: 'Ilusionismo (Concentración). El objetivo se vuelve invisible hasta que ataque o lance un conjuro.' },
+    { level: 2, name: 'Levitar', desc: 'Transmutación (Concentración). Eleva a un objetivo hasta 6 m verticalmente.' },
+    { level: 2, name: 'Localizar objeto', desc: 'Adivinación (Concentración). Sientes la dirección de un objeto conocido a 300 m.' },
+    { level: 2, name: 'Nube de dagas', desc: 'Conjuración (Concentración). Torbellino de dagas voladoras en cubo de 1,5 m; 4d4 daño cortante.' },
+    { level: 2, name: 'Oscuridad', desc: 'Evocación (Concentración). Esfera de oscuridad mágica de 4,5 m de radio.' },
+    { level: 2, name: 'Paso brumoso', desc: 'Conjuración (Acción adicional). Te teletransportas hasta 9 m a un espacio visible.' },
+    { level: 2, name: 'Ráfaga de viento', desc: 'Evocación (Concentración). Viento fuerte de 18 m empuja a las criaturas y dispersa gases.' },
+    { level: 2, name: 'Rayo abrasador', desc: 'Evocación. Disparas hasta tres rayos de fuego de 2d6 cada uno a 36 m.' },
+    { level: 2, name: 'Rayo debilitador', desc: 'Nigromancia (Concentración). Ataque de conjuro; el objetivo causa la mitad de daño con armas de Fuerza.' },
+    { level: 2, name: 'Sordera/ceguera', desc: 'Transmutación. Ciega o ensordece a un objetivo que falle salvación de Constitución.' },
+    { level: 2, name: 'Sugerencia', desc: 'Encantamiento (Concentración). El objetivo sigue tu sugerencia si falla Sabiduría.' },
+    { level: 2, name: 'Telaraña', desc: 'Conjuración (Concentración). Red pegajosa que restringe a las criaturas en un cubo de 6 m.' },
+    { level: 2, name: 'Trepar cual arácnido', desc: 'Transmutación (Concentración). El objetivo gana velocidad de trepar igual a su velocidad caminar por 1 hora.' },
+    { level: 2, name: 'Truco de la cuerda', desc: 'Transmutación. Cuerda vertical con abertura extradimensional oculta para hasta 8 criaturas.' },
+    { level: 2, name: 'Ver invisibilidad', desc: 'Adivinación. Ves criaturas invisibles durante 1 hora.' },
+    { level: 2, name: 'Vigor arcano', desc: 'Abjuración. Te da 2d12+4 puntos de golpe temporales por 1 hora.' },
+    { level: 2, name: 'Visión en la oscuridad', desc: 'Transmutación. El objetivo ve en penumbra como luz brillante a 18 m durante 8 horas.' },
+
+    // Nivel 3
+    { level: 3, name: 'Acelerar', desc: 'Transmutación (Concentración). Dobla la velocidad, +2 CA, y da una acción adicional de ataque durante 1 min.' },
+    { level: 3, name: 'Animar a los muertos', desc: 'Nigromancia. Creas un guerrero no muerto de un cadáver que controlas.' },
+    { level: 3, name: 'Bola de fuego', desc: 'Evocación (Recomendado). Explosión en esfera de 6 m de radio; 8d6 daño de fuego.' },
+    { level: 3, name: 'Círculo mágico', desc: 'Abjuración. Cilindro de energía de 3 m de radio que protege contra ciertos tipos de criaturas.' },
+    { level: 3, name: 'Clarividencia', desc: 'Adivinación (Concentración). Sensor invisible para ver o escuchar un lugar a distancia.' },
+    { level: 3, name: 'Contrahechizo', desc: 'Abjuración (Reacción). Interrumpe el conjuro que otra criatura está lanzando.' },
+    { level: 3, name: 'Corcel fantasma', desc: 'Ilusionismo (Ritual). Convocas a un caballo de monta ilusorio y veloz durante 1 hora.' },
+    { level: 3, name: 'Desplazamiento', desc: 'Ilusionismo (Concentración). Proyecta tu imagen a un lado; los atacantes tienen desventaja.' },
+    { level: 3, name: 'Disipar magia', desc: 'Abjuración. Termina conjuros activos en un objetivo.' },
+    { level: 3, name: 'Don de lenguas', desc: 'Adivinación. El objetivo puede entender y ser entendido en cualquier idioma.' },
+    { level: 3, name: 'Fingir muerte', desc: 'Nigromancia (Ritual). El objetivo parece muerto durante 1 hora; protegido contra hechizos.' },
+    { level: 3, name: 'Forma gaseosa', desc: 'Transmutación (Concentración). Un objetivo se convierte en nube gaseosa con resistencias.' },
+    { level: 3, name: 'Glifo custodio', desc: 'Abjuración (Ritual). Inscribes un glifo que lanza un conjuro de nivel ≤ 3 al activarse.' },
+    { level: 3, name: 'Hablar con los muertos', desc: 'Nigromancia. Concedes vida temporal a un cadáver para hacerle hasta 5 preguntas.' },
+    { level: 3, name: 'Imagen mayor', desc: 'Ilusionismo (Concentración). Ilusión realista de objeto, criatura o fenómeno con sonido.' },
+    { level: 3, name: 'Imponer maldición', desc: 'Nigromancia (Concentración). Maldices a una criatura restando en tiradas o causando daño extra.' },
+    { level: 3, name: 'Indetectable', desc: 'Abjuración. Un objetivo no puede ser detectado por magia de adivinación durante 24 horas.' },
+    { level: 3, name: 'Invocar feérico', desc: 'Conjuración (Concentración). Convocas un espíritu feérico que lucha a tus órdenes.' },
+    { level: 3, name: 'Invocar muerto viviente', desc: 'Nigromancia (Concentración). Convocas un espíritu no muerto que lucha a tu lado.' },
+    { level: 3, name: 'Levantar maldición', desc: 'Abjuración. Termina con todas las maldiciones en una criatura u objeto tocado.' },
+    { level: 3, name: 'Nube apestosa', desc: 'Conjuración (Concentración). Nube que hace que las criaturas que fallen Constitución pierdan su acción.' },
+    { level: 3, name: 'Relámpago', desc: 'Evocación. Línea de relámpago de 30 m; 8d6 daño (Salvador Destreza mitad).' },
+    { level: 3, name: 'Respirar bajo el agua', desc: 'Transmutación. Hasta 10 criaturas pueden respirar bajo el agua durante 24 horas.' },
+    { level: 3, name: 'Volar', desc: 'Transmutación (Concentración). Otorga vuelo de 18 m durante 10 minutos.' },
+
+    // Nivel 4
+    { level: 4, name: 'Adivinación', desc: 'Adivinación (Ritual). Recibes presagio sobre el resultado de una acción en los próximos 7 días.' },
+    { level: 4, name: 'Asesino fantasmal', desc: 'Ilusionismo (Concentración). Imagen aterradora solo para el objetivo; 4d10 daño psíquico.' },
+    { level: 4, name: 'Cofre oculto de Leomund', desc: 'Conjuración. Cofre extradimensional al que solo tú accedes mediante una réplica miniatura.' },
+    { level: 4, name: 'Confusión', desc: 'Encantamiento (Concentración). Las criaturas en 3 m actúan aleatoriamente.' },
+    { level: 4, name: 'Conjurar elementales menores', desc: 'Conjuración (Concentración). Invocas espíritus elementales que dañan enemigos.' },
+    { level: 4, name: 'Controlar agua', desc: 'Transmutación (Concentración). Manipulas agua: dividir, elevar o crear remolino.' },
+    { level: 4, name: 'Destierro', desc: 'Abjuración (Concentración). Desplazas a una criatura a un semiplano o su plano de origen.' },
+    { level: 4, name: 'Escudo de fuego', desc: 'Evocación. Te rodeas de llamas que te dan resistencia y dañan a atacantes.' },
+    { level: 4, name: 'Esfera elástica de Otiluke', desc: 'Abjuración (Concentración). Esfera de fuerza de 3 m de diámetro que encierra a un objetivo.' },
+    { level: 4, name: 'Esfera vitriólica', desc: 'Evocación. Explosión de ácido inflige 10d4 daño de ácido (y 5d4 el próximo turno).' },
+    { level: 4, name: 'Fabricar', desc: 'Transmutación. Transformas materia prima en un objeto usando tu competencia en herramientas.' },
+    { level: 4, name: 'Hechizar monstruo', desc: 'Encantamiento (Concentración). Hechizas a cualquier criatura si falla Sabiduría.' },
+    { level: 4, name: 'Invisibilidad mejorada', desc: 'Ilusionismo (Concentración). El objetivo se vuelve invisible durante 1 minuto.' },
+    { level: 4, name: 'Invocar aberración', desc: 'Conjuración (Concentración). Convocas una aberración con ataques de tentáculos o rayos oculares.' },
+    { level: 4, name: 'Invocar autómata', desc: 'Conjuración (Concentración). Convocas un autómata metálico robusto que ataca a tu señal.' },
+    { level: 4, name: 'Invocar elemental', desc: 'Conjuración (Concentración). Convocas un espíritu elemental con ataques de fuego, agua, tierra o aire.' },
+    { level: 4, name: 'Localizar criatura', desc: 'Adivinación (Concentración). Detectas la presencia de un tipo de criatura a 300 m.' },
+    { level: 4, name: 'Marchitar', desc: 'Nigromancia. Absorbe la humedad de una criatura, causando 8d8 daño necrótico.' },
+    { level: 4, name: 'Mastín fiel de Mordenkainen', desc: 'Conjuración. Perro guardián invisible que vigila y muerde a intrusos (4d8 daño).' },
+    { level: 4, name: 'Moldear la piedra', desc: 'Transmutación. Das una nueva forma a una piedra existente de tamaño mediano o menor.' },
+    { level: 4, name: 'Muro de fuego', desc: 'Evocación (Concentración). Crea un muro de llamas que causa 5d8 daño de fuego a quienes lo crucen.' },
+    { level: 4, name: 'Ojo arcano', desc: 'Adivinación (Concentración). Creas un ojo invisible flotante que puedes desplazar para explorar.' },
+    { level: 4, name: 'Piel pétrea', desc: 'Transmutación (Concentración). Concedes resistencia al daño físico no mágico a una criatura.' },
+    { level: 4, name: 'Polimorfar', desc: 'Transmutación (Concentración). Transforma una criatura en una bestia de CR igual o menor.' },
+    { level: 4, name: 'Puerta dimensional', desc: 'Conjuración. Teletransportas a ti mismo y a un acompañante a cualquier lugar a 150 m.' },
+    { level: 4, name: 'Sanctasanctórum privado de Mordenkainen', desc: 'Abjuración. Proteges un área contra sensores, teletransporte e intrusos.' },
+    { level: 4, name: 'Tentáculos negros de Evard', desc: 'Conjuración (Concentración). Tentáculos pegajosos que agarran y dañan (3d6) en un área.' },
+    { level: 4, name: 'Terreno alucinatorio', desc: 'Ilusionismo. Haces que un terreno natural parezca, suene y huela como otro distinto.' },
+    { level: 4, name: 'Tormenta de hielo', desc: 'Evocación. Cilindro de granizo y frío; 2d8 contundente + 4d6 frío.' },
+
+    // Nivel 5
+    { level: 5, name: 'Alterar los recuerdos', desc: 'Encantamiento (Concentración). Modificas la memoria reciente de una criatura.' },
+    { level: 5, name: 'Animar objetos', desc: 'Transmutación (Concentración). Animas hasta 10 objetos no mágicos que atacan como tus aliados.' },
+    { level: 5, name: 'Apariencia', desc: 'Ilusionismo. Altera la apariencia física de cualquier número de criaturas.' },
+    { level: 5, name: 'Atadura planar', desc: 'Abjuración. Obliga a un celestial, elemental, feérico o fiordo a servirte.' },
+    { level: 5, name: 'Círculo de poder', desc: 'Abjuración (Concentración). Esfera de 9 m protege a tus aliados contra efectos mágicos.' },
+    { level: 5, name: 'Círculo de teletransportación', desc: 'Conjuración. Abre un portal hacia un círculo de teletransportación permanente.' },
+    { level: 5, name: 'Conjurar elemental', desc: 'Conjuración (Concentración). Convocas un elemental mayor.' },
+    { level: 5, name: 'Cono de frío', desc: 'Evocación. Cono de 18 m de frío; 8d8 daño de frío.' },
+    { level: 5, name: 'Conocer las leyendas', desc: 'Adivinación. Conoces historias/leyendas de una persona, lugar u objeto.' },
+    { level: 5, name: 'Contactar con otro plano', desc: 'Adivinación. Haces hasta 5 preguntas a una entidad planar de forma mental.' },
+    { level: 5, name: 'Creación', desc: 'Ilusionismo. Creas una copia de materia no viva de hasta 5 pies cúbicos.' },
+    { level: 5, name: 'Dominar persona', desc: 'Encantamiento (Concentración). Controlas a un humanoide que falle Sabiduría.' },
+    { level: 5, name: 'Engañar', desc: 'Ilusionismo (Concentración). Te vuelves invisible y creas un doble ilusorio activo.' },
+    { level: 5, name: 'Enlace telepático de Rary', desc: 'Adivinación (Ritual). Enlace mental para comunicarse sin importar distancia.' },
+    { level: 5, name: 'Ensueño', desc: 'Ilusionismo. Envías un mensajero a los sueños de una criatura para conversar.' },
+    { level: 5, name: 'Escudriñar', desc: 'Adivinación (Concentración). Ves y oyes a un objetivo lejano a través de un sensor mágico.' },
+    { level: 5, name: 'Estática sináptica', desc: 'Encantamiento. Daño psíquico en esfera de 6 m; 8d6 y los afectados restan 1d6 a sus ataques.' },
+    { level: 5, name: 'Geas', desc: 'Encantamiento. Mandato mágico obliga a criatura a seguir tus órdenes.' },
+    { level: 5, name: 'Golpe de viento acerado', desc: 'Conjuración. Te teletransportas atacando a hasta cinco objetivos por 6d10 daño de fuerza.' },
+    { level: 5, name: 'Inmovilizar monstruo', desc: 'Encantamiento (Concentración). Paraliza a cualquier criatura si falla Sabiduría.' },
+    { level: 5, name: 'Invocar dragón', desc: 'Conjuración (Concentración). Convocas un espíritu de dragón menor que ataca con su aliento.' },
+    { level: 5, name: 'Mano de Bigby', desc: 'Evocación (Concentración). Mano de fuerza gigante que ataca o bloquea.' },
+    { level: 5, name: 'Muro de fuerza', desc: 'Evocación (Concentración). Barrera invisible de fuerza indestructible.' },
+    { level: 5, name: 'Muro de piedra', desc: 'Evocación (Concentración). Creas un muro de piedra sólido que puede volverse permanente.' },
+    { level: 5, name: 'Nube aniquiladora', desc: 'Conjuración (Concentración). Nube de gas ácido verde que causa 10d8 daño ácido.' },
+    { level: 5, name: 'Pasamuros', desc: 'Transmutación. Abre un pasaje temporal de hasta 6 m de profundidad en una pared.' },
+    { level: 5, name: 'Presencia regia de Yolande', desc: 'Encantamiento (Concentración). Emanación derriba a tus enemigos e inflige daño radiante.' },
+    { level: 5, name: 'Telequinesis', desc: 'Transmutación (Concentración). Mueves o levantas mentalmente criaturas u objetos pesados.' },
+    { level: 5, name: 'Tormenta resplandeciente de Jallarzi', desc: 'Evocación (Concentración). Tormenta causa daño radiante y silencia a lanzadores.' },
+
+    // Nivel 6
+    { level: 6, name: 'Baile irresistible de Otto', desc: 'Encantamiento (Concentración). El objetivo baila incontrolablemente, perdiendo ataques y CA.' },
+    { level: 6, name: 'Caldero burbujeante de Tasha', desc: 'Conjuración. Convocas un caldero mágico para crear pociones y vapores dañinos.' },
+    { level: 6, name: 'Círculo de muerte', desc: 'Nigromancia. Explosión de energía necrótica causa 8d6 daño en esfera de 18 m de radio.' },
+    { level: 6, name: 'Contingencia', desc: 'Abjuración. Preparas un conjuro para que se active automáticamente al cumplirse una condición.' },
+    { level: 6, name: 'Crear muerto viviente', desc: 'Nigromancia. Creas guls bajo tu control a partir de cadáveres.' },
+    { level: 6, name: 'De la carne a la piedra', desc: 'Transmutación (Concentración). Petrificas gradualmente a una criatura si falla salvaciones.' },
+    { level: 6, name: 'Desintegrar', desc: 'Transmutación. Rayo desintegrador inflige 10d6+40 de daño por fuerza; reduce a polvo al morir.' },
+    { level: 6, name: 'Esfera congelante de Otiluke', desc: 'Evocación. Esfera de frío estalla infligiendo 10d6 daño de frío en área grande.' },
+    { level: 6, name: 'Globo de invulnerabilidad', desc: 'Abjuración (Concentración). Barrera móvil bloquea todos los conjuros de nivel 5 o inferior.' },
+    { level: 6, name: 'Guardas y guardias', desc: 'Abjuración. Protege un área con niebla, cerraduras mágicas y efectos ilusorios.' },
+    { level: 6, name: 'Ilusión programada', desc: 'Ilusionismo. Crea una ilusión realista que se activa ante un detonante específico.' },
+    { level: 6, name: 'Invocación instantánea de Drawmij', desc: 'Conjuración (Ritual). Teletransporta un objeto marcado directamente a tu mano.' },
+    { level: 6, name: 'Invocar infernal', desc: 'Conjuración (Concentración). Convocas un diablo o demonio para luchar por ti.' },
+    { level: 6, name: 'Mal de ojo', desc: 'Nigromancia (Concentración). Tu mirada asusta, duerme o debilita a criaturas.' },
+    { level: 6, name: 'Mover la tierra', desc: 'Transmutación (Concentración). Modificas la topografía de tierra o arena en un área.' },
+    { level: 6, name: 'Muro de hielo', desc: 'Evocación (Concentración). Creas una barrera de hielo que daña a quienes la crucen.' },
+    { level: 6, name: 'Puerto arcano', desc: 'Conjuración. Crea un portal temporal entre dos localizaciones conocidas.' },
+    { level: 6, name: 'Rayo solar', desc: 'Evocación (Concentración). Haz de luz solar inflige 6d8 daño radiante y ciega en una línea.' },
+    { level: 6, name: 'Relámpago en cadena', desc: 'Evocación. Disparas un relámpago que salta a hasta cuatro objetivos por 10d8 daño.' },
+    { level: 6, name: 'Sugestión en masa', desc: 'Encantamiento. Sugieres una línea de conducta a hasta 12 criaturas por 24 horas.' },
+    { level: 6, name: 'Urna mágica', desc: 'Nigromancia. Transfieres tu alma a una gema y puedes poseer cuerpos ajenos.' },
+    { level: 6, name: 'Visión veraz', desc: 'Adivinación. Ves la realidad: lo invisible, ilusiones y el plano etéreo por 1 hora.' },
+
+    // Nivel 7
+    { level: 7, name: 'Bola de fuego de explosión retardada', desc: 'Evocación (Concentración). Bola de fuego que acumula daño por ronda (12d6 base).' },
+    { level: 7, name: 'Dedo de la muerte', desc: 'Nigromancia. Inflige 7d8+30 daño necrótico; si el objetivo muere, se levanta como zombi fiel.' },
+    { level: 7, name: 'Desplazamiento entre planos', desc: 'Conjuración. Transporta a hasta 8 criaturas voluntarias a otro plano de existencia.' },
+    { level: 7, name: 'Espada de Mordenkainen', desc: 'Evocación (Concentración). Espada flotante de fuerza ataca infligiendo 3d10 daño por fuerza.' },
+    { level: 7, name: 'Espejismo arcano', desc: 'Ilusionismo. Altera la apariencia y geografía de un área de 1.5 km permanentemente.' },
+    { level: 7, name: 'Excursión etérea', desc: 'Conjuración. Entras al Plano Etéreo para moverte a través de objetos del plano material.' },
+    { level: 7, name: 'Invertir la gravedad', desc: 'Transmutación (Concentración). Invierte la gravedad en un cilindro, elevando a criaturas al cielo.' },
+    { level: 7, name: 'Jaula de fuerza', desc: 'Evocación. Crea una jaula o caja invisible de fuerza indestructible que atrapa criaturas.' },
+    { level: 7, name: 'Mansión magnífica de Mordenkainen', desc: 'Conjuración. Abre un portal hacia una mansión extradimensional con comida y sirvientes.' },
+    { level: 7, name: 'Proyectar imagen', desc: 'Ilusionismo (Concentración). Proyectas un duplicado de ti mismo que puede ver, oír y hablar.' },
+    { level: 7, name: 'Recluir', desc: 'Transmutación. Envías a un objetivo a un estado de animación suspendida e invisible.' },
+    { level: 7, name: 'Rociada prismática', desc: 'Evocación. Ocho rayos de luz de colores infligen daño elemental o estados negativos.' },
+    { level: 7, name: 'Símbolo', desc: 'Abjuración. Inscribes una runa dañina que aplica efectos nocivos al ser leída o activada.' },
+    { level: 7, name: 'Simulacro', desc: 'Ilusionismo. Creas un duplicado de hielo de una criatura con la mitad de sus HP.' },
+    { level: 7, name: 'Teletransporte', desc: 'Conjuración. Teletransporta instantáneamente a tu grupo a cualquier lugar del mismo plano.' },
+
+    // Nivel 8
+    { level: 8, name: 'Antipatía/simpatía', desc: 'Encantamiento. Atrae o repele a un tipo de criatura hacia un objeto o área.' },
+    { level: 8, name: 'Campo antimagia', desc: 'Abjuración (Concentración). Esfera de 3 m de radio suprime toda magia en su interior.' },
+    { level: 8, name: 'Clon', desc: 'Nigromancia. Creas un duplicado inerte de una criatura; tu alma se transfiere a él si mueres.' },
+    { level: 8, name: 'Controlar el clima', desc: 'Transmutación (Concentración). Cambias la temperatura, viento y precipitación exterior.' },
+    { level: 8, name: 'Dominar monstruo', desc: 'Encantamiento (Concentración). Tomas el control mental absoluto de cualquier criatura.' },
+    { level: 8, name: 'Explosión solar', desc: 'Evocación. Destello de luz solar causa 12d6 daño radiante y ceguera permanente en área grande.' },
+    { level: 8, name: 'Laberinto', desc: 'Conjuración (Concentración). Destierras a una criatura a un laberinto extradimensional.' },
+    { level: 8, name: 'Mente en blanco', desc: 'Abjuración. Inmuniza al objetivo contra daño psíquico, detección y lectura de mente.' },
+    { level: 8, name: 'Nube incendiaria', desc: 'Conjuración (Concentración). Nube de humo ardiente causa 10d8 daño de fuego por ronda.' },
+    { level: 8, name: 'Ofuscación', desc: 'Encantamiento. Vuelves invisible e indetectable a una criatura durante 8 horas.' },
+    { level: 8, name: 'Palabra de poder: aturdir', desc: 'Encantamiento. Aturde instantáneamente a una criatura si tiene 150 HP o menos.' },
+    { level: 8, name: 'Semiplano', desc: 'Conjuración. Abre un portal de 12 metros a un semiplano de piedra vacío creado por ti.' },
+    { level: 8, name: 'Telepatía', desc: 'Adivinación. Crea un enlace mental bidireccional ilimitado con una criatura que conozcas.' },
+
+    // Nivel 9
+    { level: 9, name: 'Cambiar de forma', desc: 'Transmutación (Concentración). Te transformas en cualquier criatura de tu CR o inferior.' },
+    { level: 9, name: 'Cautiverio', desc: 'Abjuración. Aprisiona a una criatura bajo tierra, en una gema o en cadenas de forma permanente.' },
+    { level: 9, name: 'Deseo', desc: 'Conjuración. El conjuro más poderoso; puede duplicar cualquier hechizo de nivel 8 o inferior o pedir deseos.' },
+    { level: 9, name: 'Muro prismático', desc: 'Abjuración. Crea una barrera multicolor de 7 capas protectoras que dañan a atacantes.' },
+    { level: 9, name: 'Palabra de poder: matar', desc: 'Encantamiento. Mata instantáneamente a una criatura si tiene 100 HP o menos.' },
+    { level: 9, name: 'Parar el tiempo', desc: 'Transmutación. Detiene el tiempo para los demás durante 1d4+1 rondas.' },
+    { level: 9, name: 'Polimorfar verdadero', desc: 'Transmutación (Concentración). Transforma una criatura en otra de forma permanente.' },
+    { level: 9, name: 'Portal', desc: 'Conjuración (Concentración). Abre un portal interplanar hacia un lugar específico o una criatura.' },
+    { level: 9, name: 'Presciencia', desc: 'Adivinación. Otorga ventaja en todas las tiradas y desventaja a tus atacantes por 8 horas.' },
+    { level: 9, name: 'Proyección astral', desc: 'Nigromancia. Proyectas tu cuerpo astral al Plano Astral, dejando tu cuerpo físico.' },
+    { level: 9, name: 'Terror abyecto', desc: 'Ilusionismo (Concentración). Creas una pesadilla viviente que incapacita a todos tus enemigos.' },
+    { level: 9, name: 'Tormenta de meteoritos', desc: 'Evocación. Lluvia de meteoros inflige 20d6 daño de fuego y 20d6 daño contundente.' }
+  ];
+
   bardCantripsList = [
     { name: 'Amistad', desc: 'Encantamiento. Otorga ventaja en pruebas de Carisma contra un humanoide no hostil (Concentración).' },
     { name: 'Burla dañina', desc: 'Encantamiento (Recomendado). Causa 1d4 daño psíquico y desventaja en la próxima tirada de ataque del objetivo.' },
@@ -4001,6 +4721,191 @@ export class CharacterCreatorComponent implements OnInit {
     { level: 1, name: 'Zancada prodigiosa', desc: 'Transmutación. Aumenta la velocidad de movimiento de una criatura en 3 m por 1 hora.' }
   ];
 
+  sorcererSpellsList = [
+    // Trucos (Nivel 0)
+    { level: 0, name: 'Agarre electrizante', desc: 'Evocación. Canalizas electricidad; causa 1d8 daño eléctrico y quita la reacción del objetivo.' },
+    { level: 0, name: 'Amistad', desc: 'Encantamiento (Concentración). Ventaja en pruebas de Carisma contra un humanoide no hostil.' },
+    { level: 0, name: 'Descarga de fuego', desc: 'Evocación. Lanzas una chispa de fuego que causa 1d10 daño ígneo al acertar.' },
+    { level: 0, name: 'Elementalismo', desc: 'Transmutación. Creas efectos elementales menores como brisas, polvo, chispas o vapor.' },
+    { level: 0, name: 'Estallido mágico', desc: 'Evocación. Lanzas rayo de magia pura; inflige 1d6 daño elemental (ácido, frío, fuego, rayo, veneno o trueno). Si sacas un 6, explota.' },
+    { level: 0, name: 'Fragmento mental', desc: 'Encantamiento. Causa 1d6 daño psíquico y resta 1d4 a la próxima salvación del objetivo.' },
+    { level: 0, name: 'Guardia de cuchillas', desc: 'Abjuración. Obtienes resistencia contra daño contundente, perforante y cortante de ataques con armas.' },
+    { level: 0, name: 'Ilusión menor', desc: 'Ilusionismo. Creas una imagen o sonido menor en un punto a tu alcance por 1 minuto.' },
+    { level: 0, name: 'Impacto certero', desc: 'Adivinación. Obtienes ventaja en tu próxima tirada de ataque contra un objetivo a tu alcance.' },
+    { level: 0, name: 'Luces danzantes', desc: 'Ilusionismo (Concentración). Creas hasta cuatro luces flotantes que puedes mover.' },
+    { level: 0, name: 'Luz', desc: 'Evocación. Hace que un objeto emita luz brillante en un radio de 6 metros.' },
+    { level: 0, name: 'Mano de mago', desc: 'Conjuración. Creas una mano espectral invisible/visible para manipular objetos a 9 m.' },
+    { level: 0, name: 'Mensaje', desc: 'Transmutación. Envías un mensaje susurrado a una criatura a 36 m que puede responder en secreto.' },
+    { level: 0, name: 'Prestidigitación', desc: 'Transmutación. Realizas trucos de magia menores e inofensivos (limpiar, calentar, etc.).' },
+    { level: 0, name: 'Rayo de escarcha', desc: 'Evocación. Causa 1d8 daño de frío y reduce la velocidad del objetivo en 3 m.' },
+    { level: 0, name: 'Reparar', desc: 'Transmutación. Reparas una única rotura o fisura en un objeto de menos de 30 cm.' },
+    { level: 0, name: 'Rociada venenosa', desc: 'Nigromancia. Proyectas una bocanada de gas nocivo que causa 1d12 daño de veneno.' },
+    { level: 0, name: 'Salpicadura de ácido', desc: 'Conjuración. Lanzas burbuja de ácido que hace 1d6 daño a una o dos criaturas juntas.' },
+    { level: 0, name: 'Toque helado', desc: 'Nigromancia. Mano espectral causa 1d8 daño necrótico y evita que el objetivo se cure.' },
+    { level: 0, name: 'Tronar', desc: 'Evocación. Onda de sonido causa 1d6 daño de trueno y empuja 3 m si fallan salvación.' },
+
+    // Nivel 1
+    { level: 1, name: 'Armadura de mago', desc: 'Abjuración. CA del objetivo sin armadura pasa a ser 13 + Mod. Destreza por 8 horas.' },
+    { level: 1, name: 'Caída de pluma', desc: 'Transmutación. Reacción. Ralentiza la caída de hasta 5 criaturas; sufren 0 daño al caer.' },
+    { level: 1, name: 'Cuchillo de hielo', desc: 'Conjuración. Cuchillo inflige 1d10 daño perforante y explota causando 2d6 daño de frío en área.' },
+    { level: 1, name: 'Detectar magia', desc: 'Adivinación (Ritual, Concentración). Sientes la presencia de auras mágicas a 9 metros.' },
+    { level: 1, name: 'Disfrazarse', desc: 'Ilusionismo. Cambias tu apariencia física y ropa temporalmente por 1 hora.' },
+    { level: 1, name: 'Dormir', desc: 'Encantamiento. Sumes a criaturas en un letargo mágico según una tirada de 5d8.' },
+    { level: 1, name: 'Entender idiomas', desc: 'Adivinación (Ritual). Comprendes cualquier idioma hablado o escrito que escuches o toques.' },
+    { level: 1, name: 'Escudo', desc: 'Abjuración. Reacción. Sumas +5 a tu CA y eres inmune a Proyectil mágico por 1 turno.' },
+    { level: 1, name: 'Falsa vida', desc: 'Nigromancia. Obtienes 1d4+4 puntos de golpe temporales por 1 hora.' },
+    { level: 1, name: 'Grasa', desc: 'Conjuración. Suelo resbaladizo derriba a criaturas que fallen salvación de Destreza.' },
+    { level: 1, name: 'Hechizar persona', desc: 'Encantamiento. Hace que una criatura que falle salvación te considere un conocido amistoso.' },
+    { level: 1, name: 'Imagen silenciosa', desc: 'Ilusionismo (Concentración). Creas una ilusión visual de una criatura u objeto de tamaño mediano.' },
+    { level: 1, name: 'Manos ardientes', desc: 'Evocación. Cono de llamas que causa 3d6 daño de fuego a quienes fallen salvación.' },
+    { level: 1, name: 'Nube de oscurecimiento', desc: 'Conjuración (Concentración). Nube densa que bloquea totalmente la visión por 10 min.' },
+    { level: 1, name: 'Ola atronadora', desc: 'Evocación. Onda de choque inflige 2d8 daño de trueno y empuja a objetivos a 3 m.' },
+    { level: 1, name: 'Orbe cromático', desc: 'Evocación. Lanzas orbe elemental que inflige 3d8 de daño del tipo elemental que elijas.' },
+    { level: 1, name: 'Proyectil mágico', desc: 'Evocación. Tres dardos que aciertan automáticamente infligiendo 1d4+1 daño de fuerza.' },
+    { level: 1, name: 'Rayo de hechicería', desc: 'Evocación (Concentración). Rayo inflige 1d12 daño de rayo; puedes repetir daño usando tu acción.' },
+    { level: 1, name: 'Rayo nauseabundo', desc: 'Nigromancia. Rayo causa 2d8 daño de veneno y envenena si fallan salvación.' },
+    { level: 1, name: 'Retirada expeditiva', desc: 'Transmutación (Concentración). Acción adicional. Permite correr/destrabarse.' },
+    { level: 1, name: 'Rociada de color', desc: 'Ilusionismo. Ráfaga de luz brillante que ciega a criaturas según sus pg.' },
+    { level: 1, name: 'Salto', desc: 'Transmutación. Triplica la distancia de salto de una criatura por 1 minuto.' },
+
+    // Nivel 2
+    { level: 2, name: 'Abrir', desc: 'Transmutación. Abre una puerta, cofre o cerradura cerrada mágica o físicamente.' },
+    { level: 2, name: 'Agrandar/reducir', desc: 'Transmutación (Concentración). Duplica o reduce a la mitad el tamaño y peso de una criatura.' },
+    { level: 2, name: 'Aliento de dragón', desc: 'Transmutación (Concentración). Exhalas cono de daño elemental que causa 3d6 en cada turno.' },
+    { level: 2, name: 'Alterar el propio aspecto', desc: 'Transmutación (Concentración). Cambias tu fisionomía, adaptas branquias o garras.' },
+    { level: 2, name: 'Arma mágica', desc: 'Transmutación (Concentración). Arma no mágica obtiene +1 en tiradas de ataque y daño.' },
+    { level: 2, name: 'Clavo mental', desc: 'Adivinación (Concentración). Flecha psíquica inflige 3d6 daño y rastreas la ubicación del objetivo.' },
+    { level: 2, name: 'Contorno borroso', desc: 'Ilusionismo (Concentración). Tu cuerpo se vuelve borroso; ataques contra ti tienen desventaja.' },
+    { level: 2, name: 'Corona de la locura', desc: 'Encantamiento (Concentración). Fuerza a un humanoide a atacar a sus aliados en cada turno.' },
+    { level: 2, name: 'Detectar pensamientos', desc: 'Adivinación (Concentración). Lees pensamientos superficiales y profundos de criaturas a 9 m.' },
+    { level: 2, name: 'Esfera de llamas', desc: 'Evocación (Concentración). Crea esfera de fuego rodante que inflige 2d6 daño en área.' },
+    { level: 2, name: 'Fuerza fantasmal', desc: 'Ilusionismo (Concentración). Crea ilusión mental tan realista que causa 1d6 daño psíquico.' },
+    { level: 2, name: 'Hacer añicos', desc: 'Evocación. Estallido sonoro que causa 3d8 daño de trueno en una esfera de 3 m.' },
+    { level: 2, name: 'Hoja de fuego', desc: 'Evocación (Concentración). Creas una espada de fuego que causa 3d6 daño ígneo al golpear.' },
+    { level: 2, name: 'Imagen múltiple', desc: 'Ilusionismo. Creas tres duplicados ilusorios de ti para desviar los ataques.' },
+    { level: 2, name: 'Inmovilizar persona', desc: 'Encantamiento (Concentración). Paraliza a un humanoide visible a 18 m.' },
+    { level: 2, name: 'Invisibilidad', desc: 'Ilusionismo (Concentración). Una criatura elegida se vuelve invisible durante 1 hora.' },
+    { level: 2, name: 'Levitar', desc: 'Transmutación (Concentración). Eleva al objetivo verticalmente hasta 6 metros.' },
+    { level: 2, name: 'Nube de dagas', desc: 'Conjuración (Concentración). Cubo de dagas giratorias causa 4d4 daño cortante en área.' },
+    { level: 2, name: 'Oscuridad', desc: 'Evocación (Concentración). Crea una esfera de 4.5 m de oscuridad mágica que bloquea visión.' },
+    { level: 2, name: 'Paso brumoso', desc: 'Conjuración. Acción adicional. Te teletransportas hasta 9 metros a un lugar visible.' },
+    { level: 2, name: 'Potenciar característica', desc: 'Transmutación (Concentración). Otorga ventaja en pruebas de una característica elegida.' },
+    { level: 2, name: 'Ráfaga de viento', desc: 'Evocación (Concentración). Línea de viento fuerte empuja a criaturas y apaga fuegos.' },
+    { level: 2, name: 'Rayo abrasador', desc: 'Evocación. Lanzas tres rayos de fuego; cada uno causa 2d6 daño de fuego.' },
+    { level: 2, name: 'Sordera/ceguera', desc: 'Transmutación. Ciega o ensordece a un objetivo que falle salvación de Constitución.' },
+    { level: 2, name: 'Sugestión', desc: 'Encantamiento (Concentración). Sugieres curso de acción a criatura; le obliga a obedecer.' },
+    { level: 2, name: 'Telaraña', desc: 'Conjuración (Concentración). Telarañas pegajosas que retienen y ralentizan en un área.' },
+    { level: 2, name: 'Trepar cual arácnido', desc: 'Transmutación (Concentración). Permite caminar por paredes y techos con manos libres.' },
+    { level: 2, name: 'Ver invisibilidad', desc: 'Adivinación. Ves criaturas y objetos invisibles o en el Plano Etéreo.' },
+    { level: 2, name: 'Vigor arcano', desc: 'Abjuración. Te sanas a ti mismo en caso de emergencia recuperando 2d8 + Mod Carisma.' },
+    { level: 2, name: 'Visión en la oscuridad', desc: 'Transmutación. Otorga visión en la oscuridad con alcance de 18 m por 8 horas.' },
+
+    // Nivel 3
+    { level: 3, name: 'Acelerar', desc: 'Transmutación (Concentración). Duplica velocidad del objetivo, da +2 CA y acción adicional.' },
+    { level: 3, name: 'Bola de fuego', desc: 'Evocación. Esfera de fuego causa 8d6 daño de fuego en área de 6 m de radio.' },
+    { level: 3, name: 'Caminar sobre el agua', desc: 'Transmutación (Ritual). Permite caminar sobre agua, barro, nieve o lava por 1 hora.' },
+    { level: 3, name: 'Clarividencia', desc: 'Adivinación (Concentración). Creas sensor invisible para ver u oír en un lugar familiar o lejano.' },
+    { level: 3, name: 'Contrahechizo', desc: 'Abjuración. Reacción. Interrumpes el lanzamiento de un conjuro enemigo.' },
+    { level: 3, name: 'Desplazamiento', desc: 'Transmutación. Te teletransportas a ti mismo o a otra criatura a un lugar visible a 9 m.' },
+    { level: 3, name: 'Disipar magia', desc: 'Abjuración. Cancela los efectos mágicos activos en un objetivo.' },
+    { level: 3, name: 'Don de lenguas', desc: 'Adivinación. Permite hablar y entender cualquier idioma por 1 hora.' },
+    { level: 3, name: 'Forma gaseosa', desc: 'Transmutación (Concentración). Transforma objetivo en nube brumosa con resistencia a daño.' },
+    { level: 3, name: 'Imagen mayor', desc: 'Ilusionismo (Concentración). Crea ilusión física tridimensional con sonido, olor y calor.' },
+    { level: 3, name: 'Luz del día', desc: 'Evocación. Crea esfera de luz brillante de 18 m que dispersa oscuridad mágica.' },
+    { level: 3, name: 'Nube apestosa', desc: 'Conjuración (Concentración). Nube de gas pestilente que incapacita a criaturas.' },
+    { level: 3, name: 'Patrón hipnótico', desc: 'Ilusionismo (Concentración). Patrón de luces incapacita y paraliza a quienes lo miren.' },
+    { level: 3, name: 'Protección contra energía', desc: 'Abjuración (Concentración). Otorga resistencia a ácido, frío, fuego, rayo o trueno.' },
+    { level: 3, name: 'Ralentizar', desc: 'Transmutación (Concentración). Reduce velocidad, CA y ataques de enemigos en área.' },
+    { level: 3, name: 'Relámpago', desc: 'Evocación. Línea de rayo inflige 8d6 daño eléctrico a quienes fallen.' },
+    { level: 3, name: 'Respirar bajo el agua', desc: 'Transmutación (Ritual). Permite respirar bajo el agua a 10 criaturas por 24 horas.' },
+    { level: 3, name: 'Terror', desc: 'Ilusionismo (Concentración). Proyecta imagen aterradora que obliga a huir a los objetivos.' },
+    { level: 3, name: 'Toque vampírico', desc: 'Nigromancia (Concentración). Tu toque causa 3d6 daño necrótico y te sana.' },
+    { level: 3, name: 'Tormenta de aguanieve', desc: 'Conjuración (Concentración). Lluvia helada dificulta movimiento y rompe concentración.' },
+    { level: 3, name: 'Volar', desc: 'Transmutación (Concentración). Otorga velocidad de vuelo de 18 metros por 10 minutos.' },
+
+    // Nivel 4
+    { level: 4, name: 'Confusión', desc: 'Encantamiento (Concentración). Asalta la mente de criaturas obligándolas a actuar erráticamente.' },
+    { level: 4, name: 'Destierro', desc: 'Abjuración (Concentración). Envías temporalmente a una criatura a otro plano de existencia.' },
+    { level: 4, name: 'Dominar bestia', desc: 'Encantamiento (Concentración). Tomas el control absoluto de una bestia.' },
+    { level: 4, name: 'Escudo de fuego', desc: 'Evocación. Te rodeas de llamas que dan resistencia a frío/fuego y dañan atacantes.' },
+    { level: 4, name: 'Esfera vitriólica', desc: 'Evocación. Ácido causa 10d4 daño inicial y 5d4 daño el próximo turno.' },
+    { level: 4, name: 'Hechizar monstruo', desc: 'Encantamiento. Hace que una criatura te considere un aliado amistoso por 1 hora.' },
+    { level: 4, name: 'Invisibilidad mejorada', desc: 'Ilusionismo (Concentración). Te vuelves invisible; no se rompe al atacar/conjurar.' },
+    { level: 4, name: 'Marchitar', desc: 'Nigromancia. Drenas la energía vital de una criatura infligiendo 8d8 daño necrótico.' },
+    { level: 4, name: 'Muro de fuego', desc: 'Evocación (Concentración). Muro de llamas causa 5d8 daño de fuego en su área.' },
+    { level: 4, name: 'Piel pétrea', desc: 'Transmutación (Concentración). Otorga resistencia a daño contundente/perforante/cortante físico.' },
+    { level: 4, name: 'Polimorfar', desc: 'Transmutación (Concentración). Transforma a una criatura en una bestia.' },
+    { level: 4, name: 'Puerta dimensional', desc: 'Conjuración. Te teletransportas a ti y a un aliado hasta 150 metros.' },
+    { level: 4, name: 'Tormenta de hielo', desc: 'Evocación. Granizo causa 2d8 daño por impacto y 4d6 daño por frío en área.' },
+
+    // Nivel 5
+    { level: 5, name: 'Animar objetos', desc: 'Transmutación (Concentración). Das vida a objetos inanimados para que ataquen.' },
+    { level: 5, name: 'Apariencia', desc: 'Ilusionismo. Altera la apariencia física de cualquier número de criaturas.' },
+    { level: 5, name: 'Círculo de teletransportación', desc: 'Conjuración. Crea portal de 1 asalto a un círculo permanente conocido.' },
+    { level: 5, name: 'Cono de frío', desc: 'Evocación. Ráfaga de aire helado causa 8d8 daño de frío en un cono de 18 m.' },
+    { level: 5, name: 'Creación', desc: 'Ilusionismo. Materializa objetos inanimados temporales a partir de sombras.' },
+    { level: 5, name: 'Dominar persona', desc: 'Encantamiento (Concentración). Controlas telepáticamente a un humanoide.' },
+    { level: 5, name: 'Estática sináptica', desc: 'Encantamiento. Explosión psíquica inflige 8d6 daño y reduce tiradas enemigas en 1d6.' },
+    { level: 5, name: 'Inmovilizar monstruo', desc: 'Encantamiento (Concentración). Paraliza a cualquier tipo de criatura a tu alcance.' },
+    { level: 5, name: 'Mano de Bigby', desc: 'Evocación (Concentración). Creas mano de fuerza para golpear, empujar o proteger.' },
+    { level: 5, name: 'Muro de piedra', desc: 'Evocación (Concentración). Crea barrera física de piedra permanente al concentrarse.' },
+    { level: 5, name: 'Nube aniquiladora', desc: 'Conjuración (Concentración). Gas tóxico causa 5d10 daño veneno y avanza en cada turno.' },
+    { level: 5, name: 'Plaga de insectos', desc: 'Conjuración (Concentración). Enjambre causa 4d10 daño perforante y bloquea visión.' },
+    { level: 5, name: 'Telequinesis', desc: 'Transmutación (Concentración). Mueves mentalmente criaturas u objetos pesados.' },
+
+    // Nivel 6
+    { level: 6, name: 'Círculo de muerte', desc: 'Nigromancia. Esfera de energía necrótica inflige 8d6 daño necrótico a objetivos en área.' },
+    { level: 6, name: 'De la carne a la piedra', desc: 'Transmutación (Concentración). Petrifica gradualmente a una criatura.' },
+    { level: 6, name: 'Desintegrar', desc: 'Transmutación. Rayo causa 10d6+40 daño de fuerza; desintegra a cenizas si reduce a 0 HP.' },
+    { level: 6, name: 'Esfera congelante de Otiluke', desc: 'Evocación. Globo de hielo causa 10d6 daño de frío en área grande.' },
+    { level: 6, name: 'Globo de invulnerabilidad', desc: 'Abjuración (Concentración). Barrera impide el paso de conjuros de nivel 5 o inferior.' },
+    { level: 6, name: 'Mal de ojo', desc: 'Nigromancia (Concentración). Mirada causa terror, sueño o debilidad a un enemigo por turno.' },
+    { level: 6, name: 'Mover la tierra', desc: 'Transmutación (Concentración). Modificas el terreno natural lentamente.' },
+    { level: 6, name: 'Puerta arcana', desc: 'Conjuración (Concentración). Crea dos portales de teletransporte conectados.' },
+    { level: 6, name: 'Rayo solar', desc: 'Evocación (Concentración). Haz de luz inflige 6d8 daño radiante y ciega en una línea.' },
+    { level: 6, name: 'Relámpago en cadena', desc: 'Evocación. Relámpago inflige 10d8 daño eléctrico y salta a hasta tres objetivos más.' },
+    { level: 6, name: 'Sugestión en masa', desc: 'Encantamiento. Sugieres un curso de acción a hasta 12 criaturas por 24 horas.' },
+    { level: 6, name: 'Visión veraz', desc: 'Adivinación. Permite ver cosas como son en realidad (ilusiones, invisibilidad).' },
+
+    // Nivel 7
+    { level: 7, name: 'Bola de fuego de explosión retardada', desc: 'Evocación (Concentración). Cuenta atrás táctica acumula daño (+1d6/turno) hasta explotar.' },
+    { level: 7, name: 'Dedo de la muerte', desc: 'Nigromancia. Dolor extremo causa 7d8+30 daño necrótico; alza como zombi si mata.' },
+    { level: 7, name: 'Desplazamiento entre planos', desc: 'Conjuración. Transporta a hasta 8 criaturas a otro plano de existencia.' },
+    { level: 7, name: 'Excursión etérea', desc: 'Conjuración. Te desplazas al Plano Etéreo para moverte invisible e intangible.' },
+    { level: 7, name: 'Invertir la gravedad', desc: 'Transmutación (Concentración). Invierte gravedad haciendo caer a criaturas hacia arriba.' },
+    { level: 7, name: 'Rociada prismática', desc: 'Evocación. Ráfagas de luz multicolor infligen daño aleatorio o estados alterados.' },
+    { level: 7, name: 'Teletransporte', desc: 'Conjuración. Teletransporta instantáneamente a tu grupo a cualquier lugar del mundo.' },
+    { level: 7, name: 'Tormenta de fuego', desc: 'Evocación. Tormenta de fuego causa 7d10 daño de fuego en múltiples cubos.' },
+
+    // Nivel 8
+    { level: 8, name: 'Dominar monstruo', desc: 'Encantamiento (Concentración). Control total sobre cualquier criatura.' },
+    { level: 8, name: 'Explosión solar', desc: 'Evocación. Destello causa 12d6 daño radiante y ciega permanentemente.' },
+    { level: 8, name: 'Nube incendiaria', desc: 'Conjuración (Concentración). Nube causa 10d8 daño de fuego por turno en su área.' },
+    { level: 8, name: 'Palabra de poder: aturdir', desc: 'Encantamiento. Aturde instantáneamente a una criatura con menos de 150 HP.' },
+    { level: 8, name: 'Semiplano', desc: 'Conjuración. Crea una habitación dimensional vacía conectada por una puerta en una pared.' },
+    { level: 8, name: 'Terremoto', desc: 'Transmutación (Concentración). Sacudida sísmica derriba estructuras y abre fisuras.' },
+
+    // Nivel 9
+    { level: 9, name: 'Deseo', desc: 'Conjuración. El conjuro más poderoso; replica cualquier otro conjuro o altera la realidad.' },
+    { level: 9, name: 'Palabra de poder: matar', desc: 'Encantamiento. Mata al instante a una criatura si tiene 100 HP o menos.' },
+    { level: 9, name: 'Parar el tiempo', desc: 'Transmutación. Detienes el paso del tiempo para todos excepto tú durante 1d4+1 turnos.' },
+    { level: 9, name: 'Portal', desc: 'Conjuración (Concentración). Abre portal bidireccional permanente a otro plano.' },
+    { level: 9, name: 'Tormenta de meteoritos', desc: 'Evocación. Meteoros causan 20d6 daño de fuego y 20d6 daño contundente.' }
+  ];
+
+  sorcererMetamagicList = [
+    { name: 'Conjuro Acelerado', cost: 2, desc: 'Cuando lanzas un conjuro con tiempo de una acción, gastas 2 puntos para lanzarlo como acción adicional. No puedes lanzar otro conjuro de nivel 1+ este turno tras usarlo.' },
+    { name: 'Conjuro Buscador', cost: 1, desc: 'Si fallas una tirada de ataque con un conjuro, gastas 1 punto para volver a lanzar el d20. Puedes usarlo con otra metamagia.' },
+    { name: 'Conjuro Cuidado', cost: 1, desc: 'Al lanzar un conjuro con tirada de salvación, gastas 1 punto y proteges hasta Carisma (mín. 1) criaturas. Tienen éxito automático y no sufren daño si normalmente recibirían la mitad.' },
+    { name: 'Conjuro Distante', cost: 1, desc: 'Duplica el alcance de un conjuro de al menos 1.5 m, o hace que un conjuro de toque tenga un alcance de 9 m.' },
+    { name: 'Conjuro Extendido', cost: 1, desc: 'Duplica la duración de un conjuro de al menos 1 minuto (máx. 24h). Otorga ventaja para mantener la concentración en ese conjuro.' },
+    { name: 'Conjuro Gemelo', cost: 1, desc: 'Al lanzar un conjuro monobjetivo modificable por nivel para añadir objetivos, gastas 1 punto para incrementar su nivel efectivo en 1.' },
+    { name: 'Conjuro Intensificado', cost: 2, desc: 'Gasta 2 puntos para dar desventaja a un objetivo en su primera tirada de salvación contra el conjuro.' },
+    { name: 'Conjuro Potenciado', cost: 1, desc: 'Gasta 1 punto para repetir hasta tu modificador de Carisma (mín. 1) dados de daño de un conjuro.' },
+    { name: 'Conjuro Sutil', cost: 1, desc: 'Gasta 1 punto para lanzar el conjuro sin componentes verbales, somáticos ni materiales (salvo consumibles o con coste).' },
+    { name: 'Conjuro Transmutado', cost: 1, desc: 'Gasta 1 punto para cambiar el tipo de daño de un conjuro a ácido, frío, fuego, relámpago, trueno o veneno.' }
+  ];
+
   isDruid(): boolean {
     if (!this.activeClass || !this.activeClass.name) return false;
     return this.activeClass.name.toLowerCase().includes('druida');
@@ -4035,6 +4940,103 @@ export class CharacterCreatorComponent implements OnInit {
       17: 19, 18: 20, 19: 21, 20: 22
     };
     return table[lvl] || 4;
+  }
+
+  isSorcerer(): boolean {
+    if (!this.activeClass || !this.activeClass.name) return false;
+    return this.activeClass.name.toLowerCase().includes('hechicero');
+  }
+
+  isSorcererLvl3(): boolean {
+    return this.isSorcerer() && Number(this.characterLevel) >= 3;
+  }
+
+  getSorcererCantripsLimit(): number {
+    const lvl = Number(this.characterLevel) || 1;
+    if (lvl <= 3) return 4;
+    if (lvl <= 9) return 5;
+    return 6;
+  }
+
+  getSorcererSpellsLimit(): number {
+    const lvl = Number(this.characterLevel) || 1;
+    const table: { [key: number]: number } = {
+      1: 2, 2: 4, 3: 6, 4: 7, 5: 9, 6: 10, 7: 11, 8: 12, 9: 14,
+      10: 15, 11: 16, 12: 16, 13: 17, 14: 17, 15: 18, 16: 18,
+      17: 19, 18: 20, 19: 21, 20: 22
+    };
+    return table[lvl] || 2;
+  }
+
+  getSorcererMaxSpellLevel(): number {
+    const lvl = Number(this.characterLevel) || 1;
+    if (lvl <= 2) return 1;
+    if (lvl <= 4) return 2;
+    if (lvl <= 6) return 3;
+    if (lvl <= 8) return 4;
+    if (lvl <= 10) return 5;
+    if (lvl <= 12) return 6;
+    if (lvl <= 14) return 7;
+    if (lvl <= 16) return 8;
+    return 9;
+  }
+
+  getSorcererMetamagicLimit(): number {
+    const lvl = Number(this.characterLevel) || 1;
+    if (lvl < 2) return 0;
+    if (lvl <= 9) return 2;
+    if (lvl <= 16) return 4;
+    return 6;
+  }
+
+  getSorcererSpellsForLevel(level: number) {
+    return this.sorcererSpellsList.filter(s => s.level === level);
+  }
+
+  getSorcererCantrips() {
+    return this.sorcererSpellsList.filter(s => s.level === 0);
+  }
+
+  getAvailableSpellLevelsForSorcerer(): number[] {
+    const maxLvl = this.getSorcererMaxSpellLevel();
+    const lvls: number[] = [];
+    for (let i = 1; i <= maxLvl; i++) {
+      lvls.push(i);
+    }
+    return lvls;
+  }
+
+  toggleSorcererCantrip(cantripName: string): void {
+    const limit = this.getSorcererCantripsLimit();
+    const idx = this.selectedSorcererCantrips.indexOf(cantripName);
+    if (idx > -1) {
+      this.selectedSorcererCantrips.splice(idx, 1);
+    } else if (this.selectedSorcererCantrips.length < limit) {
+      this.selectedSorcererCantrips.push(cantripName);
+    }
+    this.cdr.detectChanges();
+  }
+
+  toggleSorcererSpell(spellName: string): void {
+    const limit = this.getSorcererSpellsLimit();
+    const idx = this.selectedSorcererSpells.indexOf(spellName);
+    if (idx > -1) {
+      this.selectedSorcererSpells.splice(idx, 1);
+    } else if (this.selectedSorcererSpells.length < limit) {
+      this.selectedSorcererSpells.push(spellName);
+    }
+    this.cdr.detectChanges();
+  }
+
+  toggleSorcererMetamagic(metamagicName: string): void {
+    const limit = this.getSorcererMetamagicLimit();
+    const idx = this.selectedSorcererMetamagic.indexOf(metamagicName);
+    if (idx > -1) {
+      this.selectedSorcererMetamagic.splice(idx, 1);
+    } else if (this.selectedSorcererMetamagic.length < limit) {
+      this.selectedSorcererMetamagic.push(metamagicName);
+    }
+    this.cdr.detectChanges();
   }
 
   isBard(): boolean {
@@ -4140,11 +5142,142 @@ export class CharacterCreatorComponent implements OnInit {
     if (this.selectedClericSpells.length > clSpellLimit) {
       this.selectedClericSpells = this.selectedClericSpells.slice(0, clSpellLimit);
     }
+
+    // Limpieza de niveles de Hechicero
+    const sorcMaxLvl = this.getSorcererMaxSpellLevel();
+    this.selectedSorcererSpells = this.selectedSorcererSpells.filter(spellName => {
+      const sp = this.sorcererSpellsList.find(s => s.name === spellName);
+      return sp && sp.level <= sorcMaxLvl;
+    });
+
+    const sorcCantripLimit = this.getSorcererCantripsLimit();
+    if (this.selectedSorcererCantrips.length > sorcCantripLimit) {
+      this.selectedSorcererCantrips = this.selectedSorcererCantrips.slice(0, sorcCantripLimit);
+    }
+
+    const sorcSpellLimit = this.getSorcererSpellsLimit();
+    if (this.selectedSorcererSpells.length > sorcSpellLimit) {
+      this.selectedSorcererSpells = this.selectedSorcererSpells.slice(0, sorcSpellLimit);
+    }
+
+    const sorcMetamagicLimit = this.getSorcererMetamagicLimit();
+    if (this.selectedSorcererMetamagic.length > sorcMetamagicLimit) {
+      this.selectedSorcererMetamagic = this.selectedSorcererMetamagic.slice(0, sorcMetamagicLimit);
+    }
  
     if (Number(this.characterLevel) < 3) {
       this.selectedSubclass = '';
     }
+
+    // Limpieza de niveles del Mago
+    const magoMaxLvl = this.getMagoMaxSpellLevel();
+    this.selectedMagoSpells = this.selectedMagoSpells.filter(spellName => {
+      const sp = this.magoSpellsList.find(s => s.name === spellName);
+      return sp && sp.level <= magoMaxLvl;
+    });
+    const magoCantripLimit = this.getMagoCantripsLimit();
+    if (this.selectedMagoCantrips.length > magoCantripLimit) {
+      this.selectedMagoCantrips = this.selectedMagoCantrips.slice(0, magoCantripLimit);
+    }
+    const magoSpellLimit = this.getMagoSpellsLimit();
+    if (this.selectedMagoSpells.length > magoSpellLimit) {
+      this.selectedMagoSpells = this.selectedMagoSpells.slice(0, magoSpellLimit);
+    }
+
+    // Limpieza de niveles de Explorador (Ranger)
+    const rangerMaxLvl = this.getRangerMaxSpellLevel();
+    this.selectedRangerSpells = this.selectedRangerSpells.filter(spellName => {
+      const sp = this.rangerSpellsList.find(s => s.name === spellName);
+      return sp && sp.level <= rangerMaxLvl;
+    });
+    const rangerSpellLimit = this.getRangerSpellsLimit();
+    if (this.selectedRangerSpells.length > rangerSpellLimit) {
+      this.selectedRangerSpells = this.selectedRangerSpells.slice(0, rangerSpellLimit);
+    }
+
+    // Limpieza de niveles de Paladín
+    const paladinMaxLvl = this.getPaladinMaxSpellLevel();
+    this.selectedPaladinSpells = this.selectedPaladinSpells.filter(spellName => {
+      const sp = this.paladinSpellsList.find(s => s.name === spellName);
+      return sp && sp.level <= paladinMaxLvl;
+    });
+    const paladinSpellLimit = this.getPaladinSpellsLimit();
+    if (this.selectedPaladinSpells.length > paladinSpellLimit) {
+      this.selectedPaladinSpells = this.selectedPaladinSpells.slice(0, paladinSpellLimit);
+    }
     
+    this.cdr.detectChanges();
+  }
+
+  isMago(): boolean {
+    if (!this.activeClass || !this.activeClass.name) return false;
+    return this.activeClass.name.toLowerCase().includes('mago');
+  }
+
+  isMagoLvl3(): boolean {
+    if (!this.activeClass || !this.activeClass.name) return false;
+    const name = this.activeClass.name.toLowerCase();
+    return name.includes('mago') && Number(this.characterLevel) >= 3;
+  }
+
+  getMagoCantripsLimit(): number {
+    const lvl = Number(this.characterLevel) || 1;
+    if (lvl <= 3) return 3;
+    if (lvl <= 9) return 4;
+    return 5;
+  }
+
+  getMagoSpellsLimit(): number {
+    // El Libro de Conjuros inicia con 6 hechizos de nivel 1 y gana 2 por nivel
+    const lvl = Number(this.characterLevel) || 1;
+    return 6 + (lvl - 1) * 2;
+  }
+
+  getMagoMaxSpellLevel(): number {
+    const lvl = Number(this.characterLevel) || 1;
+    if (lvl <= 2) return 1;
+    if (lvl <= 4) return 2;
+    if (lvl <= 6) return 3;
+    if (lvl <= 8) return 4;
+    if (lvl <= 10) return 5;
+    if (lvl <= 12) return 6;
+    if (lvl <= 14) return 7;
+    if (lvl <= 16) return 8;
+    return 9;
+  }
+
+  getMagoAvailableSpellLevels(): number[] {
+    const maxLvl = this.getMagoMaxSpellLevel();
+    const lvls: number[] = [];
+    for (let i = 1; i <= maxLvl; i++) {
+      lvls.push(i);
+    }
+    return lvls;
+  }
+
+  getMagoSpellsForLevel(level: number) {
+    return this.magoSpellsList.filter(s => s.level === level);
+  }
+
+  toggleMagoCantrip(cantripName: string): void {
+    const limit = this.getMagoCantripsLimit();
+    const idx = this.selectedMagoCantrips.indexOf(cantripName);
+    if (idx !== -1) {
+      this.selectedMagoCantrips.splice(idx, 1);
+    } else if (this.selectedMagoCantrips.length < limit) {
+      this.selectedMagoCantrips.push(cantripName);
+    }
+    this.cdr.detectChanges();
+  }
+
+  toggleMagoSpell(spellName: string): void {
+    const limit = this.getMagoSpellsLimit();
+    const idx = this.selectedMagoSpells.indexOf(spellName);
+    if (idx !== -1) {
+      this.selectedMagoSpells.splice(idx, 1);
+    } else if (this.selectedMagoSpells.length < limit) {
+      this.selectedMagoSpells.push(spellName);
+    }
     this.cdr.detectChanges();
   }
 
@@ -4152,6 +5285,7 @@ export class CharacterCreatorComponent implements OnInit {
     if (!this.activeClass || !this.activeClass.name) return false;
     return this.activeClass.name.toLowerCase().includes('brujo');
   }
+
 
   getWarlockCantripsLimit(): number {
     const lvl = Number(this.characterLevel) || 1;
@@ -4517,6 +5651,60 @@ export class CharacterCreatorComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+  isPaladin(): boolean {
+    if (!this.activeClass || !this.activeClass.name) return false;
+    return this.activeClass.name.toLowerCase().includes('paladín') || this.activeClass.name.toLowerCase().includes('paladin');
+  }
+
+  isPaladinLvl3(): boolean {
+    if (!this.activeClass || !this.activeClass.name) return false;
+    const name = this.activeClass.name.toLowerCase();
+    return (name.includes('paladín') || name.includes('paladin')) && Number(this.characterLevel) >= 3;
+  }
+
+  getPaladinSpellsLimit(): number {
+    const lvl = Number(this.characterLevel) || 1;
+    const table: { [key: number]: number } = {
+      1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 6, 7: 7, 8: 7, 9: 9,
+      10: 9, 11: 10, 12: 10, 13: 11, 14: 11, 15: 12, 16: 12,
+      17: 14, 18: 14, 19: 15, 20: 15
+    };
+    return table[lvl] || 2;
+  }
+
+  getPaladinMaxSpellLevel(): number {
+    const lvl = Number(this.characterLevel) || 1;
+    if (lvl <= 4) return 1;
+    if (lvl <= 8) return 2;
+    if (lvl <= 12) return 3;
+    if (lvl <= 16) return 4;
+    return 5;
+  }
+
+  getPaladinAvailableSpellLevels(): number[] {
+    const maxLvl = this.getPaladinMaxSpellLevel();
+    const lvls: number[] = [];
+    for (let i = 1; i <= maxLvl; i++) {
+      lvls.push(i);
+    }
+    return lvls;
+  }
+
+  getPaladinSpellsForLevel(level: number) {
+    return this.paladinSpellsList.filter(s => s.level === level);
+  }
+
+  togglePaladinSpell(spellName: string): void {
+    const spellLimit = this.getPaladinSpellsLimit();
+    const idx = this.selectedPaladinSpells.indexOf(spellName);
+    if (idx !== -1) {
+      this.selectedPaladinSpells.splice(idx, 1);
+    } else if (this.selectedPaladinSpells.length < spellLimit) {
+      this.selectedPaladinSpells.push(spellName);
+    }
+    this.cdr.detectChanges();
+  }
+
   isFighter(): boolean {
     if (!this.activeClass || !this.activeClass.name) return false;
     return this.activeClass.name.toLowerCase().includes('guerrero');
@@ -4680,6 +5868,11 @@ export class CharacterCreatorComponent implements OnInit {
   };
 
   skilledFeatSelection: string[] = [];
+
+  magicInitiateClass: string = '';
+  magicInitiateAbility: string = '';
+  magicInitiateCantrips: string[] = [];
+  magicInitiateSpell: string = '';
 
   allSkillsList: string[] = [
     'Atletismo',
@@ -5120,6 +6313,9 @@ export class CharacterCreatorComponent implements OnInit {
     this.backgroundChosen = true;
     this.currentStep = 3;
     this.imageLoaded = false;
+    if (this.hasMagicInitiateFeat()) {
+      this.magicInitiateClass = this.getMagicInitiateDefaultClass() || 'Mago';
+    }
   }
 
   onConfirmOrigin(): void {
@@ -5233,6 +6429,69 @@ export class CharacterCreatorComponent implements OnInit {
     if (!this.activeBackground || !this.activeBackground.keyFeat) return false;
     const cleanFeat = this.activeBackground.keyFeat.toLowerCase();
     return cleanFeat.includes('skilled') || cleanFeat.includes('habilidoso');
+  }
+
+  hasMagicInitiateFeat(): boolean {
+    if (!this.activeBackground || !this.activeBackground.keyFeat) return false;
+    const cleanFeat = this.activeBackground.keyFeat.toLowerCase();
+    return cleanFeat.includes('iniciado en la magia') || cleanFeat.includes('magic initiate');
+  }
+
+  getMagicInitiateDefaultClass(): string {
+    if (!this.activeBackground || !this.activeBackground.keyFeat) return '';
+    const feat = this.activeBackground.keyFeat;
+    if (feat.includes('Clérigo') || feat.includes('Clerigo')) return 'Clérigo';
+    if (feat.includes('Druida')) return 'Druida';
+    if (feat.includes('Mago')) return 'Mago';
+    return '';
+  }
+
+  getEffectiveMagicInitiateClass(): string {
+    return this.magicInitiateClass || this.getMagicInitiateDefaultClass() || 'Mago';
+  }
+
+  onMagicInitiateClassChange(): void {
+    this.magicInitiateCantrips = [];
+    this.magicInitiateSpell = '';
+  }
+
+  getMagicInitiateCantripsList(): { name: string; desc: string }[] {
+    const cls = this.getEffectiveMagicInitiateClass();
+    if (cls === 'Clérigo') return this.clericCantripsList;
+    if (cls === 'Druida') return this.druidCantripsList;
+    return this.magoCantripsList;
+  }
+
+  getMagicInitiateSpellsList(): { level: number; name: string; desc: string }[] {
+    const cls = this.getEffectiveMagicInitiateClass();
+    if (cls === 'Clérigo') return this.clericSpellsList.filter(s => s.level === 1);
+    if (cls === 'Druida') return this.druidSpellsList.filter(s => s.level === 1);
+    return this.magoSpellsList.filter(s => s.level === 1);
+  }
+
+  toggleMagicInitiateCantrip(cantripName: string): void {
+    const idx = this.magicInitiateCantrips.indexOf(cantripName);
+    if (idx >= 0) {
+      this.magicInitiateCantrips.splice(idx, 1);
+    } else {
+      if (this.magicInitiateCantrips.length < 2) {
+        this.magicInitiateCantrips.push(cantripName);
+      }
+    }
+  }
+
+  selectMagicInitiateSpell(spellName: string): void {
+    this.magicInitiateSpell = (this.magicInitiateSpell === spellName) ? '' : spellName;
+  }
+
+  isMagicInitiateConfigComplete(): boolean {
+    if (!this.hasMagicInitiateFeat()) return true;
+    const cls = this.getEffectiveMagicInitiateClass();
+    if (!cls) return false;
+    if (!this.magicInitiateAbility) return false;
+    if (this.magicInitiateCantrips.length !== 2) return false;
+    if (!this.magicInitiateSpell) return false;
+    return true;
   }
 
   toggleSkilledFeatSelection(item: string): void {
@@ -5451,6 +6710,21 @@ export class CharacterCreatorComponent implements OnInit {
           this.selectedRangerSpells = char.preparedSpells.filter(s => 
             this.rangerSpellsList.some(sp => sp.name === s)
           );
+          this.selectedPaladinSpells = char.preparedSpells.filter(s => 
+            this.paladinSpellsList.some(sp => sp.name === s)
+          );
+          this.selectedSorcererCantrips = char.preparedSpells.filter(s => 
+            this.sorcererSpellsList.some(c => c.name === s && c.level === 0)
+          );
+          this.selectedSorcererSpells = char.preparedSpells.filter(s => 
+            this.sorcererSpellsList.some(sp => sp.name === s && sp.level > 0)
+          );
+          this.selectedMagoCantrips = char.preparedSpells.filter(s => 
+            this.magoCantripsList.some(c => c.name === s)
+          );
+          this.selectedMagoSpells = char.preparedSpells.filter(s => 
+            this.magoSpellsList.some(sp => sp.name === s)
+          );
           this.selectedEldritchKnightCantrips = char.preparedSpells.filter(s => 
             this.eldritchKnightCantripsList.some(c => c.name === s)
           );
@@ -5467,10 +6741,16 @@ export class CharacterCreatorComponent implements OnInit {
           this.selectedDruidCantrips = ['Crear llama', 'Saber druídico'];
           this.selectedDruidSpells = ['Curar heridas', 'Encantar animal', 'Fuego feérico', 'Ola atronadora'];
           this.selectedRangerSpells = ['Curar heridas', 'Golpe apresador'];
+          this.selectedPaladinSpells = ['Bendición', 'Curar heridas'];
+          this.selectedSorcererCantrips = ['Agarre electrizante', 'Estallido mágico', 'Luz', 'Prestidigitación'];
+          this.selectedSorcererSpells = ['Detectar magia', 'Manos ardientes'];
+          this.selectedMagoCantrips = ['Rayo de escarcha', 'Prestidigitación', 'Salpicadura ácida'];
+          this.selectedMagoSpells = ['Proyectil mágico', 'Escudo', 'Detectar magia', 'Armadura de mago', 'Dormir', 'Grasa'];
           this.selectedEldritchKnightCantrips = ['Agarre electrizante', 'Rayo de escarcha'];
           this.selectedEldritchKnightSpells = ['Escudo', 'Manos ardientes', 'Salto'];
         }
         this.selectedWarlockInvocations = char.warlockInvocations ? [...char.warlockInvocations] : ['Pacto del filo'];
+        this.selectedSorcererMetamagic = char.sorcererMetamagic ? [...char.sorcererMetamagic] : [];
         this.selectedClericDivineOrder = char.clericDivineOrder || '';
         this.selectedDruidPrimalOrder = char.druidPrimalOrder || '';
         this.selectedRangerFeyGift = char.rangerFeyGift || '';
@@ -5573,6 +6853,7 @@ export class CharacterCreatorComponent implements OnInit {
       level: Number(this.characterLevel),
       avatar: '', 
       hp: this.calculateMaxHp(),
+      currentHp: this.calculateMaxHp(),
       stats: finalStatsObj,
       baseStats: baseStatsObj,
       backgroundStatsAllocation: backgroundStatsAllocationObj,
@@ -5585,13 +6866,21 @@ export class CharacterCreatorComponent implements OnInit {
                       this.isWarlock() ? [...this.selectedWarlockCantrips, ...this.selectedWarlockSpells] : 
                       this.isCleric() ? [...this.selectedClericCantrips, ...this.selectedClericSpells] : 
                       this.isDruid() ? [...this.selectedDruidCantrips, ...this.selectedDruidSpells] : 
+                      this.isSorcerer() ? [...this.selectedSorcererCantrips, ...this.selectedSorcererSpells] :
+                      this.isMago() ? [...this.selectedMagoCantrips, ...this.selectedMagoSpells] :
                       this.isRanger() ? [...this.selectedRangerSpells] : 
+                      this.isPaladin() ? [...this.selectedPaladinSpells] : 
                       (this.isFighter() && this.selectedSubclass === 'Caballero Arcano') ? [...this.selectedEldritchKnightCantrips, ...this.selectedEldritchKnightSpells] : undefined,
       warlockInvocations: this.isWarlock() ? this.selectedWarlockInvocations : undefined,
+      sorcererMetamagic: this.isSorcerer() ? this.selectedSorcererMetamagic : undefined,
       clericDivineOrder: this.isCleric() ? this.selectedClericDivineOrder : undefined,
       druidPrimalOrder: this.isDruid() ? this.selectedDruidPrimalOrder : undefined,
       rangerFeyGift: this.isRanger() && this.selectedSubclass === 'Errante feérico' ? this.selectedRangerFeyGift : undefined,
       rangerPrimalCompanion: this.isRanger() && this.selectedSubclass === 'Señor de las bestias' ? this.selectedRangerPrimalCompanion : undefined,
+      magicInitiateClass: this.hasMagicInitiateFeat() ? this.getEffectiveMagicInitiateClass() : undefined,
+      magicInitiateAbility: this.hasMagicInitiateFeat() ? this.magicInitiateAbility : undefined,
+      magicInitiateCantrips: this.hasMagicInitiateFeat() ? this.magicInitiateCantrips : undefined,
+      magicInitiateSpell: this.hasMagicInitiateFeat() ? this.magicInitiateSpell : undefined,
       history: this.characterHistory,
       physicalDesc: this.characterPhysicalDesc,
       height: this.characterHeight,
@@ -5896,16 +7185,16 @@ export class CharacterCreatorComponent implements OnInit {
     if (n.includes('monje')) {
       return {
         savingThrows: 'Fuerza y Destreza',
-        skills: 'Elige dos entre: Acrobacias, Atletismo, Historia, Percepción, Perspicacia, o Sigilo.',
+        skills: 'Elige dos entre: Acrobacias, Atletismo, Historia, Perspicacia, Religión, o Sigilo.',
         tools: 'Una: herramienta de artesano o instrumento musical.',
-        armor: 'Ninguna****',
-        weapons: 'Sencillas****'
+        armor: 'Ninguna',
+        weapons: 'Sencillas, marciales con la propiedad "ligera"'
       };
     }
     if (n.includes('paladín') || n.includes('paladin')) {
       return {
         savingThrows: 'Sabiduría y Carisma',
-        skills: 'Elige dos entre: Atletismo, Intimidación, Medicina, Percepción, Persuasión, o Religión.',
+        skills: 'Elige dos entre: Atletismo, Intimidación, Medicina, Perspicacia, Persuasión, o Religión.',
         tools: 'Ninguna',
         armor: 'Ligeras, medias, pesadas, escudos',
         weapons: 'Sencillas, marciales'
@@ -5914,10 +7203,10 @@ export class CharacterCreatorComponent implements OnInit {
     if (n.includes('pícaro') || n.includes('picaro')) {
       return {
         savingThrows: 'Destreza e Inteligencia',
-        skills: 'Elige cuatro entre: Acrobacias, Atletismo, Engaño, Interpretación, Intimidación, Investigación, Percepción, Perspicacia, Persuasión, Juego de Manos, o Sigilo.',
-        tools: 'Herramientas de ladrón.',
-        armor: 'Ligeras',
-        weapons: 'Sencillas'
+        skills: 'Elige cuatro entre: Acrobacias, Atletismo, Engaño, Intimidación, Investigación, Juego de manos, Percepción, Perspicacia, Persuasión, o Sigilo.',
+        tools: 'Herramientas de ladrón',
+        armor: 'Armaduras ligeras',
+        weapons: 'Armas sencillas y marciales ligeras o sutiles'
       };
     }
     return { savingThrows: '—', skills: '—', tools: '—', armor: '—', weapons: '—' };
@@ -5982,7 +7271,7 @@ export class CharacterCreatorComponent implements OnInit {
     }
     if (n.includes('monje')) {
       return {
-        optionA: '10 dagas, paquete de explorador y 11 po.',
+        optionA: 'Lanza, 5 dagas, herramientas de artesano o instrumento musical, paquete de explorador y 11 po.',
         optionB: '50 po'
       };
     }
@@ -6081,13 +7370,13 @@ getClassSkillLimit(className: string): number {
       return ['Conocimiento arcano', 'Historia', 'Investigación', 'Medicina', 'Religión'];
     }
     if (n.includes('monje')) {
-      return ['Acrobacias', 'Atletismo', 'Historia', 'Percepción', 'Perspicacia', 'Sigilo'];
+      return ['Acrobacias', 'Atletismo', 'Historia', 'Perspicacia', 'Religión', 'Sigilo'];
     }
     if (n.includes('paladín') || n.includes('paladin')) {
-      return ['Atletismo', 'Intimidación', 'Medicina', 'Percepción', 'Persuasión', 'Religión'];
+      return ['Atletismo', 'Intimidación', 'Medicina', 'Perspicacia', 'Persuasión', 'Religión'];
     }
     if (n.includes('pícaro') || n.includes('picaro')) {
-      return ['Acrobacias', 'Atletismo', 'Engaño', 'Interpretación', 'Intimidación', 'Investigación', 'Percepción', 'Perspicacia', 'Persuasión', 'Juego de manos', 'Sigilo'];
+      return ['Acrobacias', 'Atletismo', 'Engaño', 'Intimidación', 'Investigación', 'Juego de manos', 'Percepción', 'Perspicacia', 'Persuasión', 'Sigilo'];
     }
     return [];
   }
@@ -6482,7 +7771,10 @@ getClassSkillLimit(className: string): number {
            name.includes('clérigo') || name.includes('clerigo') ||
            name.includes('druida') ||
            name.includes('explorador') ||
-           name.includes('guerrero');
+           name.includes('guerrero') ||
+           name.includes('hechicero') ||
+           name.includes('mago') ||
+           name.includes('paladín') || name.includes('paladin');
   }
 
   getOriginManualAttributes(name: string): { title: string, desc: string }[] {

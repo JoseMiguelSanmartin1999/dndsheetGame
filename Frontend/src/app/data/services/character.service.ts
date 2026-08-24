@@ -11,6 +11,7 @@ export interface Character {
   level: number;
   avatar: string;
   hp: number;
+  currentHp?: number;
   stats: {
     strength: number;
     dexterity: number;
@@ -42,10 +43,16 @@ export interface Character {
   skilledFeatSelection?: string[];
   preparedSpells?: string[];
   warlockInvocations?: string[];
+  sorcererMetamagic?: string[];
   clericDivineOrder?: string;
   druidPrimalOrder?: string;
   rangerFeyGift?: string;
   rangerPrimalCompanion?: string;
+  magicInitiateClass?: string;
+  magicInitiateAbility?: string;
+  magicInitiateCantrips?: string[];
+  magicInitiateSpell?: string;
+  heroicInspiration?: boolean;
   history: string;
   physicalDesc: string;
   height: number;
