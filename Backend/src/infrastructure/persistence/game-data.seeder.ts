@@ -141,35 +141,35 @@ export class GameDataSeeder implements OnApplicationBootstrap {
       {
         name: 'Monje',
         icon: '🥊',
-        preference: 'Combate sin armas y Sabiduría',
+        preference: 'Combate sin armas, Destreza y Sabiduría',
         primaryStat: 'Destreza y Sabiduría',
         complexity: 'Alta',
         image: 'Monje.png',
         hitDie: 'd8',
         quote: 'El cuerpo es el arma definitiva, la mente su único maestro.',
-        description: 'Un artista marcial que canaliza su energía vital espiritual (Ki) para acelerar sus movimientos, esquivar ataques sin armadura y derribar oponentes con golpes desarmados veloces y debilitantes.'
+        description: 'Un artista marcial que canaliza la concentración y la disciplina mental para acelerar sus movimientos, esquivar ataques sin armadura y ejecutar letales golpes sin armas o con armas de monje.'
       },
       {
         name: 'Paladín',
         icon: '🛡️',
-        preference: 'Defensa y Carisma',
+        preference: 'Defensa, Fuerza y Carisma',
         primaryStat: 'Fuerza y Carisma',
         complexity: 'Media',
         image: 'Paladin.png',
         hitDie: 'd10',
-        quote: 'Por el juramento que hice, seré la luz en la oscuridad.',
-        description: 'Un guerrero sagrado ligado a un juramento inquebrantable de justicia y protección. Imbuye sus golpes con Castigo Divino y genera auras que protegen la mente y cuerpo de sus aliados más cercanos.'
+        quote: 'Mi fe es mi escudo, mi juramento mi espada indestructible.',
+        description: 'Un guerrero sagrado vinculado a un juramento inquebrantable que combina la maestría en el combate con la magia divina para castigar enemigos, sanar aliados e irradiar auras protectoras.'
       },
       {
         name: 'Pícaro',
         icon: '🗡️',
-        preference: 'Sigilo',
+        preference: 'Sigilo y Daño de Precisión',
         primaryStat: 'Destreza',
-        complexity: 'Baja',
-        image: 'Picaro.png',
+        complexity: 'Fácil',
+        image: 'Rogue.png',
         hitDie: 'd8',
-        quote: 'Las mejores batallas se ganan sin que el enemigo sepa que empezaron.',
-        description: 'Un especialista táctico que prefiere las sombras, la infiltración y los ataques furtivos letales. Domina el desarmado de trampas, el robo y el posicionamiento astuto para golpear los puntos vulnerables.'
+        quote: 'Las sombras son mis aliadas, un golpe certero mi respuesta.',
+        description: 'Un combatiente astuto e infalible que utiliza el sigilo, la agilidad y los puntos débiles de sus enemigos para asestar devastadores Ataques Furtivos y maniobras astutas.'
       }
     ];
     await this.classModel.insertMany(classes);

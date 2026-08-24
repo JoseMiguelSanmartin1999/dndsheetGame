@@ -47,6 +47,9 @@ export class CharacterMongooseEntity {
   @Prop({ required: true })
   hp: number;
 
+  @Prop({ required: false })
+  currentHp?: number;
+
   @Prop({ type: StatsSubSchema, required: true })
   stats: StatsSubSchema;
 
@@ -77,6 +80,9 @@ export class CharacterMongooseEntity {
   @Prop({ type: [String], required: false, default: [] })
   warlockInvocations?: string[];
 
+  @Prop({ type: [String], required: false, default: [] })
+  sorcererMetamagic?: string[];
+
   @Prop({ required: false })
   clericDivineOrder?: string;
 
@@ -88,6 +94,21 @@ export class CharacterMongooseEntity {
 
   @Prop({ required: false })
   rangerPrimalCompanion?: string;
+
+  @Prop({ required: false })
+  magicInitiateClass?: string;
+
+  @Prop({ required: false })
+  magicInitiateAbility?: string;
+
+  @Prop({ type: [String], required: false, default: [] })
+  magicInitiateCantrips?: string[];
+
+  @Prop({ required: false })
+  magicInitiateSpell?: string;
+
+  @Prop({ required: false, default: false })
+  heroicInspiration?: boolean;
 
   @Prop({ required: false, default: '' })
   history: string;
