@@ -1,0 +1,754 @@
+<div class="min-h-screen bg-[#08080a] bg-radial from-[#151010] via-[#08080a] to-[#040405] text-neutral-200 p-4 md:p-8 font-sans-clean">
+  
+  <!-- MODALS -->
+  <!-- ADD WEAPON MODAL -->
+  <div *ngIf="showAddWeaponModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+    <div class="bg-[#121215] border border-neutral-800 rounded-2xl p-6 w-full max-w-md shadow-2xl">
+      <h3 class="text-[#d4af37] font-fantasy text-xl uppercase tracking-widest mb-4">Añadir Arma (2024)</h3>
+      <div class="space-y-4">
+        <div>
+          <label class="text-[10px] uppercase font-bold text-neutral-500 tracking-wider mb-2 block">Selecciona Arma</label>
+          <select [(ngModel)]="selectedWeaponToAdd" class="w-full bg-[#08080a] border border-neutral-800 rounded p-2 text-sm text-neutral-300 focus:outline-none focus:border-[#d4af37]">
+            <option value="">-- Elige un arma --</option>
+            <option *ngFor="let w of availableWeapons" [value]="w.name">{{ w.name }} (Daño: {{ w.damage }})</option>
+          </select>
+        </div>
+        <div class="flex gap-2 justify-end pt-4">
+          <button (click)="showAddWeaponModal = false" class="px-4 py-2 text-xs text-neutral-400 hover:text-white transition">Cancelar</button>
+          <button (click)="addWeapon()" [disabled]="!selectedWeaponToAdd" class="bg-neutral-800 hover:bg-neutral-700 text-[#d4af37] border border-neutral-700 px-4 py-2 rounded text-xs uppercase tracking-wider transition disabled:opacity-50">Añadir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MASTERY INFO MODAL -->
+  <div *ngIf="masteryInfo" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+    <div class="bg-[#121215] border border-neutral-800 rounded-2xl p-6 w-full max-w-sm shadow-2xl relative">
+      <button (click)="closeMasteryInfo()" class="absolute top-4 right-4 text-neutral-500 hover:text-white">✕</button>
+      <h3 class="text-[#d4af37] font-fantasy text-xl uppercase tracking-widest mb-2 flex items-center gap-2">
+        <span class="text-2xl">⚔️</span> {{ masteryInfo.name }}
+      </h3>
+      <p class="text-sm text-neutral-300 leading-relaxed">{{ masteryInfo.description }}</p>
+    </div>
+  </div>
+
+  <!-- CONTENEDOR DE CARGA / ERROR -->
+  <div *ngIf="loading || errorLoading" class="max-w-4xl mx-auto py-24 text-center">
+    <div *ngIf="loading" class="space-y-4 animate-pulse">
+      <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full border-4 border-t-[#d4af37] border-r-red-700 border-b-transparent border-l-transparent animate-spin"></div>
+        <span class="text-3xl">📜</span>
+      </div>
+      <h2 class="text-[#d4af37] font-fantasy uppercase tracking-widest text-lg">Consultando Pergamino...</h2>
+    </div>
+
+    <div *ngIf="errorLoading" class="bg-[#121215] border border-red-800/40 rounded-xl p-8 space-y-6 max-w-md mx-auto">
+      <span class="text-4xl">⚡</span>
+      <h2 class="text-red-500 font-fantasy uppercase font-bold">Aventurero Extraviado</h2>
+      <p class="text-xs text-neutral-400">No se pudo hallar la crónica del aventurero solicitado en el templo de datos.</p>
+      <a routerLink="/dashboard" class="inline-block bg-[#1e1e24] hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-2 px-6 rounded text-xs uppercase tracking-widest transition">
+        Volver a la Taberna
+      </a>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !errorLoading && character" class="max-w-7xl mx-auto space-y-6 print-layout">
+    
+    <!-- FILA SUPERIOR -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      
+      <!-- HEADER IZQUIERDO: Nombre y Detalles Básicos -->
+      <div class="bg-[#121215] border border-[#d4af37]/30 rounded-3xl p-5 shadow-lg flex flex-col justify-between">
+         <div class="flex flex-wrap justify-between items-end border-b border-neutral-800 pb-3 mb-4">
+            <h1 class="text-3xl font-black font-fantasy text-[#d4af37] uppercase tracking-wider">{{ character.name }}</h1>
+            <div class="flex items-center gap-4 text-xs font-mono text-neutral-400">
+              
+              <!-- MODO HITO -->
+              <ng-container *ngIf="character.levelingMode === 'hito' || !character.levelingMode">
+                <div class="flex items-center gap-2 font-bold text-amber-500">
+                  <button (click)="levelDown()" class="hover:text-red-500 px-1 cursor-pointer transition disabled:opacity-50" [disabled]="character.level <= 1">-</button>
+                  <span>LVL {{ character.level }}</span>
+                  <button (click)="levelUp()" class="hover:text-emerald-500 px-1 cursor-pointer transition disabled:opacity-50" [disabled]="character.level >= 20">+</button>
+                </div>
+              </ng-container>
+
+              <!-- MODO XP -->
+              <ng-container *ngIf="character.levelingMode === 'xp'">
+                <span class="font-bold text-amber-500">LVL {{ character.level }}</span>
+                <div class="flex items-center gap-2 bg-neutral-900/50 px-3 py-1.5 rounded-full border border-neutral-800">
+                  <span class="text-[10px] text-neutral-500 font-sans tracking-widest uppercase font-bold">XP</span>
+                  <span class="text-neutral-300 font-bold min-w-[70px] text-center">{{ character.xp || 0 }} / {{ getNextLevelXp() }}</span>
+                  
+                  <div class="flex items-center gap-1 border-l border-neutral-700 pl-3">
+                    <input type="number" [(ngModel)]="xpAmountToAdd" class="w-16 bg-neutral-950 border border-neutral-800 rounded px-1.5 py-0.5 text-center text-amber-500 font-bold outline-none focus:border-amber-500/50" placeholder="+XP">
+                    <button (click)="addXp(xpAmountToAdd)" class="bg-[#18181c] hover:bg-neutral-800 text-emerald-500 border border-neutral-700 px-2 py-0.5 rounded cursor-pointer transition font-bold" [disabled]="!xpAmountToAdd">+</button>
+                    <button (click)="addXp(-xpAmountToAdd)" class="bg-[#18181c] hover:bg-neutral-800 text-red-500 border border-neutral-700 px-2 py-0.5 rounded cursor-pointer transition font-bold" [disabled]="!xpAmountToAdd">-</button>
+                  </div>
+                </div>
+              </ng-container>
+
+              <span class="border-l border-neutral-700 pl-4 font-bold text-emerald-400">Prof +{{ getProficiencyBonus() }}</span>
+            </div>
+         </div>
+         <div class="grid grid-cols-3 gap-4 text-center">
+           <div>
+             <div class="text-[9px] uppercase font-bold text-neutral-500 tracking-wider mb-1">Raza/Subraza</div>
+             <div class="text-sm font-bold text-neutral-200">{{ character.race }} <span class="text-xs text-neutral-400 font-normal" *ngIf="character.originLineage">({{ character.originLineage }})</span></div>
+           </div>
+           <div>
+             <div class="text-[9px] uppercase font-bold text-neutral-500 tracking-wider mb-1">Clase/SubClase</div>
+             <div class="text-sm font-bold text-amber-400">{{ character.class }} <span class="text-xs text-amber-600 font-normal" *ngIf="character.subclass">({{ character.subclass }})</span></div>
+           </div>
+           <div>
+             <div class="text-[9px] uppercase font-bold text-neutral-500 tracking-wider mb-1">Trasfondo</div>
+             <div class="text-sm font-bold text-neutral-200">{{ character.background }}</div>
+           </div>
+         </div>
+      </div>
+
+      <!-- HEADER DERECHO: ESTADO DE COMBATE -->
+      <div class="bg-gradient-to-r from-[#121216] via-[#16161b] to-[#121216] border border-[#d4af37]/30 rounded-3xl p-5 shadow-lg flex flex-wrap md:flex-nowrap justify-between items-center gap-4">
+         
+         <!-- AC & HP -->
+         <div class="flex flex-col items-center md:border-r border-neutral-800 md:pr-6">
+           <div class="text-[9px] uppercase font-bold text-neutral-500 tracking-wider mb-3">Estado de combate</div>
+           <div class="flex gap-4">
+             <div class="relative w-14 h-16 flex flex-col items-center justify-center cursor-pointer hover:scale-105 transition" (click)="openAcManager()">
+               <span class="absolute inset-0 text-5xl text-neutral-800 flex items-center justify-center">🛡️</span>
+               <span class="relative text-xl font-black text-white font-mono z-10">{{ getCalculatedArmorClass() }}</span>
+               <span class="relative text-[8px] text-neutral-400 font-fantasy z-10 -mt-1">CA</span>
+             </div>
+             <div class="relative w-14 h-16 flex flex-col items-center justify-center cursor-pointer hover:scale-105 transition" (click)="openHpManager()">
+               <span class="absolute inset-0 text-5xl text-red-900/20 flex items-center justify-center">❤️</span>
+               <span class="relative text-xl font-black text-white font-mono z-10">{{ character.currentHp }}</span>
+               <span class="relative text-[8px] text-neutral-400 font-fantasy z-10 -mt-1">PV</span>
+             </div>
+           </div>
+         </div>
+         
+         <!-- HP Manager -->
+         <div class="flex flex-col flex-1 md:border-r border-neutral-800 md:px-6 w-full">
+           <div class="text-[9px] uppercase font-bold text-[#d4af37] tracking-wider mb-2 text-center">Puntos de Golpe</div>
+           <div class="flex justify-between items-baseline mb-1">
+             <span class="text-[10px] text-neutral-400 font-mono">Actual</span>
+             <span class="text-sm font-black font-mono text-white">{{ character.currentHp }} / {{ character.maxHp || character.hp || 0 }}</span>
+           </div>
+           
+           <div class="relative w-full h-2 bg-neutral-900 rounded-full overflow-hidden mb-2 border border-neutral-800">
+             <div class="absolute top-0 left-0 h-full bg-emerald-500 transition-all duration-500" [style.width.%]="getHpPercentage()"></div>
+           </div>
+           
+           <div class="flex justify-between w-full items-center mt-1">
+             <span class="text-[10px] text-neutral-500">Temporal (0)</span>
+             <div class="flex items-center gap-1.5">
+                <input type="number" [(ngModel)]="hpModifierAmount" class="w-10 h-6 bg-[#0c0c0f] border border-neutral-700 rounded text-center text-xs text-white" min="1" />
+                <button (click)="modifyHp(hpModifierAmount)" class="w-6 h-6 bg-emerald-900/50 border border-emerald-500/50 rounded flex items-center justify-center text-emerald-400 hover:bg-emerald-800 transition">+</button>
+                <button (click)="modifyHp(-hpModifierAmount)" class="w-6 h-6 bg-red-900/50 border border-red-500/50 rounded flex items-center justify-center text-red-400 hover:bg-red-800 transition">-</button>
+             </div>
+           </div>
+         </div>
+
+         <!-- Inspiracion & Hit Dice -->
+         <div class="flex gap-6 md:pl-2">
+            <div class="flex flex-col items-center cursor-pointer group" (click)="toggleInspiration()">
+              <span class="text-[9px] uppercase font-bold text-neutral-500 tracking-wider">Inspiración</span>
+              <span class="text-[8px] text-neutral-600 mb-2">Heroica</span>
+              <div class="w-10 h-10 rounded-full flex items-center justify-center transition-all" 
+                   [class.border-2]="!character.inspiration" [class.border-neutral-700]="!character.inspiration"
+                   [class.bg-amber-500]="character.inspiration" [class.text-white]="character.inspiration" [class.shadow-[0_0_15px_rgba(217,119,6,0.6)]]="character.inspiration">
+                   <span *ngIf="character.inspiration" class="text-xl">⭐</span>
+              </div>
+            </div>
+            <div class="flex flex-col items-center md:border-l border-neutral-800 pl-6">
+              <span class="text-[9px] uppercase font-bold text-neutral-500 tracking-wider">Dados de</span>
+              <span class="text-[8px] text-[#d4af37] font-bold mb-2">GOLPE (d{{ getClassHitDie() }})</span>
+              <div class="grid grid-cols-2 gap-2 mt-1">
+                 <div *ngFor="let i of [].constructor(character.level || 1); let idx = index" 
+                      class="w-3.5 h-3.5 rounded-full border border-neutral-600 bg-neutral-800"></div>
+              </div>
+            </div>
+         </div>
+      </div>
+    </div>
+
+    <!-- FILA INFERIOR (3 Columnas) -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+       <!-- COLUMNA 1: ATRIBUTOS Y COMPETENCIAS -->
+       <div class="bg-[#0c0c0f] border border-neutral-800 rounded-3xl p-5 shadow-lg relative flex flex-col min-h-[500px]">
+          <h2 class="text-center font-bold text-sm tracking-widest text-[#d4af37] uppercase mb-6 font-fantasy border-b border-neutral-800 pb-2">Atributos Principales</h2>
+          <div class="grid grid-cols-3 gap-4 flex-1">
+             <!-- 6 Cajas de Atributos -->
+             <div class="col-span-2 grid grid-cols-2 gap-x-4 gap-y-12 content-start">
+                
+                <!-- FUERZA -->
+                <div class="bg-[#121215] border border-neutral-700 rounded-2xl flex flex-col items-center pt-3 pb-8 relative shadow-inner">
+                   <div class="absolute top-2 right-2 flex items-center gap-1 bg-black/40 px-1 py-0.5 rounded border border-neutral-800 shadow-sm" title="Tirada de Salvación">
+                     <div class="w-1.5 h-1.5 rounded-full" [ngClass]="hasSavingThrowProficiency('strength') ? 'bg-amber-500 shadow-[0_0_5px_rgba(245,158,11,0.8)]' : 'bg-neutral-700'"></div>
+                     <span class="text-[8px] font-mono" [ngClass]="hasSavingThrowProficiency('strength') ? 'text-amber-100' : 'text-neutral-500'">{{ getSavingThrow('strength') }}</span>
+                   </div>
+                   <span class="font-bold uppercase text-[10px] tracking-wider text-neutral-400">Fuerza</span>
+                   <div class="w-14 h-14 rounded-full border-2 border-[#d4af37] bg-[#1a1a20] absolute -bottom-7 flex items-center justify-center font-black text-2xl font-mono shadow-lg text-white">
+                      {{ getModifier(character.stats.strength || 10) }}
+                   </div>
+                   <div class="w-5 h-5 rounded-full border-2 border-[#d4af37] bg-[#0c0c0f] absolute -bottom-11 flex items-center justify-center text-[9px] font-bold">
+                      {{ character.stats.strength || 10 }}
+                   </div>
+                </div>
+
+                <!-- DESTREZA -->
+                <div class="bg-[#121215] border border-neutral-700 rounded-2xl flex flex-col items-center pt-3 pb-8 relative shadow-inner">
+                   <div class="absolute top-2 right-2 flex items-center gap-1 bg-black/40 px-1 py-0.5 rounded border border-neutral-800 shadow-sm" title="Tirada de Salvación">
+                     <div class="w-1.5 h-1.5 rounded-full" [ngClass]="hasSavingThrowProficiency('dexterity') ? 'bg-amber-500 shadow-[0_0_5px_rgba(245,158,11,0.8)]' : 'bg-neutral-700'"></div>
+                     <span class="text-[8px] font-mono" [ngClass]="hasSavingThrowProficiency('dexterity') ? 'text-amber-100' : 'text-neutral-500'">{{ getSavingThrow('dexterity') }}</span>
+                   </div>
+                   <span class="font-bold uppercase text-[10px] tracking-wider text-neutral-400">Destreza</span>
+                   <div class="w-14 h-14 rounded-full border-2 border-[#d4af37] bg-[#1a1a20] absolute -bottom-7 flex items-center justify-center font-black text-2xl font-mono shadow-lg text-white">
+                      {{ getModifier(character.stats.dexterity || 10) }}
+                   </div>
+                   <div class="w-5 h-5 rounded-full border-2 border-[#d4af37] bg-[#0c0c0f] absolute -bottom-11 flex items-center justify-center text-[9px] font-bold">
+                      {{ character.stats.dexterity || 10 }}
+                   </div>
+                </div>
+                
+                <!-- CONSTITUCION -->
+                <div class="bg-[#121215] border border-neutral-700 rounded-2xl flex flex-col items-center pt-3 pb-8 relative shadow-inner">
+                   <div class="absolute top-2 right-2 flex items-center gap-1 bg-black/40 px-1 py-0.5 rounded border border-neutral-800 shadow-sm" title="Tirada de Salvación">
+                     <div class="w-1.5 h-1.5 rounded-full" [ngClass]="hasSavingThrowProficiency('constitution') ? 'bg-amber-500 shadow-[0_0_5px_rgba(245,158,11,0.8)]' : 'bg-neutral-700'"></div>
+                     <span class="text-[8px] font-mono" [ngClass]="hasSavingThrowProficiency('constitution') ? 'text-amber-100' : 'text-neutral-500'">{{ getSavingThrow('constitution') }}</span>
+                   </div>
+                   <span class="font-bold uppercase text-[10px] tracking-wider text-neutral-400">Constitución</span>
+                   <div class="w-14 h-14 rounded-full border-2 border-[#d4af37] bg-[#1a1a20] absolute -bottom-7 flex items-center justify-center font-black text-2xl font-mono shadow-lg text-white">
+                      {{ getModifier(character.stats.constitution || 10) }}
+                   </div>
+                   <div class="w-5 h-5 rounded-full border-2 border-[#d4af37] bg-[#0c0c0f] absolute -bottom-11 flex items-center justify-center text-[9px] font-bold">
+                      {{ character.stats.constitution || 10 }}
+                   </div>
+                </div>
+                
+                <!-- INTELIGENCIA -->
+                <div class="bg-[#121215] border border-neutral-700 rounded-2xl flex flex-col items-center pt-3 pb-8 relative shadow-inner">
+                   <div class="absolute top-2 right-2 flex items-center gap-1 bg-black/40 px-1 py-0.5 rounded border border-neutral-800 shadow-sm" title="Tirada de Salvación">
+                     <div class="w-1.5 h-1.5 rounded-full" [ngClass]="hasSavingThrowProficiency('intelligence') ? 'bg-amber-500 shadow-[0_0_5px_rgba(245,158,11,0.8)]' : 'bg-neutral-700'"></div>
+                     <span class="text-[8px] font-mono" [ngClass]="hasSavingThrowProficiency('intelligence') ? 'text-amber-100' : 'text-neutral-500'">{{ getSavingThrow('intelligence') }}</span>
+                   </div>
+                   <span class="font-bold uppercase text-[10px] tracking-wider text-neutral-400">Inteligencia</span>
+                   <div class="w-14 h-14 rounded-full border-2 border-[#d4af37] bg-[#1a1a20] absolute -bottom-7 flex items-center justify-center font-black text-2xl font-mono shadow-lg text-white">
+                      {{ getModifier(character.stats.intelligence || 10) }}
+                   </div>
+                   <div class="w-5 h-5 rounded-full border-2 border-[#d4af37] bg-[#0c0c0f] absolute -bottom-11 flex items-center justify-center text-[9px] font-bold">
+                      {{ character.stats.intelligence || 10 }}
+                   </div>
+                </div>
+                
+                <!-- SABIDURIA -->
+                <div class="bg-[#121215] border border-neutral-700 rounded-2xl flex flex-col items-center pt-3 pb-8 relative shadow-inner">
+                   <div class="absolute top-2 right-2 flex items-center gap-1 bg-black/40 px-1 py-0.5 rounded border border-neutral-800 shadow-sm" title="Tirada de Salvación">
+                     <div class="w-1.5 h-1.5 rounded-full" [ngClass]="hasSavingThrowProficiency('wisdom') ? 'bg-amber-500 shadow-[0_0_5px_rgba(245,158,11,0.8)]' : 'bg-neutral-700'"></div>
+                     <span class="text-[8px] font-mono" [ngClass]="hasSavingThrowProficiency('wisdom') ? 'text-amber-100' : 'text-neutral-500'">{{ getSavingThrow('wisdom') }}</span>
+                   </div>
+                   <span class="font-bold uppercase text-[10px] tracking-wider text-neutral-400">Sabiduría</span>
+                   <div class="w-14 h-14 rounded-full border-2 border-[#d4af37] bg-[#1a1a20] absolute -bottom-7 flex items-center justify-center font-black text-2xl font-mono shadow-lg text-white">
+                      {{ getModifier(character.stats.wisdom || 10) }}
+                   </div>
+                   <div class="w-5 h-5 rounded-full border-2 border-[#d4af37] bg-[#0c0c0f] absolute -bottom-11 flex items-center justify-center text-[9px] font-bold">
+                      {{ character.stats.wisdom || 10 }}
+                   </div>
+                </div>
+                
+                <!-- CARISMA -->
+                <div class="bg-[#121215] border border-neutral-700 rounded-2xl flex flex-col items-center pt-3 pb-8 relative shadow-inner">
+                   <div class="absolute top-2 right-2 flex items-center gap-1 bg-black/40 px-1 py-0.5 rounded border border-neutral-800 shadow-sm" title="Tirada de Salvación">
+                     <div class="w-1.5 h-1.5 rounded-full" [ngClass]="hasSavingThrowProficiency('charisma') ? 'bg-amber-500 shadow-[0_0_5px_rgba(245,158,11,0.8)]' : 'bg-neutral-700'"></div>
+                     <span class="text-[8px] font-mono" [ngClass]="hasSavingThrowProficiency('charisma') ? 'text-amber-100' : 'text-neutral-500'">{{ getSavingThrow('charisma') }}</span>
+                   </div>
+                   <span class="font-bold uppercase text-[10px] tracking-wider text-neutral-400">Carisma</span>
+                   <div class="w-14 h-14 rounded-full border-2 border-[#d4af37] bg-[#1a1a20] absolute -bottom-7 flex items-center justify-center font-black text-2xl font-mono shadow-lg text-white">
+                      {{ getModifier(character.stats.charisma || 10) }}
+                   </div>
+                   <div class="w-5 h-5 rounded-full border-2 border-[#d4af37] bg-[#0c0c0f] absolute -bottom-11 flex items-center justify-center text-[9px] font-bold">
+                      {{ character.stats.charisma || 10 }}
+                   </div>
+                </div>
+                
+             </div>
+             
+             <!-- Competencias List -->
+             <div class="border border-neutral-800 bg-[#0a0a0d] rounded-2xl p-3 flex flex-col h-full overflow-hidden shadow-inner">
+                <h3 class="text-[9px] uppercase font-bold text-center leading-tight mb-3 text-neutral-500 tracking-wider">Habilidades</h3>
+                <ul class="text-[10px] space-y-2 overflow-y-auto custom-scrollbar pr-1 flex-1">
+                  
+                  <li *ngFor="let skill of getSkillsList()" class="flex justify-between items-center pb-1 border-b border-neutral-800/50">
+                    <div class="flex items-center gap-1.5">
+                      <div class="w-2 h-2 rounded-full" [ngClass]="hasSkillProficiency(skill.name) ? 'bg-amber-500' : 'bg-neutral-800'"></div>
+                      <span [ngClass]="hasSkillProficiency(skill.name) ? 'text-neutral-200' : 'text-neutral-500'">{{ skill.name }} <span class="text-[8px] text-neutral-600">({{ skill.stat }})</span></span>
+                    </div>
+                    <span class="font-mono text-xs">{{ getSkillModifier(skill.statKey, skill.name) }}</span>
+                  </li>
+
+                </ul>
+             </div>
+          </div>
+       </div>
+
+       <!-- COLUMNA 2: ACCIONES Y COMBATE -->
+       <div class="bg-[#0c0c0f] border border-neutral-800 rounded-3xl p-5 shadow-lg min-h-[500px] flex flex-col">
+         <h2 class="text-center font-bold text-sm tracking-widest text-[#d4af37] uppercase mb-4 font-fantasy border-b border-neutral-800 pb-2">Acciones y Combate</h2>
+         
+         <div class="flex gap-2 mb-2">
+           <button (click)="activeCombatTab = 'armas'" class="flex-1 text-[9px] uppercase font-bold px-1 py-1.5 rounded-t-lg transition"
+                   [ngClass]="activeCombatTab === 'armas' ? 'text-[#d4af37] bg-neutral-800 border-b-2 border-[#d4af37]' : 'text-neutral-500 bg-transparent hover:text-neutral-300 border-b border-neutral-800'">
+             Armas
+           </button>
+           <button (click)="activeCombatTab = 'trucos'" class="flex-1 text-[9px] uppercase font-bold px-1 py-1.5 rounded-t-lg transition"
+                   [ngClass]="activeCombatTab === 'trucos' ? 'text-[#d4af37] bg-neutral-800 border-b-2 border-[#d4af37]' : 'text-neutral-500 bg-transparent hover:text-neutral-300 border-b border-neutral-800'">
+             Trucos de Daño
+           </button>
+         </div>
+
+         <!-- TAB ARMAS -->
+         <div *ngIf="activeCombatTab === 'armas'" class="space-y-2 mb-6">
+           <ng-container *ngIf="character.weapons?.length; else noWeapons">
+             <div *ngFor="let weaponName of character.weapons" class="bg-[#121215] border border-neutral-800 rounded-lg p-2.5 flex flex-col gap-2 hover:bg-neutral-900 transition relative group">
+               <div class="flex justify-between items-start">
+                 <div class="flex items-center gap-2">
+                   <span class="text-xs">🗡️</span>
+                   <div>
+                     <span class="text-xs font-bold text-neutral-300 block">{{ weaponName }}</span>
+                     <span class="text-[8px] text-neutral-500">{{ getWeaponData(weaponName)?.damageType }}</span>
+                   </div>
+                 </div>
+                 <div class="text-[10px] font-mono text-amber-500 text-right flex flex-col items-end gap-1">
+                    <div>
+                      {{ getWeaponHitModifier(weaponName) }} <span class="text-neutral-500 mx-1">/</span> {{ getWeaponData(weaponName)?.damage }} {{ getWeaponDamageModifier(weaponName) }}
+                    </div>
+                    <div *ngIf="getAmmunitionQuantity(weaponName) !== -1" class="flex items-center gap-1.5 mt-1 bg-neutral-950/50 px-2 py-1 rounded border border-neutral-800">
+                      <span class="text-[8px] text-neutral-400 uppercase font-bold mr-1">
+                        {{ weaponName.toLowerCase().includes('arco') ? 'Flechas' : 'Virotes' }}: <span class="text-white">{{ getAmmunitionQuantity(weaponName) }}</span>
+                      </span>
+                      <button (click)="decreaseAmmunition(weaponName)" [disabled]="getAmmunitionQuantity(weaponName) <= 0" class="bg-red-950/80 hover:bg-red-900 border border-red-800/50 text-red-400 px-1.5 py-0.5 rounded text-[7px] uppercase tracking-widest transition disabled:opacity-30 disabled:cursor-not-allowed">
+                        Disparar
+                      </button>
+                      <button (click)="increaseAmmunition(weaponName)" class="bg-emerald-950/50 hover:bg-emerald-900 border border-emerald-800/50 text-emerald-400 px-1.5 py-0.5 rounded text-[9px] font-bold transition">
+                        +
+                      </button>
+                    </div>
+                  </div>
+               </div>
+               
+               <div class="flex justify-between items-center mt-1 border-t border-neutral-800/50 pt-1.5">
+                 <div class="flex items-center gap-1.5">
+                   <span class="text-[9px] uppercase font-bold text-amber-600">Maestría:</span>
+                   <span class="text-[9px] text-amber-400">{{ getWeaponData(weaponName)?.mastery }}</span>
+                   <button (click)="showMasteryInfo(getWeaponData(weaponName)?.mastery || '')" class="w-4 h-4 rounded-full bg-neutral-800 border border-neutral-600 flex items-center justify-center text-[8px] text-neutral-400 hover:text-white hover:border-[#d4af37] transition">i</button>
+                 </div>
+                 <button (click)="removeWeapon(weaponName)" class="opacity-0 group-hover:opacity-100 text-[10px] text-red-500 hover:text-red-400 transition">✕</button>
+               </div>
+             </div>
+           </ng-container>
+           <ng-template #noWeapons>
+             <div class="text-[10px] text-neutral-500 italic text-center py-4 bg-[#121215] rounded-lg border border-neutral-800 border-dashed">
+               No hay armas equipadas
+             </div>
+           </ng-template>
+
+           <div *ngIf="character.class.toLowerCase().includes('barbaro') || character.class.toLowerCase().includes('bárbaro')" class="bg-[#2a1010] border border-red-900/50 rounded-lg p-2.5 flex justify-between items-center hover:bg-red-900/30 cursor-pointer transition mt-2">
+             <div class="flex items-center gap-2">
+               <span class="text-xs">💢</span>
+               <span class="text-xs font-bold text-red-300">Furia (Daño Extra)</span>
+             </div>
+             <div class="text-[10px] font-mono text-red-400">+2 daño melee</div>
+           </div>
+           
+           <button (click)="showAddWeaponModal = true" class="w-full text-[9px] uppercase tracking-widest text-neutral-500 hover:text-[#d4af37] py-1.5 border border-neutral-800 rounded bg-[#121215] hover:bg-neutral-900 transition mt-2">
+             Añadir Arma +
+           </button>
+         </div>
+
+          <!-- TAB TRUCOS -->
+          <div *ngIf="activeCombatTab === 'trucos'" class="space-y-2 mb-6">
+            <ng-container *ngIf="getSpellsByLevel()['Trucos']?.length; else noCantrips">
+              <div *ngFor="let cantrip of getSpellsByLevel()['Trucos']" class="bg-[#121215] border border-neutral-800 rounded p-2 text-neutral-300">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-[11px] font-bold text-[#d4af37]">✨ {{ cantrip.name }}</span>
+                </div>
+                <p class="text-[10px] text-neutral-400 leading-tight">{{ cantrip.desc }}</p>
+              </div>
+            </ng-container>
+            <ng-template #noCantrips>
+              <div class="text-[10px] text-neutral-500 italic text-center py-4 bg-[#121215] rounded-lg border border-neutral-800 border-dashed">
+                No tienes trucos preparados.
+              </div>
+            </ng-template>
+          </div>
+
+         <div class="mb-2 text-[10px] uppercase font-bold text-neutral-500 tracking-wider">Gestor de Recursos</div>
+         <div class="bg-[#121215] border border-neutral-800 rounded-xl p-3 flex-1">
+           <div class="flex gap-2 border-b border-neutral-800 pb-2 mb-3">
+             <button class="text-[9px] uppercase font-bold text-[#d4af37] bg-neutral-900 px-2 py-1 rounded">Spell Slots</button>
+             <button class="text-[9px] uppercase font-bold text-neutral-500 hover:text-neutral-300 px-2 py-1 rounded">Consumibles</button>
+             <button class="text-[9px] uppercase font-bold text-neutral-500 hover:text-neutral-300 px-2 py-1 rounded">Utilidad</button>
+           </div>
+           
+           <div class="space-y-4">
+             <div class="flex justify-between items-center">
+               <span class="text-[10px] font-bold">Spell Slots Nvl 1</span>
+               <div class="flex gap-1">
+                 <div class="w-3 h-3 border border-amber-600 bg-amber-500/20 rounded-sm"></div>
+                 <div class="w-3 h-3 border border-amber-600 bg-amber-500/20 rounded-sm"></div>
+                 <div class="w-3 h-3 border border-neutral-700 bg-neutral-900 rounded-sm"></div>
+               </div>
+             </div>
+             
+             <div class="flex justify-between items-center border-t border-neutral-800/50 pt-3">
+               <span class="text-[10px] font-bold text-red-400">Usos de Furia</span>
+               <div class="flex flex-col items-end gap-1">
+                 <span class="text-[9px] font-mono">2 / 3</span>
+                 <div class="w-20 h-1.5 bg-neutral-800 rounded-full overflow-hidden">
+                   <div class="h-full bg-red-600 w-2/3"></div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+
+       <!-- COLUMNA 3: INFORMACIÓN Y RASGOS -->
+       <div class="bg-[#0c0c0f] border border-neutral-800 rounded-3xl p-5 shadow-lg min-h-[500px] flex flex-col">
+         <h2 class="text-center font-bold text-sm tracking-widest text-[#d4af37] uppercase mb-4 font-fantasy border-b border-neutral-800 pb-2">Información y Rasgos</h2>
+         
+         <div class="flex gap-1 border-b border-neutral-800 pb-2 mb-3">
+           <button (click)="activeTraitTab = 'class'" class="flex-1 text-[9px] uppercase font-bold px-1 py-1.5 rounded-t-lg transition"
+                   [ngClass]="activeTraitTab === 'class' ? 'text-white bg-neutral-800 border border-neutral-700' : 'text-neutral-500 bg-neutral-900 border border-transparent hover:bg-neutral-800'">
+             Rasgos
+           </button>
+           <button (click)="activeTraitTab = 'feats'" class="flex-1 text-[9px] uppercase font-bold px-1 py-1.5 rounded-t-lg transition"
+                   [ngClass]="activeTraitTab === 'feats' ? 'text-white bg-neutral-800 border border-neutral-700' : 'text-neutral-500 bg-neutral-900 border border-transparent hover:bg-neutral-800'">
+             Dotes
+           </button>
+           <button (click)="activeTraitTab = 'species'" class="flex-1 text-[9px] uppercase font-bold px-1 py-1.5 rounded-t-lg transition"
+                   [ngClass]="activeTraitTab === 'species' ? 'text-white bg-neutral-800 border border-neutral-700' : 'text-neutral-500 bg-neutral-900 border border-transparent hover:bg-neutral-800'">
+             Especie
+           </button>
+           <button *ngIf="isSpellcaster()" (click)="activeTraitTab = 'spells'" class="flex-1 text-[9px] uppercase font-bold px-1 py-1.5 rounded-t-lg transition"
+                   [ngClass]="activeTraitTab === 'spells' ? 'text-white bg-neutral-800 border border-neutral-700' : 'text-neutral-500 bg-neutral-900 border border-transparent hover:bg-neutral-800'">
+             Conjuros
+           </button>
+         </div>
+
+         <div class="flex-1 overflow-y-auto custom-scrollbar pr-1">
+           <!-- CONTENIDO: CONJUROS -->
+           <div *ngIf="activeTraitTab === 'spells'" class="space-y-4">
+              <div class="flex justify-between items-center border-b border-neutral-800 pb-2">
+                <div class="text-[10px] uppercase font-bold text-[#d4af37] tracking-wider">Conjuros Preparados</div>
+                <button (click)="startEditingSpells()" class="text-[9px] uppercase tracking-widest text-[#d4af37] border border-[#d4af37]/30 px-2 py-1 rounded hover:bg-[#d4af37]/10 transition">
+                  Gestionar
+                </button>
+              </div>
+              <ng-container *ngIf="character.preparedSpells?.length; else noSpells">
+                <ng-container *ngFor="let level of ['Trucos', 'Nivel 1', 'Nivel 2', 'Nivel 3', 'Nivel 4', 'Nivel 5', 'Nivel 6', 'Nivel 7', 'Nivel 8', 'Nivel 9']">
+                  <div *ngIf="getSpellsByLevel()[level]?.length > 0" class="mb-4">
+                    <h3 class="text-[11px] font-bold text-white mb-2 border-b border-neutral-800 pb-1">{{ level }}</h3>
+                    <div class="space-y-2">
+                      <div *ngFor="let spell of getSpellsByLevel()[level]" class="bg-[#121215] border border-neutral-800 rounded p-2 text-neutral-300">
+                        <div class="flex justify-between items-center mb-1">
+                          <span class="text-[11px] font-bold text-[#d4af37]">✨ {{ spell.name }}</span>
+                        </div>
+                        <p class="text-[10px] text-neutral-400 leading-tight">{{ spell.desc }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <ng-template #noSpells>
+                <div class="text-[10px] text-neutral-500 italic text-center py-4 bg-[#121215] rounded-lg border border-neutral-800 border-dashed">
+                  No has preparado ningún conjuro.
+                </div>
+              </ng-template>
+            </div>
+           <!-- CONTENIDO: RASGOS DE CLASE -->
+           <div *ngIf="activeTraitTab === 'class'" class="space-y-2">
+             <div class="text-[10px] uppercase font-bold text-[#d4af37] tracking-wider mb-2">Rasgos de Clase</div>
+             <div class="bg-[#121215] border border-neutral-800 rounded p-2 text-[10px] font-bold text-neutral-300 hover:border-neutral-600 cursor-pointer flex justify-between">
+               <span>Ataque Extra</span>
+               <span class="text-neutral-600">v</span>
+             </div>
+             
+             <div class="bg-[#121215] border border-neutral-800 rounded p-2 text-[10px] font-bold text-neutral-300 hover:border-neutral-600 cursor-pointer flex justify-between">
+               <span>Estilo de Combate</span>
+               <span class="text-neutral-600">v</span>
+             </div>
+             
+             <div class="bg-[#121215] border border-neutral-800 rounded p-2 text-[10px] font-bold text-neutral-300 hover:border-neutral-600 cursor-pointer flex justify-between">
+               <span>Furia</span>
+               <span class="text-neutral-600">v</span>
+             </div>
+             
+             <div class="bg-[#121215] border border-neutral-800 rounded p-2 text-[10px] font-bold text-neutral-300 hover:border-neutral-600 cursor-pointer flex justify-between">
+               <span>Defensa sin Armadura</span>
+               <span class="text-neutral-600">v</span>
+             </div>
+           </div>
+
+           <!-- CONTENIDO: DOTES -->
+           <div *ngIf="activeTraitTab === 'feats'" class="space-y-2">
+             <div class="text-[10px] uppercase font-bold text-[#d4af37] tracking-wider mb-2">Dotes Adquiridas</div>
+             <div class="bg-[#121215] border border-neutral-800 rounded p-2 text-[10px] font-bold text-neutral-300 hover:border-neutral-600 cursor-pointer flex justify-between">
+               <span>Maestro de Armas Pesadas</span>
+               <span class="text-neutral-600">v</span>
+             </div>
+             <div class="bg-[#121215] border border-neutral-800 rounded p-2 text-[10px] font-bold text-neutral-300 hover:border-neutral-600 cursor-pointer flex justify-between">
+               <span>Duro</span>
+               <span class="text-neutral-600">v</span>
+             </div>
+             <button class="w-full text-[9px] uppercase tracking-widest text-neutral-500 hover:text-[#d4af37] py-1 border border-neutral-800 rounded bg-[#121215] hover:bg-neutral-900 transition mt-2">
+               Añadir Dote +
+             </button>
+           </div>
+
+           <!-- CONTENIDO: ESPECIE -->
+           <div *ngIf="activeTraitTab === 'species'" class="space-y-2">
+             <div class="text-[10px] uppercase font-bold text-[#d4af37] tracking-wider mb-2">Rasgos de Especie</div>
+             <div class="bg-[#121215] border border-neutral-800 rounded p-2 text-[10px] font-bold text-neutral-300 hover:border-neutral-600 cursor-pointer flex justify-between">
+               <span>Resistencia Goliat</span>
+               <span class="text-neutral-600">v</span>
+             </div>
+             <div class="bg-[#121215] border border-neutral-800 rounded p-2 text-[10px] font-bold text-neutral-300 hover:border-neutral-600 cursor-pointer flex justify-between">
+               <span>Nacido en las Montañas</span>
+               <span class="text-neutral-600">v</span>
+             </div>
+             <div class="bg-[#121215] border border-neutral-800 rounded p-2 text-[10px] font-bold text-neutral-300 hover:border-neutral-600 cursor-pointer flex justify-between">
+               <span>Atlético Poderoso</span>
+               <span class="text-neutral-600">v</span>
+             </div>
+           </div>
+           
+         </div>
+         
+         <div class="mt-4 pt-3 border-t border-neutral-800">
+           <div class="text-[10px] uppercase font-bold text-neutral-500 tracking-wider mb-2">Competencias y Herramientas</div>
+           <div class="grid grid-cols-2 gap-2 text-[9px] text-neutral-400">
+             <ul class="list-disc pl-3 space-y-0.5">
+               <li>Armaduras ligeras</li>
+               <li>Armaduras medias</li>
+               <li>Escudos</li>
+             </ul>
+             <ul class="list-disc pl-3 space-y-0.5">
+               <li>Armas simples</li>
+               <li>Armas marciales</li>
+               <li>Herramientas de herrero</li>
+             </ul>
+           </div>
+         </div>
+       </div>
+       
+    </div>
+  </div>
+</div>
+
+<!-- ================= MODAL: SUBIR DE NIVEL ================= -->
+<div *ngIf="showLevelUpModal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 animate-fade-in p-4 backdrop-blur-sm">
+  <div class="bg-[#121215] border border-[#d4af37]/40 w-full max-w-md rounded-2xl shadow-[0_0_40px_rgba(212,175,55,0.15)] overflow-hidden">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-neutral-900 to-[#18181c] p-4 border-b border-neutral-800 flex justify-between items-center">
+      <h3 class="font-fantasy text-[#d4af37] text-xl uppercase tracking-widest font-black drop-shadow-md">
+        ¡Nivel Alcanzado! (Lvl {{ character?.level! + 1 }})
+      </h3>
+      <button (click)="cancelLevelUp()" class="text-neutral-500 hover:text-red-500 transition font-bold text-lg leading-none cursor-pointer">×</button>
+    </div>
+
+    <!-- Body -->
+    <div class="p-6 space-y-6">
+      
+      <!-- Subclass Selection if needed -->
+      <div *ngIf="needsSubclass" class="space-y-2 bg-[#18181c] p-4 rounded-xl border border-amber-600/30">
+        <label class="text-[10px] text-amber-500 uppercase font-bold tracking-wider block">Elección de Subclase</label>
+        <p class="text-[10px] text-neutral-400 leading-snug">Has alcanzado el nivel 3 y debes especializar tu clase. Selecciona tu subclase:</p>
+        <select 
+          [(ngModel)]="pendingSubclass" 
+          class="w-full bg-[#0e0e11] border border-neutral-700 hover:border-amber-500/50 focus:border-amber-500 focus:outline-none px-3 py-2 rounded text-xs text-neutral-200"
+        >
+          <option value="">-- Selecciona una Subclase --</option>
+          <option *ngFor="let sub of getAvailableSubclasses(character?.class || '')" [value]="sub.name">
+            {{ sub.name }}
+          </option>
+        </select>
+        <div *ngIf="pendingSubclass" class="mt-2 p-3 bg-[#0e0e11] border border-neutral-800 rounded-md">
+          <p class="text-[10px] text-neutral-300 italic mb-2">"{{ getPendingSubclassDesc() }}"</p>
+          <div class="text-[9px] uppercase font-bold text-amber-500 mb-1">Rasgos Adquiridos:</div>
+          <ul class="list-disc pl-4 space-y-0.5">
+            <li *ngFor="let feature of getPendingSubclassFeatures()" class="text-[10px] text-neutral-400 font-bold">
+              {{ feature }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- HP Management -->
+      <div class="space-y-4">
+        <div class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider border-b border-neutral-800 pb-1.5">
+          Puntos de Golpe Máximos
+        </div>
+        <p class="text-[11px] text-neutral-400 font-light leading-relaxed">
+          Tu salud máxima aumenta. Puedes elegir tomar el valor fijo (promedio del dado) o tirar tu dado de golpe (1d{{ getHitDieSizeByClass(character?.class || '') }}) y anotar el resultado.
+        </p>
+
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Opcion: Promedio -->
+          <div 
+            (click)="levelUpHpMode = 'average'"
+            class="bg-[#18181c] border rounded-lg p-3 cursor-pointer transition flex flex-col items-center justify-center text-center gap-1 relative overflow-hidden"
+            [ngClass]="levelUpHpMode === 'average' ? 'border-[#d4af37] bg-[#d4af37]/5 shadow-[0_0_15px_rgba(212,175,55,0.1)]' : 'border-neutral-800 hover:border-neutral-600'"
+          >
+            <div *ngIf="levelUpHpMode === 'average'" class="absolute top-1 right-1 text-[#d4af37] text-xs">✓</div>
+            <span class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">Valor Fijo</span>
+            <span class="text-xl font-bold font-mono text-[#d4af37]">{{ getHitDieSizeByClass(character?.class || '') / 2 + 1 }}</span>
+          </div>
+
+          <!-- Opcion: Tirar Dado -->
+          <div 
+            class="bg-[#18181c] border rounded-lg p-3 transition flex flex-col items-center justify-center text-center gap-1 relative overflow-hidden"
+            [ngClass]="levelUpHpMode === 'roll' ? 'border-[#d4af37] bg-[#d4af37]/5 shadow-[0_0_15px_rgba(212,175,55,0.1)]' : 'border-neutral-800'"
+          >
+            <div *ngIf="levelUpHpMode === 'roll'" class="absolute top-1 right-1 text-[#d4af37] text-xs">✓</div>
+            <span class="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">Tirar Dado</span>
+            
+            <div class="flex items-center gap-2 mt-1">
+              <button 
+                (click)="rollHpDieLevelUp()"
+                [disabled]="isRollingHp"
+                class="bg-neutral-800 hover:bg-neutral-700 border border-neutral-600 rounded px-2 py-1 text-xs text-white font-mono flex items-center gap-1 transition-colors disabled:opacity-50"
+              >
+                <span>🎲 1d{{ getHitDieSizeByClass(character?.class || '') }}</span>
+              </button>
+              
+              <span class="text-xs text-neutral-500">➜</span>
+              
+              <div class="w-10 h-6 bg-[#0e0e11] border border-neutral-700 flex items-center justify-center rounded text-xs font-mono font-bold text-[#d4af37] shadow-inner" [class.animate-pulse]="isRollingHp">
+                {{ levelUpHpRoll > 0 ? levelUpHpRoll : '?' }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-[9px] text-neutral-500 italic text-center mt-2">
+          (A este valor se le sumará automáticamente tu Modificador de Constitución)
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="bg-neutral-900/50 p-4 border-t border-neutral-800 flex justify-end gap-3">
+      <button 
+        (click)="cancelLevelUp()"
+        class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-neutral-400 hover:text-neutral-200 cursor-pointer"
+      >
+        Cancelar
+      </button>
+      <button 
+        (click)="confirmLevelUp()"
+        [disabled]="(needsSubclass && !pendingSubclass) || (levelUpHpMode === 'roll' && (!levelUpHpRoll || levelUpHpRoll < 1 || levelUpHpRoll > getHitDieSizeByClass(character?.class || '')))"
+        class="bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-2 px-6 rounded-lg text-xs font-serif uppercase tracking-widest shadow-lg transition"
+      >
+        Confirmar Ascenso
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para Gestionar Conjuros -->
+<div *ngIf="editSpellsMode" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+  <div class="bg-[#0c0c0f] border border-[#d4af37]/40 w-full max-w-4xl max-h-[90vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+    <div class="p-6 border-b border-neutral-800 flex justify-between items-center bg-[#121215]">
+      <h2 class="text-2xl font-bold font-fantasy text-[#d4af37] tracking-widest uppercase">Gestor de Conjuros</h2>
+      <button (click)="cancelEditingSpells()" class="text-neutral-500 hover:text-white transition font-bold text-xl">×</button>
+    </div>
+    
+    <div class="flex-1 overflow-hidden flex flex-col md:flex-row">
+      <!-- Filtros y Lista de Selección -->
+      <div class="w-full md:w-2/3 flex flex-col border-r border-neutral-800">
+        <div class="p-4 bg-[#121215] border-b border-neutral-800 flex gap-2 overflow-x-auto custom-scrollbar">
+          <button *ngFor="let level of getAvailableSpellLevelsForFilter()"
+                  (click)="activeSpellFilterLevel = level"
+                  class="px-3 py-1.5 text-xs font-bold uppercase tracking-widest rounded transition whitespace-nowrap"
+                  [ngClass]="activeSpellFilterLevel === level ? 'bg-[#d4af37] text-black' : 'bg-neutral-900 text-neutral-400 hover:bg-neutral-800'">
+            {{ level }}
+          </button>
+        </div>
+        
+        <div class="p-3 border-b border-neutral-800 bg-[#0c0c0f]">
+          <input type="text" [(ngModel)]="spellSearchQuery" placeholder="Buscar conjuro..." class="w-full bg-[#121215] border border-neutral-800 rounded px-3 py-2 text-sm text-neutral-300 focus:outline-none focus:border-[#d4af37]">
+        </div>
+        
+        <div class="flex-1 overflow-y-auto p-4 space-y-2 custom-scrollbar bg-[#0c0c0f]">
+          <div *ngFor="let spell of getFilteredSpellsForCurrentLevel()" 
+               (click)="toggleSpellInTemp(spell.name)"
+               class="bg-[#121215] border rounded-lg p-3 cursor-pointer transition flex items-start gap-3"
+               [ngClass]="isSpellPreparedInTemp(spell.name) ? 'border-[#d4af37] bg-[#d4af37]/5' : 'border-neutral-800 hover:border-neutral-600'">
+            <div class="mt-0.5 w-4 h-4 rounded border flex items-center justify-center shrink-0"
+                 [ngClass]="isSpellPreparedInTemp(spell.name) ? 'border-[#d4af37] bg-[#d4af37] text-black' : 'border-neutral-600'">
+              <span *ngIf="isSpellPreparedInTemp(spell.name)" class="text-[10px] font-bold">✓</span>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-neutral-200">{{ spell.name }}</h4>
+              <p class="text-[11px] text-neutral-500 mt-1 leading-snug">{{ spell.desc }}</p>
+            </div>
+          </div>
+          <div *ngIf="getFilteredSpellsForCurrentLevel().length === 0" class="text-center py-8 text-neutral-500 italic text-sm">
+            No se encontraron conjuros.
+          </div>
+        </div>
+      </div>
+      
+      <!-- Resumen de Selección -->
+      <div class="w-full md:w-1/3 bg-[#121215] flex flex-col">
+        <div class="p-4 border-b border-neutral-800">
+          <h3 class="text-xs uppercase font-bold tracking-widest text-[#d4af37] mb-4">Resumen</h3>
+          
+          <div class="space-y-4">
+            <div class="bg-[#0c0c0f] border border-neutral-800 rounded-lg p-3">
+              <div class="text-[10px] uppercase text-neutral-500 font-bold mb-1">Trucos Conocidos</div>
+              <div class="flex items-end gap-2">
+                <span class="text-2xl font-mono font-bold" [ngClass]="getTempCantripsCount() > getCharacterCantripsLimit() ? 'text-red-500' : 'text-neutral-200'">
+                  {{ getTempCantripsCount() }}
+                </span>
+                <span class="text-neutral-500 mb-1 text-sm font-mono">/ {{ getCharacterCantripsLimit() }}</span>
+              </div>
+            </div>
+            
+            <div class="bg-[#0c0c0f] border border-neutral-800 rounded-lg p-3">
+              <div class="text-[10px] uppercase text-neutral-500 font-bold mb-1">Conjuros Preparados</div>
+              <div class="flex items-end gap-2">
+                <span class="text-2xl font-mono font-bold" [ngClass]="getTempSpellsCount() > getCharacterSpellLimit() ? 'text-red-500' : 'text-neutral-200'">
+                  {{ getTempSpellsCount() }}
+                </span>
+                <span class="text-neutral-500 mb-1 text-sm font-mono">/ {{ getCharacterSpellLimit() }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex-1 p-4 overflow-y-auto custom-scrollbar">
+          <div class="text-[10px] uppercase font-bold text-neutral-500 tracking-wider mb-2">Seleccionados</div>
+          <div class="flex flex-wrap gap-2">
+            <span *ngFor="let s of tempPreparedSpells" class="inline-flex items-center gap-1 bg-neutral-800 text-neutral-300 px-2 py-1 rounded text-[10px] font-bold">
+              {{ s }}
+              <button (click)="toggleSpellInTemp(s)" class="text-neutral-500 hover:text-red-400">×</button>
+            </span>
+          </div>
+        </div>
+        
+        <div class="p-4 border-t border-neutral-800 bg-[#0c0c0f]">
+          <button (click)="saveSpells()" 
+                  [disabled]="!canSaveSpells()"
+                  class="w-full py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition"
+                  [ngClass]="canSaveSpells() ? 'bg-[#d4af37] text-black hover:bg-[#b08d29] shadow-[0_0_15px_rgba(212,175,55,0.3)]' : 'bg-neutral-800 text-neutral-500 cursor-not-allowed'">
+            Guardar Cambios
+          </button>
+          <p *ngIf="!canSaveSpells()" class="text-center text-[10px] text-red-500 mt-2">
+            Límite excedido.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

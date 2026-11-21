@@ -19,6 +19,8 @@ export class MongoCharacterRepository implements ICharacterRepository {
       class: character.class,
       race: character.race,
       level: character.level,
+      levelingMode: character.levelingMode,
+      xp: character.xp,
       avatar: character.avatar,
       hp: character.hp,
       currentHp: character.currentHp,
@@ -46,6 +48,7 @@ export class MongoCharacterRepository implements ICharacterRepository {
       physicalDesc: character.physicalDesc,
       height: character.height,
       sizeClass: character.sizeClass,
+      weapons: character.weapons,
       personalNotes: character.personalNotes || '',
     });
     const saved = await created.save();
@@ -70,6 +73,8 @@ export class MongoCharacterRepository implements ICharacterRepository {
         class: character.class,
         race: character.race,
         level: character.level,
+        levelingMode: character.levelingMode,
+        xp: character.xp,
         avatar: character.avatar,
         hp: character.hp,
         currentHp: character.currentHp,
@@ -97,6 +102,7 @@ export class MongoCharacterRepository implements ICharacterRepository {
         physicalDesc: character.physicalDesc,
         height: character.height,
         sizeClass: character.sizeClass,
+        weapons: character.weapons,
         personalNotes: character.personalNotes,
       },
       { new: true }
@@ -124,6 +130,8 @@ export class MongoCharacterRepository implements ICharacterRepository {
       class: doc.class,
       race: doc.race,
       level: doc.level,
+      levelingMode: doc.levelingMode,
+      xp: doc.xp,
       avatar: doc.avatar,
       hp: doc.hp,
       currentHp: doc.currentHp,
@@ -151,6 +159,7 @@ export class MongoCharacterRepository implements ICharacterRepository {
       physicalDesc: doc.physicalDesc,
       height: doc.height,
       sizeClass: doc.sizeClass,
+      weapons: doc.weapons || [],
       personalNotes: doc.personalNotes || '',
       createdAt: (doc as any).createdAt,
     };

@@ -3,12 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Character {
+  maxHp?: number;
+  inspiration?: boolean;
   id?: string;
   userId: string;
   name: string;
   class: string;
   race: string;
   level: number;
+  levelingMode?: 'xp' | 'hito';
+  xp?: number;
   avatar: string;
   hp: number;
   currentHp?: number;
@@ -40,6 +44,7 @@ export interface Character {
   originLineage?: string;
   subclass?: string;
   classSkills: string[];
+  weapons?: string[];
   skilledFeatSelection?: string[];
   preparedSpells?: string[];
   warlockInvocations?: string[];
@@ -58,6 +63,7 @@ export interface Character {
   height: number;
   sizeClass: string;
   personalNotes?: string;
+  inventory?: Record<string, number>;
   createdAt?: string;
 }
 

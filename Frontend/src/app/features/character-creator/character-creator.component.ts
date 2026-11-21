@@ -2496,11 +2496,24 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   </thead>
                   <tbody>
                     <tr *ngFor="let weapon of getEquippedWeaponsDetails()" class="border-b border-neutral-900/60 hover:bg-neutral-900/20 transition">
-                      <td class="py-3 pr-4 font-bold text-neutral-200 flex items-center gap-2">
-                        <span class="bg-[#121215] border border-neutral-800 text-neutral-400 font-mono text-[9px] px-1.5 py-0.5 rounded font-bold">
-                          {{ weapon.quantity }}x
-                        </span>
-                        <span>{{ weapon.name }}</span>
+                      <td class="py-3 pr-4 font-bold text-neutral-200 flex flex-col gap-1">
+                        <div class="flex items-center gap-2">
+                          <span class="bg-[#121215] border border-neutral-800 text-neutral-400 font-mono text-[9px] px-1.5 py-0.5 rounded font-bold">
+                            {{ weapon.quantity }}x
+                          </span>
+                          <span>{{ weapon.name }}</span>
+                        </div>
+                        <div *ngIf="getAmmunitionQuantity(weapon.name) !== -1" class="flex items-center gap-2 mt-1">
+                          <span class="text-[9px] text-neutral-450 uppercase font-bold">
+                            {{ weapon.name.toLowerCase().includes('arco') ? 'Flechas' : 'Virotes' }}: {{ getAmmunitionQuantity(weapon.name) }}
+                          </span>
+                          <button (click)="decreaseAmmunition(weapon.name)" [disabled]="getAmmunitionQuantity(weapon.name) <= 0" class="bg-red-950/60 border border-red-800/40 text-red-400 px-2 py-0.5 rounded text-[8px] uppercase tracking-widest hover:bg-red-900/60 transition disabled:opacity-30 disabled:cursor-not-allowed">
+                            Disparar
+                          </button>
+                          <button (click)="increaseAmmunition(weapon.name)" class="bg-emerald-950/40 border border-emerald-800/40 text-emerald-400 px-1.5 py-0.5 rounded text-[10px] font-bold hover:bg-emerald-900/60 transition">
+                            +
+                          </button>
+                        </div>
                       </td>
                       <td class="py-3 pr-4 text-center font-bold text-amber-500 font-mono text-[12px]">
                         {{ weapon.attackBonus }}
@@ -2648,6 +2661,21 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 </select>
                 <span class="text-[9px] text-neutral-500 italic block">
                   Elige un nivel superior si la campaña comienza en un rango más alto.
+                </span>
+              </div>
+
+              <!-- Método de Nivelación -->
+              <div class="space-y-2">
+                <label class="text-[10px] text-neutral-455 uppercase font-bold tracking-wider block">Método de Progresión</label>
+                <select
+                  [(ngModel)]="levelingMode"
+                  class="w-full bg-[#0e0e11] border border-neutral-850 hover:border-neutral-750 focus:border-[#d4af37]/50 focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                >
+                  <option value="hito">Puntos de control (Hitos / Milestones)</option>
+                  <option value="xp">Puntos de Experiencia (XP)</option>
+                </select>
+                <span class="text-[9px] text-neutral-500 italic block">
+                  Hitos: Subida manual de nivel. XP: Sistema de puntos.
                 </span>
               </div>
 
@@ -3803,11 +3831,24 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         </thead>
                         <tbody>
                           <tr *ngFor="let weapon of getEquippedWeaponsDetails()" class="border-b border-neutral-900/60 hover:bg-neutral-900/10 transition duration-150">
-                            <td class="py-2.5 pr-2 font-bold text-neutral-200 flex items-center gap-1.5">
-                              <span class="bg-[#121215] border border-neutral-800 text-neutral-400 font-mono text-[8px] px-1 py-0.5 rounded font-bold">
-                                {{ weapon.quantity }}x
-                              </span>
-                              <span>{{ weapon.name }}</span>
+                            <td class="py-2.5 pr-2 font-bold text-neutral-200 flex flex-col gap-1">
+                              <div class="flex items-center gap-1.5">
+                                <span class="bg-[#121215] border border-neutral-800 text-neutral-400 font-mono text-[8px] px-1 py-0.5 rounded font-bold">
+                                  {{ weapon.quantity }}x
+                                </span>
+                                <span>{{ weapon.name }}</span>
+                              </div>
+                              <div *ngIf="getAmmunitionQuantity(weapon.name) !== -1" class="flex items-center gap-1 mt-0.5">
+                                <span class="text-[8px] text-neutral-450 uppercase font-bold">
+                                  {{ weapon.name.toLowerCase().includes('arco') ? 'Flechas' : 'Virotes' }}: {{ getAmmunitionQuantity(weapon.name) }}
+                                </span>
+                                <button (click)="decreaseAmmunition(weapon.name)" [disabled]="getAmmunitionQuantity(weapon.name) <= 0" class="bg-red-950/60 border border-red-800/40 text-red-400 px-1 py-0.5 rounded text-[7px] uppercase tracking-widest hover:bg-red-900/60 transition disabled:opacity-30 disabled:cursor-not-allowed">
+                                  Disparar
+                                </button>
+                                <button (click)="increaseAmmunition(weapon.name)" class="bg-emerald-950/40 border border-emerald-800/40 text-emerald-400 px-1 py-0.5 rounded text-[8px] font-bold hover:bg-emerald-900/60 transition">
+                                  +
+                                </button>
+                              </div>
                             </td>
                             <td class="py-2.5 pr-2 text-center font-bold text-amber-500 font-mono text-[11px]">
                               {{ weapon.attackBonus }}
@@ -4031,6 +4072,7 @@ export class CharacterCreatorComponent implements OnInit {
   previewTab = 1;
   characterId: string | null = null;
   characterLevel = 1;
+  levelingMode: 'xp' | 'hito' = 'hito';
   characterName = '';
   characterSubclass = '';
   characterHistory = '';
@@ -4044,6 +4086,7 @@ export class CharacterCreatorComponent implements OnInit {
   selectedBackgroundIdx = 0;
   selectedClassSkills: string[] = [];
   hoveredSkill: string | null = null;
+  customItemQuantities: { [key: string]: number } = {};
 
   // Estado de Conjuros del Bardo (D&D 2024)
   selectedBardCantrips: string[] = ['Burla dañina', 'Luces danzantes'];
@@ -6812,6 +6855,32 @@ export class CharacterCreatorComponent implements OnInit {
   }
 
   saveCharacter(): void {
+      const classEq = this.selectedEquipmentOption === 'A' ? this.getClassEquipmentOptions(this.activeClass.name).optionA : '';
+      const bgEq = this.selectedBgEquipmentOption === 'A' ? this.getBgEquipmentOptions(this.activeBackground.name).optionA : '';
+      const combinedEq = (classEq + ' ' + bgEq).toLowerCase();
+      
+      const knownWeapons = ['Espada Larga', 'Espada Corta', 'Daga', 'Gran Hacha', 'Arco Largo', 'Maza', 'Alabarda', 'Estoque (Rapier)', 'Ballesta Ligera', 'Lanza', 'Arco Corto', 'Bastón', 'Hacha de Mano', 'Hoz', 'Jabalina', 'Garrote'];
+      const autoWeapons: string[] = [];
+      for (const w of knownWeapons) {
+        let searchName = w.toLowerCase().replace(' (rapier)', '');
+        if (w === 'Gran Hacha') searchName = 'hacha a dos manos';
+        if (w === 'Hacha de Mano') searchName = 'hachas de mano';
+        if (combinedEq.includes(searchName) || combinedEq.includes(w.toLowerCase().replace(' (rapier)', ''))) {
+           autoWeapons.push(w);
+        }
+      }
+
+      const creatorWeapons = this.getEquippedWeaponsDetails().map(w => {
+        if (w.name.toLowerCase() === 'espada larga') return 'Espada Larga';
+        if (w.name.toLowerCase() === 'daga') return 'Daga';
+        if (w.name.toLowerCase() === 'maza') return 'Maza';
+        if (w.name.toLowerCase() === 'arco corto') return 'Arco Corto'; 
+        if (w.name.toLowerCase() === 'estoque') return 'Estoque (Rapier)';
+        if (w.name.toLowerCase() === 'gran hacha') return 'Gran Hacha';
+        return w.name;
+      });
+
+      const finalWeapons = Array.from(new Set([...autoWeapons, ...creatorWeapons]));
     const userId = this.authService.currentUser()?.id || (this.authService.currentUser() as any)?._id || '';
     if (!userId) {
       alert('Debes iniciar sesión para guardar un personaje.');
@@ -6851,6 +6920,8 @@ export class CharacterCreatorComponent implements OnInit {
       class: this.activeClass.name,
       race: this.activeOrigin.name,
       level: Number(this.characterLevel),
+      levelingMode: this.levelingMode,
+      xp: 0,
       avatar: '', 
       hp: this.calculateMaxHp(),
       currentHp: this.calculateMaxHp(),
@@ -6861,6 +6932,7 @@ export class CharacterCreatorComponent implements OnInit {
       originLineage: this.selectedOriginLineage || undefined,
       subclass: this.selectedSubclass || undefined,
       classSkills: this.selectedClassSkills,
+      weapons: finalWeapons,
       skilledFeatSelection: this.hasSkilledFeat() ? this.skilledFeatSelection : undefined,
       preparedSpells: this.isBard() ? [...this.selectedBardCantrips, ...this.selectedBardSpells] : 
                       this.isWarlock() ? [...this.selectedWarlockCantrips, ...this.selectedWarlockSpells] : 
@@ -6886,6 +6958,12 @@ export class CharacterCreatorComponent implements OnInit {
       height: this.characterHeight,
       sizeClass: this.selectedSizeClass,
     };
+    
+    const inventoryMap: Record<string, number> = {};
+    this.getMergedIndividualItems().forEach(item => {
+      inventoryMap[item.name.toLowerCase()] = item.quantity;
+    });
+    characterData.inventory = inventoryMap;
 
     if (this.characterId) {
       this.characterService.updateCharacter(this.characterId, characterData).subscribe({
@@ -7638,9 +7716,12 @@ getClassSkillLimit(className: string): number {
 
     const mergedList: { name: string, quantity: number }[] = [];
     itemsMap.forEach((qty, name) => {
+      let finalQty = this.customItemQuantities[name] !== undefined ? this.customItemQuantities[name] : qty;
+      if (finalQty < 0) finalQty = 0;
+      
       let displayName = name.charAt(0).toUpperCase() + name.slice(1);
       
-      if (qty > 1) {
+      if (finalQty !== 1) {
         if (displayName === 'Arco corto') displayName = 'Arcos cortos';
         else if (displayName === 'Daga') displayName = 'Dagas';
         else if (displayName === 'Escudo') displayName = 'Escudos';
@@ -7659,12 +7740,50 @@ getClassSkillLimit(className: string): number {
         else if (displayName === 'Paquete de erudito') displayName = 'Paquetes de erudito';
         else if (displayName === 'Paquete de sacerdote') displayName = 'Paquetes de sacerdote';
         else if (displayName === 'Paquete de ladrón') displayName = 'Paquetes de ladrón';
+        else if (displayName === 'Flecha') displayName = 'Flechas';
+        else if (displayName === 'Virote') displayName = 'Virotes';
       }
       
-      mergedList.push({ name: displayName, quantity: qty });
+      if (finalQty > 0 || name === 'flecha' || name === 'virote') {
+        mergedList.push({ name: displayName, quantity: finalQty });
+      }
     });
 
+    mergedList.sort((a, b) => a.name.localeCompare(b.name));
     return mergedList;
+  }
+
+  getAmmunitionQuantity(weaponName: string): number {
+    const list = this.getMergedIndividualItems();
+    let ammoName = '';
+    if (weaponName.toLowerCase().includes('arco')) ammoName = 'flechas';
+    if (weaponName.toLowerCase().includes('ballesta')) ammoName = 'virotes';
+    if (!ammoName) return -1;
+    
+    const ammoItem = list.find(i => i.name.toLowerCase() === ammoName || i.name.toLowerCase() === ammoName.slice(0, -1));
+    return ammoItem ? ammoItem.quantity : 0;
+  }
+
+  decreaseAmmunition(weaponName: string) {
+    let ammoName = '';
+    if (weaponName.toLowerCase().includes('arco')) ammoName = 'flecha';
+    if (weaponName.toLowerCase().includes('ballesta')) ammoName = 'virote';
+    if (!ammoName) return;
+
+    const currentQty = this.getAmmunitionQuantity(weaponName);
+    if (currentQty > 0) {
+       this.customItemQuantities[ammoName] = currentQty - 1;
+    }
+  }
+
+  increaseAmmunition(weaponName: string) {
+    let ammoName = '';
+    if (weaponName.toLowerCase().includes('arco')) ammoName = 'flecha';
+    if (weaponName.toLowerCase().includes('ballesta')) ammoName = 'virote';
+    if (!ammoName) return;
+
+    const currentQty = this.getAmmunitionQuantity(weaponName);
+    this.customItemQuantities[ammoName] = currentQty + 1;
   }
 
   getSelectedPackages(): { title: string, items: string[] }[] {

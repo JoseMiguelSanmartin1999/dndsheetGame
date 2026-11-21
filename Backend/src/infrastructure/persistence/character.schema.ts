@@ -41,6 +41,12 @@ export class CharacterMongooseEntity {
   @Prop({ required: true, default: 1 })
   level: number;
 
+  @Prop({ required: true, default: 'hito' })
+  levelingMode: string;
+
+  @Prop({ required: true, default: 0 })
+  xp: number;
+
   @Prop({ required: true })
   avatar: string;
 
@@ -70,6 +76,9 @@ export class CharacterMongooseEntity {
 
   @Prop({ type: [String], required: true, default: [] })
   classSkills: string[];
+
+  @Prop({ type: [String], required: true, default: [] })
+  weapons: string[];
 
   @Prop({ type: [String], required: false, default: [] })
   skilledFeatSelection?: string[];
@@ -124,6 +133,9 @@ export class CharacterMongooseEntity {
 
   @Prop({ required: false, default: '' })
   personalNotes?: string;
+
+  @Prop({ type: Map, of: Number, required: false, default: {} })
+  inventory?: Record<string, number>;
 }
 
 export const CharacterSchema = SchemaFactory.createForClass(CharacterMongooseEntity);

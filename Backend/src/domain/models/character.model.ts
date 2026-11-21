@@ -5,6 +5,8 @@ export class Character {
   class: string;
   race: string;
   level: number;
+  levelingMode?: string;
+  xp?: number;
   avatar: string;
   hp: number;
   currentHp?: number;
@@ -36,6 +38,7 @@ export class Character {
   originLineage?: string;
   subclass?: string;
   classSkills: string[];
+  weapons?: string[];
   skilledFeatSelection?: string[];
   preparedSpells?: string[];
   warlockInvocations?: string[];

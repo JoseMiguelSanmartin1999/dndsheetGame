@@ -1,0 +1,834 @@
+import { Injectable } from '@angular/core';
+
+export interface Spell {
+  name: string;
+  desc: string;
+  level?: number;
+}
+
+export interface Feature {
+  name: string;
+  desc: string;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SpellsDataService {
+
+  bardCantripsList: Spell[] = [
+    { name: 'Amistad', desc: 'Encantamiento. Otorga ventaja en pruebas de Carisma contra un humanoide no hostil (Concentración).' },
+    { name: 'Burla dañina', desc: 'Encantamiento (Recomendado). Causa 1d4 daño psíquico y desventaja en la próxima tirada de ataque del objetivo.' },
+    { name: 'Guardia de cuchillas', desc: 'Abjuración. Obtienes resistencia contra daño contundente, perforante y cortante de ataques con armas.' },
+    { name: 'Ilusión menor', desc: 'Ilusionismo. Creas una imagen o sonido menor en un punto a tu alcance durante 1 minuto.' },
+    { name: 'Impacto certero', desc: 'Adivinación. Obtienes ventaja en tu próxima tirada de ataque contra un objetivo a tu alcance.' },
+    { name: 'Luces danzantes', desc: 'Ilusionismo (Recomendado). Creas hasta cuatro luces flotantes que puedes mover como acción adicional (Concentración).' },
+    { name: 'Luz', desc: 'Evocación. Hace que un objeto emita luz brillante en un radio de 6 m.' },
+    { name: 'Mano de mago', desc: 'Conjuración. Creas una mano espectral invisible o visible para manipular objetos a 9 m.' },
+    { name: 'Mensaje', desc: 'Transmutación. Envías un mensaje susurrado a una criatura a 36 m que puede responderte en secreto.' },
+    { name: 'Prestidigitación', desc: 'Transmutación. Realizas trucos de magia menores (limpiar, calentar, colorear objetos, encender velas).' },
+    { name: 'Reparar', desc: 'Transmutación. Reparas una única rotura o fisura en un objeto de menos de 30 cm.' },
+    { name: 'Tronar', desc: 'Evocación. Creas un estallido de sonido que causa 1d6 daño de trueno y empuja 3 m.' },
+    { name: 'Voluta estelar', desc: 'Evocación. Creas un destello de luz estelar que causa 1d4 daño radiante y evita que el objetivo use reacciones.' }
+  ];
+
+  bardSpellsList: Spell[] = [
+    // Nivel 1
+    { level: 1, name: 'Caída de pluma', desc: 'Transmutación. Reduce la velocidad de caída de hasta 5 criaturas a 18 m; sufren 0 daño al caer.' },
+    { level: 1, name: 'Curar heridas', desc: 'Abjuración. Cura 1d8 + modificador de Carisma a una criatura al tocarla.' },
+    { level: 1, name: 'Detectar magia', desc: 'Adivinación. Percibes la presencia de magia y su escuela a 9 m (Concentración, Ritual).' },
+    { level: 1, name: 'Disfrazarse', desc: 'Ilusionismo. Cambias tu apariencia física (ropa, estatura, rasgos) durante 1 hora.' },
+    { level: 1, name: 'Dormir', desc: 'Encantamiento. Duermes a criaturas en un área basadas en una tirada de 5d8 puntos de golpe totales.' },
+    { level: 1, name: 'Encantar animal', desc: 'Encantamiento. Convence a una bestia de que no eres una amenaza (Concentración).' },
+    { level: 1, name: 'Entender idiomas', desc: 'Adivinación. Entiendes el significado literal de cualquier idioma hablado o escrito (Ritual).' },
+    { level: 1, name: 'Fuego feérico', desc: 'Evocación. Otorga ventaja en tiradas de ataque contra objetivos en el área (Concentración).' },
+    { level: 1, name: 'Hablar con los animales', desc: 'Adivinación. Obtienes la capacidad de comunicarte verbalmente con bestias durante 10 minutos (Ritual).' },
+    { level: 1, name: 'Hechizar persona', desc: 'Encantamiento (Recomendado). Encanta a un humanoide a 9 m; te ve como un conocido amistoso.' },
+    { level: 1, name: 'Heroísmo', desc: 'Encantamiento. Otorga inmunidad al miedo y puntos de golpe temporales iguales a tu mod. Carisma (Concentración).' },
+    { level: 1, name: 'Identificar', desc: 'Adivinación. Conoces las propiedades mágicas, maldiciones y usos de un objeto al tocarlo (Ritual).' },
+    { level: 1, name: 'Imagen silenciosa', desc: 'Ilusionismo. Creas la imagen visual de un objeto o criatura en un cubo de 4.5 m (Concentración).' },
+    { level: 1, name: 'Ola atronadora', desc: 'Evocación. Ola de fuerza que causa 2d8 daño de trueno y empuja 3 m en un cubo de 4.5 m.' },
+    { level: 1, name: 'Orden imperiosa', desc: 'Encantamiento. Das una orden de una sola palabra que el objetivo debe obedecer.' },
+    { level: 1, name: 'Palabra de curación', desc: 'Abjuración (Recomendado). Acción adicional. Cura 1d4 + modificador de Carisma a una criatura a 18 m.' },
+    { level: 1, name: 'Perdición', desc: 'Encantamiento. Hasta 3 criaturas restan 1d4 a sus tiradas de ataque y salvación (Concentración).' },
+    { level: 1, name: 'Risa horrible de Tasha', desc: 'Encantamiento. Hace que una criatura caiga al suelo propensa e incapacitada por la risa (Concentración).' },
+    { level: 1, name: 'Rociada de color', desc: 'Ilusionismo (Recomendado). Ciega a criaturas en un cono de 4.5 m basadas en una tirada de 6d10 puntos de golpe.' },
+    { level: 1, name: 'Sirviente invisible', desc: 'Conjuración. Crea una fuerza invisible e informe que realiza tareas sencillas a tus órdenes (Ritual).' },
+    { level: 1, name: 'Susurros discordantes', desc: 'Encantamiento (Recomendado). Causa 3d6 daño psíquico y obliga al objetivo a huir usando su reacción.' },
+    { level: 1, name: 'Texto ilusorio', desc: 'Ilusionismo. Escribes un mensaje ocultando su verdadero significado con magia (Ritual).' },
+    { level: 1, name: 'Zancada prodigiosa', desc: 'Transmutación. Aumenta la velocidad de movimiento de una criatura en 3 m durante 1 hora.' },
+ 
+    // Nivel 2
+    { level: 2, name: 'Abrir', desc: 'Transmutación. Abre una puerta o cofre cerrado con llave o magia.' },
+    { level: 2, name: 'Agrandar/reducir', desc: 'Transmutación. Duplica o reduce el tamaño de una criatura/objeto (Concentración).' },
+    { level: 2, name: 'Auxilio', desc: 'Abjuración. Aumenta HP máximo y HP actual de 3 aliados en 5.' },
+    { level: 2, name: 'Boca mágica', desc: 'Ilusionismo. Objeto repite un mensaje prefijado al cumplirse un activador (Ritual).' },
+    { level: 2, name: 'Calentar metal', desc: 'Transmutación. Calienta metal causando 2d8 daño ígneo al portador (Concentración).' },
+    { level: 2, name: 'Calmar emociones', desc: 'Encantamiento. Suprime miedo/encanto o apacigua hostilidad (Concentración).' },
+    { level: 2, name: 'Corona de la locura', desc: 'Encantamiento. Obliga a humanoide a atacar a sus aliados (Concentración).' },
+    { level: 2, name: 'Detectar pensamientos', desc: 'Adivinación. Lees pensamientos superficiales de criaturas a 9 m (Concentración).' },
+    { level: 2, name: 'Embelesar', desc: 'Encantamiento. Distrae a criaturas para que tengan desventaja en Percepción.' },
+    { level: 2, name: 'Fuerza fantasmal', desc: 'Ilusionismo. Creas una ilusión mental que inflige daño psíquico (Concentración).' },
+    { level: 2, name: 'Hacer añicos', desc: 'Evocación. Estallido sonoro que causa 3d8 daño de trueno en área.' },
+    { level: 2, name: 'Imagen múltiple', desc: 'Ilusionismo. Creas 3 duplicados ilusorios de ti para desviar ataques.' },
+    { level: 2, name: 'Inmovilizar persona', desc: 'Encantamiento. Paraliza a un humanoide a 18 m (Concentración).' },
+    { level: 2, name: 'Invisibilidad', desc: 'Ilusionismo. Vuelves invisible a una criatura al tocarla (Concentración).' },
+    { level: 2, name: 'Localizar animales o plantas', desc: 'Adivinación. Conoces dirección/distancia de una especie a 8 km (Ritual).' },
+    { level: 2, name: 'Localizar objeto', desc: 'Adivinación. Sientes dirección de un objeto conocido a 300 m (Concentración).' },
+    { level: 2, name: 'Mensajero animal', desc: 'Encantamiento. Envías a un animal pequeño a entregar un mensaje (Ritual).' },
+    { level: 2, name: 'Nube de dagas', desc: 'Conjuración. Cubo de dagas giratorias causa 4d4 daño cortante (Concentración).' },
+    { level: 2, name: 'Potenciar característica', desc: 'Transmutación. Otorga ventaja en pruebas de una característica elegida (Concentración).' },
+    { level: 2, name: 'Restablecimiento menor', desc: 'Abjuración. Cura ceguera, sordera, parálisis o envenenamiento.' },
+    { level: 2, name: 'Silencio', desc: 'Ilusionismo. Inmuniza contra sonido en esfera de 6m (Concentración, Ritual).' },
+    { level: 2, name: 'Sordera/ceguera', desc: 'Transmutación. Ciega o ensordece a un objetivo a 9 m.' },
+    { level: 2, name: 'Sugestión', desc: 'Encantamiento. Influyes en una criatura con orden razonable por 8h (Concentración).' },
+    { level: 2, name: 'Ver invisibilidad', desc: 'Adivinación. Ves criaturas y objetos invisibles o en el plano Etereo.' },
+    { level: 2, name: 'Zona de la verdad', desc: 'Encantamiento. Impide mentir en una esfera de 4.5 m.' },
+ 
+    // Nivel 3
+    { level: 3, name: 'Clarividencia', desc: 'Adivinación. Creas un sensor para oír o ver un punto lejano (Concentración).' },
+    { level: 3, name: 'Crecimiento vegetal', desc: 'Transmutación. Llena de vegetación un área haciendo el terreno muy difícil.' },
+    { level: 3, name: 'Disipar magia', desc: 'Abjuración. Termina efectos de conjuros activos en un objetivo.' },
+    { level: 3, name: 'Don de lenguas', desc: 'Adivinación. Permite entender y hablar cualquier idioma por 1 hora.' },
+    { level: 3, name: 'Fingir muerte', desc: 'Nigromancia. Pone a criatura en estado cataléptico de muerte simulada (Ritual).' },
+    { level: 3, name: 'Glifo custodio', desc: 'Abjuración. Inscribe runa explosiva o cargada con un conjuro.' },
+    { level: 3, name: 'Hablar con las plantas', desc: 'Transmutación. Te comunicas con plantas y las interrogas.' },
+    { level: 3, name: 'Hablar con los muertos', desc: 'Nigromancia. Concedes vida temporal a un cadáver para hacerle 5 preguntas.' },
+    { level: 3, name: 'Imagen mayor', desc: 'Ilusionismo. Creas ilusión compleja con sonido, olor y temperatura (Concentración).' },
+    { level: 3, name: 'Imponer maldición', desc: 'Nigromancia. Maldices a criatura restando tiradas o causando daño (Concentración).' },
+    { level: 3, name: 'Indetectable', desc: 'Abjuración. Oculta de sensores de adivinación y escudriñamiento.' },
+    { level: 3, name: 'Nube apestosa', desc: 'Conjuración. Nube de gas que asquea e incapacita a criaturas (Concentración).' },
+    { level: 3, name: 'Palabra de curación en masa', desc: 'Abjuración. Cura 1d4 + mod Carisma a hasta 6 criaturas.' },
+    { level: 3, name: 'Patrón hipnótico', desc: 'Ilusionismo. Patrón de luces que incapacita y paraliza (Concentración).' },
+    { level: 3, name: 'Pequeña choza de Leomund', desc: 'Evocación. Cúpula de fuerza protectora de 3 m de radio (Ritual).' },
+    { level: 3, name: 'Ralentizar', desc: 'Transmutación. Altera tiempo reduciendo CA, velocidad y reacciones de 6 enemigos (Concentración).' },
+    { level: 3, name: 'Recado', desc: 'Adivinación. Envías un mensaje mental a cualquier distancia y recibes respuesta.' },
+    { level: 3, name: 'Terror', desc: 'Ilusionismo. Creas una imagen terrorífica que hace huir a enemigos (Concentración).' },
+ 
+    // Nivel 4
+    { level: 4, name: 'Asesino fantasmal', desc: 'Ilusionismo. Ilusión terrorífica inflige 4d10 daño psíquico por turno (Concentración).' },
+    { level: 4, name: 'Compulsión', desc: 'Encantamiento. Obliga a enemigos elegidos a moverse en la dirección que indiques (Concentración).' },
+    { level: 4, name: 'Confusión', desc: 'Encantamiento. Confunde a criaturas haciéndolas actuar erráticamente (Concentración).' },
+    { level: 4, name: 'Fuente de luz lunar', desc: 'Evocación. Crea luz brillante, inflige daño radiante y te vuelve invisible (Concentración).' },
+    { level: 4, name: 'Hechizar monstruo', desc: 'Encantamiento. Encanta a una criatura a 9 m; te ve como aliado amistoso.' },
+    { level: 4, name: 'Invisibilidad mejorada', desc: 'Ilusionismo. Vuelve invisible a criatura incluso si ataca o lanza conjuros (Concentración).' },
+    { level: 4, name: 'Libertad de movimiento', desc: 'Abjuración. Ignora terreno difícil, parálisis y ataduras.' },
+    { level: 4, name: 'Localizar criatura', desc: 'Adivinación. Siente dirección de criatura conocida a 300 m (Concentración).' },
+    { level: 4, name: 'Polimorfar', desc: 'Transmutación. Transforma a criatura en una bestia (Concentración).' },
+    { level: 4, name: 'Puerta dimensional', desc: 'Conjuración. Te teletransporta a ti y un aliado a cualquier punto a 150 m.' },
+    { level: 4, name: 'Terreno alucinatorio', desc: 'Ilusionismo. Hace que un terreno parezca, suene y huela diferente.' },
+ 
+    // Nivel 5
+    { level: 5, name: 'Alterar los recuerdos', desc: 'Encantamiento. Modificas la memoria reciente de una criatura (Concentración).' },
+    { level: 5, name: 'Alzar a los muertos', desc: 'Nigromancia. Devuelve a la vida a un cadáver muerto hace menos de 10 días.' },
+    { level: 5, name: 'Animar objetos', desc: 'Transmutación. Das vida y controlas a hasta 10 objetos no mágicos (Concentración).' },
+    { level: 5, name: 'Apariencia', desc: 'Ilusionismo. Altera la apariencia física de cualquier número de criaturas.' },
+    { level: 5, name: 'Atadura planar', desc: 'Abjuración. Obliga a un celestial, elemental, feérico o fiordo a servirte.' },
+    { level: 5, name: 'Círculo de teletransportación', desc: 'Conjuración. Crea portal de 1 turno hacia un círculo permanente.' },
+    { level: 5, name: 'Conocer las leyendas', desc: 'Adivinación. Conoces historias/leyendas de una persona, lugar u objeto.' },
+    { level: 5, name: 'Curar heridas en masa', desc: 'Abjuración. Cura 3d8 + mod Carisma a hasta 6 aliados a 9 m.' },
+    { level: 5, name: 'Despertar', desc: 'Transmutación. Concede intelecto humano y lenguaje a una planta o bestia.' },
+    { level: 5, name: 'Dominar persona', desc: 'Encantamiento. Tomas el control telepático completo de un humanoide (Concentración).' },
+    { level: 5, name: 'Engañar', desc: 'Ilusionismo. Te vuelves invisible y creas un doble ilusorio activo (Concentración).' },
+    { level: 5, name: 'Enlace telepático de Rary', desc: 'Adivinación. Enlace mental para comunicarse sin importar distancia (Ritual).' },
+    { level: 5, name: 'Ensueño', desc: 'Ilusionismo. Envías un mensajero a los sueños de una criatura para conversar.' },
+    { level: 5, name: 'Escudriñar', desc: 'Adivinación. Ves y oyes a un objetivo lejano a través de un sensor mágico (Concentración).' },
+    { level: 5, name: 'Estática sináptica', desc: 'Encantamiento. Explosión mental causa 8d6 daño psíquico y resta 1d6 a tiradas.' },
+    { level: 5, name: 'Geas', desc: 'Encantamiento. Ordenas a criatura cumplir una misión bajo pena de daño psíquico.' },
+    { level: 5, name: 'Inmovilizar monstruo', desc: 'Encantamiento. Paraliza a cualquier tipo de criatura a 27 m (Concentración).' },
+    { level: 5, name: 'Presencia regia de Yolande', desc: 'Encantamiento. Emanación de 9 m derriba e inflige daño radiante a enemigos (Concentración).' },
+    { level: 5, name: 'Restablecimiento mayor', desc: 'Abjuración. Cura fatiga, petrificación, maldiciones o reducciones de stats.' },
+ 
+    // Nivel 6
+    { level: 6, name: 'Baile irresistible de Otto', desc: 'Encantamiento. Criatura baila incontrolablemente, perdiendo ataques/CA (Concentración).' },
+    { level: 6, name: 'Encontrar el camino', desc: 'Adivinación. Conoces ruta más corta hacia una localización conocida (Concentración).' },
+    { level: 6, name: 'Festín de héroes', desc: 'Conjuración. Banquete otorga inmunidad a veneno/miedo y +2d10 HP max.' },
+    { level: 6, name: 'Guardas y guardias', desc: 'Abjuración. Protege área con niebla, cerraduras mágicas y escaleras bloqueadas.' },
+    { level: 6, name: 'Ilusión programada', desc: 'Ilusionismo. Creas una ilusión de 5 minutos al activarse un detonante.' },
+    { level: 6, name: 'Mal de ojo', desc: 'Nigromancia. Tu mirada asusta, duerme o reduce velocidad de objetivos (Concentración).' },
+    { level: 6, name: 'Sugestión en masa', desc: 'Encantamiento. Sugieres una orden razonable a hasta 12 criaturas por 24h.' },
+    { level: 6, name: 'Visión veraz', desc: 'Adivinación. Otorga visión verdadera para ver lo invisible.' },
+ 
+    // Nivel 7
+    { level: 7, name: 'Espada de Mordenkainen', desc: 'Evocación. Creas espada flotante que ataca (Concentración).' },
+    { level: 7, name: 'Espejismo arcano', desc: 'Ilusionismo. Altera completamente el aspecto físico de un área de 1.5 km.' },
+    { level: 7, name: 'Excursión etérea', desc: 'Conjuración. Entras en el Plano Etereo para moverte a través de objetos.' },
+    { level: 7, name: 'Jaula de fuerza', desc: 'Evocación. Encierra a criaturas en una jaula o caja de fuerza indestructible.' },
+    { level: 7, name: 'Mansión magnífica de Mordenkainen', desc: 'Conjuración. Crea un refugio extradimensional con sirvientes y comida.' },
+    { level: 7, name: 'Palabra de poder: fortalecer', desc: 'Encantamiento. Otorga 150 pg temporales a hasta 6 aliados.' },
+    { level: 7, name: 'Proyectar imagen', desc: 'Ilusionismo. Proyectas una copia de ti mismo que puede ver y hablar (Concentración).' },
+    { level: 7, name: 'Regenerar', desc: 'Transmutación. Regenera HP y extremidades amputadas de una criatura.' },
+    { level: 7, name: 'Resurrección', desc: 'Nigromancia. Resucita a un cadáver muerto hace menos de un siglo.' },
+    { level: 7, name: 'Rociada prismática', desc: 'Evocación. Rayos de colores causan daño elemental y estados negativos.' },
+    { level: 7, name: 'Símbolo', desc: 'Abjuración. Inscribe runa que aplica efectos fatales al activarse.' },
+    { level: 7, name: 'Teletransporte', desc: 'Conjuración. Te teletransporta instantáneamente a ti y aliados.' },
+ 
+    // Nivel 8
+    { level: 8, name: 'Antipatía/simpatía', desc: 'Encantamiento. Atrae o repele a especies específicas hacia un objeto.' },
+    { level: 8, name: 'Dominar monstruo', desc: 'Encantamiento. Tomas el control telepático completo de cualquier criatura (Concentración).' },
+    { level: 8, name: 'Labia', desc: 'Encantamiento. Cualquier tirada de Engaño/Persuasión inferior a 15 se convierte en 15.' },
+    { level: 8, name: 'Mente en blanco', desc: 'Abjuración. Inmuniza contra daño psíquico, lectura de mente y estados mentales.' },
+    { level: 8, name: 'Ofuscación', desc: 'Encantamiento. Vuelve invisible e indetectable a criatura.' },
+    { level: 8, name: 'Palabra de poder: aturdir', desc: 'Encantamiento. Aturde instantáneamente a criatura con menos de 150 pg.' },
+ 
+    // Nivel 9
+    { level: 9, name: 'Muro prismático', desc: 'Abjuración. Muro multicolor de 7 capas que bloquea todo ataque y causa daño.' },
+    { level: 9, name: 'Palabra de poder: matar', desc: 'Encantamiento. Mata instantáneamente a criatura con 100 pg o menos.' },
+    { level: 9, name: 'Palabra de poder: sanar', desc: 'Encantamiento. Sana por completo todos los pg de criatura.' },
+    { level: 9, name: 'Polimorfar verdadero', desc: 'Transmutación. Transforma permanentemente criatura en otra criatura o en objeto (Concentración).' },
+    { level: 9, name: 'Presencia', desc: 'Adivinación. Concedes ventaja en ataques/salvaciones y desventaja a tus atacantes.' }
+  ];
+
+  warlockCantripsList: Spell[] = [
+    { name: 'Descarga sobrenatural', desc: 'Evocación. Rayo de energía que inflige 1d10 de daño de fuerza (36 m).' },
+    { name: 'Prestidigitación', desc: 'Transmutación. Realizas trucos mágicos menores e inofensivos.' },
+    { name: 'Ilusión menor', desc: 'Ilusionismo. Creas una imagen o sonido menor (9 m).' },
+    { name: 'Toque helado', desc: 'Nigromancia. Mano esquelética inflige 1d8 de daño necrótico y evita curación.' },
+    { name: 'Mano de mago', desc: 'Conjuración. Creas una mano espectral flotante para manipular objetos.' },
+    { name: 'Guardia de cuchillas', desc: 'Abjuración. Obtienes resistencia contra daño físico de armas.' }
+  ];
+
+  warlockSpellsList: Spell[] = [
+    // Nivel 1
+    { level: 1, name: 'Maleficio', desc: 'Encantamiento. Infliges 1d6 de daño necrótico extra al objetivo y le das desventaja en una característica (Concentración).' },
+    { level: 1, name: 'Hechizar persona', desc: 'Encantamiento. Encanta a un humanoide a 9 m; te ve como un conocido amistoso.' },
+    { level: 1, name: 'Armadura de Agathys', desc: 'Abjuración. Ganas 5 HP temporales y si te golpean cuerpo a cuerpo, inflige 5 de daño de frío.' },
+    { level: 1, name: 'Reprensión infernal', desc: 'Evocación. Reacción al recibir daño; rodea al atacante en llamas infligiendo 2d10 de daño de fuego.' },
+    { level: 1, name: 'Brazos de Hadar', desc: 'Conjuración. Tentáculos oscuros infligen 2d6 de daño de fuerza y evitan reacciones.' },
+    // Nivel 2
+    { level: 2, name: 'Paso brumoso', desc: 'Conjuración. Teletransportación instantánea hasta 9 m como acción adicional.' },
+    { level: 2, name: 'Invisibilidad', desc: 'Ilusionismo. Vuelves invisible a una criatura al tocarla (Concentración).' },
+    { level: 2, name: 'Sugestión', desc: 'Encantamiento. Sugieres un curso de acción razonable a una criatura; lo sigue durante 8 horas (Concentración).' },
+    // Nivel 3
+    { level: 3, name: 'Disipar magia', desc: 'Abjuración. Termina efectos de conjuro en un objetivo o área.' },
+    { level: 3, name: 'Volar', desc: 'Transmutación. Concede velocidad de vuelo de 18 m a una criatura (Concentración).' },
+    { level: 3, name: 'Hambre de Hadar', desc: 'Conjuración. Esfera de oscuridad que inflige daño de frío y ácido, y causa ceguera.' },
+    // Nivel 4
+    { level: 4, name: 'Desterrar', desc: 'Abjuración. Envía temporalmente a una criatura a otro plano de existencia (Concentración).' },
+    { name: 'Puerta dimensional', level: 4, desc: 'Conjuración. Teletransporta a ti y a un aliado hasta 150 m.' },
+    // Nivel 5
+    { level: 5, name: 'Retener monstruo', desc: 'Encantamiento. Paraliza a cualquier criatura que falle salvación de Sabiduría (Concentración).' },
+    { level: 5, name: 'Comunión con la naturaleza', desc: 'Adivinación. Obtienes conocimiento espiritual del entorno (Ritual).' }
+  ];
+
+  warlockInvocationsList: Feature[] = [
+    { name: 'Armadura de sombras', req: 'Nivel 1', desc: 'Puedes lanzar armadura de mago sobre ti mismo a voluntad sin gastar espacio de conjuro.' },
+    { name: 'Castigo arcano', req: 'Nivel 5, Pacto del filo', desc: 'Al golpear con tu arma de pacto, puedes gastar espacio de conjuro para causar 1d8 daño de fuerza por nivel y derribar.' },
+    { name: 'Descarga agónica', req: 'Nivel 2', desc: 'Sumas tu modificador de Carisma a las tiradas de daño de tu Descarga Sobrenatural.' },
+    { name: 'Descarga ahuyentadora', req: 'Nivel 2', desc: 'Cuando aciertas con tu Descarga Sobrenatural, puedes empujar a la criatura hasta 3 metros en línea recta.' },
+    { name: 'Devorador de vida', req: 'Nivel 9, Pacto del filo', desc: 'Al golpear con tu arma de pacto, causas daño necrótico adicional igual a tu modificador de Carisma.' },
+    { name: 'Don de las profundidades', req: 'Nivel 5', desc: 'Puedes respirar bajo el agua y obtienes una velocidad de nado igual a tu velocidad de caminar.' },
+    { name: 'Don de los protectores', req: 'Nivel 9, Pacto del grimorio', desc: 'Una criatura cuyo nombre figure en tu grimorio y caiga a 0 HP, cae a 1 HP en su lugar.' },
+    { name: 'Filo sediento', req: 'Nivel 5, Pacto del filo', desc: 'Puedes realizar dos ataques con tu arma de pacto en lugar de uno cuando usas la acción de atacar.' },
+    { name: 'Hoja devoradora', req: 'Nivel 12, Pacto del filo', desc: 'Puedes realizar tres ataques con tu arma de pacto en lugar de uno cuando usas la acción de atacar.' },
+    { name: 'Inversión del amo de las cadenas', req: 'Nivel 5, Pacto de la cadena', desc: 'Tu familiar ataca como acción adicional, tiene resistencia a daño y puedes hacer que use tu CD de salvación.' },
+    { name: 'Lanza sobrenatural', req: 'Nivel 1', desc: 'Cuando lanzas Descarga Sobrenatural, su alcance aumenta a 90 metros.' },
+    { name: 'Lecciones de los primeros', req: 'Nivel 2', desc: 'Obtienes una dote de nivel 1 de tu elección de entre las dotes de origen.' },
+    { name: 'Maestro de las formas innumerables', req: 'Nivel 5', desc: 'Puedes lanzar alterar el propio aspecto a voluntad sin gastar espacio de conjuro.' },
+    { name: 'Máscara de los mil rostros', req: 'Nivel 2', desc: 'Puedes lanzar disfrazarse a voluntad sin gastar espacio de conjuro.' },
+    { name: 'Mente sobrenatural', req: 'Nivel 1', desc: 'Tienes ventaja en las tiradas de salvación de Constitución para mantener la concentración.' },
+    { name: 'Mirada de las dos mentes', req: 'Nivel 5', desc: 'Acción para percibir a través de los sentidos de un humanoide voluntario y poder lanzar conjuros desde su posición.' },
+    { name: 'Pacto de la cadena', req: 'Nivel 1', desc: 'Puedes lanzar encontrar familiar como acción de magia sin gastar espacio de conjuro para invocar familiares especiales.' },
+    { name: 'Pacto del filo', req: 'Nivel 1', desc: 'Conjuras en tu mano un arma de pacto cuerpo a cuerpo sencilla o marcial. Atacas y dañas usando tu Carisma.' },
+    { name: 'Pacto del grimorio', req: 'Nivel 1', desc: 'Conjuras un Libro de las Sombras con 3 trucos y 2 conjuros rituales de nivel 1 de cualquier clase.' },
+    { name: 'Paso ascendente', req: 'Nivel 5', desc: 'Puedes lanzar levitar sobre ti mismo a voluntad sin gastar espacio de conjuro.' },
+    { name: 'Salto sobrenatural', req: 'Nivel 2', desc: 'Puedes lanzar salto sobre ti mismo a voluntad sin gastar espacio de conjuro.' },
+    { name: 'Susurros del sepulcro', req: 'Nivel 7', desc: 'Puedes lanzar hablar con los muertos a voluntad sin gastar espacio de conjuro.' },
+    { name: 'Uno con las sombras', req: 'Nivel 5', desc: 'En luz tenue u oscuridad, puedes usar tu acción para volverte invisible hasta que te muevas o actúes.' },
+    { name: 'Vigor infernal', req: 'Nivel 2', desc: 'Puedes lanzar falsa vida sobre ti a voluntad sin gastar espacio de conjuro.' },
+    { name: 'Visión bruja', req: 'Nivel 15', desc: 'Puedes ver la verdadera forma de cualquier criatura oculta por magia a 9 metros.' },
+    { name: 'Visiones brumosas', req: 'Nivel 2', desc: 'Puedes lanzar imagen silenciosa a voluntad sin gastar espacio de conjuro.' },
+    { name: 'Visiones de reinos remotos', req: 'Nivel 9', desc: 'Puedes lanzar ojo arcano a voluntad sin gastar espacio de conjuro.' },
+    { name: 'Vista del diablo', req: 'Nivel 2', desc: 'Puedes ver normalmente en la oscuridad tanto mágica como no mágica a una distancia de 36 metros.' }
+  ];
+
+  clericCantripsList: Spell[] = [
+    { name: 'Guía', desc: 'Adivinación (Concentración). Otorga +1d4 a una prueba de característica.' },
+    { name: 'Llama sagrada', desc: 'Evocación. Llama descendente inflige 1d8 daño radiante a un objetivo.' },
+    { name: 'Luz', desc: 'Evocación. Objeto emite luz brillante en 6 m y tenue otros 6 m.' },
+    { name: 'Palabra de resplandor', desc: 'Evocación. Explosión de luz radiante causa 1d6 de daño a enemigos cercanos.' },
+    { name: 'Piedad con los moribundos', desc: 'Nigromancia. Estabiliza a una criatura moribunda con 0 puntos de golpe.' },
+    { name: 'Reparar', desc: 'Transmutación. Reparas una única rotura o fisura de hasta 30 cm en un objeto.' },
+    { name: 'Resistencia', desc: 'Abjuración (Concentración). Aliado gana +1d4 en su próxima tirada de salvación.' },
+    { name: 'Tañido por los muertos', desc: 'Nigromancia. Tañido causa 1d8 daño de necro (o 1d12 si no tiene todos los HP).' },
+    { name: 'Taumaturgia', desc: 'Transmutación. Manifestaciones divinas menores (cambiar ojos, voz alta, abrir puertas).' }
+  ];
+
+  clericSpellsList: Spell[] = [
+    // Nivel 1
+    { level: 1, name: 'Bendición', desc: 'Encantamiento (Concentración). Hasta tres criaturas suman 1d4 a tiradas de ataque y salvación.' },
+    { level: 1, name: 'Crear o destruir agua', desc: 'Transmutación. Crea o destruye hasta 40 litros de agua en recipientes o lluvia.' },
+    { level: 1, name: 'Curar heridas', desc: 'Abjuración. Sana a una criatura tocada por valor de 2d8 + modificador de Sabiduría.' },
+    { level: 1, name: 'Detectar el bien y el mal', desc: 'Adivinación (Concentración). Conoces presencia de celestiales, fiadores, muertos vivientes, etc.' },
+    { level: 1, name: 'Detectar magia', desc: 'Adivinación (Ritual). Percibes la presencia de auras mágicas a 9 metros.' },
+    { level: 1, name: 'Detectar venenos y enfermedades', desc: 'Adivinación (Ritual). Detectas veneno, criaturas venenosas y enfermedades a 9 m.' },
+    { level: 1, name: 'Escudo de fe', desc: 'Abjuración (Concentración). Otorga +2 a la Clase de Armadura de un aliado a 18 m.' },
+    { level: 1, name: 'Infligir heridas', desc: 'Nigromancia. Ataque de conjuro cuerpo a cuerpo causa 3d10 daño necrótico.' },
+    { level: 1, name: 'Orden imperiosa', desc: 'Encantamiento. Ordenas a un objetivo obedecer un comando de una palabra (Huye, Suelta, etc.).' },
+    { level: 1, name: 'Palabra de curación', desc: 'Abjuración. Sana a un aliado visible a 18 m por 1d8 + modificador de Sabiduría.' },
+    { level: 1, name: 'Perdición', desc: 'Encantamiento (Concentración). Hasta tres criaturas restan 1d4 a ataques y salvaciones.' },
+    { level: 1, name: 'Protección contra el bien y el mal', desc: 'Abjuración (Concentración). Protege contra aberraciones, celestiales, elementales, etc.' },
+    { level: 1, name: 'Purificar comida y bebida', desc: 'Transmutación (Ritual). Comida y bebida no mágica queda libre de veneno y enfermedad.' },
+    { level: 1, name: 'Saeta guía', desc: 'Evocación. Rayo inflige 4d6 daño radiante; próximo ataque contra él tiene ventaja.' },
+    { level: 1, name: 'Santuario', desc: 'Abjuración. Protege a criatura elegida; atacantes deben superar salvación de Sabiduría.' },
+
+    // Nivel 2
+    { level: 2, name: 'Arma espiritual', desc: 'Evocación. Creas un arma flotante que ataca como acción adicional causando 1d8 + mod Sab.' },
+    { level: 2, name: 'Augurio', desc: 'Adivinación (Ritual). Indagas si una acción próxima traerá buenos o malos resultados.' },
+    { level: 2, name: 'Auxilio', desc: 'Abjuración. Aumenta el HP máximo y actual de tres criaturas en 5 durante 8 horas.' },
+    { level: 2, name: 'Calmar emociones', desc: 'Encantamiento (Concentración). Calma emociones de humanoides en radio de 6 m.' },
+    { level: 2, name: 'Detectar trampas', desc: 'Adivinación. Detectas la presencia de cualquier trampa a 36 metros en tu línea de visión.' },
+    { level: 2, name: 'Dulce descanso', desc: 'Nigromancia (Ritual). Impide que cadáver sea convertido en no-muerto o empiece a descomponerse.' },
+    { level: 2, name: 'Inmovilizar persona', desc: 'Encantamiento (Concentración). Paraliza a un humanoide que falle salvación de Sabiduría.' },
+    { level: 2, name: 'Llama permanente', desc: 'Evocación. Antorcha sin calor que brilla indefinidamente sin combustible.' },
+    { level: 2, name: 'Localizar objeto', desc: 'Adivinación (Concentración). Sientes la dirección en la que está un objeto conocido a 110 m.' },
+    { level: 2, name: 'Plegaria de curación', desc: 'Abjuración. Cura a hasta seis criaturas aliadas que puedas ver por 2d8 + mod Sab.' },
+    { level: 2, name: 'Potenciar característica', desc: 'Transmutación (Concentración). Otorga ventaja en pruebas de un atributo elegido.' },
+    { level: 2, name: 'Protección contra veneno', desc: 'Abjuración. Otorga resistencia a veneno y neutraliza venenos activos.' },
+    { level: 2, name: 'Restablecimiento menor', desc: 'Abjuración. Cura ceguedad, sordera, parálisis o envenenamiento.' },
+    { level: 2, name: 'Silencio', desc: 'Ilusionismo (Ritual). Crea esfera de 6m de radio donde no se puede emitir ningún sonido.' },
+    { level: 2, name: 'Sordera/ceguera', desc: 'Transmutación. Ciega o ensordece a un enemigo que falle salvación de Constitución.' },
+    { level: 2, name: 'Vínculo protector', desc: 'Abjuración. Proteges a un aliado; ganas resistencia a todo daño pero sufres su mismo daño.' },
+    { level: 2, name: 'Zona de la verdad', desc: 'Encantamiento. Criaturas en esfera de 4.5m no pueden decir mentiras deliberadas.' },
+
+    // Nivel 3
+    { level: 3, name: 'Animar a los muertos', desc: 'Nigromancia. Convierte un montón de huesos o cadáver en un esqueleto o zombi a tu servicio.' },
+    { level: 3, name: 'Aura de vitalidad', desc: 'Abjuración (Concentración). Aura cura 2d6 HP a un aliado a tu elección como acción adicional.' },
+    { level: 3, name: 'Caminar sobre el agua', desc: 'Transmutación (Ritual). Permite caminar sobre agua, barro, nieve o lava a diez criaturas.' },
+    { level: 3, name: 'Círculo mágico', desc: 'Abjuración. Crea cilindro de energía que contiene o excluye a tipos de criaturas elegidas.' },
+    { level: 3, name: 'Clarividencia', desc: 'Adivinación (Concentración). Sensor te permite ver u oír un punto elegido a distancia.' },
+    { level: 3, name: 'Crear comida y agua', desc: 'Conjuración. Crea 20 kilos de comida y 110 litros de agua limpia.' },
+    { level: 3, name: 'Disipar magia', desc: 'Abjuración. Cancela conjuros o efectos mágicos activos de nivel 3 o inferior.' },
+    { level: 3, name: 'Don de lenguas', desc: 'Adivinación. Criatura comprende y habla cualquier idioma de forma fluida.' },
+    { level: 3, name: 'Espíritus guardianes', desc: 'Conjuración (Concentración). Espíritus giran a tu alrededor dañando y ralentizando enemigos a 4.5 m.' },
+    { level: 3, name: 'Fingir muerte', desc: 'Nigromancia (Ritual). Pon en estado cataléptico a un aliado simulando muerte perfecta.' },
+    { level: 3, name: 'Fundirse con la piedra', desc: 'Transmutación (Ritual). Te introduces físicamente en un bloque de piedra sólido.' },
+    { level: 3, name: 'Glifo custodio', desc: 'Abjuración. Inscribe runa que detona con daño o conjuro al ser cruzada o activada.' },
+    { level: 3, name: 'Hablar con los muertos', desc: 'Nigromancia. Haces hasta 5 preguntas al cadáver de una criatura.' },
+    { level: 3, name: 'Imponer maldición', desc: 'Nigromancia (Concentración). Maldices a un objetivo para mermar sus pruebas, ataques o salvaciones.' },
+    { level: 3, name: 'Levantar maldición', desc: 'Abjuración. Retira todas las maldiciones activas que afecten a la criatura u objeto tocado.' },
+    { level: 3, name: 'Luz del día', desc: 'Evocación. Esfera de 18 m emite luz brillante equivalente a la luz solar.' },
+    { level: 3, name: 'Palabra de curación en masa', desc: 'Abjuración. Sana a hasta seis criaturas visibles a 18 m por 1d4 + mod Sab de forma instantánea.' },
+    { level: 3, name: 'Protección contra energía', desc: 'Abjuración (Concentración). Otorga resistencia a ácido, frío, fuego, rayo o trueno.' },
+    { level: 3, name: 'Recado', desc: 'Adivinación. Envías un mensaje telepático breve a una criatura y recibes respuesta.' },
+    { level: 3, name: 'Revivir', desc: 'Nigromancia. Devuelve la vida a una criatura muerta en el último minuto con 1 HP.' },
+    { level: 3, name: 'Señal de esperanza', desc: 'Abjuración (Concentración). Aliados curan el máximo posible y tienen ventaja en salvaciones de Sabiduría.' },
+
+    // Nivel 4
+    { level: 4, name: 'Adivinación', desc: 'Adivinación (Ritual). Preguntas a tu deidad sobre una actividad futura específica en los próximos 7 días.' },
+    { level: 4, name: 'Aura de pureza', desc: 'Abjuración (Concentración). Aura protege de venenos, enfermedades y condiciones cegado, hechizado, asustado.' },
+    { level: 4, name: 'Aura de vida', desc: 'Abjuración (Concentración). Aliados a 9 m recuperan 1 HP si caen a 0 al inicio de su turno.' },
+    { level: 4, name: 'Controlar agua', desc: 'Transmutación (Concentración). Manipulas masas de agua libre (inundar, dividir, remolino).' },
+    { level: 4, name: 'Destierro', desc: 'Abjuración (Concentración). Envías a una criatura a otro plano de existencia temporal o permanentemente.' },
+    { level: 4, name: 'Guarda contra la muerte', desc: 'Abjuración. Si la criatura cae a 0 HP, en su lugar se mantiene con 1 HP por primera vez.' },
+    { level: 4, name: 'Guardián de la fe', desc: 'Conjuración. Guardián inmóvil ataca a enemigos cercanos infligiendo daño radiante.' },
+    { level: 4, name: 'Libertad de movimiento', desc: 'Abjuración. Ignoras terreno difícil, parálisis, constricciones mágicas y no puedes ser apresado.' },
+    { level: 4, name: 'Localizar criatura', desc: 'Adivinación (Concentración). Sientes la dirección en la que está una criatura conocida a 90 m.' },
+    { level: 4, name: 'Moldear la piedra', desc: 'Transmutación. Modificas la forma de un bloque de piedra a tu elección (crear pasaje, armas, etc.).' },
+
+    // Nivel 5
+    { level: 5, name: 'Alzar a los muertos', desc: 'Nigromancia. Resucita a criatura muerta en los últimos 10 días (con penalizador de -4 a tiradas).' },
+    { level: 5, name: 'Atadura planar', desc: 'Abjuración. Fuerza a un celestial, elemental, feérico o fiador a servirte durante 24 horas.' },
+{ level: 5, name: 'Círculo de poder', desc: 'Abjuración (Concentración). Aura otorga ventaja en tiradas de salvación contra conjuros mágicos.' },
+    { level: 5, name: 'Comunión', desc: 'Adivinación (Ritual). Haces tres preguntas de Sí o No directamente a tu deidad.' },
+    { level: 5, name: 'Conocer las leyendas', desc: 'Adivinación. Obtienes un resumen de mitos, leyendas o rumores de una persona, lugar u objeto histórico.' },
+    { level: 5, name: 'Consagrar', desc: 'Abjuración. Consagra un área impidiendo la entrada de celestiales/fiadores y bendice el terreno.' },
+    { level: 5, name: 'Contagio', desc: 'Nigromancia. Tu golpe transmite una enfermedad debilitante al objetivo (ceguera, fiebre, etc.).' },
+    { level: 5, name: 'Curar heridas en masa', desc: 'Abjuración. Cura a hasta seis criaturas aliadas por valor de 3d8 + mod Sab.' },
+    { level: 5, name: 'Disipar el bien y el mal', desc: 'Abjuración (Concentración). Te protege de aberraciones, celestiales, elementales, etc.' },
+    { level: 5, name: 'Escudriñar', desc: 'Adivinación (Concentración). Ves y oyes a una criatura lejana; requiere salvación de Sabiduría.' },
+    { level: 5, name: 'Geas', desc: 'Encantamiento. Mandato mágico que obliga a una criatura a obedecerte bajo castigo de daño psíquico.' },
+    { level: 5, name: 'Golpe flamígero', desc: 'Evocación. Columna de fuego inflige 4d6 daño de fuego y 4d6 daño radiante en radio de 3 m.' },
+    { level: 5, name: 'Invocar celestial', desc: 'Conjuración (Concentración). Invocas a un espíritu celestial para luchar en combate.' },
+    { level: 5, name: 'Plaga de insectos', desc: 'Conjuración (Concentración). Esfera de langostas muerde e inflige 4d10 daño perforante.' },
+    { level: 5, name: 'Restablecimiento mayor', desc: 'Abjuración. Reduce cansancio, elimina petrificación, maldición, encanto o reducción de atributo.' }
+  ];
+
+  druidCantripsList: Spell[] = [
+    { name: 'Crear llama', desc: 'Conjuración (Recomendado). Llama en tu mano que da luz o arrojas para hacer 1d8 daño de fuego.' },
+    { name: 'Elementalismo', desc: 'Transmutación. Creas un efecto elemental inofensivo menor (brisa, chispa, lodo, vapor).' },
+    { name: 'Guía', desc: 'Adivinación (Concentración). Criatura sumará +1d4 a una prueba de característica.' },
+    { name: 'Látigo de espinas', desc: 'Transmutación. Ataque cuerpo a cuerpo a 9 m inflige 1d6 daño perforante y acerca 3 m.' },
+    { name: 'Mensaje', desc: 'Transmutación. Envías un susurro secreto a un objetivo a 36 m.' },
+    { name: 'Piedad con los moribundos', desc: 'Nigromancia. Estabilizas a una criatura moribunda al tocarla.' },
+    { name: 'Reparar', desc: 'Transmutación. Reparas una única rotura o fisura de hasta 30 cm en un objeto.' },
+    { name: 'Resistencia', desc: 'Abjuración (Concentración). Aliado sumará +1d4 a su próxima tirada de salvación.' },
+    { name: 'Rociada venenosa', desc: 'Nigromancia. Genera una bocanada de gas tóxico que inflige 1d12 daño de veneno.' },
+    { name: 'Saber druídico', desc: 'Transmutación (Recomendado). Creas un efecto natural menor o predices el tiempo.' },
+    { name: 'Shillelagh', desc: 'Transmutación. Imbuye tu bastón o garrote para usar Sabiduría en ataque e infligir 1d8 daño de fuerza.' },
+    { name: 'Tronar', desc: 'Evocación. Onda sonora inflige 1d6 daño de trueno y empuja 3 m.' },
+    { name: 'Voluta estelar', desc: 'Evocación. Destello de luz radiante causa 1d4 daño radiante y evita reacciones.' }
+  ];
+
+  druidSpellsList: Spell[] = [
+    // Nivel 1
+    { level: 1, name: 'Buenas bayas', desc: 'Conjuración. Creas 10 bayas mágicas; cada una sana 1 pg y alimenta por un día.' },
+    { level: 1, name: 'Crear o destruir agua', desc: 'Transmutación. Crea o destruye hasta 40 litros de agua en recipientes o lluvia.' },
+    { level: 1, name: 'Cuchillo de hielo', desc: 'Conjuración. Cuchillo inflige 1d10 daño perforante y explota causando 2d6 daño de frío en área.' },
+    { level: 1, name: 'Curar heridas', desc: 'Abjuración (Recomendado). Sana a una criatura tocada por valor de 2d8 + modificador de Sabiduría.' },
+    { level: 1, name: 'Detectar magia', desc: 'Adivinación (Ritual). Percibes la presencia de auras mágicas a 9 metros.' },
+    { level: 1, name: 'Detectar venenos y enfermedades', desc: 'Adivinación (Ritual). Detectas veneno, criaturas venenosas y enfermedades a 9 m.' },
+    { level: 1, name: 'Encantar animal', desc: 'Encantamiento (Recomendado, Concentración). Convence a una bestia de que no eres una amenaza.' },
+    { level: 1, name: 'Enmarañar', desc: 'Conjuración (Concentración). Plantas enredan y retienen a criaturas en un área.' },
+    { level: 1, name: 'Fuego feérico', desc: 'Evocación (Recomendado, Concentración). Luz de color rodea objetivos dando ventaja al atacarlos.' },
+    { level: 1, name: 'Hablar con los animales', desc: 'Adivinación (Ritual). Te comunicas verbalmente con bestias por 10 minutos.' },
+    { level: 1, name: 'Hechizar persona', desc: 'Encantamiento. Hace que una criatura que falle salvación te considere un conocido amistoso.' },
+    { level: 1, name: 'Nube de oscurecimiento', desc: 'Conjuración (Concentración). Nube densa que bloquea totalmente la visión.' },
+    { level: 1, name: 'Ola atronadora', desc: 'Evocación (Recomendado). Onda de choque inflige 2d8 daño de trueno y empuja 3 m.' },
+    { level: 1, name: 'Palabra de curación', desc: 'Abjuración. Sana a un aliado visible a 18 m por 1d8 + modificador de Sabiduría.' },
+    { level: 1, name: 'Protección contra el bien y el mal', desc: 'Abjuración (Concentración). Protege contra aberraciones, celestiales, elementales, etc.' },
+    { level: 1, name: 'Purificar comida y bebida', desc: 'Transmutación (Ritual). Comida y bebida no mágica queda libre de veneno y enfermedad.' },
+    { level: 1, name: 'Salto', desc: 'Transmutación. Triplica la distancia de salto de una criatura por 1 minuto.' },
+    { level: 1, name: 'Zancada prodigiosa', desc: 'Transmutación. Aumenta la velocidad de movimiento de una criatura en 3 m por 1 hora.' }
+  ];
+
+  sorcererSpellsList: Spell[] = [
+    // Trucos (Nivel 0)
+    { level: 0, name: 'Agarre electrizante', desc: 'Evocación. Canalizas electricidad; causa 1d8 daño eléctrico y quita la reacción del objetivo.' },
+    { level: 0, name: 'Amistad', desc: 'Encantamiento (Concentración). Ventaja en pruebas de Carisma contra un humanoide no hostil.' },
+    { level: 0, name: 'Descarga de fuego', desc: 'Evocación. Lanzas una chispa de fuego que causa 1d10 daño ígneo al acertar.' },
+    { level: 0, name: 'Elementalismo', desc: 'Transmutación. Creas efectos elementales menores como brisas, polvo, chispas o vapor.' },
+    { level: 0, name: 'Estallido mágico', desc: 'Evocación. Lanzas rayo de magia pura; inflige 1d6 daño elemental (ácido, frío, fuego, rayo, veneno o trueno). Si sacas un 6, explota.' },
+    { level: 0, name: 'Fragmento mental', desc: 'Encantamiento. Causa 1d6 daño psíquico y resta 1d4 a la próxima salvación del objetivo.' },
+    { level: 0, name: 'Guardia de cuchillas', desc: 'Abjuración. Obtienes resistencia contra daño contundente, perforante y cortante de ataques con armas.' },
+    { level: 0, name: 'Ilusión menor', desc: 'Ilusionismo. Creas una imagen o sonido menor en un punto a tu alcance por 1 minuto.' },
+    { level: 0, name: 'Impacto certero', desc: 'Adivinación. Obtienes ventaja en tu próxima tirada de ataque contra un objetivo a tu alcance.' },
+    { level: 0, name: 'Luces danzantes', desc: 'Ilusionismo (Concentración). Creas hasta cuatro luces flotantes que puedes mover.' },
+    { level: 0, name: 'Luz', desc: 'Evocación. Hace que un objeto emita luz brillante en un radio de 6 metros.' },
+    { level: 0, name: 'Mano de mago', desc: 'Conjuración. Creas una mano espectral invisible/visible para manipular objetos a 9 m.' },
+    { level: 0, name: 'Mensaje', desc: 'Transmutación. Envías un mensaje susurrado a una criatura a 36 m que puede responder en secreto.' },
+    { level: 0, name: 'Prestidigitación', desc: 'Transmutación. Realizas trucos de magia menores e inofensivos (limpiar, calentar, etc.).' },
+    { level: 0, name: 'Rayo de escarcha', desc: 'Evocación. Causa 1d8 daño de frío y reduce la velocidad del objetivo en 3 m.' },
+    { level: 0, name: 'Reparar', desc: 'Transmutación. Reparas una única rotura o fisura en un objeto de menos de 30 cm.' },
+    { level: 0, name: 'Rociada venenosa', desc: 'Nigromancia. Proyectas una bocanada de gas nocivo que causa 1d12 daño de veneno.' },
+    { level: 0, name: 'Salpicadura de ácido', desc: 'Conjuración. Lanzas burbuja de ácido que hace 1d6 daño a una o dos criaturas juntas.' },
+    { level: 0, name: 'Toque helado', desc: 'Nigromancia. Mano espectral causa 1d8 daño necrótico y evita que el objetivo se cure.' },
+    { level: 0, name: 'Tronar', desc: 'Evocación. Onda de sonido causa 1d6 daño de trueno y empuja 3 m si fallan salvación.' },
+
+    // Nivel 1
+    { level: 1, name: 'Armadura de mago', desc: 'Abjuración. CA del objetivo sin armadura pasa a ser 13 + Mod. Destreza por 8 horas.' },
+    { level: 1, name: 'Caída de pluma', desc: 'Transmutación. Reacción. Ralentiza la caída de hasta 5 criaturas; sufren 0 daño al caer.' },
+    { level: 1, name: 'Cuchillo de hielo', desc: 'Conjuración. Cuchillo inflige 1d10 daño perforante y explota causando 2d6 daño de frío en área.' },
+    { level: 1, name: 'Detectar magia', desc: 'Adivinación (Ritual, Concentración). Sientes la presencia de auras mágicas a 9 metros.' },
+    { level: 1, name: 'Disfrazarse', desc: 'Ilusionismo. Cambias tu apariencia física y ropa temporalmente por 1 hora.' },
+    { level: 1, name: 'Dormir', desc: 'Encantamiento. Sumes a criaturas en un letargo mágico según una tirada de 5d8.' },
+    { level: 1, name: 'Entender idiomas', desc: 'Adivinación (Ritual). Comprendes cualquier idioma hablado o escrito que escuches o toques.' },
+    { level: 1, name: 'Escudo', desc: 'Abjuración. Reacción. Sumas +5 a tu CA y eres inmune a Proyectil mágico por 1 turno.' },
+    { level: 1, name: 'Falsa vida', desc: 'Nigromancia. Obtienes 1d4+4 puntos de golpe temporales por 1 hora.' },
+    { level: 1, name: 'Grasa', desc: 'Conjuración. Suelo resbaladizo derriba a criaturas que fallen salvación de Destreza.' },
+    { level: 1, name: 'Hechizar persona', desc: 'Encantamiento. Hace que una criatura que falle salvación te considere un conocido amistoso.' },
+    { level: 1, name: 'Imagen silenciosa', desc: 'Ilusionismo (Concentración). Creas una ilusión visual de una criatura u objeto de tamaño mediano.' },
+    { level: 1, name: 'Manos ardientes', desc: 'Evocación. Cono de llamas que causa 3d6 daño de fuego a quienes fallen salvación.' },
+    { level: 1, name: 'Nube de oscurecimiento', desc: 'Conjuración (Concentración). Nube densa que bloquea totalmente la visión por 10 min.' },
+    { level: 1, name: 'Ola atronadora', desc: 'Evocación. Onda de choque inflige 2d8 daño de trueno y empuja a objetivos a 3 m.' },
+    { level: 1, name: 'Orbe cromático', desc: 'Evocación. Lanzas orbe elemental que inflige 3d8 de daño del tipo elemental que elijas.' },
+    { level: 1, name: 'Proyectil mágico', desc: 'Evocación. Tres dardos que aciertan automáticamente infligiendo 1d4+1 daño de fuerza.' },
+    { level: 1, name: 'Rayo de hechicería', desc: 'Evocación (Concentración). Rayo inflige 1d12 daño de rayo; puedes repetir daño usando tu acción.' },
+    { level: 1, name: 'Rayo nauseabundo', desc: 'Nigromancia. Rayo causa 2d8 daño de veneno y envenena si fallan salvación.' },
+    { level: 1, name: 'Retirada expeditiva', desc: 'Transmutación (Concentración). Acción adicional. Permite correr/destrabarse.' },
+    { level: 1, name: 'Rociada de color', desc: 'Ilusionismo. Ráfaga de luz brillante que ciega a criaturas según sus pg.' },
+    { level: 1, name: 'Salto', desc: 'Transmutación. Triplica la distancia de salto de una criatura por 1 minuto.' },
+
+    // Nivel 2
+    { level: 2, name: 'Abrir', desc: 'Transmutación. Abre una puerta, cofre o cerradura cerrada mágica o físicamente.' },
+    { level: 2, name: 'Agrandar/reducir', desc: 'Transmutación (Concentración). Duplica o reduce a la mitad el tamaño y peso de una criatura.' },
+    { level: 2, name: 'Aliento de dragón', desc: 'Transmutación (Concentración). Exhalas cono de daño elemental que causa 3d6 en cada turno.' },
+    { level: 2, name: 'Alterar el propio aspecto', desc: 'Transmutación (Concentración). Cambias tu fisionomía, adaptas branquias o garras.' },
+    { level: 2, name: 'Arma mágica', desc: 'Transmutación (Concentración). Arma no mágica obtiene +1 en tiradas de ataque y daño.' },
+    { level: 2, name: 'Clavo mental', desc: 'Adivinación (Concentración). Flecha psíquica inflige 3d6 daño y rastreas la ubicación del objetivo.' },
+    { level: 2, name: 'Contorno borroso', desc: 'Ilusionismo (Concentración). Tu cuerpo se vuelve borroso; ataques contra ti tienen desventaja.' },
+    { level: 2, name: 'Corona de la locura', desc: 'Encantamiento (Concentración). Fuerza a un humanoide a atacar a sus aliados en cada turno.' },
+    { level: 2, name: 'Detectar pensamientos', desc: 'Adivinación (Concentración). Lees pensamientos superficiales y profundos de criaturas a 9 m.' },
+    { level: 2, name: 'Esfera de llamas', desc: 'Evocación (Concentración). Crea esfera de fuego rodante que inflige 2d6 daño en área.' },
+    { level: 2, name: 'Fuerza fantasmal', desc: 'Ilusionismo (Concentración). Crea ilusión mental tan realista que causa 1d6 daño psíquico.' },
+    { level: 2, name: 'Hacer añicos', desc: 'Evocación. Estallido sonoro que causa 3d8 daño de trueno en una esfera de 3 m.' },
+    { level: 2, name: 'Hoja de fuego', desc: 'Evocación (Concentración). Creas una espada de fuego que causa 3d6 daño ígneo al golpear.' },
+    { level: 2, name: 'Imagen múltiple', desc: 'Ilusionismo. Creas tres duplicados ilusorios de ti para desviar los ataques.' },
+    { level: 2, name: 'Inmovilizar persona', desc: 'Encantamiento (Concentración). Paraliza a un humanoide visible a 18 m.' },
+    { level: 2, name: 'Invisibilidad', desc: 'Ilusionismo (Concentración). Una criatura elegida se vuelve invisible durante 1 hora.' },
+    { level: 2, name: 'Levitar', desc: 'Transmutación (Concentración). Eleva al objetivo verticalmente hasta 6 metros.' },
+    { level: 2, name: 'Nube de dagas', desc: 'Conjuración (Concentración). Cubo de dagas giratorias causa 4d4 daño cortante en área.' },
+    { level: 2, name: 'Oscuridad', desc: 'Evocación (Concentración). Crea una esfera de 4.5 m de oscuridad mágica que bloquea visión.' },
+    { level: 2, name: 'Paso brumoso', desc: 'Conjuración. Acción adicional. Te teletransportas hasta 9 metros a un lugar visible.' },
+    { level: 2, name: 'Potenciar característica', desc: 'Transmutación (Concentración). Otorga ventaja en pruebas de una característica elegida.' },
+    { level: 2, name: 'Ráfaga de viento', desc: 'Evocación (Concentración). Línea de viento fuerte empuja a criaturas y apaga fuegos.' },
+    { level: 2, name: 'Rayo abrasador', desc: 'Evocación. Lanzas tres rayos de fuego; cada uno causa 2d6 daño de fuego.' },
+    { level: 2, name: 'Sordera/ceguera', desc: 'Transmutación. Ciega o ensordece a un objetivo que falle salvación de Constitución.' },
+    { level: 2, name: 'Sugestión', desc: 'Encantamiento (Concentración). Sugieres curso de acción a criatura; le obliga a obedecer.' },
+    { level: 2, name: 'Telaraña', desc: 'Conjuración (Concentración). Telarañas pegajosas que retienen y ralentizan en un área.' },
+    { level: 2, name: 'Trepar cual arácnido', desc: 'Transmutación (Concentración). Permite caminar por paredes y techos con manos libres.' },
+    { level: 2, name: 'Ver invisibilidad', desc: 'Adivinación. Ves criaturas y objetos invisibles o en el Plano Etéreo.' },
+    { level: 2, name: 'Vigor arcano', desc: 'Abjuración. Te sanas a ti mismo en caso de emergencia recuperando 2d8 + Mod Carisma.' },
+    { level: 2, name: 'Visión en la oscuridad', desc: 'Transmutación. Otorga visión en la oscuridad con alcance de 18 m por 8 horas.' },
+
+    // Nivel 3
+    { level: 3, name: 'Acelerar', desc: 'Transmutación (Concentración). Duplica velocidad del objetivo, da +2 CA y acción adicional.' },
+    { level: 3, name: 'Bola de fuego', desc: 'Evocación. Esfera de fuego causa 8d6 daño de fuego en área de 6 m de radio.' },
+    { level: 3, name: 'Caminar sobre el agua', desc: 'Transmutación (Ritual). Permite caminar sobre agua, barro, nieve o lava por 1 hora.' },
+    { level: 3, name: 'Clarividencia', desc: 'Adivinación (Concentración). Creas sensor invisible para ver u oír en un lugar familiar o lejano.' },
+    { level: 3, name: 'Contrahechizo', desc: 'Abjuración. Reacción. Interrumpes el lanzamiento de un conjuro enemigo.' },
+    { level: 3, name: 'Desplazamiento', desc: 'Transmutación. Te teletransportas a ti mismo o a otra criatura a un lugar visible a 9 m.' },
+    { level: 3, name: 'Disipar magia', desc: 'Abjuración. Cancela los efectos mágicos activos en un objetivo.' },
+    { level: 3, name: 'Don de lenguas', desc: 'Adivinación. Permite hablar y entender cualquier idioma por 1 hora.' },
+    { level: 3, name: 'Forma gaseosa', desc: 'Transmutación (Concentración). Transforma objetivo en nube brumosa con resistencia a daño.' },
+    { level: 3, name: 'Imagen mayor', desc: 'Ilusionismo (Concentración). Crea ilusión física tridimensional con sonido, olor y calor.' },
+    { level: 3, name: 'Luz del día', desc: 'Evocación. Crea esfera de luz brillante de 18 m que dispersa oscuridad mágica.' },
+    { level: 3, name: 'Nube apestosa', desc: 'Conjuración (Concentración). Nube de gas pestilente que incapacita a criaturas.' },
+    { level: 3, name: 'Patrón hipnótico', desc: 'Ilusionismo (Concentración). Patrón de luces incapacita y paraliza a quienes lo miren.' },
+    { level: 3, name: 'Protección contra energía', desc: 'Abjuración (Concentración). Otorga resistencia a ácido, frío, fuego, rayo o trueno.' },
+    { level: 3, name: 'Ralentizar', desc: 'Transmutación (Concentración). Reduce velocidad, CA y ataques de enemigos en área.' },
+    { level: 3, name: 'Relámpago', desc: 'Evocación. Línea de rayo inflige 8d6 daño eléctrico a quienes fallen.' },
+    { level: 3, name: 'Respirar bajo el agua', desc: 'Transmutación (Ritual). Permite respirar bajo el agua a 10 criaturas por 24 horas.' },
+    { level: 3, name: 'Terror', desc: 'Ilusionismo (Concentración). Proyecta imagen aterradora que obliga a huir a los objetivos.' },
+    { level: 3, name: 'Toque vampírico', desc: 'Nigromancia (Concentración). Tu toque causa 3d6 daño necrótico y te sana.' },
+    { level: 3, name: 'Tormenta de aguanieve', desc: 'Conjuración (Concentración). Lluvia helada dificulta movimiento y rompe concentración.' },
+    { level: 3, name: 'Volar', desc: 'Transmutación (Concentración). Otorga velocidad de vuelo de 18 metros por 10 minutos.' },
+
+    // Nivel 4
+    { level: 4, name: 'Confusión', desc: 'Encantamiento (Concentración). Asalta la mente de criaturas obligándolas a actuar erráticamente.' },
+    { level: 4, name: 'Destierro', desc: 'Abjuración (Concentración). Envías temporalmente a una criatura a otro plano de existencia.' },
+    { level: 4, name: 'Dominar bestia', desc: 'Encantamiento (Concentración). Tomas el control absoluto de una bestia.' },
+    { level: 4, name: 'Escudo de fuego', desc: 'Evocación. Te rodeas de llamas que dan resistencia a frío/fuego y dañan atacantes.' },
+    { level: 4, name: 'Esfera vitriólica', desc: 'Evocación. Ácido causa 10d4 daño inicial y 5d4 daño el próximo turno.' },
+    { level: 4, name: 'Hechizar monstruo', desc: 'Encantamiento. Hace que una criatura te considere un aliado amistoso por 1 hora.' },
+    { level: 4, name: 'Invisibilidad mejorada', desc: 'Ilusionismo (Concentración). Te vuelves invisible; no se rompe al atacar/conjurar.' },
+    { level: 4, name: 'Marchitar', desc: 'Nigromancia. Drenas la energía vital de una criatura infligiendo 8d8 daño necrótico.' },
+    { level: 4, name: 'Muro de fuego', desc: 'Evocación (Concentración). Muro de llamas causa 5d8 daño de fuego en su área.' },
+    { level: 4, name: 'Piel pétrea', desc: 'Transmutación (Concentración). Otorga resistencia a daño contundente/perforante/cortante físico.' },
+    { level: 4, name: 'Polimorfar', desc: 'Transmutación (Concentración). Transforma a una criatura en una bestia.' },
+    { level: 4, name: 'Puerta dimensional', desc: 'Conjuración. Te teletransportas a ti y a un aliado hasta 150 metros.' },
+    { level: 4, name: 'Tormenta de hielo', desc: 'Evocación. Granizo causa 2d8 daño por impacto y 4d6 daño por frío en área.' },
+
+    // Nivel 5
+    { level: 5, name: 'Animar objetos', desc: 'Transmutación (Concentración). Das vida a objetos inanimados para que ataquen.' },
+    { level: 5, name: 'Apariencia', desc: 'Ilusionismo. Altera la apariencia física de cualquier número de criaturas.' },
+    { level: 5, name: 'Círculo de teletransportación', desc: 'Conjuración. Crea portal de 1 asalto a un círculo permanente conocido.' },
+    { level: 5, name: 'Cono de frío', desc: 'Evocación. Ráfaga de aire helado causa 8d8 daño de frío en un cono de 18 m.' },
+    { level: 5, name: 'Creación', desc: 'Ilusionismo. Materializa objetos inanimados temporales a partir de sombras.' },
+    { level: 5, name: 'Dominar persona', desc: 'Encantamiento (Concentración). Controlas telepáticamente a un humanoide.' },
+    { level: 5, name: 'Estática sináptica', desc: 'Encantamiento. Explosión psíquica inflige 8d6 daño y reduce tiradas enemigas en 1d6.' },
+    { level: 5, name: 'Inmovilizar monstruo', desc: 'Encantamiento (Concentración). Paraliza a cualquier tipo de criatura a tu alcance.' },
+    { level: 5, name: 'Mano de Bigby', desc: 'Evocación (Concentración). Creas mano de fuerza para golpear, empujar o proteger.' },
+    { level: 5, name: 'Muro de piedra', desc: 'Evocación (Concentración). Crea barrera física de piedra permanente al concentrarse.' },
+    { level: 5, name: 'Nube aniquiladora', desc: 'Conjuración (Concentración). Gas tóxico causa 5d10 daño veneno y avanza en cada turno.' },
+    { level: 5, name: 'Plaga de insectos', desc: 'Conjuración (Concentración). Enjambre causa 4d10 daño perforante y bloquea visión.' },
+    { level: 5, name: 'Telequinesis', desc: 'Transmutación (Concentración). Mueves mentalmente criaturas u objetos pesados.' },
+
+    // Nivel 6
+    { level: 6, name: 'Círculo de muerte', desc: 'Nigromancia. Esfera de energía necrótica inflige 8d6 daño necrótico a objetivos en área.' },
+    { level: 6, name: 'De la carne a la piedra', desc: 'Transmutación (Concentración). Petrifica gradualmente a una criatura.' },
+    { level: 6, name: 'Desintegrar', desc: 'Transmutación. Rayo causa 10d6+40 daño de fuerza; desintegra a cenizas si reduce a 0 HP.' },
+    { level: 6, name: 'Esfera congelante de Otiluke', desc: 'Evocación. Globo de hielo causa 10d6 daño de frío en área grande.' },
+    { level: 6, name: 'Globo de invulnerabilidad', desc: 'Abjuración (Concentración). Barrera impide el paso de conjuros de nivel 5 o inferior.' },
+    { level: 6, name: 'Mal de ojo', desc: 'Nigromancia (Concentración). Mirada causa terror, sueño o debilidad a un enemigo por turno.' },
+    { level: 6, name: 'Mover la tierra', desc: 'Transmutación (Concentración). Modificas el terreno natural lentamente.' },
+    { level: 6, name: 'Puerta arcana', desc: 'Conjuración (Concentración). Crea dos portales de teletransporte conectados.' },
+    { level: 6, name: 'Rayo solar', desc: 'Evocación (Concentración). Haz de luz inflige 6d8 daño radiante y ciega en una línea.' },
+    { level: 6, name: 'Relámpago en cadena', desc: 'Evocación. Relámpago inflige 10d8 daño eléctrico y salta a hasta tres objetivos más.' },
+    { level: 6, name: 'Sugestión en masa', desc: 'Encantamiento. Sugieres un curso de acción a hasta 12 criaturas por 24 horas.' },
+    { level: 6, name: 'Visión veraz', desc: 'Adivinación. Permite ver cosas como son en realidad (ilusiones, invisibilidad).' },
+
+    // Nivel 7
+    { level: 7, name: 'Bola de fuego de explosión retardada', desc: 'Evocación (Concentración). Cuenta atrás táctica acumula daño (+1d6/turno) hasta explotar.' },
+    { level: 7, name: 'Dedo de la muerte', desc: 'Nigromancia. Dolor extremo causa 7d8+30 daño necrótico; alza como zombi si mata.' },
+    { level: 7, name: 'Desplazamiento entre planos', desc: 'Conjuración. Transporta a hasta 8 criaturas a otro plano de existencia.' },
+    { level: 7, name: 'Excursión etérea', desc: 'Conjuración. Te desplazas al Plano Etéreo para moverte invisible e intangible.' },
+    { level: 7, name: 'Invertir la gravedad', desc: 'Transmutación (Concentración). Invierte gravedad haciendo caer a criaturas hacia arriba.' },
+    { level: 7, name: 'Rociada prismática', desc: 'Evocación. Ráfagas de luz multicolor infligen daño aleatorio o estados alterados.' },
+    { level: 7, name: 'Teletransporte', desc: 'Conjuración. Teletransporta instantáneamente a tu grupo a cualquier lugar del mundo.' },
+    { level: 7, name: 'Tormenta de fuego', desc: 'Evocación. Tormenta de fuego causa 7d10 daño de fuego en múltiples cubos.' },
+
+    // Nivel 8
+    { level: 8, name: 'Dominar monstruo', desc: 'Encantamiento (Concentración). Control total sobre cualquier criatura.' },
+    { level: 8, name: 'Explosión solar', desc: 'Evocación. Destello causa 12d6 daño radiante y ciega permanentemente.' },
+    { level: 8, name: 'Nube incendiaria', desc: 'Conjuración (Concentración). Nube causa 10d8 daño de fuego por turno en su área.' },
+    { level: 8, name: 'Palabra de poder: aturdir', desc: 'Encantamiento. Aturde instantáneamente a una criatura con menos de 150 HP.' },
+    { level: 8, name: 'Semiplano', desc: 'Conjuración. Crea una habitación dimensional vacía conectada por una puerta en una pared.' },
+    { level: 8, name: 'Terremoto', desc: 'Transmutación (Concentración). Sacudida sísmica derriba estructuras y abre fisuras.' },
+
+    // Nivel 9
+    { level: 9, name: 'Deseo', desc: 'Conjuración. El conjuro más poderoso; replica cualquier otro conjuro o altera la realidad.' },
+    { level: 9, name: 'Palabra de poder: matar', desc: 'Encantamiento. Mata al instante a una criatura si tiene 100 HP o menos.' },
+    { level: 9, name: 'Parar el tiempo', desc: 'Transmutación. Detienes el paso del tiempo para todos excepto tú durante 1d4+1 turnos.' },
+    { level: 9, name: 'Portal', desc: 'Conjuración (Concentración). Abre portal bidireccional permanente a otro plano.' },
+    { level: 9, name: 'Tormenta de meteoritos', desc: 'Evocación. Meteoros causan 20d6 daño de fuego y 20d6 daño contundente.' }
+  ];
+
+  sorcererMetamagicList: Feature[] = [
+    { name: 'Conjuro Acelerado', cost: 2, desc: 'Cuando lanzas un conjuro con tiempo de una acción, gastas 2 puntos para lanzarlo como acción adicional. No puedes lanzar otro conjuro de nivel 1+ este turno tras usarlo.' },
+    { name: 'Conjuro Buscador', cost: 1, desc: 'Si fallas una tirada de ataque con un conjuro, gastas 1 punto para volver a lanzar el d20. Puedes usarlo con otra metamagia.' },
+    { name: 'Conjuro Cuidado', cost: 1, desc: 'Al lanzar un conjuro con tirada de salvación, gastas 1 punto y proteges hasta Carisma (mín. 1) criaturas. Tienen éxito automático y no sufren daño si normalmente recibirían la mitad.' },
+    { name: 'Conjuro Distante', cost: 1, desc: 'Duplica el alcance de un conjuro de al menos 1.5 m, o hace que un conjuro de toque tenga un alcance de 9 m.' },
+    { name: 'Conjuro Extendido', cost: 1, desc: 'Duplica la duración de un conjuro de al menos 1 minuto (máx. 24h). Otorga ventaja para mantener la concentración en ese conjuro.' },
+    { name: 'Conjuro Gemelo', cost: 1, desc: 'Al lanzar un conjuro monobjetivo modificable por nivel para añadir objetivos, gastas 1 punto para incrementar su nivel efectivo en 1.' },
+    { name: 'Conjuro Intensificado', cost: 2, desc: 'Gasta 2 puntos para dar desventaja a un objetivo en su primera tirada de salvación contra el conjuro.' },
+    { name: 'Conjuro Potenciado', cost: 1, desc: 'Gasta 1 punto para repetir hasta tu modificador de Carisma (mín. 1) dados de daño de un conjuro.' },
+    { name: 'Conjuro Sutil', cost: 1, desc: 'Gasta 1 punto para lanzar el conjuro sin componentes verbales, somáticos ni materiales (salvo consumibles o con coste).' },
+    { name: 'Conjuro Transmutado', cost: 1, desc: 'Gasta 1 punto para cambiar el tipo de daño de un conjuro a ácido, frío, fuego, relámpago, trueno o veneno.' }
+  ];
+
+  magoCantripsList: Spell[] = [
+    { name: 'Agarre electrizante', desc: 'Evocación. Toque cargado con 1d8 de daño de relámpago.' },
+    { name: 'Amistad', desc: 'Encantamiento. Ventaja en pruebas de Carisma contra un objetivo no hostil (Concentración).' },
+    { name: 'Apretón electrizante', desc: 'Evocación. Ataque de toque; 1d8 daño de relámpago. El objetivo con armadura metálica sufre desventaja.' },
+    { name: 'Descarga de fuego', desc: 'Evocación. Ataque de conjuro a 36 m; 1d10 daño de fuego.' },
+    { name: 'Elementalismo', desc: 'Transmutación. Crea efectos elementales menores (brisas, chispas, vapor, calor).' },
+    { name: 'Fragmento mental', desc: 'Encantamiento. Causa 1d6 daño psíquico y resta 1d4 a la próxima salvación del objetivo.' },
+    { name: 'Guardia de cuchillas', desc: 'Abjuración. Resistencia a daño físico hasta el final de tu próximo turno.' },
+    { name: 'Impacto certero', desc: 'Adivinación. Ventaja en tu próxima tirada de ataque contra un objetivo a tu alcance.' },
+    { name: 'Ilusión menor', desc: 'Ilusionismo. Creas un sonido o imagen hasta tu siguiente turno o 1 minuto.' },
+    { name: 'Luz', desc: 'Evocación. Un objeto emite luz brillante en 6 m durante 1 hora.' },
+    { name: 'Mano de mago', desc: 'Conjuración. Mano espectral para manipular objetos o abrir puertas a 9 m.' },
+    { name: 'Mensaje', desc: 'Transmutación. Susurras un mensaje a distancia a una criatura que puede responderte.' },
+    { name: 'Prestidigitación', desc: 'Transmutación. Trucos mágicos menores: limpiar, colorear, encender o enfriar objetos.' },
+    { name: 'Rayo de escarcha', desc: 'Evocación (Recomendado). Ataque de conjuro a 18 m; 1d8 daño de frío y reduce velocidad en 3 m.' },
+    { name: 'Reparar', desc: 'Transmutación. Repara una fisura en un objeto de menos de 30 cm.' },
+    { name: 'Rociado venenoso', desc: 'Conjuración. Proyectas gas venenoso; el objetivo sufre 1d12 daño de veneno (Salvador de Constitución).' },
+    { name: 'Salpicadura ácida', desc: 'Evocación (Recomendado). Burbuja de ácido; uno o dos objetivos sufren 1d6 daño ácido.' },
+    { name: 'Tañido para los muertos', desc: 'Nigromancia. Envuelve a un objetivo en energía espectral; 1d8 daño necrótico (Salvador de Sabiduría).' },
+    { name: 'Toque helado', desc: 'Nigromancia. Ataque de conjuro a 36 m; 1d8 daño necrótico y el objetivo no puede recuperar PG.' },
+    { name: 'Tronar', desc: 'Evocación. 1d8 daño de trueno en una onda de fuerza y empuja 3 m.' }
+  ];
+
+  rangerSpellsList: Spell[] = [
+    // Nivel 1
+    { level: 1, name: 'Alarma', desc: 'Abjuración (Ritual). Avisa de intrusos en el área mediante un sonido o alarma mental.' },
+    { level: 1, name: 'Buenas bayas', desc: 'Conjuración. Creas 10 bayas mágicas; cada una sana 1 pg y alimenta por un día.' },
+    { level: 1, name: 'Curar heridas', desc: 'Abjuración. Sana a una criatura tocada por valor de 2d8 + modificador de Sabiduría.' },
+    { level: 1, name: 'Detectar magia', desc: 'Adivinación (Ritual). Percibes la presencia de auras mágicas a 9 metros.' },
+    { level: 1, name: 'Detectar venenos y enfermedades', desc: 'Adivinación (Ritual). Detectas veneno, criaturas venenosas y enfermedades a 9 m.' },
+    { level: 1, name: 'Encantar animal', desc: 'Encantamiento (Concentración). Convence a una bestia de que no eres una amenaza.' },
+    { level: 1, name: 'Enmarañar', desc: 'Conjuración (Concentración). Plantas enredan y retienen a criaturas en un área.' },
+    { level: 1, name: 'Golpe apresador', desc: 'Conjuración (Concentración). Tu próximo ataque de arma atrapa a la víctima en enredaderas.' },
+    { level: 1, name: 'Hablar con los animales', desc: 'Adivinación (Ritual). Te comunicas verbalmente con bestias por 10 minutos.' },
+    { level: 1, name: 'Marca del cazador', desc: 'Adivinación (Concentración). Eliges objetivo; tus ataques le infligen 1d6 de daño extra.' },
+    { level: 1, name: 'Nube de oscurecimiento', desc: 'Conjuración (Concentración). Nube densa que bloquea totalmente la visión.' },
+    { level: 1, name: 'Salto', desc: 'Transmutación. Triplica la distancia de salto de una criatura por 1 minuto.' },
+    { level: 1, name: 'Tormenta de espinas', desc: 'Conjuración. Flecha estalla en espinas infligiendo daño perforante en área.' },
+    { level: 1, name: 'Zancada prodigiosa', desc: 'Transmutación. Aumenta la velocidad de movimiento de una criatura en 3 m por 1 hora.' },
+
+    // Nivel 2
+    { level: 2, name: 'Arma mágica', desc: 'Transmutación (Concentración). El arma se vuelve mágica con un bonificador de +1 a ataques y daño.' },
+    { level: 2, name: 'Auxilio', desc: 'Abjuración. Incrementa el HP máximo y actual de tres criaturas en 5.' },
+    { level: 2, name: 'Cordón de flechas', desc: 'Transmutación. Inyectas magia en 4 flechas que se disparan si una criatura se acerca.' },
+    { level: 2, name: 'Crecimiento espinoso', desc: 'Transmutación. Terreno se llena de espinas infligiendo daño al moverse (Concentración).' },
+    { level: 2, name: 'Detectar trampas', desc: 'Adivinación. Sientes la presencia de trampas a la vista.' },
+    { level: 2, name: 'Invocar bestia', desc: 'Conjuración. Invocas a un espíritu animal terrestre, acuático o aéreo (Concentración).' },
+    { level: 2, name: 'Localizar animales o plantas', desc: 'Adivinación (Ritual). Sientes dirección de una especie animal o vegetal.' },
+    { level: 2, name: 'Localizar objeto', desc: 'Adivinación. Sientes dirección de un objeto conocido a 110 m (Concentración).' },
+    { level: 2, name: 'Mensajero animal', desc: 'Encantamiento. Envías a un animal pequeño a entregar un mensaje (Ritual).' },
+    { level: 2, name: 'Pasar sin rastro', desc: 'Abjuración (Concentración). +10 a pruebas de Sigilo para aliados cercanos.' },
+    { level: 2, name: 'Piel robliza', desc: 'Transmutación. Piel se endurece haciendo que la CA mínima sea 16.' },
+    { level: 2, name: 'Potenciar característica', desc: 'Transmutación. Otorga ventaja en pruebas de un atributo elegido (Concentración).' },
+    { level: 2, name: 'Protección contra veneno', desc: 'Abjuración. Da resistencia al veneno y neutraliza venenos activos.' },
+    { level: 2, name: 'Ráfaga de viento', desc: 'Evocación. Genera una línea de viento fuerte que empuja y apaga fuegos (Concentración).' },
+    { level: 2, name: 'Restablecimiento menor', desc: 'Abjuración. Cura ceguedad, sordera, parálisis o envenenamiento.' },
+    { level: 2, name: 'Sentidos de la bestia', desc: 'Adivinación (Ritual). Usas sentidos de una bestia voluntaria (Concentración).' },
+    { level: 2, name: 'Silencio', desc: 'Ilusionismo. Esfera de 6m de radio donde no se puede emitir ningún sonido (Concentración).' },
+    { level: 2, name: 'Visión en la oscuridad', desc: 'Transmutación. Concede visión en la oscuridad a 18 m por 8 horas.' },
+
+    // Nivel 3
+    { level: 3, name: 'Arma elemental', desc: 'Transmutación (Concentración). Arma causa 1d4 daño elemental extra y gana +1 a ataques.' },
+    { level: 3, name: 'Caminar sobre el agua', desc: 'Transmutación (Ritual). Permite caminar sobre líquidos a diez criaturas.' },
+    { level: 3, name: 'Conjurar animales', desc: 'Conjuración (Concentración). Invocas espíritus que toman forma de bestias.' },
+    { level: 3, name: 'Conjurar descarga de proyectiles', desc: 'Evocación. Creas una lluvia de proyectiles que causa 8d8 daño en área.' },
+    { level: 3, name: 'Crecimiento vegetal', desc: 'Transmutación. Llena de vegetación un área haciendo el terreno muy difícil.' },
+    { level: 3, name: 'Disipar magia', desc: 'Abjuración. Cancela conjuros o efectos mágicos activos de nivel 3 o inferior.' },
+    { level: 3, name: 'Flecha de relámpago', desc: 'Transmutación. Tu próximo disparo de arma causa 4d8 daño de relámpago y explota.' },
+    { level: 3, name: 'Fundirse con la piedra', desc: 'Transmutación (Ritual). Te introduces físicamente en un bloque de piedra sólido.' },
+    { level: 3, name: 'Hablar con las plantas', desc: 'Transmutación. Te comunicas con plantas y las interrogas.' },
+    { level: 3, name: 'Indetectabilidad', desc: 'Abjuración. Protege a una criatura contra adivinación y sensores mágicos.' },
+    { level: 3, name: 'Invocar feérico', desc: 'Conjuración (Concentración). Invocas a un espíritu feérico que lucha a tus órdenes.' },
+    { level: 3, name: 'Luz del día', desc: 'Evocación. Esfera de 18 m emite luz brillante equivalente a la luz solar.' },
+    { level: 3, name: 'Muro de viento', desc: 'Evocación. Muro de viento repele flechas, gases e inflige daño (Concentración).' },
+    { level: 3, name: 'Protección contra energía', desc: 'Abjuración (Concentración). Otorga resistencia a un tipo de daño elemental.' },
+    { level: 3, name: 'Respirar bajo el agua', desc: 'Transmutación (Ritual). Concede capacidad de respirar bajo el agua por 24 horas.' },
+    { level: 3, name: 'Revivir', desc: 'Nigromancia. Devuelve la vida a una criatura muerta en el último minuto con 1 HP.' },
+
+    // Nivel 4
+    { level: 4, name: 'Conjurar seres del bosque', desc: 'Conjuración (Concentración). Invocas espíritus feéricos de la naturaleza.' },
+    { level: 4, name: 'Dominar bestia', desc: 'Encantamiento. Tomas el control telepático completo de una bestia (Concentración).' },
+    { level: 4, name: 'Enredadera', desc: 'Conjuración (Concentración). Enredadera inteligente apresa y arrastra a enemigos.' },
+    { level: 4, name: 'Invocar elemental', desc: 'Conjuración (Concentración). Invocas a un espíritu elemental (Tierra, Aire, Fuego, Agua).' },
+    { level: 4, name: 'Libertad de movimiento', desc: 'Abjuración. Ignora terreno difícil, parálisis, constricciones y apresamientos.' },
+    { level: 4, name: 'Localizar criatura', desc: 'Adivinación (Concentración). Sientes dirección de criatura conocida a 90 m.' },
+    { level: 4, name: 'Piel pétrea', desc: 'Abjuración (Concentración). Concede resistencia a daño físico no mágico.' },
+
+    // Nivel 5
+    { level: 5, name: 'Corcaj veloz', desc: 'Transmutación (Concentración). Permite realizar dos ataques adicionales con proyectiles por turno como acción adicional.' },
+    { level: 5, name: 'Comunión con la naturaleza', desc: 'Adivinación (Ritual). Te vuelves uno con el entorno conociendo terreno, agua o criaturas.' },
+    { level: 5, name: 'Conjurar lluvia de flechas', desc: 'Conjuración. Lluvia de flechas causa 8d8 daño en área.' },
+    { level: 5, name: 'Golpe de viento acerado', desc: 'Conjuración. Te teletransportas atacando a hasta cinco objetivos por 6d10 daño de fuerza.' },
+    { level: 5, name: 'Paso arbóreo', desc: 'Conjuración. Te teletransportas de un árbol a otro consumiendo movimiento (Concentración).' },
+    { level: 5, name: 'Restablecimiento mayor', desc: 'Abjuración. Reduce cansancio, elimina petrificación, maldición o encanto.' }
+  ];
+
+  paladinSpellsList: Spell[] = [
+    // Nivel 1
+    { level: 1, name: 'Bendición', desc: 'Encantamiento (Concentración). Bendice a tres criaturas, añadiendo 1d4 a sus ataques y salvaciones.' },
+    { level: 1, name: 'Castigo abrasador', desc: 'Evocación (Concentración). Tu próximo ataque cuerpo a cuerpo causa 1d6 de daño por fuego y prende fuego al objetivo.' },
+    { level: 1, name: 'Castigo divino', desc: 'Evocación. Tu ataque causa 2d8 de daño radiante adicional a un enemigo.' },
+    { level: 1, name: 'Curar heridas', desc: 'Abjuración. Cura 2d8 + modificador de Carisma a una criatura al tocarla.' },
+    { level: 1, name: 'Detectar el bien y el mal', desc: 'Adivinación (Concentración). Detectas celestiales, elementales, feéricos, fiordos, no muertos y aberraciones.' },
+    { level: 1, name: 'Duelo compelido', desc: 'Encantamiento (Concentración). Obligas a un enemigo a centrar sus ataques en ti.' },
+    { level: 1, name: 'Escudo de fe', desc: 'Abjuración (Concentración, Acción adicional). Otorga +2 a la CA a una criatura elegida.' },
+    { level: 1, name: 'Favor divino', desc: 'Evocación (Concentración, Acción adicional). Tus ataques con armas infligen 1d4 daño radiante extra.' },
+    { level: 1, name: 'Heroísmo', desc: 'Encantamiento (Concentración). Da inmunidad al miedo y puntos de golpe temporales por turno.' },
+    { level: 1, name: 'Protección contra el bien y el mal', desc: 'Abjuración (Concentración). Protege a una criatura de aberraciones, celestiales, elementales, etc.' },
+    { level: 1, name: 'Purificar comida y bebida', desc: 'Transmutación (Ritual). Purifica toda la comida y bebida no mágica en un radio de 1.5 metros.' },
+
+    // Nivel 2
+    { level: 2, name: 'Arma mágica', desc: 'Transmutación (Concentración). El arma se vuelve mágica con un bonificador de +1 a ataques y daño.' },
+    { level: 2, name: 'Auxilio', desc: 'Abjuración. Incrementa los puntos de golpe máximos y actuales de tres criaturas en 5.' },
+    { level: 2, name: 'Castigo marcado', desc: 'Evocación (Concentración). Tu próximo ataque causa 2d6 daño radiante y revela al objetivo invisible.' },
+    { level: 2, name: 'Encontrar corcel', desc: 'Conjuración. Convocas un espíritu divino que toma forma de un corcel leal.' },
+    { level: 2, name: 'Localizar objeto', desc: 'Adivinación (Concentración). Sientes la dirección de un objeto conocido a 300 metros.' },
+    { level: 2, name: 'Protección contra veneno', desc: 'Abjuración. Da resistencia al veneno y neutraliza venenos activos.' },
+    { level: 2, name: 'Restablecimiento menor', desc: 'Abjuración. Cura ceguedad, sordera, parálisis o envenenamiento.' },
+    { level: 2, name: 'Zona de la verdad', desc: 'Encantamiento. Impide mentir en una esfera de 4.5 metros.' },
+
+    // Nivel 3
+    { level: 3, name: 'Arma de energía', desc: 'Transmutación (Concentración). El arma inflige 1d4 de daño elemental adicional.' },
+    { level: 3, name: 'Castigo deslumbrante', desc: 'Evocación (Concentración). Tu próximo ataque causa 3d8 daño radiante y ciega al objetivo.' },
+    { level: 3, name: 'Disipar magia', desc: 'Abjuración. Cancela conjuros o efectos mágicos activos de nivel 3 o inferior.' },
+    { level: 3, name: 'Luz del día', desc: 'Evocación. Esfera de 18 m emite luz brillante equivalente a la luz solar.' },
+    { level: 3, name: 'Manto del cruzado', desc: 'Evocación (Concentración). Otorga a tus aliados cercanos +1d4 daño radiante en sus ataques.' },
+    { level: 3, name: 'Revivir', desc: 'Nigromancia. Devuelve la vida a una criatura muerta en el último minuto con 1 HP.' },
+    { level: 3, name: 'Sudario de espíritus', desc: 'Nigromancia (Concentración). Espíritus te rodean, dañando a tus enemigos y evitando su curación.' },
+
+    // Nivel 4
+    { level: 4, name: 'Aura de vida', desc: 'Abjuración (Concentración). Aura protege a aliados de reducciones de HP y los levanta si caen a 0 HP.' },
+    { level: 4, name: 'Aura de pureza', desc: 'Abjuración (Concentración). Protege a aliados de enfermedades, venenos y condiciones mentales.' },
+    { level: 4, name: 'Destierro', desc: 'Abjuración (Concentración). Desplazas a una criatura a un semiplano o su plano de origen.' },
+    { level: 4, name: 'Castigo estupefaciente', desc: 'Evocación (Concentración). Tu próximo ataque causa 4d6 daño psíquico y desventaja en tiradas.' },
+    { level: 4, name: 'Localizar criatura', desc: 'Adivinación (Concentración). Sientes la dirección de una criatura conocida a 300 metros.' },
+
+    // Nivel 5
+    { level: 5, name: 'Castigo desterrador', desc: 'Abjuración (Concentración). Tu próximo ataque causa 5d10 daño por fuerza y puede desterrar al objetivo.' },
+    { level: 5, name: 'Círculo de poder', desc: 'Abjuración (Concentración). Esfera de 9 m protege a aliados, dándoles ventaja en salvaciones mágicas.' },
+    { level: 5, name: 'Ola destructiva', desc: 'Evocación. Creas una onda de fuerza que inflige 5d6 daño radiante y 5d6 daño de trueno.' },
+    { level: 5, name: 'Geas', desc: 'Encantamiento. Mandato mágico obliga a criatura a seguir tus órdenes bajo pena de daño.' },
+    { level: 5, name: 'Revivir a los muertos', desc: 'Nigromancia. Devuelve la vida a un cadáver muerto hace menos de 10 días.' }
+  ];
+
+  eldritchKnightCantripsList: Spell[] = [
+    { name: 'Agarre electrizante', desc: 'Evocación (Recomendado). Ataque de conjuro cuerpo a cuerpo hace 1d8 daño de rayo y evita reacciones.' },
+    { name: 'Rayo de escarcha', desc: 'Evocación (Recomendado). Rayo de frío causa 1d8 daño de frío y reduce velocidad 3 m.' },
+    { name: 'Ilusión menor', desc: 'Ilusionismo. Crea un sonido o imagen en un punto a 9 m.' },
+    { name: 'Mano de mago', desc: 'Conjuración. Crea una mano espectral para manipular objetos.' },
+    { name: 'Salpicadura ácida', desc: 'Conjuración. Burbuja de ácido causa 1d6 daño de ácido a una o dos criaturas a 1.5 m de distancia entre sí.' },
+    { name: 'Prestidigitación', desc: 'Transmutación. Efectos mágicos menores e inofensivos.' },
+    { name: 'Guardia de cuchillas', desc: 'Abjuración. Da resistencia contra daño físico de armas.' }
+  ];
+
+  eldritchKnightSpellsList: Spell[] = [
+    // Nivel 1
+    { level: 1, name: 'Escudo', desc: 'Abjuración (Recomendado). Reacción. Otorga +5 a CA e inmunidad a proyectil mágico.' },
+    { level: 1, name: 'Manos ardientes', desc: 'Evocación (Recomendado). Cono de fuego de 4.5 m causa 3d6 daño de fuego.' },
+    { level: 1, name: 'Salto', desc: 'Transmutación (Recomendado). Triplica la distancia de salto de una criatura por 1 minuto.' },
+    { level: 1, name: 'Proyectil mágico', desc: 'Evocación. Tres dardos mágicos causan 1d4+1 daño de fuerza cada uno, impactando automáticamente.' },
+    { level: 1, name: 'Grasa', desc: 'Conjuración. Terreno de 3 m se vuelve resbaladizo; criaturas pueden caer propensas.' },
+    { level: 1, name: 'Caída de pluma', desc: 'Transmutación. Reacción. Ralentiza caída de hasta 5 criaturas evitando daño de impacto.' },
+    { level: 1, name: 'Detección de magia', desc: 'Adivinación (Ritual). Sientes auras mágicas a 9 m.' },
+
+    // Nivel 2
+    { level: 2, name: 'Paso brumoso', desc: 'Conjuración. Acción adicional. Teletransporte hasta 9 m.' },
+    { level: 2, name: 'Invisibilidad', desc: 'Ilusionismo. Vuelves invisible a una criatura al tocarla (Concentración).' },
+    { level: 2, name: 'Hacer añicos', desc: 'Evocación. Ruido ensordecedor causa 3d8 daño de trueno en área.' },
+    { level: 2, name: 'Imagen múltiple', desc: 'Ilusionismo. Tres duplicados desvían ataques.' },
+    { level: 2, name: 'Inmovilizar persona', desc: 'Encantamiento. Paraliza a un humanoide a 18 m (Concentración).' },
+    { level: 2, name: 'Fuerza fantasmal', desc: 'Ilusionismo. Creas una ilusión mental que inflige daño psíquico (Concentración).' }
+  ];
+
+
+  // Helper functions for limits
+  getBardCantripsLimit(level: number): number { return level < 4 ? 2 : level < 10 ? 3 : 4; }
+  getBardSpellsLimit(level: number): number {
+    const limits = [0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 15, 16, 18, 19, 19, 20, 22, 22, 22];
+    return limits[level] || 0;
+  }
+  getBardMaxSpellLevel(level: number): number { return Math.ceil(level / 2); }
+
+  getWarlockCantripsLimit(level: number): number { return level < 4 ? 2 : level < 10 ? 3 : 4; }
+  getWarlockSpellsLimit(level: number): number {
+    const limits = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15];
+    return limits[level] || 0;
+  }
+  getWarlockMaxSpellLevel(level: number): number { return level < 17 ? Math.min(5, Math.ceil(level / 2)) : 5; }
+  getWarlockInvocationsLimit(level: number): number {
+    const limits = [0, 1, 2, 2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8];
+    return limits[level] || 0;
+  }
+
+  getClericCantripsLimit(level: number): number { return level < 4 ? 3 : level < 10 ? 4 : 5; }
+  getClericSpellsLimit(level: number, wisdomModifier: number): number { return Math.max(1, level + wisdomModifier); }
+  getClericMaxSpellLevel(level: number): number { return Math.ceil(level / 2); }
+
+  getDruidCantripsLimit(level: number): number { return level < 4 ? 2 : level < 10 ? 3 : 4; }
+  getDruidSpellsLimit(level: number, wisdomModifier: number): number { return Math.max(1, level + wisdomModifier); }
+  getDruidMaxSpellLevel(level: number): number { return Math.ceil(level / 2); }
+
+  getSorcererCantripsLimit(level: number): number { return level < 4 ? 4 : level < 10 ? 5 : 6; }
+  getSorcererSpellsLimit(level: number): number {
+    const limits = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 13, 14, 14, 15, 15, 15, 15];
+    return limits[level] || 0;
+  }
+  getSorcererMaxSpellLevel(level: number): number { return Math.ceil(level / 2); }
+  getSorcererMetamagicLimit(level: number): number { return level < 10 ? 2 : level < 17 ? 3 : 4; }
+
+  getMagoCantripsLimit(level: number): number { return level < 4 ? 3 : level < 10 ? 4 : 5; }
+  getMagoSpellsLimit(level: number, intelligenceModifier: number): number { return Math.max(1, level + intelligenceModifier); }
+  getMagoMaxSpellLevel(level: number): number { return Math.ceil(level / 2); }
+
+  getRangerSpellsLimit(level: number): number {
+    const limits = [0, 0, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11];
+    return limits[level] || 0;
+  }
+  getRangerMaxSpellLevel(level: number): number { return level < 5 ? 1 : level < 9 ? 2 : level < 13 ? 3 : level < 17 ? 4 : 5; }
+
+  getPaladinSpellsLimit(level: number, charismaModifier: number): number { return Math.max(1, Math.floor(level / 2) + charismaModifier); }
+  getPaladinMaxSpellLevel(level: number): number { return level < 5 ? 1 : level < 9 ? 2 : level < 13 ? 3 : level < 17 ? 4 : 5; }
+  
+  getEldritchKnightCantripsLimit(level: number): number { return level < 10 ? 2 : 3; }
+  getEldritchKnightSpellsLimit(level: number): number {
+    const limits = [0, 0, 0, 3, 4, 4, 4, 5, 6, 6, 7, 8, 8, 9, 10, 10, 11, 11, 11, 12, 13];
+    return limits[level] || 0;
+  }
+  getEldritchKnightMaxSpellLevel(level: number): number { return level < 7 ? 1 : level < 13 ? 2 : level < 19 ? 3 : 4; }
+  
+  getAvailableSpellLevels(maxSpellLevel: number): number[] {
+    return Array.from({ length: maxSpellLevel }, (_, i) => i + 1);
+  }
+  
+  getSpellsForLevel(spellList: Spell[], level: number): Spell[] {
+    return spellList.filter(s => s.level === level);
+  }
+  
+  getSpellsByNames(spellList: Spell[], names: string[]): Spell[] {
+    if (!names) return [];
+    return spellList.filter(s => names.includes(s.name));
+  }
+  
+  getCantripsByNames(cantripList: Spell[], names: string[]): Spell[] {
+    if (!names) return [];
+    return cantripList.filter(s => names.includes(s.name));
+  }
+
+  getAllSpells(): Spell[] {
+    return [
+      ...this.bardCantripsList, ...this.bardSpellsList,
+      ...this.warlockCantripsList, ...this.warlockSpellsList,
+      ...this.clericCantripsList, ...this.clericSpellsList,
+      ...this.druidCantripsList, ...this.druidSpellsList,
+      ...this.sorcererCantripsList, ...this.sorcererSpellsList,
+      ...this.magoCantripsList, ...this.magoSpellsList,
+      ...this.rangerSpellsList, ...this.paladinSpellsList,
+      ...this.eldritchKnightCantripsList, ...this.eldritchKnightSpellsList,
+      ...this.magicInitiateCantripsList, ...this.magicInitiateSpellsList
+    ];
+  }
+
+  getSpellByName(name: string): Spell | undefined {
+    return this.getAllSpells().find(s => s.name === name);
+  }
+}
