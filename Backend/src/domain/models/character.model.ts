@@ -5,6 +5,9 @@ export class Character {
   class: string;
   race: string;
   level: number;
+  /** 'hito' (por hitos) o 'xp' (por experiencia). */
+  levelingMode?: string;
+  xp?: number;
   avatar: string;
   hp: number;
   currentHp?: number;
@@ -36,6 +39,7 @@ export class Character {
   originLineage?: string;
   subclass?: string;
   classSkills: string[];
+  weapons?: string[];
   skilledFeatSelection?: string[];
   preparedSpells?: string[];
   warlockInvocations?: string[];
@@ -54,5 +58,7 @@ export class Character {
   height: number;
   sizeClass: string;
   personalNotes?: string;
+  /** { nombreObjeto: cantidad } */
+  inventory?: Record<string, number>;
   createdAt?: Date;
 }

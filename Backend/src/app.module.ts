@@ -1,20 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MongooseModule } from '@nestjs/mongoose';
+import { PrismaModule } from './infrastructure/prisma/prisma.module';
 import { AuthModule } from './infrastructure/security/auth.module';
 import { GameDataModule } from './infrastructure/persistence/game-data.module';
 import { CharacterModule } from './infrastructure/persistence/character.module';
+import { AdminModule } from './infrastructure/admin.module';
 import { GameRulesController } from './presentation/controllers/game-rules.controller';
 import { GameRulesService } from './application/services/game-rules.service';
 
 @Module({
-  imports: [
-    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://localhost:27017/dnd_db'),
-    AuthModule,
-    GameDataModule,
-    CharacterModule,
-  ],
+  imports: [PrismaModule, AuthModule, GameDataModule, CharacterModule, AdminModule],
   controllers: [AppController, GameRulesController],
   providers: [AppService, GameRulesService],
 })

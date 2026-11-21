@@ -14,7 +14,18 @@
     "description": "Un fiero guerrero de trasfondo primitivo que puede entrar en una furia de combate física brutal. Resiste grandes cantidades de daño y domina el uso de armas de gran tamaño para sembrar la devastación en primera línea.",
     "icon": "🪓",
     "image": "Barbaros.png",
-    "sortOrder": 0
+    "sortOrder": 0,
+    "legacy": {
+      "name": "Bárbaro",
+      "icon": "🪓",
+      "preference": "Batalla",
+      "primaryStat": "Fuerza",
+      "complexity": "Media",
+      "image": "Barbaros.png",
+      "hitDie": "d12",
+      "quote": "Entra en una furia berserker desatando el caos y la violencia.",
+      "description": "Un fiero guerrero de trasfondo primitivo que puede entrar en una furia de combate física brutal. Resiste grandes cantidades de daño y domina el uso de armas de gran tamaño para sembrar la devastación en primera línea."
+    }
   },
   {
     "slug": "bard",
@@ -31,7 +42,18 @@
     "description": "Un músico y erudito que inspira a sus aliados con música y arte. Puede conjurar ilusiones, sanar heridas y manipular los pensamientos de otros gracias a la magia sónica que fluye a través de sus acordes y poemas.",
     "icon": "🎵",
     "image": "Bardo.png",
-    "sortOrder": 1
+    "sortOrder": 1,
+    "legacy": {
+      "name": "Bardo",
+      "icon": "🎵",
+      "preference": "Actuación",
+      "primaryStat": "Carisma",
+      "complexity": "Alta",
+      "image": "Bardo.png",
+      "hitDie": "d8",
+      "quote": "La música es el lenguaje primordial del multiverso.",
+      "description": "Un músico y erudito que inspira a sus aliados con música y arte. Puede conjurar ilusiones, sanar heridas y manipular los pensamientos de otros gracias a la magia sónica que fluye a través de sus acordes y poemas."
+    }
   },
   {
     "slug": "warlock",
@@ -48,7 +70,18 @@
     "description": "Un taumaturgo que pacta con entidades de otros mundos, como señores demoníacos o arcanos antiguos, a cambio de poderes mágicos oscuros. Utiliza trucos muy potentes y posee dones misticos únicos conferidos por su patrón.",
     "icon": "👁️",
     "image": "Brujo.png",
-    "sortOrder": 2
+    "sortOrder": 2,
+    "legacy": {
+      "name": "Brujo",
+      "icon": "👁️",
+      "preference": "Ocultismo",
+      "primaryStat": "Carisma",
+      "complexity": "Alta",
+      "image": "Brujo.png",
+      "hitDie": "d8",
+      "quote": "Pactar con la oscuridad es el precio a pagar por el conocimiento.",
+      "description": "Un taumaturgo que pacta con entidades de otros mundos, como señores demoníacos o arcanos antiguos, a cambio de poderes mágicos oscuros. Utiliza trucos muy potentes y posee dones misticos únicos conferidos por su patrón."
+    }
   },
   {
     "slug": "cleric",
@@ -65,7 +98,18 @@
     "description": "Un sacerdote consagrado que canaliza el poder divino de su deidad para curar a sus aliados, expulsar a los no-muertos o golpear a los infieles con fuegos y rayos divinos en el campo de batalla.",
     "icon": "☀️",
     "image": "Clerigo.png",
-    "sortOrder": 3
+    "sortOrder": 3,
+    "legacy": {
+      "name": "Clérigo",
+      "icon": "☀️",
+      "preference": "Dioses",
+      "primaryStat": "Sabiduría",
+      "complexity": "Media",
+      "image": "Clerigo.png",
+      "hitDie": "d8",
+      "quote": "Mi fe es el escudo de mi pueblo y el martillo de mi señor.",
+      "description": "Un sacerdote consagrado que canaliza el poder divino de su deidad para curar a sus aliados, expulsar a los no-muertos o golpear a los infieles con fuegos y rayos divinos en el campo de batalla."
+    }
   },
   {
     "slug": "druid",
@@ -82,7 +126,18 @@
     "description": "Un guardián del mundo natural capaz de conjurar las fuerzas elementales del viento, la tormenta o las plantas. Su don más célebre es la Forma Salvaje, que le permite transformarse en animales temibles.",
     "icon": "🌿",
     "image": "Druida.png",
-    "sortOrder": 4
+    "sortOrder": 4,
+    "legacy": {
+      "name": "Druida",
+      "icon": "🌿",
+      "preference": "Naturaleza",
+      "primaryStat": "Sabiduría",
+      "complexity": "Alta",
+      "image": "Druida.png",
+      "hitDie": "d8",
+      "quote": "El bosque reclama lo que el hombre le ha robado.",
+      "description": "Un guardián del mundo natural capaz de conjurar las fuerzas elementales del viento, la tormenta o las plantas. Su don más célebre es la Forma Salvaje, que le permite transformarse en animales temibles."
+    }
   },
   {
     "slug": "ranger",
@@ -100,7 +155,18 @@
     "description": "Un cazador y rastreador letal especializado en la supervivencia salvaje y el combate a distancia o con dos armas. Domina técnicas de emboscada y utiliza un vínculo espiritual sutil con el entorno natural.",
     "icon": "🏹",
     "image": "Explorador.png",
-    "sortOrder": 5
+    "sortOrder": 5,
+    "legacy": {
+      "name": "Explorador",
+      "icon": "🏹",
+      "preference": "Supervivencia",
+      "primaryStat": "Destreza y Sabiduría",
+      "complexity": "Media",
+      "image": "Explorador.png",
+      "hitDie": "d10",
+      "quote": "Ningún rastro se me escapa, ninguna presa vive para contarlo.",
+      "description": "Un cazador y rastreador letal especializado en la supervivencia salvaje y el combate a distancia o con dos armas. Domina técnicas de emboscada y utiliza un vínculo espiritual sutil con el entorno natural."
+    }
   },
   {
     "slug": "fighter",
@@ -118,7 +184,18 @@
     "description": "Un maestro táctico experto en el combate armado y el uso de armaduras de todo tipo. Versátil, letal y resistente, el guerrero es capaz de realizar múltiples ataques en un solo instante y sostener el combate frontal.",
     "icon": "⚔️",
     "image": "Guerrero.png",
-    "sortOrder": 6
+    "sortOrder": 6,
+    "legacy": {
+      "name": "Guerrero",
+      "icon": "⚔️",
+      "preference": "Armas",
+      "primaryStat": "Fuerza o Destreza",
+      "complexity": "Baja",
+      "image": "Guerrero.png",
+      "hitDie": "d10",
+      "quote": "El acero y la táctica deciden el destino de los reinos.",
+      "description": "Un maestro táctico experto en el combate armado y el uso de armaduras de todo tipo. Versátil, letal y resistente, el guerrero es capaz de realizar múltiples ataques en un solo instante y sostener el combate frontal."
+    }
   },
   {
     "slug": "sorcerer",
@@ -135,7 +212,18 @@
     "description": "Un taumaturgo innato que manipula la magia a través de un don de nacimiento (como sangre de dragón o magia salvaje). Utiliza su Metamagia para alterar la duración, alcance o potencia de sus conjuros al vuelo.",
     "icon": "✨",
     "image": "Hechicero.png",
-    "sortOrder": 7
+    "sortOrder": 7,
+    "legacy": {
+      "name": "Hechicero",
+      "icon": "✨",
+      "preference": "Poderes",
+      "primaryStat": "Carisma",
+      "complexity": "Alta",
+      "image": "Hechicero.png",
+      "hitDie": "d6",
+      "quote": "La magia no es algo que estudio, es lo que soy.",
+      "description": "Un taumaturgo innato que manipula la magia a través de un don de nacimiento (como sangre de dragón o magia salvaje). Utiliza su Metamagia para alterar la duración, alcance o potencia de sus conjuros al vuelo."
+    }
   },
   {
     "slug": "wizard",
@@ -152,7 +240,18 @@
     "description": "Un estudiante erudito que memoriza, estudia y cataloga conjuros en su grimorio personal. Al aprender magia a través de fórmulas y la ciencia, posee el catálogo de conjuros más versátil y letal del juego.",
     "icon": "📖",
     "image": "Mago.png",
-    "sortOrder": 8
+    "sortOrder": 8,
+    "legacy": {
+      "name": "Mago",
+      "icon": "📖",
+      "preference": "Libros de conjuros",
+      "primaryStat": "Inteligencia",
+      "complexity": "Media",
+      "image": "Mago.png",
+      "hitDie": "d6",
+      "quote": "El conocimiento absoluto aguarda en las páginas correctas.",
+      "description": "Un estudiante erudito que memoriza, estudia y cataloga conjuros en su grimorio personal. Al aprender magia a través de fórmulas y la ciencia, posee el catálogo de conjuros más versátil y letal del juego."
+    }
   },
   {
     "slug": "monk",
@@ -170,7 +269,18 @@
     "description": "Un artista marcial que canaliza la concentración y la disciplina mental para acelerar sus movimientos, esquivar ataques sin armadura y ejecutar letales golpes sin armas o con armas de monje.",
     "icon": "🥊",
     "image": "Monje.png",
-    "sortOrder": 9
+    "sortOrder": 9,
+    "legacy": {
+      "name": "Monje",
+      "icon": "🥊",
+      "preference": "Combate sin armas, Destreza y Sabiduría",
+      "primaryStat": "Destreza y Sabiduría",
+      "complexity": "Alta",
+      "image": "Monje.png",
+      "hitDie": "d8",
+      "quote": "El cuerpo es el arma definitiva, la mente su único maestro.",
+      "description": "Un artista marcial que canaliza la concentración y la disciplina mental para acelerar sus movimientos, esquivar ataques sin armadura y ejecutar letales golpes sin armas o con armas de monje."
+    }
   },
   {
     "slug": "paladin",
@@ -188,7 +298,18 @@
     "description": "Un guerrero sagrado vinculado a un juramento inquebrantable que combina la maestría en el combate con la magia divina para castigar enemigos, sanar aliados e irradiar auras protectoras.",
     "icon": "🛡️",
     "image": "Paladin.png",
-    "sortOrder": 10
+    "sortOrder": 10,
+    "legacy": {
+      "name": "Paladín",
+      "icon": "🛡️",
+      "preference": "Defensa, Fuerza y Carisma",
+      "primaryStat": "Fuerza y Carisma",
+      "complexity": "Media",
+      "image": "Paladin.png",
+      "hitDie": "d10",
+      "quote": "Mi fe es mi escudo, mi juramento mi espada indestructible.",
+      "description": "Un guerrero sagrado vinculado a un juramento inquebrantable que combina la maestría en el combate con la magia divina para castigar enemigos, sanar aliados e irradiar auras protectoras."
+    }
   },
   {
     "slug": "rogue",
@@ -205,6 +326,17 @@
     "description": "Un combatiente astuto e infalible que utiliza el sigilo, la agilidad y los puntos débiles de sus enemigos para asestar devastadores Ataques Furtivos y maniobras astutas.",
     "icon": "🗡️",
     "image": "Rogue.png",
-    "sortOrder": 11
+    "sortOrder": 11,
+    "legacy": {
+      "name": "Pícaro",
+      "icon": "🗡️",
+      "preference": "Sigilo y Daño de Precisión",
+      "primaryStat": "Destreza",
+      "complexity": "Fácil",
+      "image": "Rogue.png",
+      "hitDie": "d8",
+      "quote": "Las sombras son mis aliadas, un golpe certero mi respuesta.",
+      "description": "Un combatiente astuto e infalible que utiliza el sigilo, la agilidad y los puntos débiles de sus enemigos para asestar devastadores Ataques Furtivos y maniobras astutas."
+    }
   }
 ]

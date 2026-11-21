@@ -3,6 +3,10 @@ import * as bcrypt from 'bcryptjs';
 import { User } from '../../domain/models/user.model';
 import type { IUserRepository } from '../../domain/repositories/user.repository.interface';
 import { RegisterUserDto } from '../dto/register-user.dto';
+import { signJwt } from '../../infrastructure/security/jwt';
+
+/** Duración de la sesión: 7 días. */
+const SESSION_SECONDS = 7 * 24 * 60 * 60;
 import { LoginUserDto } from '../dto/login-user.dto';
 
 export const USER_REPOSITORY_TOKEN = 'IUserRepository';
@@ -14,9 +18,9 @@ export class AuthService {
     private readonly userRepository: IUserRepository,
   ) {}
 
-  async register(dto: RegisterUserDto): Promise<Omit<User, 'passwordHash'>> {
+  async register(dto: RegisterUserDto) {
     // 1. Verificar si el email ya está en uso
-    const existingEmail = await this.userRepository.findByEmail(dto.email);
+    const existingEmail = await this.userRepository.findByEmail(dto.email.toLowerCase());
     if (existingEmail) {
       throw new ConflictException('El correo electrónico ya está registrado.');
     }
@@ -33,7 +37,7 @@ export class AuthService {
 
     // 4. Crear la entidad de dominio con rol por defecto y contadores de bloqueo
     const newUser: User = {
-      email: dto.email,
+      email: dto.email.toLowerCase(),
       username: dto.username,
       dateOfBirth: new Date(dto.dateOfBirth),
       passwordHash,
@@ -47,15 +51,17 @@ export class AuthService {
     const savedUser = await this.userRepository.create(newUser);
 
     // 6. Retornar los datos del usuario excluyendo el hash de la contraseña por seguridad
-    const { passwordHash: _, ...userWithoutPassword } = savedUser;
-    return userWithoutPassword;
+    return this.publicUser(savedUser);
   }
 
-  async login(dto: LoginUserDto): Promise<{ user: Omit<User, 'passwordHash'>; token: string }> {
+  async login(dto: LoginUserDto) {
     // 1. Buscar usuario por email
-    const user = await this.userRepository.findByEmail(dto.email);
+    const user = await this.userRepository.findByEmail(dto.email.toLowerCase());
     if (!user) {
       throw new UnauthorizedException('Credenciales incorrectas.');
+    }
+    if (user.status === 'suspended') {
+      throw new ForbiddenException('Tu cuenta está suspendida. Contacta con el administrador.');
     }
 
     // 2. Verificar si la cuenta está bloqueada temporalmente
@@ -102,13 +108,28 @@ export class AuthService {
     user.lockUntil = undefined;
     await this.userRepository.update(user);
 
-    // 5. Generar token de sesión (simulado con firma básica por cuestiones de portabilidad)
-    const token = `adventure-session-token-${user.id}-${Date.now()}`;
+    // 5. Generar token de sesión firmado (JWT HS256)
+    const token = signJwt(
+      { sub: user.id!, role: user.role, username: user.username },
+      process.env.JWT_SECRET ?? '',
+      SESSION_SECONDS,
+    );
 
-    const { passwordHash: _, ...userWithoutPassword } = user;
     return {
-      user: userWithoutPassword,
+      user: this.publicUser(user),
       token,
     };
+  }
+
+  async me(userId: string) {
+    const user = await this.userRepository.findById(userId);
+    if (!user) throw new UnauthorizedException('La cuenta ya no existe.');
+    return this.publicUser(user);
+  }
+
+  /** Datos del usuario que se pueden enviar al navegador. */
+  private publicUser(user: User) {
+    const { passwordHash: _, failedLoginAttempts: __, lockUntil: ___, ...rest } = user;
+    return rest;
   }
 }

@@ -362,6 +362,8 @@ model Character {
   name               String           @db.VarChar(60)
   level              Int              @default(1)
   experience         Int              @default(0)
+  /// "hito" (subida por hitos) o "xp" (por puntos de experiencia).
+  levelingMode       String           @default("hito") @map("leveling_mode")
   classId            String           @map("class_id") @db.Uuid
   gameClass          GameClass        @relation(fields: [classId], references: [id])
   subclassId         String?          @map("subclass_id") @db.Uuid
@@ -384,6 +386,10 @@ model Character {
   /// Todas las elecciones que aún no tienen tabla propia: habilidades de clase,
   /// invocaciones, metamagia, orden divina, dote de origen, etc.
   choices            Json             @default("{}")
+  /// Armas elegidas (nombres) hasta que exista la tabla de objetos.
+  weapons            String[]
+  /// Inventario { nombreObjeto: cantidad } hasta que exista la tabla de objetos.
+  inventory          Json             @default("{}")
   /// Estado de partida: espacios de conjuro usados, condiciones, salvaciones de muerte...
   playState          Json             @default("{}") @map("play_state")
   avatar             String?

@@ -25,19 +25,18 @@
     "db:seed:sync": "node node_modules/prisma/build/index.js db seed -- --sync",
     "db:migrate-mongo": "node --env-file=.env -r ts-node/register prisma/migrate-from-mongo.ts",
     "content:extract": "node scripts/extract-legacy-content.mjs",
-    "content:build": "node scripts/build-content.mjs"
+    "content:build": "node scripts/build-content.mjs",
+    "make-admin": "node --env-file=.env -r ts-node/register prisma/make-admin.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
-    "@nestjs/mongoose": "^11.0.4",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/swagger": "^11.4.6",
     "@prisma/client": "^6.0.0",
     "bcryptjs": "^3.0.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
-    "mongoose": "^9.9.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
     "swagger-ui-express": "^5.0.1"
@@ -59,6 +58,7 @@
     "eslint-plugin-prettier": "^5.2.2",
     "globals": "^16.0.0",
     "jest": "^30.0.0",
+    "mongoose": "^9.9.0",
     "prettier": "^3.4.2",
     "prisma": "^6.0.0",
     "source-map-support": "^0.5.21",

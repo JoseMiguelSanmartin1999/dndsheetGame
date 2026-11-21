@@ -347,11 +347,8 @@ export class DashboardComponent implements OnInit {
   }
 
   loadCharacters(): void {
-    const userObj = this.authService.currentUser();
-    const userId = userObj?.id || (userObj as any)?._id;
-    
-    if (userId) {
-      this.characterService.getCharacters(userId).subscribe({
+    if (this.authService.isAuthenticated()) {
+      this.characterService.getCharacters().subscribe({
         next: (chars) => {
           this.characters.set(chars);
         },

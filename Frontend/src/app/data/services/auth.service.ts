@@ -1,6 +1,7 @@
 import { Injectable, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
+import { API_URL } from '../../core/api.config';
 
 export interface User {
   id: string;
@@ -29,7 +30,7 @@ export interface LoginResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/auth';
+  private apiUrl = `${API_URL}/auth`;
 
   // Señal reactiva privada para guardar el usuario
   private userSignal = signal<User | null>(null);
@@ -59,6 +60,21 @@ export class AuthService {
     );
   }
 
+  getToken(): string | null {
+    const token = localStorage.getItem('adventure_token');
+    return token && !this.isExpired(token) ? token : null;
+  }
+
+  /** Lee la fecha de caducidad del JWT (sin verificar la firma: eso lo hace el servidor). */
+  private isExpired(token: string): boolean {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+      return typeof payload.exp !== 'number' || payload.exp * 1000 <= Date.now();
+    } catch {
+      return true;
+    }
+  }
+
   logout(): void {
     localStorage.removeItem('adventure_token');
     localStorage.removeItem('adventure_user');
@@ -69,7 +85,7 @@ export class AuthService {
     const token = localStorage.getItem('adventure_token');
     const userStr = localStorage.getItem('adventure_user');
 
-    if (token && userStr) {
+    if (token && userStr && !this.isExpired(token)) {
       try {
         const user = JSON.parse(userStr) as User;
         if (user && !user.id && (user as any)._id) {
@@ -79,6 +95,9 @@ export class AuthService {
       } catch (e) {
         this.logout();
       }
+    } else if (token || userStr) {
+      // Sesión antigua (token falso de la versión anterior) o caducada.
+      this.logout();
     }
   }
 }
