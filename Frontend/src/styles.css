@@ -1,5 +1,271 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;750;900&family=Inter:wght@300;400;550;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Grenze+Gotisch:wght@600;800&family=Grenze:wght@500;600;700&display=swap');
 @import 'tailwindcss';
+
+/*
+ * Sistema de diseño "Forja de Héroes"
+ * -----------------------------------
+ * Hollín y hierro de la fragua como fondo, pergamino para el texto y la brasa
+ * como único acento. La rampa de calor (escoria → brasa → metal al rojo) se
+ * reserva para el título de marca y la acción principal de cada pantalla.
+ *
+ * Las escalas `neutral` y `amber` de Tailwind se redefinen aquí, así que todas
+ * las pantallas (incluidos el creador y la hoja) heredan la paleta.
+ */
+@theme {
+  --font-display: 'Grenze Gotisch', 'Grenze', Georgia, serif;
+  --font-serif: 'Grenze', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Alegreya Sans', 'Segoe UI', system-ui, sans-serif;
+  /* No usamos tipografía monoespaciada: los números van con cifras tabulares. */
+  --font-mono: 'Alegreya Sans', 'Segoe UI', system-ui, sans-serif;
+
+  --color-hollin: #1a1614;     /* fondo */
+  --color-fragua: #241e1b;     /* superficies */
+  --color-yunque: #2f2723;     /* superficies elevadas, campos */
+  --color-pergamino: #eadcc2;  /* texto principal y títulos */
+  --color-ceniza: #a39582;     /* texto secundario */
+  --color-escoria: #7a1e10;    /* inicio de la rampa de calor */
+  --color-brasa: #e2672b;      /* acento */
+  --color-incandescente: #f5b84b; /* final de la rampa de calor */
+
+  /* Grises cálidos (hollín → pergamino) */
+  --color-neutral-50: #f7f0e4;
+  --color-neutral-100: #eadcc2;
+  --color-neutral-200: #dccdb2;
+  --color-neutral-300: #c4b49b;
+  --color-neutral-400: #a39582;
+  --color-neutral-500: #827666;
+  --color-neutral-600: #645a4f;
+  --color-neutral-700: #4a423b;
+  --color-neutral-800: #362f2b;
+  --color-neutral-900: #26201d;
+  --color-neutral-950: #1a1614;
+
+  /* Brasa (sustituye al ámbar) */
+  --color-amber-50: #fff3e8;
+  --color-amber-100: #ffe0c7;
+  --color-amber-200: #fdbf91;
+  --color-amber-300: #f89b5e;
+  --color-amber-400: #f08a4b;
+  --color-amber-500: #e2672b;
+  --color-amber-600: #c24e1b;
+  --color-amber-700: #9c3a15;
+  --color-amber-800: #7a2c12;
+  --color-amber-900: #5e2210;
+  --color-amber-950: #351107;
+
+  /* Tonos intermedios que ya usan las plantillas (antes no existían y no se veían). */
+  --color-neutral-250: #d0c0a6;
+  --color-neutral-255: #d0c0a6;
+  --color-neutral-350: #b4a58e;
+  --color-neutral-355: #b4a58e;
+  --color-neutral-405: #a39582;
+  --color-neutral-450: #928674;
+  --color-neutral-455: #928674;
+  --color-neutral-550: #73685a;
+  --color-neutral-555: #73685a;
+  --color-neutral-750: #403933;
+  --color-neutral-850: #2e2824;
+  --color-neutral-855: #2e2824;
+  --color-amber-450: #e97839;
+  --color-amber-550: #d25a23;
+  --color-amber-555: #d25a23;
+  --color-amber-955: #2a0d05;
+  --color-red-750: #a91b1b;
+  --color-red-955: #3b0a0a;
+  --color-emerald-450: #22c58b;
+  --color-emerald-955: #021f17;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--color-hollin);
+    color: var(--color-pergamino);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-mono {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-incandescente);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-brasa) 45%, transparent);
+  }
+}
+
+@layer components {
+  /* Rótulo de marca: letra gótica con la rampa de calor. */
+  .rotulo-forja {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: var(--color-incandescente);
+    background: linear-gradient(100deg, var(--color-escoria) 0%, var(--color-brasa) 38%, var(--color-incandescente) 62%, #fff1cf 72%, var(--color-brasa) 100%);
+    background-size: 260% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .titulo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--color-pergamino);
+    line-height: 1.1;
+  }
+
+  /* Campos de formulario */
+  .campo {
+    display: grid;
+    gap: 0.35rem;
+  }
+  .campo > label,
+  .campo-etiqueta {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--color-pergamino);
+  }
+  .campo input:not([type='radio']):not([type='checkbox']) {
+    width: 100%;
+    background: var(--color-yunque);
+    color: var(--color-pergamino);
+    border: 1px solid color-mix(in srgb, var(--color-pergamino) 14%, transparent);
+    border-radius: 6px;
+    padding: 0.7rem 0.85rem;
+    font: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .campo input::placeholder {
+    color: var(--color-neutral-600);
+  }
+  .campo input:focus {
+    outline: none;
+    border-color: var(--color-brasa);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brasa) 22%, transparent);
+  }
+  .campo input.ng-invalid.ng-touched {
+    border-color: #d9534a;
+  }
+  .campo-error {
+    font-size: 0.875rem;
+    color: #f0a39b;
+  }
+  .campo-ayuda {
+    font-size: 0.875rem;
+    color: var(--color-ceniza);
+  }
+
+  /* Acción principal: metal al rojo. Solo una por pantalla. */
+  .btn-forja {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.4rem;
+    border-radius: 6px;
+    border: 1px solid color-mix(in srgb, var(--color-incandescente) 45%, transparent);
+    background: linear-gradient(180deg, var(--color-brasa) 0%, #b8461a 100%);
+    color: #fff7ea;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 25%, transparent), 0 6px 18px -8px var(--color-brasa);
+    cursor: pointer;
+    transition: filter 0.15s, transform 0.15s;
+    text-decoration: none;
+  }
+  .btn-forja:hover:not(:disabled) {
+    filter: brightness(1.08);
+  }
+  .btn-forja:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  .btn-forja:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* Acción secundaria: hierro. */
+  .btn-hierro {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 6px;
+    border: 1px solid color-mix(in srgb, var(--color-pergamino) 16%, transparent);
+    background: var(--color-yunque);
+    color: var(--color-pergamino);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .btn-hierro:hover {
+    border-color: color-mix(in srgb, var(--color-brasa) 60%, transparent);
+    background: color-mix(in srgb, var(--color-brasa) 10%, var(--color-yunque));
+  }
+
+  .aviso {
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    border: 1px solid;
+  }
+  .aviso-error {
+    background: color-mix(in srgb, #b3261e 16%, var(--color-fragua));
+    border-color: color-mix(in srgb, #e5534b 45%, transparent);
+    color: #f6c7c1;
+  }
+  .aviso-ok {
+    background: color-mix(in srgb, #3f7d4f 18%, var(--color-fragua));
+    border-color: color-mix(in srgb, #6fbf83 45%, transparent);
+    color: #cfeed6;
+  }
+  .aviso-info {
+    background: color-mix(in srgb, var(--color-brasa) 10%, var(--color-fragua));
+    border-color: color-mix(in srgb, var(--color-brasa) 40%, transparent);
+    color: var(--color-pergamino);
+  }
+
+  .enlace {
+    color: var(--color-amber-300);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--color-amber-300) 40%, transparent);
+    text-underline-offset: 3px;
+  }
+  .enlace:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+/* El único movimiento que no pide el usuario: el rótulo se calienta al entrar. */
+@keyframes calentar {
+  from { background-position: 0% 0; }
+  to { background-position: 100% 0; }
+}
+.rotulo-forja.encender {
+  animation: calentar 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 @media print {
   /* Hides web-specific layouts like navigation bars and footers */
@@ -56,4 +322,43 @@
 }
 .accordion-arrow.rotated {
   transform: rotate(90deg);
+}
+
+/* Pantallas de entrada (login y registro): portada a la izquierda, formulario a la derecha. */
+@layer components {
+  .puerta {
+    min-height: calc(100vh - 4.5rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(22rem, 30rem);
+    background: var(--color-hollin);
+  }
+  .puerta-panel {
+    display: flex;
+    align-items: center;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    background: var(--color-fragua);
+    border-left: 1px solid color-mix(in srgb, var(--color-pergamino) 10%, transparent);
+  }
+  .puerta-form {
+    width: 100%;
+    display: grid;
+    gap: 1.25rem;
+  }
+  .puerta-form h2 {
+    font-size: 2.25rem;
+    margin: 0;
+  }
+  .puerta-form .intro {
+    margin: -0.5rem 0 0;
+    color: var(--color-ceniza);
+  }
+  .puerta-pie {
+    color: var(--color-ceniza);
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  @media (max-width: 899px) {
+    .puerta { grid-template-columns: 1fr; }
+    .puerta-panel { border-left: 0; border-top: 1px solid color-mix(in srgb, var(--color-pergamino) 10%, transparent); }
+  }
 }

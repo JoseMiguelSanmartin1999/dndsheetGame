@@ -59,7 +59,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
     <!-- CONTENEDOR DE CARGA / ERROR DE CONEXIÓN -->
     <div 
       *ngIf="loading || errorLoading" 
-      class="min-h-screen bg-[#08080a] bg-radial from-[#130d0d] via-[#08080a] to-[#040405] text-neutral-200 flex items-center justify-center p-6"
+      class="min-h-screen bg-hollin bg-radial from-hollin via-hollin to-hollin text-neutral-200 flex items-center justify-center p-6"
     >
       <!-- Pantalla de Carga (Spinner) -->
       <div *ngIf="loading" class="text-center space-y-6 animate-pulse">
@@ -70,16 +70,16 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           <span class="text-4xl">🎲</span>
         </div>
         <div class="space-y-1">
-          <h2 class="text-xl font-serif font-bold text-[#d4af37] tracking-widest uppercase">Invocando la Forja</h2>
+          <h2 class="text-xl font-serif font-bold text-pergamino tracking-widest uppercase">Invocando la Forja</h2>
           <p class="text-xs text-neutral-500">Cargando clases, trasfondos y orígenes ancestrales...</p>
-          <p class="text-[10px] text-[#d4af37] font-mono mt-2 bg-[#18181c] border border-neutral-850 px-3 py-1 rounded inline-block">{{ debugStatus }}</p>
+          <p class="text-[10px] text-pergamino font-mono mt-2 bg-yunque border border-neutral-850 px-3 py-1 rounded inline-block">{{ debugStatus }}</p>
         </div>
       </div>
 
       <!-- Pantalla de Error (Servidor desconectado) -->
       <div 
         *ngIf="errorLoading" 
-        class="w-full max-w-md bg-[#121215] border border-red-800/40 rounded-2xl p-8 shadow-2xl text-center space-y-6"
+        class="w-full max-w-md bg-fragua border border-red-800/40 rounded-2xl p-8 shadow-2xl text-center space-y-6"
       >
         <span class="text-5xl">⚡</span>
         <div class="space-y-2">
@@ -100,7 +100,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
     <!-- CONTENIDO PRINCIPAL (CREADOR) -->
     <div 
       *ngIf="!loading && !errorLoading"
-      class="min-h-screen bg-[#08080a] bg-radial from-[#130d0d] via-[#08080a] to-[#040405] text-neutral-200 p-6 md:p-10 pb-20 relative"
+      class="min-h-screen bg-hollin bg-radial from-hollin via-hollin to-hollin text-neutral-200 p-6 md:p-10 pb-20 relative"
     >
       
       <!-- Modal de la Guía de Selección de Clases -->
@@ -108,14 +108,14 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
         *ngIf="showGuide" 
         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in"
       >
-        <div class="w-full max-w-4xl bg-[#121215] border border-[#d4af37]/35 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div class="w-full max-w-4xl bg-fragua border border-pergamino/35 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
           
           <!-- Cabecera del Manual -->
-          <div class="p-6 bg-[#0d0d0f]/90 border-b border-neutral-900 flex justify-between items-center shrink-0">
+          <div class="p-6 bg-fragua/90 border-b border-neutral-900 flex justify-between items-center shrink-0">
             <div class="flex items-center gap-3">
               <span class="text-3xl">📖</span>
               <div>
-                <h2 class="text-2xl font-serif font-extrabold text-[#d4af37] tracking-wider uppercase">
+                <h2 class="text-2xl font-serif font-extrabold text-pergamino tracking-wider uppercase">
                   Manual de Selección de Clase
                 </h2>
                 <p class="text-xs text-neutral-500 font-light">Factores clave para forjar tu destino en el reino.</p>
@@ -131,12 +131,12 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
           <!-- Cuerpo de la Guía -->
           <div class="flex-1 overflow-hidden flex flex-col md:flex-row">
-            <div class="w-full md:w-1/3 bg-[#0d0d0f]/50 border-r border-neutral-900 p-4 overflow-y-auto space-y-1 shrink-0">
+            <div class="w-full md:w-1/3 bg-fragua/50 border-r border-neutral-900 p-4 overflow-y-auto space-y-1 shrink-0">
               <button 
                 *ngFor="let tab of guideTabs; let idx = index"
                 (click)="activeTab = idx"
                 class="w-full text-left px-4 py-3 rounded-lg text-xs font-bold transition duration-200 border cursor-pointer flex items-center gap-3 focus:outline-none uppercase tracking-wider"
-                [ngClass]="activeTab === idx ? 'bg-red-950/20 border-red-500/40 text-[#d4af37] shadow-sm' : 'bg-transparent border-transparent hover:bg-neutral-855/40 text-neutral-400 hover:text-neutral-300'"
+                [ngClass]="activeTab === idx ? 'bg-red-950/20 border-red-500/40 text-pergamino shadow-sm' : 'bg-transparent border-transparent hover:bg-neutral-855/40 text-neutral-400 hover:text-neutral-300'"
               >
                 <span>{{ tab.icon }}</span>
                 <span>{{ tab.title }}</span>
@@ -144,7 +144,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </div>
 
             <div class="flex-1 p-6 md:p-8 overflow-y-auto space-y-4">
-              <h3 class="text-[#d4af37] font-serif font-bold text-lg uppercase tracking-wider flex items-center gap-2">
+              <h3 class="text-pergamino font-serif font-bold text-lg uppercase tracking-wider flex items-center gap-2">
                 <span>{{ guideTabs[activeTab].icon }}</span>
                 <span>{{ guideTabs[activeTab].title }}</span>
               </h3>
@@ -156,7 +156,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           </div>
 
           <!-- Pie del Manual -->
-          <div class="p-6 bg-[#0d0d0f]/90 border-t border-neutral-900 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0">
+          <div class="p-6 bg-fragua/90 border-t border-neutral-900 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0">
             <span class="text-xs text-neutral-500 italic">"La mejor elección es con la que te sientas cómodo jugando."</span>
             <button 
               (click)="showGuide = false"
@@ -175,7 +175,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
         <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-neutral-900 pb-6">
           <div class="space-y-1 text-center md:text-left flex flex-col sm:flex-row sm:items-center gap-3">
             <div>
-              <h1 class="text-3xl font-serif font-extrabold tracking-wider text-[#d4af37] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              <h1 class="text-3xl font-serif font-extrabold tracking-wider text-pergamino drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 FORJA DE AVENTUREROS
               </h1>
               <p class="text-xs text-neutral-400 font-light">Sigue los pasos ancestrales para dar vida a tu personaje.</p>
@@ -185,14 +185,14 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <button 
                 *ngIf="currentStep === 1"
                 (click)="showGuide = true"
-                class="text-[11px] bg-[#1e1e24] hover:bg-neutral-800 border border-[#d4af37]/30 hover:border-[#d4af37] text-[#d4af37] px-3 py-1.5 rounded-lg transition duration-200 cursor-pointer flex items-center gap-1.5 h-fit"
+                class="text-[11px] bg-yunque hover:bg-neutral-800 border border-pergamino/30 hover:border-pergamino text-pergamino px-3 py-1.5 rounded-lg transition duration-200 cursor-pointer flex items-center gap-1.5 h-fit"
               >
                 📖 Manual de Guía
               </button>
               
               <button 
                 (click)="showPreview = true"
-                class="text-[11px] bg-gradient-to-r from-amber-600 to-red-800 hover:from-amber-500 hover:to-red-700 border border-[#d4af37]/40 hover:border-[#d4af37] text-white px-3 py-1.5 rounded-lg font-serif transition duration-200 cursor-pointer flex items-center gap-1.5 h-fit shadow-md hover:shadow-[0_0_10px_rgba(212,175,55,0.25)] select-none"
+                class="text-[11px] bg-gradient-to-r from-amber-600 to-red-800 hover:from-amber-500 hover:to-red-700 border border-pergamino/40 hover:border-pergamino text-white px-3 py-1.5 rounded-lg font-serif transition duration-200 cursor-pointer flex items-center gap-1.5 h-fit shadow-md hover:shadow-[0_0_10px_rgba(234,220,194,0.25)] select-none"
               >
                 🔍 Vista Previa Ficha
               </button>
@@ -200,16 +200,16 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           </div>
 
           <!-- Barra de Progreso de Creación (Reordenado) -->
-          <div class="flex items-center gap-2 md:gap-4 bg-[#121215] border border-neutral-800/80 px-4 py-2.5 rounded-xl shadow-lg">
+          <div class="flex items-center gap-2 md:gap-4 bg-fragua border border-neutral-800/80 px-4 py-2.5 rounded-xl shadow-lg">
             <!-- Paso 1: Clase -->
             <button (click)="goToStep(1)" class="flex items-center gap-1.5 cursor-pointer">
               <div 
                 class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-md transition"
-                [ngClass]="currentStep >= 1 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-[#d4af37]/50 shadow-red-900/30' : 'bg-neutral-850 border border-neutral-700 text-neutral-400'"
+                [ngClass]="currentStep >= 1 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-pergamino/50 shadow-red-900/30' : 'bg-neutral-850 border border-neutral-700 text-neutral-400'"
               >
                 1
               </div>
-              <span class="text-xs font-bold transition" [ngClass]="currentStep === 1 ? 'text-[#d4af37]' : 'text-neutral-400'">Clase</span>
+              <span class="text-xs font-bold transition" [ngClass]="currentStep === 1 ? 'text-pergamino' : 'text-neutral-400'">Clase</span>
             </button>
             <div class="w-6 h-px bg-neutral-800"></div>
 
@@ -217,11 +217,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <button (click)="goToStep(2)" [disabled]="!classChosen" class="flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
               <div 
                 class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-md transition"
-                [ngClass]="currentStep >= 2 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-[#d4af37]/50 shadow-red-900/30' : 'bg-neutral-850 border border-neutral-700 text-neutral-400'"
+                [ngClass]="currentStep >= 2 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-pergamino/50 shadow-red-900/30' : 'bg-neutral-850 border border-neutral-700 text-neutral-400'"
               >
                 2
               </div>
-              <span class="text-xs font-bold transition" [ngClass]="currentStep === 2 ? 'text-[#d4af37]' : 'text-neutral-400'">Trasfondo</span>
+              <span class="text-xs font-bold transition" [ngClass]="currentStep === 2 ? 'text-pergamino' : 'text-neutral-400'">Trasfondo</span>
             </button>
             <div class="w-6 h-px bg-neutral-800"></div>
 
@@ -229,11 +229,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <button (click)="goToStep(3)" [disabled]="!backgroundChosen" class="flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
               <div 
                 class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-md transition"
-                [ngClass]="currentStep >= 3 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-[#d4af37]/50 shadow-red-900/30' : 'bg-neutral-850 border border-neutral-700 text-neutral-400'"
+                [ngClass]="currentStep >= 3 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-pergamino/50 shadow-red-900/30' : 'bg-neutral-850 border border-neutral-700 text-neutral-400'"
               >
                 3
               </div>
-              <span class="text-xs font-bold transition" [ngClass]="currentStep === 3 ? 'text-[#d4af37]' : 'text-neutral-400'">Origen</span>
+              <span class="text-xs font-bold transition" [ngClass]="currentStep === 3 ? 'text-pergamino' : 'text-neutral-400'">Origen</span>
             </button>
             <div class="w-6 h-px bg-neutral-800"></div>
 
@@ -241,11 +241,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <button (click)="goToStep(4)" [disabled]="!originChosen" class="flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
               <div 
                 class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-md transition"
-                [ngClass]="currentStep >= 4 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-[#d4af37]/50 shadow-red-900/30' : 'bg-neutral-855 border border-neutral-700 text-neutral-400'"
+                [ngClass]="currentStep >= 4 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-pergamino/50 shadow-red-900/30' : 'bg-neutral-855 border border-neutral-700 text-neutral-400'"
               >
                 4
               </div>
-              <span class="text-xs font-bold transition" [ngClass]="currentStep === 4 ? 'text-[#d4af37]' : 'text-neutral-400'">Atributos</span>
+              <span class="text-xs font-bold transition" [ngClass]="currentStep === 4 ? 'text-pergamino' : 'text-neutral-400'">Atributos</span>
             </button>
             <div class="w-6 h-px bg-neutral-800"></div>
 
@@ -253,11 +253,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <button (click)="goToStep(5)" [disabled]="!attributesChosen" class="flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
               <div 
                 class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-md transition"
-                [ngClass]="currentStep >= 5 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-[#d4af37]/50 shadow-red-900/30' : 'bg-neutral-855 border border-neutral-700 text-neutral-400'"
+                [ngClass]="currentStep >= 5 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-pergamino/50 shadow-red-900/30' : 'bg-neutral-855 border border-neutral-700 text-neutral-400'"
               >
                 5
               </div>
-              <span class="text-xs font-bold transition" [ngClass]="currentStep === 5 ? 'text-[#d4af37]' : 'text-neutral-400'">Equipo</span>
+              <span class="text-xs font-bold transition" [ngClass]="currentStep === 5 ? 'text-pergamino' : 'text-neutral-400'">Equipo</span>
             </button>
             <div class="w-6 h-px bg-neutral-800"></div>
 
@@ -265,11 +265,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <button (click)="goToStep(6)" [disabled]="!equipmentChosen" class="flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
               <div 
                 class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-md transition"
-                [ngClass]="currentStep >= 6 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-[#d4af37]/50 shadow-red-900/30' : 'bg-neutral-855 border border-neutral-700 text-neutral-400'"
+                [ngClass]="currentStep >= 6 ? 'bg-gradient-to-tr from-red-800 to-amber-500 border border-pergamino/50 shadow-red-900/30' : 'bg-neutral-855 border border-neutral-700 text-neutral-400'"
               >
                 6
               </div>
-              <span class="text-xs font-bold transition" [ngClass]="currentStep === 6 ? 'text-[#d4af37]' : 'text-neutral-400'">Resumen</span>
+              <span class="text-xs font-bold transition" [ngClass]="currentStep === 6 ? 'text-pergamino' : 'text-neutral-400'">Resumen</span>
             </button>
           </div>
         </div>
@@ -278,8 +278,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
         <div *ngIf="currentStep === 1" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fade-in">
           
           <!-- Columna 1: Menú Lateral de Clases -->
-          <aside class="lg:col-span-3 bg-[#121215] border border-neutral-800/80 rounded-xl p-4 shadow-xl space-y-2 h-[680px] overflow-y-auto custom-scrollbar">
-            <h3 class="text-[#d4af37] font-serif font-bold text-sm tracking-wider uppercase border-b border-neutral-900/80 pb-2 mb-3">
+          <aside class="lg:col-span-3 bg-fragua border border-neutral-800/80 rounded-xl p-4 shadow-xl space-y-2 h-[680px] overflow-y-auto custom-scrollbar">
+            <h3 class="text-pergamino font-serif font-bold text-sm tracking-wider uppercase border-b border-neutral-900/80 pb-2 mb-3">
               Clases del Manual
             </h3>
             
@@ -287,7 +287,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               *ngFor="let c of classes; let idx = index" 
               (click)="selectClass(idx)"
               class="w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition duration-200 border cursor-pointer flex items-center justify-between focus:outline-none"
-              [ngClass]="selectedClassIdx === idx ? 'bg-red-950/20 border-red-500/50 text-[#d4af37] shadow-[0_0_10px_rgba(239,68,68,0.15)]' : 'bg-transparent border-transparent hover:bg-neutral-800/50 hover:text-neutral-200 text-neutral-400'"
+              [ngClass]="selectedClassIdx === idx ? 'bg-red-950/20 border-red-500/50 text-pergamino shadow-[0_0_10px_rgba(239,68,68,0.15)]' : 'bg-transparent border-transparent hover:bg-neutral-800/50 hover:text-neutral-200 text-neutral-400'"
             >
               <span class="flex items-center gap-2">
                 <span class="text-base select-none">{{ c.icon }}</span>
@@ -299,9 +299,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
           <!-- Columna 2: Título e Imagen de la Clase -->
           <main class="lg:col-span-5 space-y-4">
-            <div class="bg-[#121215] border border-[#d4af37]/15 rounded-xl overflow-hidden shadow-2xl relative group h-[680px] flex flex-col">
-              <div class="p-4 bg-[#0d0d0f]/90 border-b border-neutral-900 flex justify-between items-center">
-                <h2 class="text-2xl font-serif font-extrabold text-[#d4af37] tracking-wider uppercase">
+            <div class="bg-fragua border border-pergamino/15 rounded-xl overflow-hidden shadow-2xl relative group h-[680px] flex flex-col">
+              <div class="p-4 bg-fragua/90 border-b border-neutral-900 flex justify-between items-center">
+                <h2 class="text-2xl font-serif font-extrabold text-pergamino tracking-wider uppercase">
                   {{ activeClass.name }}
                 </h2>
                 <span class="text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 bg-red-950/40 border border-red-800/40 text-red-400 rounded-md">
@@ -309,7 +309,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 </span>
               </div>
 
-              <div class="flex-1 relative overflow-hidden bg-gradient-to-b from-[#141416] to-[#0c0c0f] flex items-center justify-center p-4">
+              <div class="flex-1 relative overflow-hidden bg-gradient-to-b from-fragua to-hollin flex items-center justify-center p-4">
                 <img 
                   [src]="'/assets/clases/' + activeClass.image" 
                   [alt]="activeClass.name" 
@@ -318,10 +318,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   [class.opacity-0]="!imageLoaded"
                   [class.opacity-100]="imageLoaded"
                 />
-                <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#121215] to-transparent opacity-90 pointer-events-none"></div>
+                <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-fragua to-transparent opacity-90 pointer-events-none"></div>
                 
-                <div *ngIf="!imageLoaded" class="absolute inset-0 flex items-center justify-center bg-[#121215]">
-                  <svg class="animate-spin h-10 w-10 text-[#d4af37]" viewBox="0 0 24 24" fill="none">
+                <div *ngIf="!imageLoaded" class="absolute inset-0 flex items-center justify-center bg-fragua">
+                  <svg class="animate-spin h-10 w-10 text-pergamino" viewBox="0 0 24 24" fill="none">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
@@ -337,11 +337,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           </main>
 
           <!-- Columna 3: Características y Botón de Avance -->
-          <section class="lg:col-span-4 bg-[#121215] border border-neutral-800/80 rounded-xl p-6 shadow-xl h-[680px] flex flex-col justify-between overflow-hidden">
+          <section class="lg:col-span-4 bg-fragua border border-neutral-800/80 rounded-xl p-6 shadow-xl h-[680px] flex flex-col justify-between overflow-hidden">
             <!-- Contenedor Scrollable -->
             <div class="flex-1 overflow-y-auto custom-scrollbar space-y-6 pr-1 pb-4 text-left">
               <div class="border-b border-neutral-900 pb-3">
-                <h3 class="text-[#d4af37] font-serif font-bold text-base tracking-wider uppercase">Características de Clase</h3>
+                <h3 class="text-pergamino font-serif font-bold text-base tracking-wider uppercase">Características de Clase</h3>
                 <p class="text-[10px] text-neutral-500">Mecánicas base y requisitos de rol.</p>
               </div>
 
@@ -350,11 +350,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="flex items-center gap-1.5">
                   <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Atributo Primario Requerido</h4>
                   <div class="relative group inline-block">
-                    <button type="button" class="w-4 h-4 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-400 hover:text-[#d4af37] text-[10px] font-bold flex items-center justify-center cursor-pointer transition select-none focus:outline-none">
+                    <button type="button" class="w-4 h-4 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-400 hover:text-pergamino text-[10px] font-bold flex items-center justify-center cursor-pointer transition select-none focus:outline-none">
                       ?
                     </button>
-                    <div class="absolute right-0 top-6 w-64 bg-[#16161a] border border-[#d4af37]/35 text-neutral-300 text-xs rounded-lg p-3 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 transition duration-200 z-50 text-left whitespace-normal backdrop-blur-sm">
-                      <p class="font-serif font-bold text-[#d4af37] border-b border-neutral-800 pb-1 mb-2 text-[10px] uppercase tracking-widest">¿Qué miden los Atributos?</p>
+                    <div class="absolute right-0 top-6 w-64 bg-yunque border border-pergamino/35 text-neutral-300 text-xs rounded-lg p-3 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 transition duration-200 z-50 text-left whitespace-normal backdrop-blur-sm">
+                      <p class="font-serif font-bold text-pergamino border-b border-neutral-800 pb-1 mb-2 text-[10px] uppercase tracking-widest">¿Qué miden los Atributos?</p>
                       <div class="space-y-1.5 text-[11px] leading-relaxed">
                         <div><strong class="text-neutral-200">Fuerza:</strong> Poderío físico.</div>
                         <div><strong class="text-neutral-200">Destreza:</strong> Agilidad, reflejos y equilibrio.</div>
@@ -367,7 +367,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   </div>
                 </div>
 
-                <div class="flex items-center gap-3 bg-[#18181c] border border-neutral-800 px-4 py-3 rounded-lg">
+                <div class="flex items-center gap-3 bg-yunque border border-neutral-800 px-4 py-3 rounded-lg">
                   <span class="text-xl">🌟</span>
                   <div>
                     <p class="text-sm font-bold text-neutral-200">{{ activeClass.primaryStat }}</p>
@@ -379,7 +379,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Complejidad -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Complejidad de Juego</h4>
-                <div class="flex items-center justify-between bg-[#18181c] border border-neutral-800 px-4 py-3 rounded-lg">
+                <div class="flex items-center justify-between bg-yunque border border-neutral-800 px-4 py-3 rounded-lg">
                   <span class="text-xs font-semibold text-neutral-200">Nivel de Dificultad</span>
                   <div class="flex items-center gap-2">
                     <span 
@@ -404,15 +404,15 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Dado de Golpe -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Dado de Golpe (Resistencia)</h4>
-                <div class="flex items-center justify-between bg-[#18181c] border border-neutral-800 px-4 py-3 rounded-lg">
+                <div class="flex items-center justify-between bg-yunque border border-neutral-800 px-4 py-3 rounded-lg">
                   <span class="text-sm font-semibold text-neutral-200">{{ activeClass.hitDie }} por nivel</span>
-                  <span class="text-lg font-bold text-[#d4af37] font-serif">🎲 {{ activeClass.hitDie }}</span>
+                  <span class="text-lg font-bold text-pergamino font-serif">🎲 {{ activeClass.hitDie }}</span>
                 </div>
               </div>
 
               <!-- Competencias Iniciales de la Clase (Basado en la Tabla del Manual) -->
-              <div class="space-y-2.5 bg-[#18181c]/60 border border-neutral-800 p-4 rounded-lg text-xs leading-relaxed text-neutral-300">
-                <h4 class="text-[10px] font-bold text-[#d4af37] uppercase tracking-wider mb-1.5 border-b border-neutral-800 pb-1">Competencias Iniciales</h4>
+              <div class="space-y-2.5 bg-yunque/60 border border-neutral-800 p-4 rounded-lg text-xs leading-relaxed text-neutral-300">
+                <h4 class="text-[10px] font-bold text-pergamino uppercase tracking-wider mb-1.5 border-b border-neutral-800 pb-1">Competencias Iniciales</h4>
                 <div><strong>Salvaciones:</strong> {{ getClassDetailsByClassName(activeClass.name).savingThrows }}</div>
                 
                 <!-- Habilidades a elegir -->
@@ -431,7 +431,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                       (mouseenter)="hoveredSkill = skill"
                       (mouseleave)="hoveredSkill = null"
                       class="flex items-center gap-1.5 p-1.5 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                      [ngClass]="isClassSkillSelected(skill) ? 'bg-amber-950/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-400'"
+                      [ngClass]="isClassSkillSelected(skill) ? 'bg-amber-950/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-400'"
                     >
                       <input 
                         type="checkbox"
@@ -450,10 +450,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   </div>
 
                   <!-- Detalle de la Habilidad Dinámico (No se corta, Estilo Baldur's Gate 3) -->
-                  <div class="mt-2 bg-[#0d0d0f] border border-neutral-850 rounded-lg p-3.5 min-h-[85px] flex flex-col justify-center transition-all duration-200">
+                  <div class="mt-2 bg-fragua border border-neutral-850 rounded-lg p-3.5 min-h-[85px] flex flex-col justify-center transition-all duration-200">
                     <div *ngIf="hoveredSkill" class="space-y-1 animate-fade-in text-left">
                       <div class="flex justify-between items-center border-b border-neutral-800 pb-1">
-                        <strong class="text-[#d4af37] text-[10px] font-serif uppercase tracking-wider font-extrabold">
+                        <strong class="text-pergamino text-[10px] font-serif uppercase tracking-wider font-extrabold">
                           {{ hoveredSkill }}
                         </strong>
                         <span class="text-[8px] bg-neutral-900 text-neutral-450 border border-neutral-800 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">
@@ -477,9 +477,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- SECCIÓN DE SELECCIÓN DE HECHIZOS PARA BARDO (Dinámico por Nivel) -->
-              <div *ngIf="isBard()" class="bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl space-y-4 text-left animate-fade-in">
+              <div *ngIf="isBard()" class="bg-fragua/80 border border-pergamino/25 p-4 rounded-xl space-y-4 text-left animate-fade-in">
                 <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5">
-                  <span class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">📜 Hechizos de Bardo (D&D 2024)</span>
+                  <span class="text-[10px] text-pergamino uppercase font-bold tracking-wider font-fantasy">📜 Hechizos de Bardo (D&D 2024)</span>
                   <span class="text-[8px] bg-amber-955/20 border border-amber-600/30 px-2 py-0.5 rounded text-amber-500 font-mono font-bold select-none">
                     Nivel {{ characterLevel }}
                   </span>
@@ -487,11 +487,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 
                 <!-- Selector de Nivel Inicial (Mover o duplicar aquí para que sea interactivo con hechizos) -->
                 <div class="space-y-1 bg-amber-955/10 border border-amber-500/20 p-2.5 rounded-lg text-left">
-                  <label class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Establecer Nivel Inicial:</label>
+                  <label class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Establecer Nivel Inicial:</label>
                   <select
                     [(ngModel)]="characterLevel"
                     (change)="onLevelChange()"
-                    class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold cursor-pointer"
+                    class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold cursor-pointer"
                   >
                     <option *ngFor="let lvl of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [value]="lvl">
                       Nivel {{ lvl }}
@@ -510,13 +510,13 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-350 tracking-wider">Trucos de Bardo (Elige exactamente {{ getBardCantripsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedBardCantrips.length }} / {{ getBardCantripsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedBardCantrips.length }} / {{ getBardCantripsLimit() }}</span>
                   </div>
                   <div class="grid grid-cols-1 gap-1.5 max-h-[140px] overflow-y-auto pr-1 custom-scrollbar">
                     <div 
                       *ngFor="let cantrip of bardCantripsList"
                       class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                      [ngClass]="selectedBardCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                      [ngClass]="selectedBardCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                     >
                       <input 
                         type="checkbox"
@@ -526,7 +526,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                       />
                       <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleBardCantrip(cantrip.name)">
-                        <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
+                        <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
                         <span class="text-neutral-400 text-[8px] font-light">{{ cantrip.desc }}</span>
                       </div>
                     </div>
@@ -537,19 +537,19 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-355 tracking-wider">Conjuros Preparados (Elige exactamente {{ getBardSpellsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedBardSpells.length }} / {{ getBardSpellsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedBardSpells.length }} / {{ getBardSpellsLimit() }}</span>
                   </div>
                   
                   <div class="grid grid-cols-1 gap-3 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
                     <!-- Iteramos sobre los niveles de conjuro válidos -->
                     <div *ngFor="let lvl of getAvailableSpellLevels()" class="space-y-1.5">
-                      <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
+                      <span class="text-[8px] text-pergamino font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
                       
                       <div class="grid grid-cols-1 gap-1">
                         <div 
                           *ngFor="let spell of getSpellsForLevel(lvl)"
                           class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                          [ngClass]="selectedBardSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                          [ngClass]="selectedBardSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                         >
                           <input 
                             type="checkbox"
@@ -559,7 +559,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                             class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                           />
                           <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleBardSpell(spell.name)">
-                            <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                            <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
                             <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
                           </div>
                         </div>
@@ -570,9 +570,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- Configuración de Hechizos e Invocaciones del Brujo (D&D 2024) -->
-              <div *ngIf="isWarlock()" class="space-y-4 md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
+              <div *ngIf="isWarlock()" class="space-y-4 md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
                 <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5 shrink-0">
-                  <span class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">🔮 Grimorio e Invocaciones del Brujo</span>
+                  <span class="text-[10px] text-pergamino uppercase font-bold tracking-wider font-fantasy">🔮 Grimorio e Invocaciones del Brujo</span>
                   <span class="text-[8px] text-neutral-500 italic block mt-0.5">
                     * Modificar el nivel ajustará el límite de trucos, hechizos e invocaciones.
                   </span>
@@ -586,13 +586,13 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-350 tracking-wider">Invocaciones Sobrenaturales (Elige exactamente {{ getWarlockInvocationsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedWarlockInvocations.length }} / {{ getWarlockInvocationsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedWarlockInvocations.length }} / {{ getWarlockInvocationsLimit() }}</span>
                   </div>
                   <div class="grid grid-cols-1 gap-1.5 max-h-[140px] overflow-y-auto pr-1 custom-scrollbar">
                     <div 
                       *ngFor="let invocation of warlockInvocationsList"
                       class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                      [ngClass]="selectedWarlockInvocations.includes(invocation.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                      [ngClass]="selectedWarlockInvocations.includes(invocation.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                     >
                       <input 
                         type="checkbox"
@@ -602,8 +602,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                       />
                       <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleWarlockInvocation(invocation.name)">
-                        <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ invocation.name }}</strong>
-                        <span class="text-neutral-400 text-[8px] font-light">{{ invocation.desc }} <span class="text-[#d4af37] font-mono">({{ invocation.req }})</span></span>
+                        <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ invocation.name }}</strong>
+                        <span class="text-neutral-400 text-[8px] font-light">{{ invocation.desc }} <span class="text-pergamino font-mono">({{ invocation.req }})</span></span>
                       </div>
                     </div>
                   </div>
@@ -613,13 +613,13 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-350 tracking-wider">Trucos de Brujo (Elige exactamente {{ getWarlockCantripsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedWarlockCantrips.length }} / {{ getWarlockCantripsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedWarlockCantrips.length }} / {{ getWarlockCantripsLimit() }}</span>
                   </div>
                   <div class="grid grid-cols-1 gap-1.5 max-h-[140px] overflow-y-auto pr-1 custom-scrollbar">
                     <div 
                       *ngFor="let cantrip of warlockCantripsList"
                       class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                      [ngClass]="selectedWarlockCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                      [ngClass]="selectedWarlockCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                     >
                       <input 
                         type="checkbox"
@@ -629,7 +629,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                       />
                       <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleWarlockCantrip(cantrip.name)">
-                        <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
+                        <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
                         <span class="text-neutral-400 text-[8px] font-light">{{ cantrip.desc }}</span>
                       </div>
                     </div>
@@ -640,18 +640,18 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-355 tracking-wider">Conjuros Preparados (Elige exactamente {{ getWarlockSpellsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedWarlockSpells.length }} / {{ getWarlockSpellsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedWarlockSpells.length }} / {{ getWarlockSpellsLimit() }}</span>
                   </div>
                   
                   <div class="grid grid-cols-1 gap-3 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
                     <div *ngFor="let lvl of getWarlockAvailableSpellLevels()" class="space-y-1.5">
-                      <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
+                      <span class="text-[8px] text-pergamino font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
                       
                       <div class="grid grid-cols-1 gap-1">
                         <div 
                           *ngFor="let spell of getWarlockSpellsForLevel(lvl)"
                           class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                          [ngClass]="selectedWarlockSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                          [ngClass]="selectedWarlockSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                         >
                           <input 
                             type="checkbox"
@@ -661,7 +661,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                             class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                           />
                           <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleWarlockSpell(spell.name)">
-                            <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                            <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
                             <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
                           </div>
                         </div>
@@ -672,9 +672,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- Configuración de Orden Divina y Hechizos del Clérigo (D&D 2024) -->
-              <div *ngIf="isCleric()" class="space-y-4 md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
+              <div *ngIf="isCleric()" class="space-y-4 md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
                 <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5 shrink-0">
-                  <span class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">☀️ Orden Divina y Hechizos de Clérigo</span>
+                  <span class="text-[10px] text-pergamino uppercase font-bold tracking-wider font-fantasy">☀️ Orden Divina y Hechizos de Clérigo</span>
                   <span class="text-[8px] text-neutral-500 italic block mt-0.5">
                     * Modificar el nivel ajustará el límite de trucos y conjuros preparados.
                   </span>
@@ -688,11 +688,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     <div 
                       (click)="selectClericDivineOrderOption('Protector')"
                       class="p-3 rounded-lg border transition-all duration-150 cursor-pointer select-none bg-neutral-900/40"
-                      [ngClass]="selectedClericDivineOrder === 'Protector' ? 'border-[#d4af37] bg-amber-955/10' : 'border-neutral-850 hover:border-neutral-800'"
+                      [ngClass]="selectedClericDivineOrder === 'Protector' ? 'border-pergamino bg-amber-955/10' : 'border-neutral-850 hover:border-neutral-800'"
                     >
                       <div class="flex items-center gap-2 mb-1">
                         <span class="text-sm">🛡️</span>
-                        <strong class="text-[10px] font-fantasy uppercase tracking-wider" [ngClass]="selectedClericDivineOrder === 'Protector' ? 'text-[#d4af37]' : 'text-neutral-300'">Protector</strong>
+                        <strong class="text-[10px] font-fantasy uppercase tracking-wider" [ngClass]="selectedClericDivineOrder === 'Protector' ? 'text-pergamino' : 'text-neutral-300'">Protector</strong>
                       </div>
                       <p class="text-[8px] text-neutral-400 leading-normal font-light">
                         Te has entrenado para el combate. Ganas competencia con armas marciales y entrenamiento con armaduras pesadas.
@@ -703,11 +703,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     <div 
                       (click)="selectClericDivineOrderOption('Taumaturgo')"
                       class="p-3 rounded-lg border transition-all duration-150 cursor-pointer select-none bg-neutral-900/40"
-                      [ngClass]="selectedClericDivineOrder === 'Taumaturgo' ? 'border-[#d4af37] bg-amber-955/10' : 'border-neutral-850 hover:border-neutral-800'"
+                      [ngClass]="selectedClericDivineOrder === 'Taumaturgo' ? 'border-pergamino bg-amber-955/10' : 'border-neutral-850 hover:border-neutral-800'"
                     >
                       <div class="flex items-center gap-2 mb-1">
                         <span class="text-sm">📖</span>
-                        <strong class="text-[10px] font-fantasy uppercase tracking-wider" [ngClass]="selectedClericDivineOrder === 'Taumaturgo' ? 'text-[#d4af37]' : 'text-neutral-300'">Taumaturgo</strong>
+                        <strong class="text-[10px] font-fantasy uppercase tracking-wider" [ngClass]="selectedClericDivineOrder === 'Taumaturgo' ? 'text-pergamino' : 'text-neutral-300'">Taumaturgo</strong>
                       </div>
                       <p class="text-[8px] text-neutral-400 leading-normal font-light">
                         Ganas un truco adicional del clérigo y sumas tu modificador de Sabiduría a tus tiradas de Inteligencia (Conocimiento arcano y Religión).
@@ -724,13 +724,13 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-350 tracking-wider">Trucos de Clérigo (Elige exactamente {{ getClericCantripsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedClericCantrips.length }} / {{ getClericCantripsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedClericCantrips.length }} / {{ getClericCantripsLimit() }}</span>
                   </div>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5 max-h-[140px] overflow-y-auto pr-1 custom-scrollbar">
                     <div 
                       *ngFor="let cantrip of clericCantripsList"
                       class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                      [ngClass]="selectedClericCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                      [ngClass]="selectedClericCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                     >
                       <input 
                         type="checkbox"
@@ -740,7 +740,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                       />
                       <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleClericCantrip(cantrip.name)">
-                        <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
+                        <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
                         <span class="text-neutral-400 text-[8px] font-light">{{ cantrip.desc }}</span>
                       </div>
                     </div>
@@ -751,18 +751,18 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-355 tracking-wider">Conjuros Preparados (Elige exactamente {{ getClericSpellsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedClericSpells.length }} / {{ getClericSpellsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedClericSpells.length }} / {{ getClericSpellsLimit() }}</span>
                   </div>
                   
                   <div class="grid grid-cols-1 gap-3 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
                     <div *ngFor="let lvl of getClericAvailableSpellLevels()" class="space-y-1.5">
-                      <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
+                      <span class="text-[8px] text-pergamino font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
                       
                       <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5">
                         <div 
                           *ngFor="let spell of getClericSpellsForLevel(lvl)"
                           class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                          [ngClass]="selectedClericSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                          [ngClass]="selectedClericSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                         >
                           <input 
                             type="checkbox"
@@ -772,7 +772,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                             class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                           />
                           <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleClericSpell(spell.name)">
-                            <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                            <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
                             <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
                           </div>
                         </div>
@@ -783,9 +783,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
  
               <!-- Configuración de Orden Primigenia y Hechizos del Druida (D&D 2024) -->
-              <div *ngIf="isDruid()" class="space-y-4 md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
+              <div *ngIf="isDruid()" class="space-y-4 md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
                 <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5 shrink-0">
-                  <span class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">🍃 Orden Primigenia y Hechizos de Druida</span>
+                  <span class="text-[10px] text-pergamino uppercase font-bold tracking-wider font-fantasy">🍃 Orden Primigenia y Hechizos de Druida</span>
                   <span class="text-[8px] text-neutral-500 italic block mt-0.5">
                     * Modificar el nivel ajustará el límite de trucos y preparados.
                   </span>
@@ -799,11 +799,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     <div 
                       (click)="selectDruidPrimalOrderOption('Guardián')"
                       class="p-3 rounded-lg border transition-all duration-150 cursor-pointer select-none bg-neutral-900/40"
-                      [ngClass]="selectedDruidPrimalOrder === 'Guardián' ? 'border-[#d4af37] bg-amber-955/10' : 'border-neutral-850 hover:border-neutral-800'"
+                      [ngClass]="selectedDruidPrimalOrder === 'Guardián' ? 'border-pergamino bg-amber-955/10' : 'border-neutral-850 hover:border-neutral-800'"
                     >
                       <div class="flex items-center gap-2 mb-1">
                         <span class="text-sm">🛡️</span>
-                        <strong class="text-[10px] font-fantasy uppercase tracking-wider" [ngClass]="selectedDruidPrimalOrder === 'Guardián' ? 'text-[#d4af37]' : 'text-neutral-300'">Guardián</strong>
+                        <strong class="text-[10px] font-fantasy uppercase tracking-wider" [ngClass]="selectedDruidPrimalOrder === 'Guardián' ? 'text-pergamino' : 'text-neutral-300'">Guardián</strong>
                       </div>
                       <p class="text-[8px] text-neutral-400 leading-normal font-light">
                         Te has entrenado para el combate. Ganas competencia con armas marciales y entrenamiento con armaduras medias.
@@ -814,11 +814,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     <div 
                       (click)="selectDruidPrimalOrderOption('Naturalista')"
                       class="p-3 rounded-lg border transition-all duration-150 cursor-pointer select-none bg-neutral-900/40"
-                      [ngClass]="selectedDruidPrimalOrder === 'Naturalista' ? 'border-[#d4af37] bg-amber-955/10' : 'border-neutral-850 hover:border-neutral-800'"
+                      [ngClass]="selectedDruidPrimalOrder === 'Naturalista' ? 'border-pergamino bg-amber-955/10' : 'border-neutral-850 hover:border-neutral-800'"
                     >
                       <div class="flex items-center gap-2 mb-1">
                         <span class="text-sm">🌱</span>
-                        <strong class="text-[10px] font-fantasy uppercase tracking-wider" [ngClass]="selectedDruidPrimalOrder === 'Naturalista' ? 'text-[#d4af37]' : 'text-neutral-300'">Naturalista</strong>
+                        <strong class="text-[10px] font-fantasy uppercase tracking-wider" [ngClass]="selectedDruidPrimalOrder === 'Naturalista' ? 'text-pergamino' : 'text-neutral-300'">Naturalista</strong>
                       </div>
                       <p class="text-[8px] text-neutral-400 leading-normal font-light">
                         Conoces un truco adicional. Además, sumas tu modificador de Sabiduría a tus tiradas de Inteligencia (Conocimiento arcano y Naturaleza).
@@ -835,13 +835,13 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-350 tracking-wider">Trucos de Druida (Elige exactamente {{ getDruidCantripsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedDruidCantrips.length }} / {{ getDruidCantripsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedDruidCantrips.length }} / {{ getDruidCantripsLimit() }}</span>
                   </div>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5 max-h-[140px] overflow-y-auto pr-1 custom-scrollbar">
                     <div 
                       *ngFor="let cantrip of druidCantripsList"
                       class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                      [ngClass]="selectedDruidCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                      [ngClass]="selectedDruidCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                     >
                       <input 
                         type="checkbox"
@@ -851,7 +851,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                       />
                       <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleDruidCantrip(cantrip.name)">
-                        <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
+                        <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
                         <span class="text-neutral-400 text-[8px] font-light">{{ cantrip.desc }}</span>
                       </div>
                     </div>
@@ -862,18 +862,18 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-355 tracking-wider">Conjuros Preparados (Elige exactamente {{ getDruidSpellsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedDruidSpells.length }} / {{ getDruidSpellsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedDruidSpells.length }} / {{ getDruidSpellsLimit() }}</span>
                   </div>
                   
                   <div class="grid grid-cols-1 gap-3 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
                     <div *ngFor="let lvl of getClericAvailableSpellLevels()" class="space-y-1.5">
-                      <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
+                      <span class="text-[8px] text-pergamino font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
                       
                       <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5">
                         <div 
                           *ngFor="let spell of getDruidSpellsForLevel(lvl)"
                           class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                          [ngClass]="selectedDruidSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                          [ngClass]="selectedDruidSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                         >
                           <input 
                             type="checkbox"
@@ -883,7 +883,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                             class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                           />
                           <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleDruidSpell(spell.name)">
-                            <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                            <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
                             <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
                           </div>
                         </div>
@@ -894,9 +894,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- Configuración de Hechizos del Explorador (D&D 2024) -->
-              <div *ngIf="isRanger()" class="space-y-4 md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
+              <div *ngIf="isRanger()" class="space-y-4 md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
                 <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5 shrink-0">
-                  <span class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">🏹 Hechizos de Explorador</span>
+                  <span class="text-[10px] text-pergamino uppercase font-bold tracking-wider font-fantasy">🏹 Hechizos de Explorador</span>
                   <span class="text-[8px] text-neutral-500 italic block mt-0.5">
                     * Modificar el nivel ajustará el límite de conjuros preparados.
                   </span>
@@ -910,18 +910,18 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-355 tracking-wider">Conjuros Preparados (Elige exactamente {{ getRangerSpellsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedRangerSpells.length }} / {{ getRangerSpellsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedRangerSpells.length }} / {{ getRangerSpellsLimit() }}</span>
                   </div>
                   
                   <div class="grid grid-cols-1 gap-3 max-h-[250px] overflow-y-auto pr-1 custom-scrollbar">
                     <div *ngFor="let lvl of getRangerAvailableSpellLevels()" class="space-y-1.5">
-                      <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
+                      <span class="text-[8px] text-pergamino font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
                       
                       <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5">
                         <div 
                           *ngFor="let spell of getRangerSpellsForLevel(lvl)"
                           class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                          [ngClass]="selectedRangerSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                          [ngClass]="selectedRangerSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                         >
                           <input 
                             type="checkbox"
@@ -931,7 +931,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                             class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                           />
                           <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleRangerSpell(spell.name)">
-                            <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                            <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
                             <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
                           </div>
                         </div>
@@ -942,9 +942,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- Configuración de Hechizos del Paladín (D&D 2024) -->
-              <div *ngIf="isPaladin()" class="space-y-4 md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl animate-fade-in text-left">
+              <div *ngIf="isPaladin()" class="space-y-4 md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl animate-fade-in text-left">
                 <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5 shrink-0">
-                  <span class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">🛡️ Hechizos de Paladín</span>
+                  <span class="text-[10px] text-pergamino uppercase font-bold tracking-wider font-fantasy">🛡️ Hechizos de Paladín</span>
                   <span class="text-[8px] text-neutral-500 italic block mt-0.5">
                     * Modificar el nivel ajustará el límite de conjuros preparados.
                   </span>
@@ -958,18 +958,18 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-355 tracking-wider">Conjuros Preparados (Elige exactamente {{ getPaladinSpellsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedPaladinSpells.length }} / {{ getPaladinSpellsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedPaladinSpells.length }} / {{ getPaladinSpellsLimit() }}</span>
                   </div>
                   
                   <div class="grid grid-cols-1 gap-3 max-h-[250px] overflow-y-auto pr-1 custom-scrollbar">
                     <div *ngFor="let lvl of getPaladinAvailableSpellLevels()" class="space-y-1.5">
-                      <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
+                      <span class="text-[8px] text-pergamino font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
                       
                       <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5">
                         <div 
                           *ngFor="let spell of getPaladinSpellsForLevel(lvl)"
                           class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                          [ngClass]="selectedPaladinSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                          [ngClass]="selectedPaladinSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                         >
                           <input 
                             type="checkbox"
@@ -979,7 +979,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                             class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                           />
                           <div class="text-[8.5px] leading-snug w-full h-full" (click)="togglePaladinSpell(spell.name)">
-                            <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                            <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
                             <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
                           </div>
                         </div>
@@ -990,9 +990,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- Configuración de Hechizos y Metamagia del Hechicero (D&D 2024) -->
-              <div *ngIf="isSorcerer()" class="space-y-4 md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl text-left animate-fade-in">
+              <div *ngIf="isSorcerer()" class="space-y-4 md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl text-left animate-fade-in">
                 <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5 shrink-0">
-                  <span class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">✨ Hechizos y Metamagia del Hechicero</span>
+                  <span class="text-[10px] text-pergamino uppercase font-bold tracking-wider font-fantasy">✨ Hechizos y Metamagia del Hechicero</span>
                   <span class="text-[8px] bg-amber-955/20 border border-amber-600/30 px-2 py-0.5 rounded text-amber-500 font-mono font-bold select-none">
                     Nivel {{ characterLevel }}
                   </span>
@@ -1000,11 +1000,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
                 <!-- Selector de Nivel Inicial -->
                 <div class="space-y-1 bg-amber-955/10 border border-amber-500/20 p-2.5 rounded-lg">
-                  <label class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Establecer Nivel de Hechicero:</label>
+                  <label class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Establecer Nivel de Hechicero:</label>
                   <select
                     [(ngModel)]="characterLevel"
                     (change)="onLevelChange()"
-                    class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold cursor-pointer"
+                    class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold cursor-pointer"
                   >
                     <option *ngFor="let lvl of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [value]="lvl">
                       Nivel {{ lvl }}
@@ -1023,13 +1023,13 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-350 tracking-wider">Trucos de Hechicero (Elige exactamente {{ getSorcererCantripsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedSorcererCantrips.length }} / {{ getSorcererCantripsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedSorcererCantrips.length }} / {{ getSorcererCantripsLimit() }}</span>
                   </div>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5 max-h-[140px] overflow-y-auto pr-1 custom-scrollbar">
                     <div 
                       *ngFor="let cantrip of getSorcererCantrips()"
                       class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                      [ngClass]="selectedSorcererCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                      [ngClass]="selectedSorcererCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                     >
                       <input 
                         type="checkbox"
@@ -1039,7 +1039,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                       />
                       <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleSorcererCantrip(cantrip.name)">
-                        <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
+                        <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
                         <span class="text-neutral-400 text-[8px] font-light">{{ cantrip.desc }}</span>
                       </div>
                     </div>
@@ -1050,18 +1050,18 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-355 tracking-wider">Conjuros Preparados (Elige exactamente {{ getSorcererSpellsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedSorcererSpells.length }} / {{ getSorcererSpellsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedSorcererSpells.length }} / {{ getSorcererSpellsLimit() }}</span>
                   </div>
                   
                   <div class="grid grid-cols-1 gap-3 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
                     <div *ngFor="let lvl of getAvailableSpellLevelsForSorcerer()" class="space-y-1.5">
-                      <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
+                      <span class="text-[8px] text-pergamino font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
                       
                       <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5">
                         <div 
                           *ngFor="let spell of getSorcererSpellsForLevel(lvl)"
                           class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                          [ngClass]="selectedSorcererSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                          [ngClass]="selectedSorcererSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                         >
                           <input 
                             type="checkbox"
@@ -1071,7 +1071,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                             class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                           />
                           <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleSorcererSpell(spell.name)">
-                            <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                            <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
                             <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
                           </div>
                         </div>
@@ -1083,14 +1083,14 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <!-- Selección de Metamagia (Nivel 2+) -->
                 <div *ngIf="characterLevel >= 2" class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
-                    <span class="text-[9px] uppercase font-bold text-[#d4af37] tracking-wider">Metamagia (Elige exactamente {{ getSorcererMetamagicLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedSorcererMetamagic.length }} / {{ getSorcererMetamagicLimit() }}</span>
+                    <span class="text-[9px] uppercase font-bold text-pergamino tracking-wider">Metamagia (Elige exactamente {{ getSorcererMetamagicLimit() }}):</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedSorcererMetamagic.length }} / {{ getSorcererMetamagicLimit() }}</span>
                   </div>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5 max-h-[180px] overflow-y-auto pr-1 custom-scrollbar">
                     <div 
                       *ngFor="let meta of sorcererMetamagicList"
                       class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                      [ngClass]="selectedSorcererMetamagic.includes(meta.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                      [ngClass]="selectedSorcererMetamagic.includes(meta.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                     >
                       <input 
                         type="checkbox"
@@ -1100,7 +1100,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                       />
                       <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleSorcererMetamagic(meta.name)">
-                        <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ meta.name }} (Coste: {{ meta.cost }} po)</strong>
+                        <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ meta.name }} (Coste: {{ meta.cost }} po)</strong>
                         <span class="text-neutral-400 text-[8px] font-light">{{ meta.desc }}</span>
                       </div>
                     </div>
@@ -1109,9 +1109,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- Configuración de Hechizos del Mago (D&D 2024) -->
-              <div *ngIf="isMago()" class="space-y-4 md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl text-left animate-fade-in">
+              <div *ngIf="isMago()" class="space-y-4 md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl text-left animate-fade-in">
                 <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5 shrink-0">
-                  <span class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">📖 Libro de Conjuros del Mago (D&D 2024)</span>
+                  <span class="text-[10px] text-pergamino uppercase font-bold tracking-wider font-fantasy">📖 Libro de Conjuros del Mago (D&D 2024)</span>
                   <span class="text-[8px] bg-amber-955/20 border border-amber-600/30 px-2 py-0.5 rounded text-amber-500 font-mono font-bold select-none">
                     Nivel {{ characterLevel }}
                   </span>
@@ -1119,11 +1119,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
                 <!-- Selector de Nivel Inicial -->
                 <div class="space-y-1 bg-amber-955/10 border border-amber-500/20 p-2.5 rounded-lg">
-                  <label class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Establecer Nivel de Mago:</label>
+                  <label class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Establecer Nivel de Mago:</label>
                   <select
                     [(ngModel)]="characterLevel"
                     (change)="onLevelChange()"
-                    class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold cursor-pointer"
+                    class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold cursor-pointer"
                   >
                     <option *ngFor="let lvl of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [value]="lvl">
                       Nivel {{ lvl }}
@@ -1142,13 +1142,13 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-350 tracking-wider">Trucos de Mago (Elige exactamente {{ getMagoCantripsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedMagoCantrips.length }} / {{ getMagoCantripsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedMagoCantrips.length }} / {{ getMagoCantripsLimit() }}</span>
                   </div>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5 max-h-[140px] overflow-y-auto pr-1 custom-scrollbar">
                     <div 
                       *ngFor="let cantrip of magoCantripsList"
                       class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                      [ngClass]="selectedMagoCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                      [ngClass]="selectedMagoCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                     >
                       <input 
                         type="checkbox"
@@ -1158,7 +1158,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                       />
                       <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleMagoCantrip(cantrip.name)">
-                        <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
+                        <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ cantrip.name }}</strong>
                         <span class="text-neutral-400 text-[8px] font-light">{{ cantrip.desc }}</span>
                       </div>
                     </div>
@@ -1169,18 +1169,18 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2 pt-2 border-t border-neutral-900">
                   <div class="flex justify-between items-center">
                     <span class="text-[9px] uppercase font-bold text-neutral-355 tracking-wider">Conjuros del Libro (Elige exactamente {{ getMagoSpellsLimit() }}):</span>
-                    <span class="text-[8.5px] font-mono text-[#d4af37] font-bold">{{ selectedMagoSpells.length }} / {{ getMagoSpellsLimit() }}</span>
+                    <span class="text-[8.5px] font-mono text-pergamino font-bold">{{ selectedMagoSpells.length }} / {{ getMagoSpellsLimit() }}</span>
                   </div>
                   
                   <div class="grid grid-cols-1 gap-3 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
                     <div *ngFor="let lvl of getMagoAvailableSpellLevels()" class="space-y-1.5">
-                      <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
+                      <span class="text-[8px] text-pergamino font-bold uppercase tracking-widest block font-fantasy">Conjuros Nivel {{ lvl }}</span>
                       
                       <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
                         <div 
                           *ngFor="let spell of getMagoSpellsForLevel(lvl)"
                           class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                          [ngClass]="selectedMagoSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-[#d4af37]' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                          [ngClass]="selectedMagoSpells.includes(spell.name) ? 'bg-amber-955/20 border-amber-600/50 text-pergamino' : 'bg-neutral-900/30 border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                         >
                           <input 
                             type="checkbox"
@@ -1190,7 +1190,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                             class="w-3.5 h-3.5 accent-amber-600 cursor-pointer disabled:opacity-40 mt-0.5 shrink-0"
                           />
                           <div class="text-[8.5px] leading-snug w-full h-full" (click)="toggleMagoSpell(spell.name)">
-                            <strong class="font-fantasy text-[#d4af37] tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
+                            <strong class="font-fantasy text-pergamino tracking-wide block uppercase text-[8.5px]">{{ spell.name }}</strong>
                             <span class="text-neutral-400 text-[8px] font-light">{{ spell.desc }}</span>
                           </div>
                         </div>
@@ -1203,13 +1203,13 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Descripción Completa -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Descripción de tu Senda</h4>
-                <p class="text-xs text-neutral-400 leading-relaxed bg-[#18181c] border border-neutral-800 p-4 rounded-lg h-36 overflow-y-auto custom-scrollbar">
+                <p class="text-xs text-neutral-400 leading-relaxed bg-yunque border border-neutral-800 p-4 rounded-lg h-36 overflow-y-auto custom-scrollbar">
                   {{ activeClass.description }}
                 </p>
               </div>
             </div>
 
-            <div class="border-t border-neutral-900 pt-4 bg-[#121215] shrink-0">
+            <div class="border-t border-neutral-900 pt-4 bg-fragua shrink-0">
               <button 
                 (click)="onConfirmClass()"
                 [disabled]="selectedClassSkills.length < getClassSkillLimit(activeClass.name) || 
@@ -1234,8 +1234,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
         <div *ngIf="currentStep === 2" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fade-in">
           
           <!-- Columna 1: Menú Lateral de Trasfondos -->
-          <aside class="lg:col-span-3 bg-[#121215] border border-neutral-800/80 rounded-xl p-4 shadow-xl space-y-2 h-[680px] overflow-y-auto custom-scrollbar">
-            <h3 class="text-[#d4af37] font-serif font-bold text-sm tracking-wider uppercase border-b border-neutral-900/80 pb-2 mb-3">
+          <aside class="lg:col-span-3 bg-fragua border border-neutral-800/80 rounded-xl p-4 shadow-xl space-y-2 h-[680px] overflow-y-auto custom-scrollbar">
+            <h3 class="text-pergamino font-serif font-bold text-sm tracking-wider uppercase border-b border-neutral-900/80 pb-2 mb-3">
               Trasfondos ({{ backgrounds.length }})
             </h3>
             
@@ -1243,7 +1243,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               *ngFor="let b of backgrounds; let idx = index" 
               (click)="selectBackground(idx)"
               class="w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition duration-200 border cursor-pointer flex items-center justify-between focus:outline-none"
-              [ngClass]="selectedBackgroundIdx === idx ? 'bg-red-950/20 border-red-500/50 text-[#d4af37] shadow-[0_0_10px_rgba(239,68,68,0.15)]' : 'bg-transparent border-transparent hover:bg-neutral-800/50 hover:text-neutral-200 text-neutral-400'"
+              [ngClass]="selectedBackgroundIdx === idx ? 'bg-red-950/20 border-red-500/50 text-pergamino shadow-[0_0_10px_rgba(239,68,68,0.15)]' : 'bg-transparent border-transparent hover:bg-neutral-800/50 hover:text-neutral-200 text-neutral-400'"
             >
               <span class="flex items-center gap-2">
                 <span class="text-base select-none">{{ b.icon }}</span>
@@ -1255,9 +1255,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
           <!-- Columna 2: Título e Imagen del Trasfondo -->
           <main class="lg:col-span-5 space-y-4">
-            <div class="bg-[#121215] border border-[#d4af37]/15 rounded-xl overflow-hidden shadow-2xl relative group h-[680px] flex flex-col">
-              <div class="p-4 bg-[#0d0d0f]/90 border-b border-neutral-900 flex justify-between items-center">
-                <h2 class="text-2xl font-serif font-extrabold text-[#d4af37] tracking-wider uppercase">
+            <div class="bg-fragua border border-pergamino/15 rounded-xl overflow-hidden shadow-2xl relative group h-[680px] flex flex-col">
+              <div class="p-4 bg-fragua/90 border-b border-neutral-900 flex justify-between items-center">
+                <h2 class="text-2xl font-serif font-extrabold text-pergamino tracking-wider uppercase">
                   {{ activeBackground.name }}
                 </h2>
                 <span class="text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 bg-amber-950/40 border border-amber-800/40 text-amber-400 rounded-md">
@@ -1265,7 +1265,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 </span>
               </div>
 
-              <div class="flex-1 relative overflow-hidden bg-gradient-to-b from-[#141416] to-[#0c0c0f] flex items-center justify-center p-4">
+              <div class="flex-1 relative overflow-hidden bg-gradient-to-b from-fragua to-hollin flex items-center justify-center p-4">
                 <img 
                   [src]="'/assets/' + activeBackground.image" 
                   [alt]="activeBackground.name" 
@@ -1281,17 +1281,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   *ngIf="isFallbackBg" 
                   class="absolute inset-0 flex flex-col items-center justify-center space-y-4 z-10 p-6 bg-neutral-950/30"
                 >
-                  <div class="w-36 h-36 rounded-full bg-[#18181c]/90 border border-[#d4af37]/35 flex items-center justify-center text-7xl shadow-2xl relative group-hover:scale-105 transition duration-500">
-                    <span class="absolute inset-0 rounded-full bg-[#d4af37]/5 animate-ping"></span>
+                  <div class="w-36 h-36 rounded-full bg-yunque/90 border border-pergamino/35 flex items-center justify-center text-7xl shadow-2xl relative group-hover:scale-105 transition duration-500">
+                    <span class="absolute inset-0 rounded-full bg-pergamino/5 animate-ping"></span>
                     {{ activeBackground.icon }}
                   </div>
-                  <h3 class="text-xs uppercase font-bold tracking-widest text-[#d4af37] font-serif">Concepto Narrativo</h3>
+                  <h3 class="text-xs uppercase font-bold tracking-widest text-pergamino font-serif">Concepto Narrativo</h3>
                 </div>
 
-                <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#121215] to-transparent opacity-90 pointer-events-none"></div>
+                <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-fragua to-transparent opacity-90 pointer-events-none"></div>
                 
-                <div *ngIf="!imageLoaded" class="absolute inset-0 flex items-center justify-center bg-[#121215]">
-                  <svg class="animate-spin h-10 w-10 text-[#d4af37]" viewBox="0 0 24 24" fill="none">
+                <div *ngIf="!imageLoaded" class="absolute inset-0 flex items-center justify-center bg-fragua">
+                  <svg class="animate-spin h-10 w-10 text-pergamino" viewBox="0 0 24 24" fill="none">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
@@ -1307,17 +1307,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           </main>
 
           <!-- Columna 3: Características del Trasfondo -->
-          <section class="lg:col-span-4 bg-[#121215] border border-neutral-800/80 rounded-xl p-6 shadow-xl h-[680px] flex flex-col justify-between overflow-hidden">
+          <section class="lg:col-span-4 bg-fragua border border-neutral-800/80 rounded-xl p-6 shadow-xl h-[680px] flex flex-col justify-between overflow-hidden">
             <!-- Contenedor Scrollable -->
             <div class="flex-1 overflow-y-auto custom-scrollbar space-y-6 pr-1 pb-4 text-left">
               <div class="border-b border-neutral-900 pb-3">
-                <h3 class="text-[#d4af37] font-serif font-bold text-base tracking-wider uppercase">Dotes y Habilidades</h3>
+                <h3 class="text-pergamino font-serif font-bold text-base tracking-wider uppercase">Dotes y Habilidades</h3>
                 <p class="text-[10px] text-neutral-500">Beneficios mecánicos de tu historia personal.</p>
               </div>
 
               <!-- Habilidades de Clase Ya Seleccionadas -->
               <div class="bg-neutral-900/50 border border-neutral-850/60 p-4 rounded-xl space-y-2">
-                <h4 class="text-[10px] font-bold text-[#d4af37] uppercase tracking-wider">Habilidades ya elegidas (Clase)</h4>
+                <h4 class="text-[10px] font-bold text-pergamino uppercase tracking-wider">Habilidades ya elegidas (Clase)</h4>
                 <div class="flex flex-wrap gap-1.5 pt-1">
                   <span *ngIf="selectedClassSkills.length === 0" class="text-[10px] text-neutral-500 italic">Ninguna seleccionada</span>
                   <span 
@@ -1337,8 +1337,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     Reserva: {{ 3 - getUsedBackgroundStatsPoints() }} pts
                   </span>
                 </h4>
-                <div class="space-y-2 bg-[#18181c] border border-neutral-800 p-4 rounded-lg">
-                  <p class="text-[10px] text-[#d4af37] font-bold font-serif uppercase tracking-wider mb-1">
+                <div class="space-y-2 bg-yunque border border-neutral-800 p-4 rounded-lg">
+                  <p class="text-[10px] text-pergamino font-bold font-serif uppercase tracking-wider mb-1">
                     {{ activeBackground.statImprovement }}
                   </p>
                   <p class="text-[9px] text-neutral-400 leading-tight mb-2">
@@ -1381,10 +1381,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Dote Clave Obtenida</h4>
                 <div 
                   (click)="featExpanded = !featExpanded"
-                  class="flex flex-col bg-[#18181c] hover:bg-neutral-800/80 border border-neutral-800 hover:border-[#d4af37]/30 p-4 rounded-lg cursor-pointer transition select-none group/feat"
+                  class="flex flex-col bg-yunque hover:bg-neutral-800/80 border border-neutral-800 hover:border-pergamino/30 p-4 rounded-lg cursor-pointer transition select-none group/feat"
                 >
                   <div class="flex justify-between items-center">
-                    <span class="text-xs font-bold text-[#d4af37] group-hover/feat:text-amber-400">
+                    <span class="text-xs font-bold text-pergamino group-hover/feat:text-amber-400">
                       {{ getFeatInfo(activeBackground.keyFeat).title }}
                     </span>
                     <span class="text-xs text-neutral-500 transition duration-200" [class.rotate-180]="featExpanded">
@@ -1396,7 +1396,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <!-- Dropdown descriptivo -->
                   <div 
                     *ngIf="featExpanded" 
-                    class="mt-3 pt-3 border-t border-neutral-800/80 text-[11px] text-neutral-355 leading-relaxed animate-fade-in bg-[#0d0d0f] p-3.5 rounded-lg border border-amber-900/15 space-y-2 text-left"
+                    class="mt-3 pt-3 border-t border-neutral-800/80 text-[11px] text-neutral-355 leading-relaxed animate-fade-in bg-fragua p-3.5 rounded-lg border border-amber-900/15 space-y-2 text-left"
                   >
                     <p class="font-bold text-amber-400 font-serif uppercase tracking-wider text-[9px] mb-1">Beneficios de la Dote:</p>
                     <ul class="space-y-1.5 list-none pl-0">
@@ -1415,7 +1415,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Competencias Habilidades -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Habilidades Clave</h4>
-                <div class="flex items-center gap-3 bg-[#18181c] border border-neutral-800 px-4 py-3 rounded-lg">
+                <div class="flex items-center gap-3 bg-yunque border border-neutral-800 px-4 py-3 rounded-lg">
                   <span class="text-xl">🎓</span>
                   <div>
                     <p class="text-xs font-bold text-neutral-200">{{ activeBackground.skills }}</p>
@@ -1427,7 +1427,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Competencias Herramientas -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Herramientas / Juegos</h4>
-                <div class="flex items-center gap-3 bg-[#18181c] border border-neutral-800 px-4 py-3 rounded-lg">
+                <div class="flex items-center gap-3 bg-yunque border border-neutral-800 px-4 py-3 rounded-lg">
                   <span class="text-xl">🎲</span>
                   <div>
                     <p class="text-xs font-bold text-neutral-200">{{ activeBackground.tools }}</p>
@@ -1439,17 +1439,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Sugerencias -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Sugerido para Clases</h4>
-                <p class="text-xs text-neutral-400 leading-relaxed bg-[#18181c] border border-neutral-850 p-4 rounded-lg">
+                <p class="text-xs text-neutral-400 leading-relaxed bg-yunque border border-neutral-850 p-4 rounded-lg">
                   {{ activeBackground.recommendations }}
                 </p>
               </div>
             </div>
 
             <!-- Botones de Acción Fijos Abajo -->
-            <div class="flex gap-3 border-t border-neutral-900 pt-4 bg-[#121215] shrink-0">
+            <div class="flex gap-3 border-t border-neutral-900 pt-4 bg-fragua shrink-0">
               <button 
                 (click)="goToStep(1)"
-                class="flex-1 bg-[#18181c] hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-3 rounded-lg text-xs font-serif uppercase tracking-wider cursor-pointer transition duration-200"
+                class="flex-1 bg-yunque hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-3 rounded-lg text-xs font-serif uppercase tracking-wider cursor-pointer transition duration-200"
               >
                 Volver
               </button>
@@ -1469,8 +1469,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
         <div *ngIf="currentStep === 3" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fade-in">
           
           <!-- Columna 1: Menú Lateral de Orígenes -->
-          <aside class="lg:col-span-3 bg-[#121215] border border-neutral-800/80 rounded-xl p-4 shadow-xl space-y-2 h-[680px] overflow-y-auto custom-scrollbar">
-            <h3 class="text-[#d4af37] font-serif font-bold text-sm tracking-wider uppercase border-b border-neutral-900/80 pb-2 mb-3">
+          <aside class="lg:col-span-3 bg-fragua border border-neutral-800/80 rounded-xl p-4 shadow-xl space-y-2 h-[680px] overflow-y-auto custom-scrollbar">
+            <h3 class="text-pergamino font-serif font-bold text-sm tracking-wider uppercase border-b border-neutral-900/80 pb-2 mb-3">
               Orígenes Disponibles
             </h3>
             
@@ -1478,7 +1478,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               *ngFor="let o of origins; let idx = index" 
               (click)="selectOrigin(idx)"
               class="w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition duration-200 border cursor-pointer flex items-center justify-between focus:outline-none"
-              [ngClass]="selectedOriginIdx === idx ? 'bg-red-950/20 border-red-500/50 text-[#d4af37] shadow-[0_0_10px_rgba(239,68,68,0.15)]' : 'bg-transparent border-transparent hover:bg-neutral-800/50 hover:text-neutral-200 text-neutral-400'"
+              [ngClass]="selectedOriginIdx === idx ? 'bg-red-950/20 border-red-500/50 text-pergamino shadow-[0_0_10px_rgba(239,68,68,0.15)]' : 'bg-transparent border-transparent hover:bg-neutral-800/50 hover:text-neutral-200 text-neutral-400'"
             >
               <span class="flex items-center gap-2">
                 <span class="text-base select-none">{{ o.icon }}</span>
@@ -1490,9 +1490,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
           <!-- Columna 2: Título e Imagen del Origen -->
           <main class="lg:col-span-5 space-y-4">
-            <div class="bg-[#121215] border border-[#d4af37]/15 rounded-xl overflow-hidden shadow-2xl relative group h-[680px] flex flex-col">
-              <div class="p-4 bg-[#0d0d0f]/90 border-b border-neutral-900 flex justify-between items-center">
-                <h2 class="text-2xl font-serif font-extrabold text-[#d4af37] tracking-wider uppercase">
+            <div class="bg-fragua border border-pergamino/15 rounded-xl overflow-hidden shadow-2xl relative group h-[680px] flex flex-col">
+              <div class="p-4 bg-fragua/90 border-b border-neutral-900 flex justify-between items-center">
+                <h2 class="text-2xl font-serif font-extrabold text-pergamino tracking-wider uppercase">
                   {{ activeOrigin.name }}
                 </h2>
                 <span class="text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 bg-amber-950/40 border border-amber-800/40 text-amber-400 rounded-md">
@@ -1500,7 +1500,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 </span>
               </div>
 
-              <div class="flex-1 relative overflow-hidden bg-gradient-to-b from-[#141416] to-[#0c0c0f] flex items-center justify-center p-4">
+              <div class="flex-1 relative overflow-hidden bg-gradient-to-b from-fragua to-hollin flex items-center justify-center p-4">
                 <img 
                   [src]="'/assets/Razas/' + activeOrigin.image" 
                   [alt]="activeOrigin.name" 
@@ -1510,10 +1510,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   [class.opacity-0]="!imageLoaded"
                   [class.opacity-100]="imageLoaded"
                 />
-                <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#121215] to-transparent opacity-90 pointer-events-none"></div>
+                <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-fragua to-transparent opacity-90 pointer-events-none"></div>
                 
-                <div *ngIf="!imageLoaded" class="absolute inset-0 flex items-center justify-center bg-[#121215]">
-                  <svg class="animate-spin h-10 w-10 text-[#d4af37]" viewBox="0 0 24 24" fill="none">
+                <div *ngIf="!imageLoaded" class="absolute inset-0 flex items-center justify-center bg-fragua">
+                  <svg class="animate-spin h-10 w-10 text-pergamino" viewBox="0 0 24 24" fill="none">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
@@ -1529,17 +1529,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           </main>
 
           <!-- Columna 3: Características de Origen -->
-          <section class="lg:col-span-4 bg-[#121215] border border-neutral-800/80 rounded-xl p-6 shadow-xl h-[680px] flex flex-col justify-between overflow-y-auto">
+          <section class="lg:col-span-4 bg-fragua border border-neutral-800/80 rounded-xl p-6 shadow-xl h-[680px] flex flex-col justify-between overflow-y-auto">
             <div class="space-y-6">
               <div class="border-b border-neutral-900 pb-3">
-                <h3 class="text-[#d4af37] font-serif font-bold text-base tracking-wider uppercase">Atributos de Origen</h3>
+                <h3 class="text-pergamino font-serif font-bold text-base tracking-wider uppercase">Atributos de Origen</h3>
                 <p class="text-[10px] text-neutral-500">Beneficios raciales de tu linaje ancestral.</p>
               </div>
 
               <!-- Velocidad de Movimiento -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Velocidad Base</h4>
-                <div class="flex items-center justify-between bg-[#18181c] border border-neutral-800 px-4 py-3 rounded-lg">
+                <div class="flex items-center justify-between bg-yunque border border-neutral-800 px-4 py-3 rounded-lg">
                   <span class="text-xs font-semibold text-neutral-200">Capacidad de desplazamiento</span>
                   <span class="text-sm font-bold text-amber-400 font-serif">🏃 {{ activeOrigin.speed }}</span>
                 </div>
@@ -1548,15 +1548,15 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Idiomas -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Idiomas Iniciales</h4>
-                <div class="flex items-center justify-between bg-[#18181c] border border-neutral-800 px-4 py-3 rounded-lg">
+                <div class="flex items-center justify-between bg-yunque border border-neutral-800 px-4 py-3 rounded-lg">
                   <span class="text-xs font-semibold text-neutral-200">Lenguas dominadas</span>
                   <span class="text-xs font-bold text-neutral-300">{{ activeOrigin.language }}</span>
                 </div>
               </div>
 
               <!-- Selección de Linaje o Ancestro Dracónico (Si aplica) -->
-              <div *ngIf="isOriginLineageRequired()" class="space-y-3 bg-[#18181c] border border-[#d4af37]/30 p-4 rounded-xl text-left">
-                <span class="text-[10px] uppercase font-bold text-[#d4af37] tracking-wider block">
+              <div *ngIf="isOriginLineageRequired()" class="space-y-3 bg-yunque border border-pergamino/30 p-4 rounded-xl text-left">
+                <span class="text-[10px] uppercase font-bold text-pergamino tracking-wider block">
                   <span *ngIf="activeOrigin.name.toLowerCase().includes('elfo')">Selecciona tu Linaje Élfico</span>
                   <span *ngIf="activeOrigin.name.toLowerCase().includes('dracónido') || activeOrigin.name.toLowerCase().includes('draconido')">Selecciona tu Ancestro Dracónico</span>
                   <span *ngIf="activeOrigin.name.toLowerCase().includes('gnomo')">Selecciona tu Linaje Gnomo</span>
@@ -1574,10 +1574,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     *ngFor="let el of elvenLineages"
                     (click)="selectedOriginLineage = el.name"
                     class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5"
-                    [ngClass]="selectedOriginLineage === el.name ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200 shadow-[0_0_10px_rgba(212,175,55,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                    [ngClass]="selectedOriginLineage === el.name ? 'bg-amber-955/15 border-pergamino text-neutral-200 shadow-[0_0_10px_rgba(234,220,194,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
                   >
                     <span class="text-xs font-bold text-neutral-250 flex items-center gap-1.5">
-                      <span class="text-xs" [class.text-[#d4af37]]="selectedOriginLineage === el.name">
+                      <span class="text-xs" [class.text-pergamino]="selectedOriginLineage === el.name">
                         {{ selectedOriginLineage === el.name ? '✦' : '◇' }}
                       </span>
                       {{ el.name }}
@@ -1593,10 +1593,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     type="button"
                     (click)="selectedOriginLineage = drag.name + ' (' + drag.element + ')'"
                     class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5 w-full focus:outline-none"
-                    [ngClass]="selectedOriginLineage.startsWith(drag.name) ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                    [ngClass]="selectedOriginLineage.startsWith(drag.name) ? 'bg-amber-955/15 border-pergamino text-neutral-200' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
                   >
                     <span class="text-xs font-bold text-neutral-250 flex items-center gap-1">
-                      <span class="text-[10px]" [class.text-[#d4af37]]="selectedOriginLineage.startsWith(drag.name)">
+                      <span class="text-[10px]" [class.text-pergamino]="selectedOriginLineage.startsWith(drag.name)">
                         {{ selectedOriginLineage.startsWith(drag.name) ? '✦' : '◇' }}
                       </span>
                       {{ drag.name }}
@@ -1611,10 +1611,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     *ngFor="let gn of gnomeLineages"
                     (click)="selectedOriginLineage = gn.name"
                     class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5"
-                    [ngClass]="selectedOriginLineage === gn.name ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200 shadow-[0_0_10px_rgba(212,175,55,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                    [ngClass]="selectedOriginLineage === gn.name ? 'bg-amber-955/15 border-pergamino text-neutral-200 shadow-[0_0_10px_rgba(234,220,194,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
                   >
                     <span class="text-xs font-bold text-neutral-250 flex items-center gap-1.5">
-                      <span class="text-xs" [class.text-[#d4af37]]="selectedOriginLineage === gn.name">
+                      <span class="text-xs" [class.text-pergamino]="selectedOriginLineage === gn.name">
                         {{ selectedOriginLineage === gn.name ? '✦' : '◇' }}
                       </span>
                       {{ gn.name }}
@@ -1629,10 +1629,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     *ngFor="let gol of goliathLineages"
                     (click)="selectedOriginLineage = gol.name"
                     class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5 mb-2 last:mb-0"
-                    [ngClass]="selectedOriginLineage === gol.name ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200 shadow-[0_0_10px_rgba(212,175,55,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                    [ngClass]="selectedOriginLineage === gol.name ? 'bg-amber-955/15 border-pergamino text-neutral-200 shadow-[0_0_10px_rgba(234,220,194,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
                   >
                     <span class="text-xs font-bold text-neutral-250 flex items-center gap-1.5">
-                      <span class="text-xs" [class.text-[#d4af37]]="selectedOriginLineage === gol.name">
+                      <span class="text-xs" [class.text-pergamino]="selectedOriginLineage === gol.name">
                         {{ selectedOriginLineage === gol.name ? '✦' : '◇' }}
                       </span>
                       {{ gol.name }}
@@ -1647,10 +1647,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     *ngFor="let tf of tieflingLineages"
                     (click)="selectedOriginLineage = tf.name"
                     class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5"
-                    [ngClass]="selectedOriginLineage === tf.name ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200 shadow-[0_0_10px_rgba(212,175,55,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                    [ngClass]="selectedOriginLineage === tf.name ? 'bg-amber-955/15 border-pergamino text-neutral-200 shadow-[0_0_10px_rgba(234,220,194,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
                   >
                     <span class="text-xs font-bold text-neutral-250 flex items-center gap-1.5">
-                      <span class="text-xs" [class.text-[#d4af37]]="selectedOriginLineage === tf.name">
+                      <span class="text-xs" [class.text-pergamino]="selectedOriginLineage === tf.name">
                         {{ selectedOriginLineage === tf.name ? '✦' : '◇' }}
                       </span>
                       {{ tf.name }}
@@ -1665,10 +1665,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     *ngFor="let aa of aasimarLineages"
                     (click)="selectedOriginLineage = aa.name"
                     class="p-2.5 rounded-lg border text-left cursor-pointer transition select-none flex flex-col gap-0.5"
-                    [ngClass]="selectedOriginLineage === aa.name ? 'bg-amber-955/15 border-[#d4af37] text-neutral-200 shadow-[0_0_10px_rgba(212,175,55,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
+                    [ngClass]="selectedOriginLineage === aa.name ? 'bg-amber-955/15 border-pergamino text-neutral-200 shadow-[0_0_10px_rgba(234,220,194,0.06)]' : 'bg-neutral-900/40 border-neutral-850 hover:border-neutral-700 text-neutral-400'"
                   >
                     <span class="text-xs font-bold text-neutral-250 flex items-center gap-1.5">
-                      <span class="text-xs" [class.text-[#d4af37]]="selectedOriginLineage === aa.name">
+                      <span class="text-xs" [class.text-pergamino]="selectedOriginLineage === aa.name">
                         {{ selectedOriginLineage === aa.name ? '✦' : '◇' }}
                       </span>
                       {{ aa.name }}
@@ -1685,8 +1685,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Rasgo Especial del Origen en DB -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Rasgo de Linaje Especial</h4>
-                <div class="flex flex-col bg-[#18181c] border border-neutral-850 p-4 rounded-lg space-y-1">
-                  <span class="text-xs font-bold text-[#d4af37]">{{ activeOrigin.trait.split('(')[0] }}</span>
+                <div class="flex flex-col bg-yunque border border-neutral-850 p-4 rounded-lg space-y-1">
+                  <span class="text-xs font-bold text-pergamino">{{ activeOrigin.trait.split('(')[0] }}</span>
                   <span class="text-[11px] text-neutral-400 leading-normal">{{ activeOrigin.trait }}</span>
                 </div>
               </div>
@@ -1694,9 +1694,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Atributos Detallados del Manual (D&D 2024) -->
               <div *ngIf="getOriginManualAttributes(activeOrigin.name).length > 0" class="space-y-2.5">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Atributos del Manual (D&D 2024)</h4>
-                <div class="space-y-3 bg-[#18181c] border border-neutral-850 p-4 rounded-lg text-left">
+                <div class="space-y-3 bg-yunque border border-neutral-850 p-4 rounded-lg text-left">
                   <div *ngFor="let attr of getOriginManualAttributes(activeOrigin.name)" class="border-b border-neutral-900 pb-2.5 last:border-0 last:pb-0 space-y-0.5">
-                    <span class="text-[10px] font-bold text-[#d4af37] uppercase tracking-wider block">{{ attr.title }}</span>
+                    <span class="text-[10px] font-bold text-pergamino uppercase tracking-wider block">{{ attr.title }}</span>
                     <p class="text-[11px] text-neutral-350 leading-relaxed font-light">{{ attr.desc }}</p>
                   </div>
                 </div>
@@ -1705,7 +1705,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Descripción Completa -->
               <div class="space-y-2">
                 <h4 class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Acerca del Linaje</h4>
-                <p class="text-xs text-neutral-400 leading-relaxed bg-[#18181c] border border-neutral-800 p-4 rounded-lg h-32 overflow-y-auto custom-scrollbar">
+                <p class="text-xs text-neutral-400 leading-relaxed bg-yunque border border-neutral-800 p-4 rounded-lg h-32 overflow-y-auto custom-scrollbar">
                   {{ activeOrigin.description }}
                 </p>
               </div>
@@ -1715,7 +1715,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <div class="flex gap-3 mt-6 shrink-0">
               <button 
                 (click)="goToStep(2)"
-                class="flex-1 bg-[#18181c] hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-3 rounded-lg text-xs font-serif uppercase tracking-wider cursor-pointer transition duration-200"
+                class="flex-1 bg-yunque hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-3 rounded-lg text-xs font-serif uppercase tracking-wider cursor-pointer transition duration-200"
               >
                 Volver
               </button>
@@ -1735,14 +1735,14 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
         <div *ngIf="currentStep === 4" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fade-in">
           
           <!-- Panel Izquierdo -->
-          <div class="lg:col-span-4 bg-[#121215] border border-neutral-800/80 rounded-xl p-6 shadow-xl space-y-6">
-            <h3 class="text-[#d4af37] font-serif font-bold text-base tracking-wider uppercase border-b border-neutral-900 pb-2 mb-3">
+          <div class="lg:col-span-4 bg-fragua border border-neutral-800/80 rounded-xl p-6 shadow-xl space-y-6">
+            <h3 class="text-pergamino font-serif font-bold text-base tracking-wider uppercase border-b border-neutral-900 pb-2 mb-3">
               Asignación de Atributos
             </h3>
             
             <div *ngIf="attributeMethod === 'array'" class="space-y-4">
               <p class="text-xs text-neutral-400 leading-relaxed">
-                El <strong class="text-amber-400">Conjunto Estándar</strong> ofrece un balance equilibrado de puntuaciones: <strong class="text-[#d4af37]">15, 14, 13, 12, 10 y 8</strong>. 
+                El <strong class="text-amber-400">Conjunto Estándar</strong> ofrece un balance equilibrado de puntuaciones: <strong class="text-pergamino">15, 14, 13, 12, 10 y 8</strong>. 
               </p>
               <p class="text-xs text-neutral-450 leading-relaxed">
                 Asigna cada una de estas puntuaciones a tus características en la derecha. Te sugerimos poner los valores más altos en el atributo recomendado de tu clase.
@@ -1760,12 +1760,12 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
             <div *ngIf="attributeMethod === 'buy'" class="space-y-4">
               <p class="text-xs text-neutral-400 leading-relaxed">
-                En la <strong class="text-amber-400">Compra de Puntos</strong>, dispones de un presupuesto de <strong class="text-[#d4af37]">27 puntos</strong>. Todas tus características comienzan en 8 y puedes comprarlas hasta un máximo de 15.
+                En la <strong class="text-amber-400">Compra de Puntos</strong>, dispones de un presupuesto de <strong class="text-pergamino">27 puntos</strong>. Todas tus características comienzan en 8 y puedes comprarlas hasta un máximo de 15.
               </p>
               
               <!-- Tabla de costos oficial -->
-              <div class="bg-[#18181c] border border-neutral-800 rounded-lg p-3">
-                <span class="text-[9px] uppercase font-bold text-[#d4af37] block mb-2 text-center tracking-wider">Tabla de Costos de D&D 5e</span>
+              <div class="bg-yunque border border-neutral-800 rounded-lg p-3">
+                <span class="text-[9px] uppercase font-bold text-pergamino block mb-2 text-center tracking-wider">Tabla de Costos de D&D 5e</span>
                 <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[10px] font-mono">
                   <div class="flex justify-between border-b border-neutral-900/50 pb-0.5">
                     <span class="text-neutral-400">Punt. 8:</span>
@@ -1804,19 +1804,19 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </div>
 
             <!-- Caja dinámica de recomendación de clase -->
-            <div class="bg-[#18181c] border border-neutral-800 p-4 rounded-lg space-y-2 text-xs">
+            <div class="bg-yunque border border-neutral-800 p-4 rounded-lg space-y-2 text-xs">
               <div class="flex justify-between border-b border-neutral-900 pb-1.5 mb-1.5">
-                <span class="font-bold text-[#d4af37]">Tu Clase Recomendada:</span>
+                <span class="font-bold text-pergamino">Tu Clase Recomendada:</span>
                 <span class="text-neutral-300 font-semibold">{{ activeClass.name }}</span>
               </div>
               <p class="text-neutral-450 leading-relaxed">
-                El atributo primario de tu clase es la <strong class="text-[#d4af37]">{{ activeClass.primaryStat }}</strong>. Intenta concentrar tus puntos en ella para potenciar tu efectividad en combate y lanzamiento de conjuros.
+                El atributo primario de tu clase es la <strong class="text-pergamino">{{ activeClass.primaryStat }}</strong>. Intenta concentrar tus puntos en ella para potenciar tu efectividad en combate y lanzamiento de conjuros.
               </p>
             </div>
           </div>
 
           <!-- Panel Central -->
-          <main class="lg:col-span-8 bg-[#121215] border border-neutral-800/80 rounded-xl p-6 shadow-2xl space-y-6">
+          <main class="lg:col-span-8 bg-fragua border border-neutral-800/80 rounded-xl p-6 shadow-2xl space-y-6">
             
             <!-- Selector de Métodos de Generación -->
             <div class="flex bg-neutral-950/60 p-1 border border-neutral-850 rounded-lg max-w-md mx-auto relative z-10">
@@ -1852,7 +1852,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <!-- Cabecera de Puntuación -->
             <div class="flex items-center justify-between border-b border-neutral-900 pb-4">
               <div>
-                <h3 class="text-base font-serif font-extrabold text-[#d4af37] uppercase tracking-wider">Tus Puntuaciones</h3>
+                <h3 class="text-base font-serif font-extrabold text-pergamino uppercase tracking-wider">Tus Puntuaciones</h3>
                 <p class="text-xs text-neutral-500">
                   <span *ngIf="attributeMethod === 'array'">Asigna las puntuaciones del conjunto estándar.</span>
                   <span *ngIf="attributeMethod === 'random' && activeRollIndex < 6">Lanza los dados 6 veces para rellenar la reserva.</span>
@@ -1864,7 +1864,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Puntos Restantes o Asignados -->
               <div *ngIf="attributeMethod === 'buy'" class="bg-red-950/40 border border-red-800/50 rounded-lg px-4 py-2 text-center shadow-inner">
                 <div class="text-[9px] uppercase font-bold text-red-400 tracking-widest">Puntos Restantes</div>
-                <div class="text-2xl font-serif font-bold text-[#d4af37]">{{ attributePointsPool }}</div>
+                <div class="text-2xl font-serif font-bold text-pergamino">{{ attributePointsPool }}</div>
               </div>
               <div *ngIf="attributeMethod === 'array' || attributeMethod === 'random'" class="bg-amber-950/40 border border-amber-800/50 rounded-lg px-4 py-2 text-center shadow-inner">
                 <div class="text-[9px] uppercase font-bold text-amber-400 tracking-widest">Asignadas</div>
@@ -1882,7 +1882,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   *ngFor="let item of attributePool; let i = index" 
                   class="w-12 h-12 rounded-lg border flex flex-col items-center justify-center relative shadow transition-all duration-200"
                   [ngClass]="{
-                    'border-amber-600/60 bg-amber-950/10 text-[#d4af37] font-bold': item.assignedTo === null,
+                    'border-amber-600/60 bg-amber-950/10 text-pergamino font-bold': item.assignedTo === null,
                     'border-neutral-900 bg-neutral-950/50 text-neutral-600': item.assignedTo !== null
                   }"
                 >
@@ -1895,10 +1895,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </div>
 
             <!-- Tablero de Tirada Aleatoria (4d6) -->
-            <div *ngIf="attributeMethod === 'random' && activeRollIndex < 6" class="bg-[#18181c] border border-neutral-800/80 p-6 rounded-xl space-y-6 text-center">
+            <div *ngIf="attributeMethod === 'random' && activeRollIndex < 6" class="bg-yunque border border-neutral-800/80 p-6 rounded-xl space-y-6 text-center">
               <div class="space-y-1">
                 <span class="text-[10px] text-neutral-450 uppercase font-bold tracking-wider block">Sistema 4d6 Drop Lowest</span>
-                <h4 class="text-base font-serif font-extrabold text-[#d4af37]">TIRADA {{ activeRollIndex + 1 }} DE 6</h4>
+                <h4 class="text-base font-serif font-extrabold text-pergamino">TIRADA {{ activeRollIndex + 1 }} DE 6</h4>
               </div>
 
               <!-- Animación de Dados -->
@@ -1907,9 +1907,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   *ngFor="let die of rolledStats[activeRollIndex]?.dice; let dIdx = index" 
                   class="w-16 h-16 rounded-xl border-2 flex items-center justify-center text-2xl font-bold font-mono transition-all duration-75 select-none"
                   [ngClass]="{
-                    'bg-[#0e0e11] border-neutral-850 text-neutral-600': !rolledStats[activeRollIndex]?.completed && !rolledStats[activeRollIndex]?.rolling,
-                    'bg-amber-955/20 border-amber-600/70 text-amber-500 animate-bounce scale-105 shadow-[0_0_15px_rgba(212,175,55,0.15)]': rolledStats[activeRollIndex]?.rolling,
-                    'bg-amber-900/10 border-amber-500 text-amber-400 font-bold shadow-[0_0_12px_rgba(212,175,55,0.25)]': rolledStats[activeRollIndex]?.completed && dIdx !== getDiscardedIdx(activeRollIndex),
+                    'bg-fragua border-neutral-850 text-neutral-600': !rolledStats[activeRollIndex]?.completed && !rolledStats[activeRollIndex]?.rolling,
+                    'bg-amber-955/20 border-amber-600/70 text-amber-500 animate-bounce scale-105 shadow-[0_0_15px_rgba(234,220,194,0.15)]': rolledStats[activeRollIndex]?.rolling,
+                    'bg-amber-900/10 border-amber-500 text-amber-400 font-bold shadow-[0_0_12px_rgba(234,220,194,0.25)]': rolledStats[activeRollIndex]?.completed && dIdx !== getDiscardedIdx(activeRollIndex),
                     'bg-red-955/20 border-red-900/60 text-red-500/50 line-through scale-90 opacity-40': rolledStats[activeRollIndex]?.completed && dIdx === getDiscardedIdx(activeRollIndex)
                   }"
                 >
@@ -1920,7 +1920,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Resultados de Tirada -->
               <div *ngIf="rolledStats[activeRollIndex]?.completed" class="bg-neutral-950/60 border border-neutral-900 p-4 rounded-lg inline-block text-center mx-auto space-y-1">
                 <span class="text-[9px] uppercase font-bold text-neutral-500 tracking-wider">Puntuación Obtenida</span>
-                <div class="text-3xl font-serif font-bold text-[#d4af37] font-mono leading-none">
+                <div class="text-3xl font-serif font-bold text-pergamino font-mono leading-none">
                   {{ rolledStats[activeRollIndex]?.sum }}
                 </div>
                 <span class="text-[9px] text-neutral-500 block leading-tight pt-1">
@@ -1932,7 +1932,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <button 
                   (click)="rollDiceStats()"
                   [disabled]="isRollingAll || activeRollIndex >= 6"
-                  class="bg-gradient-to-r from-[#d4af37] to-amber-600 hover:from-amber-500 hover:to-[#d4af37] text-neutral-950 font-serif uppercase tracking-widest font-extrabold px-8 py-3 rounded-lg text-xs cursor-pointer shadow-lg hover:shadow-[0_0_15px_rgba(212,175,55,0.35)] transition disabled:opacity-40 disabled:cursor-not-allowed select-none"
+                  class="bg-gradient-to-r from-pergamino to-amber-600 hover:from-amber-500 hover:to-pergamino text-neutral-950 font-serif uppercase tracking-widest font-extrabold px-8 py-3 rounded-lg text-xs cursor-pointer shadow-lg hover:shadow-[0_0_15px_rgba(234,220,194,0.35)] transition disabled:opacity-40 disabled:cursor-not-allowed select-none"
                 >
                   {{ isRollingAll ? 'Lanzando Dados...' : 'Lanzar Dados (4d6)' }}
                 </button>
@@ -1940,7 +1940,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </div>
 
             <!-- Caja de Reinicio de Tiradas Aleatorias -->
-            <div *ngIf="attributeMethod === 'random' && activeRollIndex === 6" class="bg-[#18181c] border border-neutral-800 p-4 rounded-xl flex items-center justify-between gap-4">
+            <div *ngIf="attributeMethod === 'random' && activeRollIndex === 6" class="bg-yunque border border-neutral-800 p-4 rounded-xl flex items-center justify-between gap-4">
               <div class="flex items-center gap-2.5">
                 <span class="text-lg">🎲</span>
                 <div class="text-left">
@@ -1960,7 +1960,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <div *ngIf="attributeMethod === 'buy'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div 
                 *ngFor="let attr of attributes" 
-                class="bg-[#18181c] border border-neutral-800/80 p-4 rounded-xl flex items-center justify-between shadow-md hover:border-[#d4af37]/15 transition"
+                class="bg-yunque border border-neutral-800/80 p-4 rounded-xl flex items-center justify-between shadow-md hover:border-pergamino/15 transition"
               >
                 <div class="space-y-1 pr-4 text-left">
                   <h4 class="text-sm font-bold text-neutral-200 uppercase tracking-wide">
@@ -1981,7 +1981,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   </button>
 
                   <div class="text-center w-16">
-                    <div class="text-2xl font-serif font-bold text-[#d4af37]">
+                    <div class="text-2xl font-serif font-bold text-pergamino">
                       {{ getFinalAttributeScore(attr.key) }}
                     </div>
                     <div class="text-[9px] text-neutral-500 uppercase tracking-widest leading-none mt-0.5 space-y-0.5">
@@ -2007,7 +2007,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <div *ngIf="attributeMethod === 'array' || (attributeMethod === 'random' && activeRollIndex === 6)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div 
                 *ngFor="let attr of attributes" 
-                class="bg-[#18181c] border border-neutral-800/80 p-4 rounded-xl flex items-center justify-between shadow-md hover:border-[#d4af37]/15 transition animate-fade-in"
+                class="bg-yunque border border-neutral-800/80 p-4 rounded-xl flex items-center justify-between shadow-md hover:border-pergamino/15 transition animate-fade-in"
               >
                 <div class="space-y-1 pr-4 text-left">
                   <h4 class="text-sm font-bold text-neutral-200 uppercase tracking-wide">
@@ -2025,7 +2025,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     <select 
                       [ngModel]="getAttributePoolIndexFor(attr.key)"
                       (ngModelChange)="assignPoolValue(attr.key, $event)"
-                      class="bg-neutral-900 border border-neutral-800 text-[#d4af37] font-mono text-xs font-bold rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#d4af37]/45 cursor-pointer max-w-[120px]"
+                      class="bg-neutral-900 border border-neutral-800 text-pergamino font-mono text-xs font-bold rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-pergamino/45 cursor-pointer max-w-[120px]"
                     >
                       <option [value]="''">-- Elegir --</option>
                       <option 
@@ -2040,7 +2040,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
                   <!-- Visualizador del Valor Final -->
                   <div class="text-center w-14">
-                    <div class="text-2xl font-serif font-bold text-[#d4af37]">
+                    <div class="text-2xl font-serif font-bold text-pergamino">
                       {{ getFinalAttributeScore(attr.key) }}
                     </div>
                     <div class="text-[9px] text-neutral-500 uppercase tracking-widest leading-none mt-0.5">
@@ -2056,7 +2056,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <div class="flex gap-4 border-t border-neutral-900 pt-6">
               <button 
                 (click)="goToStep(3)"
-                class="flex-1 bg-[#18181c] hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-3 rounded-lg text-xs font-serif uppercase tracking-wider cursor-pointer transition duration-200"
+                class="flex-1 bg-yunque hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-3 rounded-lg text-xs font-serif uppercase tracking-wider cursor-pointer transition duration-200"
               >
                 Volver
               </button>
@@ -2073,11 +2073,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
         </div>
 
         <!-- ================= PASO 5: SELECCIÓN DE EQUIPO INICIAL ================= -->
-        <div *ngIf="currentStep === 5" class="max-w-4xl mx-auto bg-[#121215] border border-[#d4af37]/35 rounded-2xl p-8 shadow-2xl space-y-8 animate-fade-in relative overflow-hidden text-left">
+        <div *ngIf="currentStep === 5" class="max-w-4xl mx-auto bg-fragua border border-pergamino/35 rounded-2xl p-8 shadow-2xl space-y-8 animate-fade-in relative overflow-hidden text-left">
           <!-- Cabecera -->
           <div class="text-center space-y-2 border-b border-neutral-900 pb-6 relative z-10">
             <span class="text-5xl select-none">🎒</span>
-            <h2 class="text-3xl font-serif font-extrabold text-[#d4af37] tracking-wider uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            <h2 class="text-3xl font-serif font-extrabold text-pergamino tracking-wider uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               Selección de Equipo Inicial
             </h2>
             <p class="text-xs text-neutral-455">Tu clase y tu trasfondo determinan las pertenencias y riquezas con las que comenzarás tu viaje.</p>
@@ -2086,15 +2086,15 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           <div class="space-y-8 relative z-10">
             <!-- SECCIÓN 1: EQUIPO DE CLASE -->
             <div class="space-y-4">
-              <h3 class="text-sm font-serif font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-900/60 pb-2">
+              <h3 class="text-sm font-serif font-bold text-pergamino uppercase tracking-wider border-b border-neutral-900/60 pb-2">
                 1. Equipo de Clase: {{ activeClass.name }}
               </h3>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                 <!-- Opción A: Paquete Predefinido -->
                 <div 
                   (click)="selectEquipmentOption('A')"
-                  class="bg-gradient-to-b from-[#18181c] to-[#121215] border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
-                  [ngClass]="selectedEquipmentOption === 'A' ? 'border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.12)] bg-[#1c1c22]/30' : 'border-neutral-850 hover:border-neutral-700'"
+                  class="bg-gradient-to-b from-yunque to-fragua border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
+                  [ngClass]="selectedEquipmentOption === 'A' ? 'border-pergamino shadow-[0_0_15px_rgba(234,220,194,0.12)] bg-yunque/30' : 'border-neutral-850 hover:border-neutral-700'"
                 >
                   <div class="space-y-3">
                     <div class="flex justify-between items-center border-b border-neutral-900 pb-2">
@@ -2102,17 +2102,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         <h4 class="text-sm font-serif font-bold text-neutral-200">Opción A: Equipo Predefinido</h4>
                         <p class="text-[9px] text-neutral-500">Mochila equipada de clase.</p>
                       </div>
-                      <span class="text-xl select-none" [class.text-[#d4af37]]="selectedEquipmentOption === 'A'">
+                      <span class="text-xl select-none" [class.text-pergamino]="selectedEquipmentOption === 'A'">
                         {{ selectedEquipmentOption === 'A' ? '✦' : '◇' }}
                       </span>
                     </div>
-                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center">
+                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-fragua border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center">
                       {{ getClassEquipmentOptions(activeClass.name).optionA }}
                     </p>
                   </div>
                   <button 
                     class="w-full mt-4 py-2 rounded-lg text-[10px] font-serif uppercase tracking-widest transition duration-200"
-                    [ngClass]="selectedEquipmentOption === 'A' ? 'bg-[#d4af37] text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
+                    [ngClass]="selectedEquipmentOption === 'A' ? 'bg-pergamino text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
                   >
                     {{ selectedEquipmentOption === 'A' ? 'Seleccionado' : 'Elegir Paquete' }}
                   </button>
@@ -2121,8 +2121,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <!-- Opción B: Oro Inicial -->
                 <div 
                   (click)="selectEquipmentOption('B')"
-                  class="bg-gradient-to-b from-[#18181c] to-[#121215] border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
-                  [ngClass]="selectedEquipmentOption === 'B' ? 'border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.12)] bg-[#1c1c22]/30' : 'border-neutral-850 hover:border-neutral-700'"
+                  class="bg-gradient-to-b from-yunque to-fragua border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
+                  [ngClass]="selectedEquipmentOption === 'B' ? 'border-pergamino shadow-[0_0_15px_rgba(234,220,194,0.12)] bg-yunque/30' : 'border-neutral-850 hover:border-neutral-700'"
                 >
                   <div class="space-y-3">
                     <div class="flex justify-between items-center border-b border-neutral-900 pb-2">
@@ -2130,17 +2130,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         <h4 class="text-sm font-serif font-bold text-neutral-200">Opción B: Oro Inicial</h4>
                         <p class="text-[9px] text-neutral-500">Monedas de oro de inicio.</p>
                       </div>
-                      <span class="text-xl select-none" [class.text-[#d4af37]]="selectedEquipmentOption === 'B'">
+                      <span class="text-xl select-none" [class.text-pergamino]="selectedEquipmentOption === 'B'">
                         {{ selectedEquipmentOption === 'B' ? '✦' : '◇' }}
                       </span>
                     </div>
-                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center justify-center text-center">
-                      Recibes <strong class="text-[#d4af37] text-sm mx-1.5 font-mono">{{ getClassEquipmentOptions(activeClass.name).optionB }}</strong> para comprar inventario inicial.
+                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-fragua border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center justify-center text-center">
+                      Recibes <strong class="text-pergamino text-sm mx-1.5 font-mono">{{ getClassEquipmentOptions(activeClass.name).optionB }}</strong> para comprar inventario inicial.
                     </p>
                   </div>
                   <button 
                     class="w-full mt-4 py-2 rounded-lg text-[10px] font-serif uppercase tracking-widest transition duration-200"
-                    [ngClass]="selectedEquipmentOption === 'B' ? 'bg-[#d4af37] text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
+                    [ngClass]="selectedEquipmentOption === 'B' ? 'bg-pergamino text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
                   >
                     {{ selectedEquipmentOption === 'B' ? 'Seleccionado' : 'Elegir Oro' }}
                   </button>
@@ -2150,15 +2150,15 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
             <!-- SECCIÓN 2: EQUIPO DE TRASFONDO -->
             <div class="space-y-4">
-              <h3 class="text-sm font-serif font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-900/60 pb-2">
+              <h3 class="text-sm font-serif font-bold text-pergamino uppercase tracking-wider border-b border-neutral-900/60 pb-2">
                 2. Equipo de Trasfondo: {{ activeBackground.name }}
               </h3>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                 <!-- Opción A: Paquete Predefinido -->
                 <div 
                   (click)="selectBgEquipmentOption('A')"
-                  class="bg-gradient-to-b from-[#18181c] to-[#121215] border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
-                  [ngClass]="selectedBgEquipmentOption === 'A' ? 'border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.12)] bg-[#1c1c22]/30' : 'border-neutral-850 hover:border-neutral-700'"
+                  class="bg-gradient-to-b from-yunque to-fragua border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
+                  [ngClass]="selectedBgEquipmentOption === 'A' ? 'border-pergamino shadow-[0_0_15px_rgba(234,220,194,0.12)] bg-yunque/30' : 'border-neutral-850 hover:border-neutral-700'"
                 >
                   <div class="space-y-3">
                     <div class="flex justify-between items-center border-b border-neutral-900 pb-2">
@@ -2166,17 +2166,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         <h4 class="text-sm font-serif font-bold text-neutral-200">Opción A: Equipo Temático</h4>
                         <p class="text-[9px] text-neutral-500">Pertenencias asociadas a tu vida pasada.</p>
                       </div>
-                      <span class="text-xl select-none" [class.text-[#d4af37]]="selectedBgEquipmentOption === 'A'">
+                      <span class="text-xl select-none" [class.text-pergamino]="selectedBgEquipmentOption === 'A'">
                         {{ selectedBgEquipmentOption === 'A' ? '✦' : '◇' }}
                       </span>
                     </div>
-                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center text-left">
+                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-fragua border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center text-left">
                       {{ getBgEquipmentOptions(activeBackground.name).optionA }}
                     </p>
                   </div>
                   <button 
                     class="w-full mt-4 py-2 rounded-lg text-[10px] font-serif uppercase tracking-widest transition duration-200"
-                    [ngClass]="selectedBgEquipmentOption === 'A' ? 'bg-[#d4af37] text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
+                    [ngClass]="selectedBgEquipmentOption === 'A' ? 'bg-pergamino text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
                   >
                     {{ selectedBgEquipmentOption === 'A' ? 'Seleccionado' : 'Elegir Temático' }}
                   </button>
@@ -2185,8 +2185,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <!-- Opción B: Oro Inicial -->
                 <div 
                   (click)="selectBgEquipmentOption('B')"
-                  class="bg-gradient-to-b from-[#18181c] to-[#121215] border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
-                  [ngClass]="selectedBgEquipmentOption === 'B' ? 'border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.12)] bg-[#1c1c22]/30' : 'border-neutral-850 hover:border-neutral-700'"
+                  class="bg-gradient-to-b from-yunque to-fragua border rounded-xl p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-xl text-left"
+                  [ngClass]="selectedBgEquipmentOption === 'B' ? 'border-pergamino shadow-[0_0_15px_rgba(234,220,194,0.12)] bg-yunque/30' : 'border-neutral-850 hover:border-neutral-700'"
                 >
                   <div class="space-y-3">
                     <div class="flex justify-between items-center border-b border-neutral-900 pb-2">
@@ -2194,17 +2194,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         <h4 class="text-sm font-serif font-bold text-neutral-200">Opción B: Oro de Trasfondo</h4>
                         <p class="text-[9px] text-neutral-500">Riquezas acumuladas de tu trasfondo.</p>
                       </div>
-                      <span class="text-xl select-none" [class.text-[#d4af37]]="selectedBgEquipmentOption === 'B'">
+                      <span class="text-xl select-none" [class.text-pergamino]="selectedBgEquipmentOption === 'B'">
                         {{ selectedBgEquipmentOption === 'B' ? '✦' : '◇' }}
                       </span>
                     </div>
-                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center justify-center text-center">
-                      Recibes <strong class="text-[#d4af37] text-sm mx-1.5 font-mono">{{ getBgEquipmentOptions(activeBackground.name).optionB }}</strong> adicionales de inicio.
+                    <p class="text-[11px] text-neutral-350 leading-relaxed font-light bg-fragua border border-neutral-900 p-3 rounded-lg min-h-[80px] flex items-center justify-center text-center">
+                      Recibes <strong class="text-pergamino text-sm mx-1.5 font-mono">{{ getBgEquipmentOptions(activeBackground.name).optionB }}</strong> adicionales de inicio.
                     </p>
                   </div>
                   <button 
                     class="w-full mt-4 py-2 rounded-lg text-[10px] font-serif uppercase tracking-widest transition duration-200"
-                    [ngClass]="selectedBgEquipmentOption === 'B' ? 'bg-[#d4af37] text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
+                    [ngClass]="selectedBgEquipmentOption === 'B' ? 'bg-pergamino text-black font-bold' : 'bg-neutral-900 hover:bg-neutral-800 text-neutral-450 border border-neutral-800'"
                   >
                     {{ selectedBgEquipmentOption === 'B' ? 'Seleccionado' : 'Elegir Oro' }}
                   </button>
@@ -2216,7 +2216,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <div *ngIf="hasSkilledFeat()" class="space-y-4 border-t border-neutral-900 pt-6 text-left">
               <div class="flex justify-between items-center border-b border-neutral-900/60 pb-2">
                 <div>
-                  <h3 class="text-sm font-serif font-bold text-[#d4af37] uppercase tracking-wider">
+                  <h3 class="text-sm font-serif font-bold text-pergamino uppercase tracking-wider">
                     3. Beneficio de Dote: Habilidoso (Skilled)
                   </h3>
                   <p class="text-[10px] text-neutral-450 leading-relaxed">
@@ -2231,8 +2231,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <!-- Listas de Habilidades y Herramientas a elegir -->
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Columna Habilidades -->
-                <div class="space-y-3 bg-[#18181c] border border-neutral-800 p-4 rounded-xl">
-                  <h4 class="text-[11px] font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-850 pb-1.5">
+                <div class="space-y-3 bg-yunque border border-neutral-800 p-4 rounded-xl">
+                  <h4 class="text-[11px] font-bold text-pergamino uppercase tracking-wider border-b border-neutral-850 pb-1.5">
                     Habilidades Disponibles
                   </h4>
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
@@ -2241,7 +2241,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                       [class.opacity-40]="hasProficiency(skill)"
                       class="flex items-center gap-1.5 p-1.5 rounded border transition select-none"
                       [ngClass]="{
-                        'bg-amber-950/20 border-amber-600/50 text-[#d4af37]': skilledFeatSelection.includes(skill),
+                        'bg-amber-950/20 border-amber-600/50 text-pergamino': skilledFeatSelection.includes(skill),
                         'bg-neutral-900/30 border-neutral-850 text-neutral-400': !skilledFeatSelection.includes(skill)
                       }"
                     >
@@ -2263,8 +2263,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 </div>
 
                 <!-- Columna Herramientas -->
-                <div class="space-y-3 bg-[#18181c] border border-neutral-800 p-4 rounded-xl">
-                  <h4 class="text-[11px] font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-850 pb-1.5">
+                <div class="space-y-3 bg-yunque border border-neutral-800 p-4 rounded-xl">
+                  <h4 class="text-[11px] font-bold text-pergamino uppercase tracking-wider border-b border-neutral-850 pb-1.5">
                     Herramientas / Juegos Disponibles
                   </h4>
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
@@ -2273,7 +2273,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                       [class.opacity-40]="hasProficiency(tool)"
                       class="flex items-center gap-1.5 p-1.5 rounded border transition select-none"
                       [ngClass]="{
-                        'bg-amber-950/20 border-amber-600/50 text-[#d4af37]': skilledFeatSelection.includes(tool),
+                        'bg-amber-950/20 border-amber-600/50 text-pergamino': skilledFeatSelection.includes(tool),
                         'bg-neutral-900/30 border-neutral-850 text-neutral-400': !skilledFeatSelection.includes(tool)
                       }"
                     >
@@ -2326,7 +2326,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           <div class="flex flex-col sm:flex-row gap-4 border-t border-neutral-900 pt-6 relative z-10">
             <button 
               (click)="currentStep = 4"
-              class="w-full sm:w-1/3 bg-[#18181c] hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-3 rounded-lg text-xs font-serif uppercase tracking-widest cursor-pointer transition duration-200"
+              class="w-full sm:w-1/3 bg-yunque hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-3 rounded-lg text-xs font-serif uppercase tracking-widest cursor-pointer transition duration-200"
             >
               Atrás (Atributos)
             </button>
@@ -2341,12 +2341,12 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
         </div>
 
         <!-- ================= PASO 6: RESUMEN FINAL / CONFIRMACIÓN ================= -->
-        <div *ngIf="currentStep === 6" class="max-w-4xl mx-auto bg-[#121215] border border-[#d4af37]/35 rounded-2xl p-8 shadow-2xl space-y-8 animate-fade-in relative overflow-hidden">
+        <div *ngIf="currentStep === 6" class="max-w-4xl mx-auto bg-fragua border border-pergamino/35 rounded-2xl p-8 shadow-2xl space-y-8 animate-fade-in relative overflow-hidden">
           
           <!-- Cabecera -->
           <div class="text-center space-y-2 border-b border-neutral-900 pb-6 relative z-10">
             <span class="text-5xl">⚔️</span>
-            <h2 class="text-3xl font-serif font-extrabold text-[#d4af37] tracking-wider uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            <h2 class="text-3xl font-serif font-extrabold text-pergamino tracking-wider uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               ¡Aventurero Creado con Éxito!
             </h2>
             <p class="text-xs text-neutral-455">Tu ficha ha sido templada en la Forja de Héroes y está lista para la aventura.</p>
@@ -2356,12 +2356,12 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10 items-stretch">
             
             <!-- Identidad -->
-            <div class="bg-[#18181c] border border-neutral-850 p-6 rounded-xl space-y-4 flex flex-col justify-between">
+            <div class="bg-yunque border border-neutral-850 p-6 rounded-xl space-y-4 flex flex-col justify-between">
               <div class="space-y-4">
                 <h4 class="text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Identidad</h4>
                 <div class="space-y-2">
                   <div class="text-xs text-neutral-455 uppercase">Clase Elegida:</div>
-                  <div class="text-lg font-serif font-bold text-[#d4af37] flex items-center gap-2">
+                  <div class="text-lg font-serif font-bold text-pergamino flex items-center gap-2">
                     <span>{{ activeClass.icon }}</span>
                     <span>{{ activeClass.name }}</span>
                   </div>
@@ -2381,7 +2381,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </div>
 
             <!-- Atributos Finales -->
-            <div class="bg-[#18181c] border border-neutral-850 p-6 rounded-xl space-y-4">
+            <div class="bg-yunque border border-neutral-850 p-6 rounded-xl space-y-4">
               <h4 class="text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Atributos</h4>
               <div class="grid grid-cols-2 gap-3 text-xs">
                 <div 
@@ -2389,7 +2389,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   class="bg-neutral-900/60 p-2.5 rounded border border-neutral-800/50 flex justify-between items-center"
                 >
                   <span class="font-bold text-neutral-300">{{ attr.key }}</span>
-                  <span class="text-sm font-bold text-[#d4af37] font-serif">
+                  <span class="text-sm font-bold text-pergamino font-serif">
                     {{ getFinalAttributeScore(attr.key) }}
                   </span>
                 </div>
@@ -2397,7 +2397,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </div>
 
             <!-- Trasfondo y Dote -->
-            <div class="bg-[#18181c] border border-neutral-850 p-6 rounded-xl space-y-4 flex flex-col justify-between">
+            <div class="bg-yunque border border-neutral-850 p-6 rounded-xl space-y-4 flex flex-col justify-between">
               <div class="space-y-4">
                 <h4 class="text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Trasfondo</h4>
                 <div class="space-y-2">
@@ -2411,7 +2411,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <div class="text-xs text-neutral-455 uppercase">Dote Clave:</div>
                   <div 
                     (click)="featExpanded = !featExpanded"
-                    class="bg-neutral-900/60 hover:bg-neutral-800/60 border border-neutral-800/80 hover:border-[#d4af37]/30 p-3 rounded-lg cursor-pointer transition select-none group/featSummary"
+                    class="bg-neutral-900/60 hover:bg-neutral-800/60 border border-neutral-800/80 hover:border-pergamino/30 p-3 rounded-lg cursor-pointer transition select-none group/featSummary"
                   >
                     <div class="flex justify-between items-center text-xs text-amber-400 font-bold">
                       <span class="group-hover/featSummary:text-amber-300">
@@ -2454,18 +2454,18 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           </div>
 
           <!-- Equipo Inicial Seleccionado (Resumen) -->
-          <div class="bg-[#18181c] border border-neutral-855 p-6 rounded-xl space-y-4 relative z-10 text-left">
+          <div class="bg-yunque border border-neutral-855 p-6 rounded-xl space-y-4 relative z-10 text-left">
             <h4 class="text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Equipo Inicial Seleccionado</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="space-y-1">
-                <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Equipo de Clase ({{ activeClass.name }}):</span>
-                <p class="text-xs text-neutral-300 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[60px] flex items-center">
+                <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Equipo de Clase ({{ activeClass.name }}):</span>
+                <p class="text-xs text-neutral-300 leading-relaxed font-light bg-fragua border border-neutral-900 p-3 rounded-lg min-h-[60px] flex items-center">
                   {{ selectedEquipmentOption === 'A' ? getClassEquipmentOptions(activeClass.name).optionA : 'Oro Inicial (' + getClassEquipmentOptions(activeClass.name).optionB + ')' }}
                 </p>
               </div>
               <div class="space-y-1">
-                <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Equipo de Trasfondo ({{ activeBackground.name }}):</span>
-                <p class="text-xs text-neutral-300 leading-relaxed font-light bg-[#0e0e11] border border-neutral-900 p-3 rounded-lg min-h-[60px] flex items-center">
+                <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Equipo de Trasfondo ({{ activeBackground.name }}):</span>
+                <p class="text-xs text-neutral-300 leading-relaxed font-light bg-fragua border border-neutral-900 p-3 rounded-lg min-h-[60px] flex items-center">
                   {{ selectedBgEquipmentOption === 'A' ? getBgEquipmentOptions(activeBackground.name).optionA : 'Oro Inicial (' + getBgEquipmentOptions(activeBackground.name).optionB + ')' }}
                 </p>
               </div>
@@ -2479,7 +2479,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           <!-- Detalles Estadísticos del Equipo Equipado -->
           <div *ngIf="selectedEquipmentOption === 'A' || selectedBgEquipmentOption === 'A'" class="space-y-4 relative z-10">
             <!-- Tabla de Armas -->
-            <div *ngIf="getEquippedWeaponsDetails().length > 0" class="bg-[#18181c] border border-neutral-855 p-6 rounded-xl space-y-4 text-left">
+            <div *ngIf="getEquippedWeaponsDetails().length > 0" class="bg-yunque border border-neutral-855 p-6 rounded-xl space-y-4 text-left">
               <h4 class="text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Especificaciones de Armas Equipadas</h4>
               <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs border-collapse">
@@ -2497,7 +2497,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <tbody>
                     <tr *ngFor="let weapon of getEquippedWeaponsDetails()" class="border-b border-neutral-900/60 hover:bg-neutral-900/20 transition">
                       <td class="py-3 pr-4 font-bold text-neutral-200 flex items-center gap-2">
-                        <span class="bg-[#121215] border border-neutral-800 text-neutral-400 font-mono text-[9px] px-1.5 py-0.5 rounded font-bold">
+                        <span class="bg-fragua border border-neutral-800 text-neutral-400 font-mono text-[9px] px-1.5 py-0.5 rounded font-bold">
                           {{ weapon.quantity }}x
                         </span>
                         <span>{{ weapon.name }}</span>
@@ -2530,13 +2530,13 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
               
               <!-- Glosario de Maestría con Armas (Solo si tiene Maestría) -->
-              <div *ngIf="hasWeaponMastery()" class="mt-4 bg-[#121215] border border-amber-600/15 p-4 rounded-xl space-y-2">
-                <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Propiedades de Maestría con Armas (Especialización)</span>
+              <div *ngIf="hasWeaponMastery()" class="mt-4 bg-fragua border border-amber-600/15 p-4 rounded-xl space-y-2">
+                <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Propiedades de Maestría con Armas (Especialización)</span>
                 <p class="text-[10px] text-neutral-450 leading-relaxed font-light">
                   Como tu clase posee <strong>Maestría con Armas</strong> al nivel 1, puedes aprovechar estas propiedades de maestría adicionales cuando atacas con ellas:
                 </p>
                 <div class="space-y-2 pt-1">
-                  <div *ngFor="let weapon of getEquippedWeaponsDetails()" class="text-[10px] bg-[#18181c] p-2.5 rounded-lg border border-neutral-900 flex flex-col gap-0.5">
+                  <div *ngFor="let weapon of getEquippedWeaponsDetails()" class="text-[10px] bg-yunque p-2.5 rounded-lg border border-neutral-900 flex flex-col gap-0.5">
                     <div class="flex justify-between items-center">
                       <span class="font-bold text-neutral-350">{{ weapon.name }}</span>
                       <span class="text-amber-500 font-bold uppercase text-[9px]">{{ weapon.mastery }}</span>
@@ -2548,7 +2548,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </div>
 
             <!-- Tabla de Armaduras y Escudo -->
-            <div *ngIf="getEquippedArmorsDetails().length > 0" class="bg-[#18181c] border border-neutral-855 p-6 rounded-xl space-y-4 text-left">
+            <div *ngIf="getEquippedArmorsDetails().length > 0" class="bg-yunque border border-neutral-855 p-6 rounded-xl space-y-4 text-left">
               <h4 class="text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Especificaciones de Armaduras & Escudos</h4>
               <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs border-collapse">
@@ -2585,8 +2585,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           </div>
 
           <!-- Sugerencias de Adjetivos Narrativos por Atributos -->
-          <div class="bg-[#18181c]/55 border border-[#d4af37]/20 p-6 rounded-xl space-y-3 text-left relative z-10">
-            <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block border-b border-neutral-900 pb-1.5">
+          <div class="bg-yunque/55 border border-pergamino/20 p-6 rounded-xl space-y-3 text-left relative z-10">
+            <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider block border-b border-neutral-900 pb-1.5">
               💡 Sugerencias para tu Descripción e Historia (basado en tus atributos)
             </span>
             <p class="text-[10px] text-neutral-450 leading-relaxed font-light">
@@ -2595,7 +2595,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 pt-1">
               <div 
                 *ngFor="let suggestion of getSuggestedAdjectives()" 
-                class="bg-[#121215] border border-neutral-800 p-2.5 rounded-lg text-center flex flex-col justify-between hover:border-[#d4af37]/15 transition duration-200"
+                class="bg-fragua border border-neutral-800 p-2.5 rounded-lg text-center flex flex-col justify-between hover:border-pergamino/15 transition duration-200"
               >
                 <div>
                   <span class="text-[9px] text-neutral-500 uppercase font-bold block">{{ suggestion.attribute }}</span>
@@ -2606,7 +2606,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="mt-2 space-y-1">
                   <span 
                     *ngFor="let adj of suggestion.adjectives" 
-                    class="block text-[9px] text-neutral-300 bg-[#18181c] border border-neutral-900 px-1 py-0.5 rounded font-light"
+                    class="block text-[9px] text-neutral-300 bg-yunque border border-neutral-900 px-1 py-0.5 rounded font-light"
                   >
                     {{ adj }}
                   </span>
@@ -2616,8 +2616,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           </div>
 
           <!-- Detalles de la Leyenda y Aspecto -->
-          <div class="bg-[#18181c]/55 border border-neutral-850 p-6 rounded-xl space-y-6 relative z-10 text-left">
-            <h3 class="text-sm font-serif font-bold text-[#d4af37] uppercase tracking-wider border-b border-neutral-900 pb-2 flex items-center gap-2">
+          <div class="bg-yunque/55 border border-neutral-850 p-6 rounded-xl space-y-6 relative z-10 text-left">
+            <h3 class="text-sm font-serif font-bold text-pergamino uppercase tracking-wider border-b border-neutral-900 pb-2 flex items-center gap-2">
               <span>✍️</span> Detalles de la Leyenda y Aspecto
             </h3>
 
@@ -2629,7 +2629,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   type="text"
                   [(ngModel)]="characterName"
                   placeholder="Escribe el nombre de tu aventurero..."
-                  class="w-full bg-[#0e0e11] border border-neutral-850 hover:border-neutral-750 focus:border-[#d4af37]/50 focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold"
+                  class="w-full bg-fragua border border-neutral-850 hover:border-neutral-750 focus:border-pergamino/50 focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold"
                 />
                 <span *ngIf="!characterName.trim()" class="text-[9px] text-amber-500/80 italic block">
                   * El nombre es obligatorio para registrar al aventurero.
@@ -2640,7 +2640,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <label class="text-[10px] text-neutral-455 uppercase font-bold tracking-wider block">Nivel Inicial de Aventura (1 - 20)</label>
                 <select
                   [(ngModel)]="characterLevel"
-                  class="w-full bg-[#0e0e11] border border-neutral-850 hover:border-neutral-750 focus:border-[#d4af37]/50 focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                  class="w-full bg-fragua border border-neutral-850 hover:border-neutral-750 focus:border-pergamino/50 focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
                 >
                   <option *ngFor="let lvl of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [value]="lvl">
                     Nivel {{ lvl }}
@@ -2652,11 +2652,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- Selector de Subclase Bárbaro para Nivel >= 3 -->
-              <div *ngIf="isBarbarianLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
-                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Senda de Subclase (Nivel 3+)</label>
+              <div *ngIf="isBarbarianLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
+                <label class="text-[10px] text-pergamino uppercase font-bold tracking-wider block">Senda de Subclase (Nivel 3+)</label>
                 <select
                   [(ngModel)]="selectedSubclass"
-                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                  class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
                 >
                   <option value="">-- Selecciona tu Senda del Bárbaro --</option>
                   <option value="Senda del Árbol del Mundo">Senda del Árbol del Mundo</option>
@@ -2664,17 +2664,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <option value="Senda del Corazón Salvaje">Senda del Corazón Salvaje</option>
                   <option value="Senda del Fanático">Senda del Fanático</option>
                 </select>
-                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                <span class="text-[9px] text-pergamino/80 italic block">
                   * Has seleccionado un Bárbaro de nivel 3 o superior. Elige tu senda de subclase para desbloquear tus poderes.
                 </span>
               </div>
 
               <!-- Selector de Subclase Bardo para Nivel >= 3 -->
-              <div *ngIf="isBardLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
-                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Colegio de Subclase (Nivel 3+)</label>
+              <div *ngIf="isBardLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
+                <label class="text-[10px] text-pergamino uppercase font-bold tracking-wider block">Colegio de Subclase (Nivel 3+)</label>
                 <select
                   [(ngModel)]="selectedSubclass"
-                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                  class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
                 >
                   <option value="">-- Selecciona tu Colegio del Bardo --</option>
                   <option value="Colegio de la Danza">Colegio de la Danza</option>
@@ -2682,17 +2682,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <option value="Colegio del Glamour">Colegio del Glamour</option>
                   <option value="Colegio del Valor">Colegio del Valor</option>
                 </select>
-                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                <span class="text-[9px] text-pergamino/80 italic block">
                   * Has seleccionado un Bardo de nivel 3 o superior. Elige tu colegio de subclase para desbloquear tus poderes.
                 </span>
               </div>
 
               <!-- Selector de Subclase Brujo para Nivel >= 3 -->
-              <div *ngIf="isWarlockLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
-                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Patrón de Subclase (Nivel 3+)</label>
+              <div *ngIf="isWarlockLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
+                <label class="text-[10px] text-pergamino uppercase font-bold tracking-wider block">Patrón de Subclase (Nivel 3+)</label>
                 <select
                   [(ngModel)]="selectedSubclass"
-                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                  class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
                 >
                   <option value="">-- Selecciona tu Patrón del Brujo --</option>
                   <option value="Patrón Celestial">Patrón Celestial</option>
@@ -2700,17 +2700,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <option value="Patrón Infernal">Patrón Infernal</option>
                   <option value="Patrón Primigenio">Patrón Primigenio</option>
                 </select>
-                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                <span class="text-[9px] text-pergamino/80 italic block">
                   * Has seleccionado un Brujo de nivel 3 o superior. Elige tu patrón de subclase para desbloquear tus poderes.
                 </span>
               </div>
 
               <!-- Selector de Subclase Clérigo para Nivel >= 3 -->
-              <div *ngIf="isClericLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
-                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Dominio Divino de Subclase (Nivel 3+)</label>
+              <div *ngIf="isClericLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
+                <label class="text-[10px] text-pergamino uppercase font-bold tracking-wider block">Dominio Divino de Subclase (Nivel 3+)</label>
                 <select
                   [(ngModel)]="selectedSubclass"
-                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                  class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
                 >
                   <option value="">-- Selecciona tu Dominio del Clérigo --</option>
                   <option value="Dominio de la Guerra">Dominio de la Guerra</option>
@@ -2718,17 +2718,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <option value="Dominio de la Vida">Dominio de la Vida</option>
                   <option value="Dominio del Engaño">Dominio del Engaño</option>
                 </select>
-                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                <span class="text-[9px] text-pergamino/80 italic block">
                   * Has seleccionado un Clérigo de nivel 3 o superior. Elige tu dominio de subclase para desbloquear tus poderes.
                 </span>
               </div>
 
               <!-- Selector de Subclase Hechicero para Nivel >= 3 -->
-              <div *ngIf="isSorcererLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
-                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Origen de Subclase (Nivel 3+)</label>
+              <div *ngIf="isSorcererLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
+                <label class="text-[10px] text-pergamino uppercase font-bold tracking-wider block">Origen de Subclase (Nivel 3+)</label>
                 <select
                   [(ngModel)]="selectedSubclass"
-                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                  class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
                 >
                   <option value="">-- Selecciona tu Origen del Hechicero --</option>
                   <option value="Hechicería aberrante">Hechicería aberrante</option>
@@ -2736,17 +2736,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <option value="Hechicería dracónica">Hechicería dracónica</option>
                   <option value="Hechicería mecánica">Hechicería mecánica</option>
                 </select>
-                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                <span class="text-[9px] text-pergamino/80 italic block">
                   * Has seleccionado un Hechicero de nivel 3 o superior. Elige tu origen de subclase para desbloquear tus poderes.
                 </span>
               </div>
 
               <!-- Selector de Subclase Druida para Nivel >= 3 -->
-              <div *ngIf="isDruidLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
-                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Círculo Druídico de Subclase (Nivel 3+)</label>
+              <div *ngIf="isDruidLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
+                <label class="text-[10px] text-pergamino uppercase font-bold tracking-wider block">Círculo Druídico de Subclase (Nivel 3+)</label>
                 <select
                   [(ngModel)]="selectedSubclass"
-                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                  class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
                 >
                   <option value="">-- Selecciona tu Círculo del Druida --</option>
                   <option value="Círculo de la Luna">Círculo de la Luna</option>
@@ -2757,17 +2757,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <option value="Círculo de las Estrellas">Círculo de las Estrellas</option>
                   <option value="Círculo del Mar">Círculo del Mar</option>
                 </select>
-                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                <span class="text-[9px] text-pergamino/80 italic block">
                   * Has seleccionado un Druida de nivel 3 o superior. Elige tu círculo de subclase para desbloquear tus poderes.
                 </span>
               </div>
 
               <!-- Selector de Subclase Explorador para Nivel >= 3 -->
-              <div *ngIf="isRangerLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
-                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Subclase de Explorador (Nivel 3+)</label>
+              <div *ngIf="isRangerLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
+                <label class="text-[10px] text-pergamino uppercase font-bold tracking-wider block">Subclase de Explorador (Nivel 3+)</label>
                 <select
                   [(ngModel)]="selectedSubclass"
-                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                  class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
                 >
                   <option value="">-- Selecciona tu Subclase de Explorador --</option>
                   <option value="Acechador en la penumbra">Acechador en la penumbra</option>
@@ -2775,7 +2775,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <option value="Errante feérico">Errante feérico</option>
                   <option value="Señor de las bestias">Señor de las bestias</option>
                 </select>
-                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                <span class="text-[9px] text-pergamino/80 italic block">
                   * Has seleccionado un Explorador de nivel 3 o superior. Elige tu subclase para desbloquear tus rasgos.
                 </span>
 
@@ -2784,7 +2784,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <label class="text-[9px] text-purple-400 uppercase font-bold tracking-wider block font-fantasy">Dádiva de los Parajes Feéricos (Bendición)</label>
                   <select
                     [(ngModel)]="selectedRangerFeyGift"
-                    class="w-full bg-[#0e0e11] border border-purple-500/30 focus:border-purple-400 focus:outline-none px-3 py-2 rounded text-[11px] text-neutral-200 cursor-pointer"
+                    class="w-full bg-fragua border border-purple-500/30 focus:border-purple-400 focus:outline-none px-3 py-2 rounded text-[11px] text-neutral-200 cursor-pointer"
                   >
                     <option value="">-- Selecciona una Dádiva (Bendición) --</option>
                     <option value="Unas mariposas ilusorias revolotean a tu alrededor mientras haces un descanso corto o largo.">1. Mariposas ilusorias en descansos</option>
@@ -2801,7 +2801,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <label class="text-[9px] text-emerald-400 uppercase font-bold tracking-wider block font-fantasy">Compañero Primigenio (Bestia)</label>
                   <select
                     [(ngModel)]="selectedRangerPrimalCompanion"
-                    class="w-full bg-[#0e0e11] border border-emerald-500/30 focus:border-emerald-450 focus:outline-none px-3 py-2 rounded text-[11px] text-neutral-200 cursor-pointer"
+                    class="w-full bg-fragua border border-emerald-500/30 focus:border-emerald-450 focus:outline-none px-3 py-2 rounded text-[11px] text-neutral-200 cursor-pointer"
                   >
                     <option value="">-- Selecciona un Perfil de Bestia --</option>
                     <option value="Bestia de los mares">Bestia de los mares (Nadar, Agarre)</option>
@@ -2812,11 +2812,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- Selector de Subclase Guerrero para Nivel >= 3 -->
-              <div *ngIf="isFighterLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
-                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Subclase de Guerrero (Nivel 3+)</label>
+              <div *ngIf="isFighterLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
+                <label class="text-[10px] text-pergamino uppercase font-bold tracking-wider block">Subclase de Guerrero (Nivel 3+)</label>
                 <select
                   [(ngModel)]="selectedSubclass"
-                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                  class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
                 >
                   <option value="">-- Selecciona tu Subclase de Guerrero --</option>
                   <option value="Caballero Arcano">Caballero Arcano (Lanzador de Conjuros)</option>
@@ -2824,7 +2824,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <option value="Guerrero Psiónico">Guerrero Psiónico (Poderes telequinéticos)</option>
                   <option value="Maestro del Combate">Maestro del Combate (Tácticas y maniobras)</option>
                 </select>
-                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                <span class="text-[9px] text-pergamino/80 italic block">
                   * Has seleccionado un Guerrero de nivel 3 o superior. Elige tu subclase para desbloquear tus rasgos.
                 </span>
 
@@ -2847,7 +2847,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                       <div 
                         *ngFor="let cantrip of eldritchKnightCantripsList"
                         class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                        [ngClass]="selectedEldritchKnightCantrips.includes(cantrip.name) ? 'bg-blue-955/20 border-blue-600/50 text-blue-300' : 'bg-[#0e0e11] border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                        [ngClass]="selectedEldritchKnightCantrips.includes(cantrip.name) ? 'bg-blue-955/20 border-blue-600/50 text-blue-300' : 'bg-fragua border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                       >
                         <input 
                           type="checkbox"
@@ -2877,7 +2877,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                           <div 
                             *ngFor="let spell of getEldritchKnightSpellsForLevel(lvl)"
                             class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                            [ngClass]="selectedEldritchKnightSpells.includes(spell.name) ? 'bg-blue-955/20 border-blue-600/50 text-blue-300' : 'bg-[#0e0e11] border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                            [ngClass]="selectedEldritchKnightSpells.includes(spell.name) ? 'bg-blue-955/20 border-blue-600/50 text-blue-300' : 'bg-fragua border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                           >
                             <input 
                               type="checkbox"
@@ -2899,11 +2899,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- Selector de Subclase Mago para Nivel >= 3 -->
-              <div *ngIf="isMagoLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
-                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Escuela de Magia (Nivel 3+)</label>
+              <div *ngIf="isMagoLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
+                <label class="text-[10px] text-pergamino uppercase font-bold tracking-wider block">Escuela de Magia (Nivel 3+)</label>
                 <select
                   [(ngModel)]="selectedSubclass"
-                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                  class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
                 >
                   <option value="">-- Selecciona tu Escuela del Mago --</option>
                   <option value="Abjurador">Abjurador</option>
@@ -2911,17 +2911,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <option value="Evocador">Evocador</option>
                   <option value="Ilusionista">Ilusionista</option>
                 </select>
-                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                <span class="text-[9px] text-pergamino/80 italic block">
                   * Has seleccionado un Mago de nivel 3 o superior. Elige tu escuela de magia para especializarte.
                 </span>
               </div>
 
               <!-- Selector de Subclase Paladín para Nivel >= 3 -->
-              <div *ngIf="isPaladinLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-[#121215]/80 border border-[#d4af37]/25 p-4 rounded-xl">
-                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider block">Juramento Sagrado (Nivel 3+)</label>
+              <div *ngIf="isPaladinLvl3()" class="space-y-2 mt-4 animate-fade-in md:col-span-2 bg-fragua/80 border border-pergamino/25 p-4 rounded-xl">
+                <label class="text-[10px] text-pergamino uppercase font-bold tracking-wider block">Juramento Sagrado (Nivel 3+)</label>
                 <select
                   [(ngModel)]="selectedSubclass"
-                  class="w-full bg-[#0e0e11] border border-[#d4af37]/35 focus:border-[#d4af37] focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
+                  class="w-full bg-fragua border border-pergamino/35 focus:border-pergamino focus:outline-none px-4 py-2.5 rounded-lg text-xs text-neutral-200 font-semibold cursor-pointer"
                 >
                   <option value="">-- Selecciona tu Juramento del Paladín --</option>
                   <option value="Juramento de la Devoción">Juramento de la Devoción</option>
@@ -2929,7 +2929,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <option value="Juramento de la Venganza">Juramento de la Venganza</option>
                   <option value="Juramento de la Gloria">Juramento de la Gloria</option>
                 </select>
-                <span class="text-[9px] text-[#d4af37]/80 italic block">
+                <span class="text-[9px] text-pergamino/80 italic block">
                   * Has seleccionado un Paladín de nivel 3 o superior. Elige tu juramento de subclase para desbloquear tus rasgos.
                 </span>
               </div>
@@ -2943,7 +2943,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   [(ngModel)]="characterHistory"
                   rows="4"
                   placeholder="Escribe aquí cómo comenzó tu viaje, tus motivaciones, o los secretos de tu pasado..."
-                  class="w-full bg-[#0e0e11] border border-neutral-800 hover:border-neutral-750 focus:border-[#d4af37]/50 focus:outline-none p-3 rounded-lg text-xs text-neutral-350 leading-relaxed resize-none custom-scrollbar"
+                  class="w-full bg-fragua border border-neutral-800 hover:border-neutral-750 focus:border-pergamino/50 focus:outline-none p-3 rounded-lg text-xs text-neutral-350 leading-relaxed resize-none custom-scrollbar"
                 ></textarea>
                 <span *ngIf="!characterHistory.trim()" class="text-[9px] text-amber-500/80 italic block">
                   * Cuéntanos qué motiva a tu aventurero a arriesgar su vida.
@@ -2957,7 +2957,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   [(ngModel)]="characterPhysicalDesc"
                   rows="4"
                   placeholder="Describe los rasgos físicos más llamativos: cicatrices, color de ojos, vestimenta, complexión..."
-                  class="w-full bg-[#0e0e11] border border-neutral-800 hover:border-neutral-750 focus:border-[#d4af37]/50 focus:outline-none p-3 rounded-lg text-xs text-neutral-350 leading-relaxed resize-none custom-scrollbar"
+                  class="w-full bg-fragua border border-neutral-800 hover:border-neutral-750 focus:border-pergamino/50 focus:outline-none p-3 rounded-lg text-xs text-neutral-350 leading-relaxed resize-none custom-scrollbar"
                 ></textarea>
                 <span *ngIf="!characterPhysicalDesc.trim()" class="text-[9px] text-amber-500/80 italic block">
                   * Describe rasgos particulares, marcas de nacimiento o apariencia singular.
@@ -2967,7 +2967,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
             <!-- Selección de Categoría de Tamaño y Altura -->
             <div class="border-t border-neutral-900/60 pt-4 space-y-4">
-              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 bg-[#121215] border border-neutral-800/80 p-4 rounded-xl">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 bg-fragua border border-neutral-800/80 p-4 rounded-xl">
                 
                 <!-- Categoría de Tamaño -->
                 <div class="space-y-1.5 min-w-[200px]">
@@ -2978,7 +2978,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     <label 
                       *ngFor="let size of activeSizeInfo?.sizes"
                       class="flex-1 text-center py-2 px-3 rounded-lg border text-xs font-semibold cursor-pointer transition select-none flex items-center justify-center gap-1.5"
-                      [ngClass]="selectedSizeClass === size.name ? 'bg-amber-955/20 border-[#d4af37] text-[#d4af37]' : 'bg-[#18181c] border-neutral-800 text-neutral-400 hover:border-neutral-700'"
+                      [ngClass]="selectedSizeClass === size.name ? 'bg-amber-955/20 border-pergamino text-pergamino' : 'bg-yunque border-neutral-800 text-neutral-400 hover:border-neutral-700'"
                     >
                       <input 
                         type="radio" 
@@ -2993,7 +2993,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   </div>
 
                   <!-- Si la raza tiene tamaño fijo -->
-                  <div *ngIf="!activeSizeInfo?.hasChoice" class="text-xs font-bold text-[#d4af37] bg-[#18181c] border border-neutral-800 px-4 py-2 rounded-lg inline-block uppercase tracking-wider">
+                  <div *ngIf="!activeSizeInfo?.hasChoice" class="text-xs font-bold text-pergamino bg-yunque border border-neutral-800 px-4 py-2 rounded-lg inline-block uppercase tracking-wider">
                     Tamaño: {{ selectedSizeClass }}
                   </div>
                 </div>
@@ -3002,7 +3002,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="flex-1 w-full space-y-2">
                   <div class="flex justify-between items-center text-xs">
                     <span class="text-neutral-455 uppercase font-bold tracking-wider text-[10px]">Altura del Personaje</span>
-                    <span class="text-sm font-bold text-amber-400 font-mono bg-[#0e0e11] px-3 py-0.5 border border-neutral-800 rounded">
+                    <span class="text-sm font-bold text-amber-400 font-mono bg-fragua px-3 py-0.5 border border-neutral-800 rounded">
                       {{ characterHeight }} m
                     </span>
                   </div>
@@ -3018,7 +3018,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                       [min]="getMinHeight()"
                       [max]="getMaxHeight()"
                       step="0.01"
-                      class="flex-1 h-1.5 bg-[#0e0e11] border border-neutral-800 rounded-lg appearance-none cursor-pointer accent-amber-600"
+                      class="flex-1 h-1.5 bg-fragua border border-neutral-800 rounded-lg appearance-none cursor-pointer accent-amber-600"
                     />
                     
                     <span class="text-[10px] text-neutral-500 font-mono shrink-0">
@@ -3035,19 +3035,19 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- Ficha Técnica de Carga y Categoría Identificada -->
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-[#121215]/80 border border-neutral-850 p-4 rounded-xl items-center mt-4">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-fragua/80 border border-neutral-850 p-4 rounded-xl items-center mt-4">
                 <!-- Identificador de Tamaño -->
                 <div class="flex items-center gap-3">
                   <span class="text-[10px] text-neutral-450 uppercase font-bold tracking-wider block">Identificador:</span>
                   <div class="relative group">
                     <span 
-                      class="w-10 h-10 rounded-full border-2 border-amber-600/70 text-[#d4af37] bg-[#0c0c0e] flex items-center justify-center font-serif font-bold text-sm cursor-help hover:bg-amber-600/20 hover:border-amber-500 transition shadow-md select-none"
+                      class="w-10 h-10 rounded-full border-2 border-amber-600/70 text-pergamino bg-hollin flex items-center justify-center font-serif font-bold text-sm cursor-help hover:bg-amber-600/20 hover:border-amber-500 transition shadow-md select-none"
                       [title]="'Categoría de tamaño de criatura: ' + selectedSizeClass"
                     >
                       {{ getSizeLetter(selectedSizeClass) }}
                     </span>
                     <!-- Custom tooltip visual -->
-                    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 bg-[#16161a] border border-[#d4af37]/45 text-neutral-355 text-[10px] rounded px-3 py-1.5 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 transition duration-200 z-50 whitespace-nowrap">
+                    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 bg-yunque border border-pergamino/45 text-neutral-355 text-[10px] rounded px-3 py-1.5 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 transition duration-200 z-50 whitespace-nowrap">
                       Tamaño: <strong class="text-amber-400 font-semibold">{{ selectedSizeClass }}</strong>
                     </div>
                   </div>
@@ -3083,7 +3083,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
             </div>
 
             <!-- Selector de Dote: Iniciado en la Magia -->
-            <div *ngIf="hasMagicInitiateFeat()" class="space-y-4 mt-6 animate-fade-in md:col-span-2 bg-[#121215]/90 border border-amber-500/40 p-5 rounded-xl text-left shadow-lg relative z-10">
+            <div *ngIf="hasMagicInitiateFeat()" class="space-y-4 mt-6 animate-fade-in md:col-span-2 bg-fragua/90 border border-amber-500/40 p-5 rounded-xl text-left shadow-lg relative z-10">
               <div class="border-b border-amber-500/25 pb-3 flex justify-between items-center">
                 <div>
                   <h3 class="text-sm font-serif font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2">
@@ -3099,13 +3099,13 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               </div>
 
               <!-- Configuración 1: Lista de Clase y Aptitud Mágica -->
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#0e0e11] border border-neutral-850 p-3.5 rounded-lg">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-fragua border border-neutral-850 p-3.5 rounded-lg">
                 <div class="space-y-1.5">
                   <label class="text-[9.5px] text-amber-300 font-bold uppercase tracking-wider block">1. Lista de Clase de Hechizos</label>
                   <select
                     [(ngModel)]="magicInitiateClass"
                     (change)="onMagicInitiateClassChange()"
-                    class="w-full bg-[#18181c] border border-amber-600/30 focus:border-amber-400 focus:outline-none px-3 py-2 rounded text-xs text-neutral-200 cursor-pointer font-semibold"
+                    class="w-full bg-yunque border border-amber-600/30 focus:border-amber-400 focus:outline-none px-3 py-2 rounded text-xs text-neutral-200 cursor-pointer font-semibold"
                   >
                     <option value="Clérigo">Clérigo</option>
                     <option value="Druida">Druida</option>
@@ -3117,7 +3117,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <label class="text-[9.5px] text-amber-300 font-bold uppercase tracking-wider block">2. Aptitud Mágica (Atributo de Lanzamiento)</label>
                   <select
                     [(ngModel)]="magicInitiateAbility"
-                    class="w-full bg-[#18181c] border border-amber-600/30 focus:border-amber-400 focus:outline-none px-3 py-2 rounded text-xs text-neutral-200 cursor-pointer font-semibold"
+                    class="w-full bg-yunque border border-amber-600/30 focus:border-amber-400 focus:outline-none px-3 py-2 rounded text-xs text-neutral-200 cursor-pointer font-semibold"
                   >
                     <option value="">-- Elige Aptitud Mágica --</option>
                     <option value="Inteligencia">Inteligencia (INT)</option>
@@ -3141,7 +3141,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <div 
                     *ngFor="let cantrip of getMagicInitiateCantripsList()"
                     class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                    [ngClass]="magicInitiateCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/60 text-amber-300' : 'bg-[#0e0e11] border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                    [ngClass]="magicInitiateCantrips.includes(cantrip.name) ? 'bg-amber-955/20 border-amber-600/60 text-amber-300' : 'bg-fragua border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                   >
                     <input 
                       type="checkbox"
@@ -3172,7 +3172,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <div 
                     *ngFor="let spell of getMagicInitiateSpellsList()"
                     class="flex items-start gap-2 p-2 rounded border transition-all duration-150 relative cursor-pointer select-none"
-                    [ngClass]="magicInitiateSpell === spell.name ? 'bg-amber-955/20 border-amber-600/60 text-amber-300' : 'bg-[#0e0e11] border-neutral-850 hover:border-neutral-800 text-neutral-450'"
+                    [ngClass]="magicInitiateSpell === spell.name ? 'bg-amber-955/20 border-amber-600/60 text-amber-300' : 'bg-fragua border-neutral-850 hover:border-neutral-800 text-neutral-450'"
                   >
                     <input 
                       type="radio"
@@ -3220,7 +3220,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           <div class="flex flex-col sm:flex-row gap-4 border-t border-neutral-900 pt-6 relative z-10">
             <button 
               (click)="restartCreator()"
-              class="w-full sm:w-1/3 bg-[#18181c] hover:bg-neutral-800 border border-neutral-800 text-neutral-355 py-3 rounded-lg text-xs font-serif uppercase tracking-widest cursor-pointer transition duration-200"
+              class="w-full sm:w-1/3 bg-yunque hover:bg-neutral-800 border border-neutral-800 text-neutral-355 py-3 rounded-lg text-xs font-serif uppercase tracking-widest cursor-pointer transition duration-200"
             >
               Reiniciar Forja
             </button>
@@ -3243,14 +3243,14 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
         class="fixed inset-0 bg-black/85 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fade-in text-left"
       >
         <div 
-          class="bg-[#08080a] border border-[#d4af37]/35 rounded-2xl w-full max-w-5xl h-[90vh] flex flex-col shadow-2xl overflow-hidden"
+          class="bg-hollin border border-pergamino/35 rounded-2xl w-full max-w-5xl h-[90vh] flex flex-col shadow-2xl overflow-hidden"
         >
           <!-- CABECERA DE LA FICHA -->
-          <div class="bg-gradient-to-r from-neutral-950 via-[#0e0e11] to-neutral-950 border-b border-[#d4af37]/20 p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10 shrink-0">
+          <div class="bg-gradient-to-r from-neutral-950 via-fragua to-neutral-950 border-b border-pergamino/20 p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10 shrink-0">
             <div class="flex items-center gap-3">
               <span class="text-3xl select-none">🛡️</span>
               <div>
-                <h2 class="font-serif text-[#d4af37] text-sm uppercase tracking-widest font-extrabold flex items-center gap-2">
+                <h2 class="font-serif text-pergamino text-sm uppercase tracking-widest font-extrabold flex items-center gap-2">
                   FORJA & LEYENDA
                   <span class="text-[9px] bg-red-950/80 border border-red-800 text-red-400 px-2 py-0.5 rounded uppercase tracking-normal font-sans">Vista Previa</span>
                 </h2>
@@ -3298,16 +3298,16 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
           </div>
 
           <!-- CONTENIDO DE LA HOJA (SCROLLABLE) -->
-          <div class="flex-1 overflow-y-auto p-6 custom-scrollbar bg-radial-at-t from-neutral-950/80 via-[#08080a] to-[#08080a] space-y-6">
+          <div class="flex-1 overflow-y-auto p-6 custom-scrollbar bg-radial-at-t from-neutral-950/80 via-hollin to-hollin space-y-6">
             
             <!-- FILA SUPERIOR: INFORMACIÓN GENERAL -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-[#121215] border border-neutral-850 p-4 rounded-xl">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-fragua border border-neutral-850 p-4 rounded-xl">
               <div class="space-y-1">
-                <label class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider">Nombre del Aventurero</label>
+                <label class="text-[9px] text-pergamino uppercase font-bold tracking-wider">Nombre del Aventurero</label>
                 <input 
                   [(ngModel)]="characterName" 
                   placeholder="Nombre del héroe..."
-                  class="w-full bg-[#18181c] border border-neutral-800 hover:border-neutral-750 focus:border-[#d4af37]/50 focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold"
+                  class="w-full bg-yunque border border-neutral-800 hover:border-neutral-750 focus:border-pergamino/50 focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold"
                 />
               </div>
               <div class="grid grid-cols-2 gap-2">
@@ -3322,7 +3322,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <input 
                     [(ngModel)]="characterSubclass" 
                     placeholder="Ej: Campeón"
-                    class="w-full bg-[#18181c] border border-neutral-800 focus:border-[#d4af37]/50 focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold"
+                    class="w-full bg-yunque border border-neutral-800 focus:border-pergamino/50 focus:outline-none px-3 py-1.5 rounded text-xs text-neutral-200 font-semibold"
                   />
                 </div>
               </div>
@@ -3343,7 +3343,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <div class="grid grid-cols-3 gap-2">
                 <div class="space-y-1 text-center">
                   <label class="text-[8px] text-neutral-455 uppercase font-bold tracking-wider">Nivel</label>
-                  <div class="text-xs text-amber-400 font-bold bg-neutral-900/80 border border-[#d4af37]/15 py-1 rounded min-h-[30px] flex items-center justify-center">
+                  <div class="text-xs text-amber-400 font-bold bg-neutral-900/80 border border-pergamino/15 py-1 rounded min-h-[30px] flex items-center justify-center">
                     1
                   </div>
                 </div>
@@ -3365,7 +3365,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="space-y-2.5">
                   <div 
                     *ngFor="let attr of attributes" 
-                    class="bg-[#121215] border border-neutral-850 hover:border-neutral-800 rounded-xl p-3 flex items-center justify-between transition"
+                    class="bg-fragua border border-neutral-850 hover:border-neutral-800 rounded-xl p-3 flex items-center justify-between transition"
                   >
                     <div class="space-y-0.5">
                       <span class="text-[10px] font-bold text-neutral-455 uppercase">{{ attr.name }}</span>
@@ -3374,7 +3374,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         <span class="text-[9px] text-neutral-500 font-normal">({{ attr.value }}+{{ backgroundStatsAllocation[attr.key] || 0 }})</span>
                       </div>
                     </div>
-                    <div class="bg-[#18181c] border border-neutral-800 text-amber-400 font-mono font-bold text-xs w-10 h-10 flex items-center justify-center rounded-lg shadow-inner select-none">
+                    <div class="bg-yunque border border-neutral-800 text-amber-400 font-mono font-bold text-xs w-10 h-10 flex items-center justify-center rounded-lg shadow-inner select-none">
                       {{ getFinalModifier(attr.key) }}
                     </div>
                   </div>
@@ -3388,7 +3388,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   </div>
                   <div class="bg-neutral-900/50 border border-neutral-855 p-2 rounded-xl text-center">
                     <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block">Competencia</span>
-                    <span class="text-xs font-mono font-bold text-[#d4af37] mt-1 block">+2</span>
+                    <span class="text-xs font-mono font-bold text-pergamino mt-1 block">+2</span>
                   </div>
                 </div>
               </div>
@@ -3399,14 +3399,14 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 
                 <!-- Salvaciones -->
                 <div class="bg-neutral-900/30 border border-neutral-850 p-4 rounded-xl space-y-2">
-                  <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider">Tiradas de Salvación</span>
+                  <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider">Tiradas de Salvación</span>
                   <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 pt-1 text-[11px]">
                     <div 
                       *ngFor="let attr of attributes" 
                       class="flex items-center justify-between py-0.5 border-b border-neutral-900/30"
                     >
                       <div class="flex items-center gap-1.5">
-                        <span class="text-[9px]" [class.text-[#d4af37]]="hasClassSavingThrowProficiency(attr.key)">
+                        <span class="text-[9px]" [class.text-pergamino]="hasClassSavingThrowProficiency(attr.key)">
                           {{ hasClassSavingThrowProficiency(attr.key) ? '●' : '○' }}
                         </span>
                         <span class="text-neutral-350">{{ attr.name }}</span>
@@ -3426,7 +3426,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     <!-- Atletismo -->
                     <div class="flex justify-between items-center py-0.5 border-b border-neutral-900/20">
                       <div class="flex items-center gap-1.5">
-                        <span [class.text-[#d4af37]]="hasSkillProficiency('Atletismo')">{{ hasSkillProficiency('Atletismo') ? '●' : '○' }}</span>
+                        <span [class.text-pergamino]="hasSkillProficiency('Atletismo')">{{ hasSkillProficiency('Atletismo') ? '●' : '○' }}</span>
                         <span class="text-neutral-355">Atletismo <span class="text-[8px] text-neutral-600">(Fue)</span></span>
                       </div>
                       <span class="font-mono text-neutral-300 text-[10px]">{{ getSkillModifier('FUE', 'Atletismo') }}</span>
@@ -3442,7 +3442,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                       class="flex justify-between items-center py-0.5 border-b border-neutral-900/20"
                     >
                       <div class="flex items-center gap-1.5">
-                        <span [class.text-[#d4af37]]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
+                        <span [class.text-pergamino]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
                         <span class="text-neutral-355">{{ skill.name }} <span class="text-[8px] text-neutral-600">(Des)</span></span>
                       </div>
                       <span class="font-mono text-neutral-300 text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
@@ -3460,7 +3460,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                       class="flex justify-between items-center py-0.5 border-b border-neutral-900/20"
                     >
                       <div class="flex items-center gap-1.5">
-                        <span [class.text-[#d4af37]]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
+                        <span [class.text-pergamino]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
                         <span class="text-neutral-355">{{ skill.name }} <span class="text-[8px] text-neutral-600">(Int)</span></span>
                       </div>
                       <span class="font-mono text-neutral-300 text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
@@ -3478,7 +3478,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                       class="flex justify-between items-center py-0.5 border-b border-neutral-900/20"
                     >
                       <div class="flex items-center gap-1.5">
-                        <span [class.text-[#d4af37]]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
+                        <span [class.text-pergamino]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
                         <span class="text-neutral-355">{{ skill.name }} <span class="text-[8px] text-neutral-600">(Sab)</span></span>
                       </div>
                       <span class="font-mono text-neutral-300 text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
@@ -3495,7 +3495,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                       class="flex justify-between items-center py-0.5 border-b border-neutral-900/20"
                     >
                       <div class="flex items-center gap-1.5">
-                        <span [class.text-[#d4af37]]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
+                        <span [class.text-pergamino]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
                         <span class="text-neutral-355">{{ skill.name }} <span class="text-[8px] text-neutral-600">(Car)</span></span>
                       </div>
                       <span class="font-mono text-neutral-300 text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
@@ -3511,7 +3511,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 
                 <!-- Tarjetas de Combate -->
                 <div class="grid grid-cols-3 gap-3">
-                  <div class="bg-[#121215] border border-neutral-855 p-2.5 rounded-xl text-center shadow-inner relative overflow-hidden group">
+                  <div class="bg-fragua border border-neutral-855 p-2.5 rounded-xl text-center shadow-inner relative overflow-hidden group">
                     <div class="absolute inset-x-0 top-0 h-[2px] bg-amber-600"></div>
                     <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block">CA (Armadura)</span>
                     <span class="text-xl font-bold font-mono text-neutral-200 mt-1 block">
@@ -3519,7 +3519,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     </span>
                     <span class="text-[8px] text-neutral-600">(10 + Des)</span>
                   </div>
-                  <div class="bg-[#121215] border border-neutral-855 p-2.5 rounded-xl text-center shadow-inner relative overflow-hidden">
+                  <div class="bg-fragua border border-neutral-855 p-2.5 rounded-xl text-center shadow-inner relative overflow-hidden">
                     <div class="absolute inset-x-0 top-0 h-[2px] bg-red-800"></div>
                     <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block">Iniciativa</span>
                     <span class="text-xl font-bold font-mono text-neutral-200 mt-1 block">
@@ -3527,10 +3527,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     </span>
                     <span class="text-[8px] text-neutral-600">(Mod Des)</span>
                   </div>
-                  <div class="bg-[#121215] border border-neutral-855 p-2.5 rounded-xl text-center shadow-inner relative overflow-hidden flex flex-col justify-between">
+                  <div class="bg-fragua border border-neutral-855 p-2.5 rounded-xl text-center shadow-inner relative overflow-hidden flex flex-col justify-between">
                     <div class="absolute inset-x-0 top-0 h-[2px] bg-green-800"></div>
                     <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block">Velocidad</span>
-                    <span class="text-xs font-bold text-[#d4af37] mt-2 block font-mono">
+                    <span class="text-xs font-bold text-pergamino mt-2 block font-mono">
                       {{ activeOrigin.speed || '30 pies' }}
                     </span>
                     <span class="text-[8px] text-neutral-600">(Racial)</span>
@@ -3556,7 +3556,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   </div>
                   <div class="space-y-0.5 text-left">
                     <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block font-fantasy">Dados de Golpe</span>
-                    <span class="text-sm font-bold text-[#d4af37] font-mono mt-1 block">
+                    <span class="text-sm font-bold text-pergamino font-mono mt-1 block">
                       {{ characterLevel }}d{{ getHitDieValue() }}
                     </span>
                     <span class="text-[8px] text-neutral-600 block">Dado Clase</span>
@@ -3566,32 +3566,32 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <!-- Capacidad de Carga y Tamaño -->
                 <div class="bg-neutral-900/30 border border-neutral-855 p-4 rounded-xl space-y-3 text-left">
                   <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5">
-                    <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Carga y Tamaño de Criatura</span>
+                    <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Carga y Tamaño de Criatura</span>
                     
                     <!-- Letra de tamaño con tooltip -->
                     <div class="relative group select-none">
                       <span 
-                        class="w-6 h-6 rounded-full border border-amber-600/70 text-amber-500 bg-[#0c0c0e] flex items-center justify-center font-serif font-bold text-[10px] cursor-help hover:bg-amber-600/20 transition shadow"
+                        class="w-6 h-6 rounded-full border border-amber-600/70 text-amber-500 bg-hollin flex items-center justify-center font-serif font-bold text-[10px] cursor-help hover:bg-amber-600/20 transition shadow"
                         [title]="'Tamaño de criatura: ' + (selectedSizeClass || 'Mediano')"
                       >
                         {{ getSizeLetter(selectedSizeClass || 'Mediano') }}
                       </span>
                       <!-- Tooltip visual del tamaño -->
-                      <div class="absolute bottom-8 right-0 bg-[#16161a] border border-[#d4af37]/45 text-neutral-355 text-[9px] rounded px-2.5 py-1 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 transition duration-150 whitespace-nowrap z-50">
+                      <div class="absolute bottom-8 right-0 bg-yunque border border-pergamino/45 text-neutral-355 text-[9px] rounded px-2.5 py-1 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 transition duration-150 whitespace-nowrap z-50">
                         Tamaño: <strong class="text-amber-400 font-semibold">{{ selectedSizeClass || 'Mediano' }}</strong>
                       </div>
                     </div>
                   </div>
 
                   <div class="grid grid-cols-2 gap-3 text-[10px]">
-                    <div class="bg-[#121215] border border-neutral-850 p-2 rounded relative">
+                    <div class="bg-fragua border border-neutral-850 p-2 rounded relative">
                       <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block mb-0.5">Carga Máxima</span>
                       <span class="font-mono font-bold text-neutral-200 block">
                         {{ carryingCapacity.maxKg }} kg / {{ carryingCapacity.maxLb }} lb
                       </span>
                     </div>
 
-                    <div class="bg-[#121215] border border-neutral-850 p-2 rounded relative">
+                    <div class="bg-fragua border border-neutral-850 p-2 rounded relative">
                       <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider block mb-0.5">Arrastrar/Levantar/Empujar</span>
                       <span class="font-mono font-bold text-neutral-200 block">
                         {{ carryingCapacity.dragKg }} kg / {{ carryingCapacity.dragLb }} lb
@@ -3601,9 +3601,9 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 </div>
 
                 <!-- Rasgos de Clase -->
-                <div class="bg-neutral-900/40 border border-[#d4af37]/10 p-4 rounded-xl space-y-2">
+                <div class="bg-neutral-900/40 border border-pergamino/10 p-4 rounded-xl space-y-2">
                   <div class="flex items-center justify-between border-b border-neutral-900 pb-1">
-                    <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider">Rasgos de {{ activeClass.name }}</span>
+                    <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider">Rasgos de {{ activeClass.name }}</span>
                     <span class="text-[9px] text-neutral-600">Dado: d{{ activeClass.hitDie || 8 }}</span>
                   </div>
                   <div class="text-[11px] text-neutral-350 leading-relaxed font-light space-y-1">
@@ -3614,32 +3614,32 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
                 <!-- ENTRENAMIENTO Y COMPETENCIAS CON EQUIPO -->
                 <div class="bg-neutral-900/30 border border-neutral-855 p-4 rounded-xl space-y-3 text-left">
-                  <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Entrenamiento y Competencias con Equipo</span>
+                  <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Entrenamiento y Competencias con Equipo</span>
                   
                   <!-- Armaduras -->
                   <div class="space-y-1">
                     <span class="text-[8px] text-neutral-500 uppercase font-bold tracking-wider">Entrenamiento con Armaduras</span>
                     <div class="flex flex-wrap gap-x-4 gap-y-1.5 pt-1 text-[10px] text-neutral-300">
                       <div class="flex items-center gap-1.5">
-                        <span class="text-xs" [class.text-[#d4af37]]="hasClassArmorProficiency('ligeras')">
+                        <span class="text-xs" [class.text-pergamino]="hasClassArmorProficiency('ligeras')">
                           {{ hasClassArmorProficiency('ligeras') ? '✦' : '◇' }}
                         </span>
                         <span>Ligeras</span>
                       </div>
                       <div class="flex items-center gap-1.5">
-                        <span class="text-xs" [class.text-[#d4af37]]="hasClassArmorProficiency('medias')">
+                        <span class="text-xs" [class.text-pergamino]="hasClassArmorProficiency('medias')">
                           {{ hasClassArmorProficiency('medias') ? '✦' : '◇' }}
                         </span>
                         <span>Medias</span>
                       </div>
                       <div class="flex items-center gap-1.5">
-                        <span class="text-xs" [class.text-[#d4af37]]="hasClassArmorProficiency('pesadas')">
+                        <span class="text-xs" [class.text-pergamino]="hasClassArmorProficiency('pesadas')">
                           {{ hasClassArmorProficiency('pesadas') ? '✦' : '◇' }}
                         </span>
                         <span>Pesadas</span>
                       </div>
                       <div class="flex items-center gap-1.5">
-                        <span class="text-xs" [class.text-[#d4af37]]="hasClassArmorProficiency('escudos')">
+                        <span class="text-xs" [class.text-pergamino]="hasClassArmorProficiency('escudos')">
                           {{ hasClassArmorProficiency('escudos') ? '✦' : '◇' }}
                         </span>
                         <span>Escudos</span>
@@ -3692,17 +3692,17 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div *ngIf="isSpellcaster()" class="space-y-3">
                   <div class="bg-neutral-900/40 border border-neutral-855 p-4 rounded-xl space-y-3">
                     <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5">
-                      <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider">Aptitud Mágica</span>
+                      <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider">Aptitud Mágica</span>
                       <span class="text-[10px] font-bold text-neutral-200">{{ getSpellcastingAbilityName() }}</span>
                     </div>
                     <div class="grid grid-cols-2 gap-3">
-                      <div class="bg-[#121215] border border-neutral-800 p-2.5 rounded text-center">
+                      <div class="bg-fragua border border-neutral-800 p-2.5 rounded text-center">
                         <span class="text-[8px] text-neutral-500 uppercase block">CD Salvación</span>
                         <span class="text-xl font-bold font-mono text-amber-400 mt-1 block">
                           {{ getSpellSaveDC() }}
                         </span>
                       </div>
-                      <div class="bg-[#121215] border border-neutral-800 p-2.5 rounded text-center">
+                      <div class="bg-fragua border border-neutral-800 p-2.5 rounded text-center">
                         <span class="text-[8px] text-neutral-500 block">Ataque Conjuro</span>
                         <span class="text-xl font-bold font-mono text-amber-400 mt-1 block">
                           {{ getSpellAttackBonus() }}
@@ -3726,8 +3726,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 </div>
 
                 <!-- Dote de Origen en la Ficha -->
-                <div class="bg-neutral-900/40 border border-[#d4af37]/10 p-4 rounded-xl space-y-3">
-                  <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Dote de Trasfondo</span>
+                <div class="bg-neutral-900/40 border border-pergamino/10 p-4 rounded-xl space-y-3">
+                  <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Dote de Trasfondo</span>
                   <div>
                     <h4 class="text-xs text-neutral-200 font-bold mb-1">{{ getFeatInfo(activeBackground.keyFeat).title }}</h4>
                     <ul class="space-y-1.5 list-none pl-0 mt-2">
@@ -3751,23 +3751,23 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 <div class="bg-neutral-900/35 border border-neutral-855 p-4 rounded-xl space-y-2">
                   <span class="text-[9px] text-neutral-450 uppercase font-bold tracking-wider block">Monedas de Inicio</span>
                   <div class="grid grid-cols-5 gap-3 pt-1 text-center">
-                    <div class="bg-[#121215] border border-neutral-855 p-2 rounded">
+                    <div class="bg-fragua border border-neutral-855 p-2 rounded">
                       <div class="text-[8px] text-neutral-500 font-bold">PC (Cobre)</div>
                       <div class="text-xs text-amber-700 font-bold mt-1">0</div>
                     </div>
-                    <div class="bg-[#121215] border border-neutral-855 p-2 rounded">
+                    <div class="bg-fragua border border-neutral-855 p-2 rounded">
                       <div class="text-[8px] text-neutral-500 font-bold">PP (Plata)</div>
                       <div class="text-xs text-neutral-350 font-bold mt-1">0</div>
                     </div>
-                    <div class="bg-[#121215] border border-neutral-855 p-2 rounded">
+                    <div class="bg-fragua border border-neutral-855 p-2 rounded">
                       <div class="text-[8px] text-neutral-500 font-bold">PE (Electra)</div>
                       <div class="text-xs text-cyan-600 font-bold mt-1">0</div>
                     </div>
-                    <div class="bg-[#121215] border border-neutral-855 p-2 rounded">
+                    <div class="bg-fragua border border-neutral-855 p-2 rounded">
                       <div class="text-[8px] text-neutral-500 font-bold">PO (Oro)</div>
-                      <div class="text-xs text-[#d4af37] font-bold mt-1">{{ getStartingGold() }}</div>
+                      <div class="text-xs text-pergamino font-bold mt-1">{{ getStartingGold() }}</div>
                     </div>
-                    <div class="bg-[#121215] border border-neutral-855 p-2 rounded">
+                    <div class="bg-fragua border border-neutral-855 p-2 rounded">
                       <div class="text-[8px] text-neutral-500 font-bold">PPt (Platino)</div>
                       <div class="text-xs text-teal-400 font-bold mt-1">0</div>
                     </div>
@@ -3804,7 +3804,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                         <tbody>
                           <tr *ngFor="let weapon of getEquippedWeaponsDetails()" class="border-b border-neutral-900/60 hover:bg-neutral-900/10 transition duration-150">
                             <td class="py-2.5 pr-2 font-bold text-neutral-200 flex items-center gap-1.5">
-                              <span class="bg-[#121215] border border-neutral-800 text-neutral-400 font-mono text-[8px] px-1 py-0.5 rounded font-bold">
+                              <span class="bg-fragua border border-neutral-800 text-neutral-400 font-mono text-[8px] px-1 py-0.5 rounded font-bold">
                                 {{ weapon.quantity }}x
                               </span>
                               <span>{{ weapon.name }}</span>
@@ -3837,10 +3837,10 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                     </div>
                     
                     <!-- Glosario de Maestría con Armas (Solo si tiene Maestría) -->
-                    <div *ngIf="hasWeaponMastery()" class="mt-2 bg-[#121215] border border-amber-600/15 p-3 rounded-lg space-y-1.5">
-                      <span class="text-[8px] text-[#d4af37] uppercase font-bold tracking-wider block">Propiedades de Maestría con Armas</span>
+                    <div *ngIf="hasWeaponMastery()" class="mt-2 bg-fragua border border-amber-600/15 p-3 rounded-lg space-y-1.5">
+                      <span class="text-[8px] text-pergamino uppercase font-bold tracking-wider block">Propiedades de Maestría con Armas</span>
                       <div class="space-y-1.5">
-                        <div *ngFor="let weapon of getEquippedWeaponsDetails()" class="text-[10px] bg-[#18181c] p-2 rounded border border-neutral-900/50">
+                        <div *ngFor="let weapon of getEquippedWeaponsDetails()" class="text-[10px] bg-yunque p-2 rounded border border-neutral-900/50">
                           <div class="flex justify-between items-center text-[9px]">
                             <span class="font-bold text-neutral-355">{{ weapon.name }}</span>
                             <span class="text-amber-500 font-bold uppercase">{{ weapon.mastery }}</span>
@@ -3889,8 +3889,8 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                 </div>
 
                 <!-- Resumen Conceptual Narrativo -->
-                <div class="bg-neutral-900/40 border border-[#d4af37]/10 p-4 rounded-xl space-y-2">
-                  <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Concepto Narrativo (Vida Pasada)</span>
+                <div class="bg-neutral-900/40 border border-pergamino/10 p-4 rounded-xl space-y-2">
+                  <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Concepto Narrativo (Vida Pasada)</span>
                   <p class="text-xs text-neutral-300 leading-relaxed font-light">
                     {{ activeBackground.concept || 'Tu historia previa moldea tus competencias básicas y tu actitud hacia el peligro.' }}
                   </p>
@@ -3907,11 +3907,11 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <div class="md:col-span-4 space-y-4">
                 <h3 class="text-[10px] font-bold text-neutral-455 uppercase tracking-widest border-b border-neutral-900 pb-1.5 mb-2">Aspecto Físico</h3>
                 
-                <div class="bg-[#121215] border border-neutral-850 p-5 rounded-xl space-y-4">
+                <div class="bg-fragua border border-neutral-850 p-5 rounded-xl space-y-4">
                   <!-- Altura -->
                   <div class="space-y-1">
-                    <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Altura</span>
-                    <div class="text-sm font-bold text-neutral-200 bg-[#18181c] border border-neutral-800 px-3 py-2 rounded font-mono">
+                    <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Altura</span>
+                    <div class="text-sm font-bold text-neutral-200 bg-yunque border border-neutral-800 px-3 py-2 rounded font-mono">
                       {{ characterHeight ? characterHeight + ' m' : 'No seleccionada' }}
                     </div>
                   </div>
@@ -3919,7 +3919,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <!-- Categoría de Tamaño -->
                   <div class="space-y-1">
                     <span class="text-[9px] text-neutral-455 uppercase font-bold tracking-wider block">Categoría de Tamaño</span>
-                    <div class="text-xs font-bold text-neutral-200 bg-[#18181c] border border-neutral-800 px-3 py-2 rounded uppercase tracking-wider">
+                    <div class="text-xs font-bold text-neutral-200 bg-yunque border border-neutral-800 px-3 py-2 rounded uppercase tracking-wider">
                       {{ selectedSizeClass || 'Ninguno' }}
                     </div>
                   </div>
@@ -3927,7 +3927,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
                   <!-- Raza/Origen -->
                   <div class="space-y-1">
                     <span class="text-[9px] text-neutral-455 uppercase font-bold tracking-wider block">Especie / Raza</span>
-                    <div class="text-xs font-bold text-neutral-250 bg-[#18181c] border border-neutral-800 px-3 py-2 rounded">
+                    <div class="text-xs font-bold text-neutral-250 bg-yunque border border-neutral-800 px-3 py-2 rounded">
                       {{ activeOrigin.name }}
                     </div>
                   </div>
@@ -3935,7 +3935,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
 
                 <!-- Resumen de Rasgos Físicos -->
                 <div class="bg-neutral-900/30 border border-neutral-855 p-4 rounded-xl space-y-2 text-left">
-                  <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Detalles de Apariencia</span>
+                  <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Detalles de Apariencia</span>
                   <div class="text-xs text-neutral-300 leading-relaxed font-light whitespace-pre-wrap max-h-[220px] overflow-y-auto custom-scrollbar">
                     {{ characterPhysicalDesc.trim() || 'Sin descripción física escrita aún.' }}
                   </div>
@@ -3946,13 +3946,13 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
               <div class="md:col-span-8 space-y-4">
                 <h3 class="text-[10px] font-bold text-neutral-455 uppercase tracking-widest border-b border-neutral-900 pb-1.5 mb-2">Historia de Origen</h3>
                 
-                <div class="bg-[#121215] border border-neutral-850 p-6 rounded-xl relative overflow-hidden min-h-[300px] flex flex-col justify-between">
+                <div class="bg-fragua border border-neutral-850 p-6 rounded-xl relative overflow-hidden min-h-[300px] flex flex-col justify-between">
                   <!-- Decoración de pergamino/libro -->
                   <div class="absolute top-4 right-4 text-4xl opacity-10 select-none">📜</div>
                   
                   <div class="space-y-4">
-                    <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider block">Crónica del Aventurero</span>
-                    <p class="text-xs text-neutral-300 leading-relaxed font-serif italic whitespace-pre-wrap pl-4 border-l-2 border-[#d4af37]/35 max-h-[380px] overflow-y-auto custom-scrollbar">
+                    <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider block">Crónica del Aventurero</span>
+                    <p class="text-xs text-neutral-300 leading-relaxed font-serif italic whitespace-pre-wrap pl-4 border-l-2 border-pergamino/35 max-h-[380px] overflow-y-auto custom-scrollbar">
                       "{{ characterHistory.trim() || 'Esta historia aún no ha sido escrita en los anales del reino...' }}"
                     </p>
                   </div>
@@ -3995,7 +3995,7 @@ const DND_PACKAGES: { [key: string]: { title: string, items: string[] } } = {
       border-radius: 4px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: #d4af37;
+      background: var(--color-pergamino);
     }
     .animate-fade-in {
       animation: fadeIn 0.3s ease-out forwards;
