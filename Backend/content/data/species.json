@@ -1,0 +1,558 @@
+[
+  {
+    "slug": "humano",
+    "name": "Humano",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Humano"
+    ],
+    "icon": "👤",
+    "image": "Humano.png",
+    "description": "Los humanos son los más adaptables y diversos de todos los pueblos. No tienen una inclinación extrema hacia la magia o la fuerza, sino que destacan en todas las disciplinas por su inmensa ambición y resiliencia.",
+    "creatureType": "Humanoide",
+    "size": "Mediano (entre 1,2 y 2,1 m) o Pequeño (entre 60 cm y 1,2 m), elegido al seleccionar la especie.",
+    "speedMeters": 9,
+    "languages": "Común y un idioma extra",
+    "traits": [
+      {
+        "name": "Diestro",
+        "description": "Ganas competencia en una habilidad de tu elección."
+      },
+      {
+        "name": "Ingenioso",
+        "description": "Obtienes inspiración heroica tras finalizar un descanso largo."
+      },
+      {
+        "name": "Versátil",
+        "description": "Obtienes una dote de origen de tu elección (se recomienda la dote Habilidoso)."
+      }
+    ],
+    "legacyAbilityBonuses": {
+      "STR": 1,
+      "DEX": 1,
+      "CON": 1,
+      "INT": 1,
+      "WIS": 1,
+      "CHA": 1
+    },
+    "lineages": [],
+    "sortOrder": 0
+  },
+  {
+    "slug": "elfo",
+    "name": "Elfo",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Elfo"
+    ],
+    "icon": "🧝",
+    "image": "Elfo.png",
+    "description": "Seres mágicos de gracia sobrenatural, los elfos viven en comunión con la naturaleza y la magia antigua. Tienen vidas extremadamente largas y dominan el tiro con arco, la agilidad y las artes arcanas.",
+    "creatureType": "Humanoide",
+    "size": "Mediano (entre 1,5 y 1,8 m de altura)",
+    "speedMeters": 9,
+    "languages": "Común y Élfico",
+    "traits": [
+      {
+        "name": "Linaje Feérico",
+        "description": "Tienes ventaja en las tiradas de salvación para evitar o poner fin al estado de hechizado."
+      },
+      {
+        "name": "Sentidos Agudos",
+        "description": "Tienes competencia en la habilidad de Percepción, Perspicacia o Supervivencia."
+      },
+      {
+        "name": "Trance",
+        "description": "No necesitas dormir y la magia no puede dormirte. Finalizas un descanso largo en 4 horas de meditación."
+      },
+      {
+        "name": "Visión en la Oscuridad",
+        "description": "Tienes visión en la oscuridad hasta 18 m."
+      }
+    ],
+    "legacyAbilityBonuses": {
+      "DEX": 2,
+      "INT": 1
+    },
+    "lineages": [
+      {
+        "slug": "alto-elfo",
+        "name": "Alto elfo",
+        "description": "Truco prestidigitación. Nivel 3: Detectar magia, Nivel 5: Paso brumoso.",
+        "damageType": null
+      },
+      {
+        "slug": "drow",
+        "name": "Drow",
+        "description": "Visión en la oscuridad 36m, truco luces danzantes. Nivel 3: Fuego feérico, Nivel 5: Oscuridad.",
+        "damageType": null
+      },
+      {
+        "slug": "elfo-de-los-bosques",
+        "name": "Elfo de los bosques",
+        "description": "Velocidad +1.5m (10.5m total), truco saber druídico. Nivel 3: Zancada prodigiosa, Nivel 5: Pasar sin rastro.",
+        "damageType": null
+      }
+    ],
+    "sortOrder": 1
+  },
+  {
+    "slug": "enano",
+    "name": "Enano",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Enano"
+    ],
+    "icon": "🧔",
+    "image": "Enano.png",
+    "description": "Fuertes, tenaces y orgullosos, los enanos son conocidos por su destreza en la herrería, su maestría con las hachas y su resistencia inquebrantable a las adversidades físicas.",
+    "creatureType": "Humanoide",
+    "size": "Mediano (entre 1,2 y 1,5 m de altura)",
+    "speedMeters": 7.5,
+    "languages": "Común y Enano",
+    "traits": [
+      {
+        "name": "Afinidad con la Piedra",
+        "description": "Como acción adicional, ganas la capacidad de sentir vibraciones con un alcance de 18 m durante 10 minutos (usos igual a tu bonificador de competencia, se recuperan con descanso largo)."
+      },
+      {
+        "name": "Aguante Enano",
+        "description": "Tus puntos de golpe máximos se incrementan en 1 y aumentarán en 1 más cada vez que subas un nivel."
+      },
+      {
+        "name": "Resistencia Enana",
+        "description": "Resistencia al daño por veneno y ventaja en tiradas de salvación contra envenenado."
+      },
+      {
+        "name": "Visión en la Oscuridad",
+        "description": "Tienes visión en la oscuridad hasta 36 m."
+      }
+    ],
+    "legacyAbilityBonuses": {
+      "STR": 1,
+      "CON": 2
+    },
+    "lineages": [],
+    "sortOrder": 2
+  },
+  {
+    "slug": "mediano",
+    "name": "Mediano",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Mediano"
+    ],
+    "icon": "🍀",
+    "image": "Mediano.png",
+    "description": "Los medianos prefieren una vida tranquila, pero su tamaño pequeño, agilidad innata y sorprendente suerte los convierte en increíbles pícaros y aventureros.",
+    "creatureType": "Humanoide",
+    "size": "Pequeño (entre 60 y 90 cm de altura)",
+    "speedMeters": 7.5,
+    "languages": "Común y Mediano",
+    "traits": [
+      {
+        "name": "Agilidad de Mediano",
+        "description": "Puedes moverte a través del espacio ocupado por cualquier criatura de tamaño superior al tuyo (no puedes terminar tu movimiento en su espacio)."
+      },
+      {
+        "name": "Fortuna",
+        "description": "Cuando sacas un 1 natural en una prueba de d20 (ataque, habilidad o salvación), puedes volver a tirar el dado y usar el nuevo resultado."
+      },
+      {
+        "name": "Sigiloso por Naturaleza",
+        "description": "Puedes realizar la acción de esconderte incluso si estás oculto tras una criatura de al menos una categoría de tamaño superior a la tuya."
+      },
+      {
+        "name": "Valiente",
+        "description": "Tienes ventaja en tiradas de salvación para evitar o poner fin al estado de asustado."
+      }
+    ],
+    "legacyAbilityBonuses": {
+      "DEX": 2,
+      "CHA": 1
+    },
+    "lineages": [],
+    "sortOrder": 3
+  },
+  {
+    "slug": "draconido",
+    "name": "Dracónido",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Dracónido"
+    ],
+    "icon": "🐲",
+    "image": "Draconidos.png",
+    "description": "Orgullosos descendientes de los dragones, caminan con honor. Poseen escamas gruesas que resisten un elemento y exhalan aliento elemental destructivo.",
+    "creatureType": "Humanoide",
+    "size": "Mediano (entre 1,5 y 2,1 m de altura)",
+    "speedMeters": 9,
+    "languages": "Común y Dracónico",
+    "traits": [
+      {
+        "name": "Ataque de Aliento",
+        "description": "Exhalación elemental en cono de 4.5m o línea de 9m (daño 1d10, tirada Destreza CD 8 + Constitución + Competencia)."
+      },
+      {
+        "name": "Resistencia al Daño",
+        "description": "Resistencia al daño determinado por tu ancestro dracónico."
+      },
+      {
+        "name": "Visión en la Oscuridad",
+        "description": "Tienes visión en la oscuridad hasta 18 m."
+      },
+      {
+        "name": "Vuelo Dracónico",
+        "description": "A partir de nivel 5, puedes canalizar magia dracónica para brotar alas espectrales y volar durante 10 minutos (1 vez por descanso largo)."
+      }
+    ],
+    "legacyAbilityBonuses": {
+      "STR": 2,
+      "CHA": 1
+    },
+    "lineages": [
+      {
+        "slug": "rojo",
+        "name": "Rojo",
+        "description": null,
+        "damageType": "Fuego"
+      },
+      {
+        "slug": "oro",
+        "name": "Oro",
+        "description": null,
+        "damageType": "Fuego"
+      },
+      {
+        "slug": "oropel",
+        "name": "Oropel",
+        "description": null,
+        "damageType": "Fuego"
+      },
+      {
+        "slug": "azul",
+        "name": "Azul",
+        "description": null,
+        "damageType": "Relámpago"
+      },
+      {
+        "slug": "bronce",
+        "name": "Bronce",
+        "description": null,
+        "damageType": "Relámpago"
+      },
+      {
+        "slug": "blanco",
+        "name": "Blanco",
+        "description": null,
+        "damageType": "Frío"
+      },
+      {
+        "slug": "plata",
+        "name": "Plata",
+        "description": null,
+        "damageType": "Frío"
+      },
+      {
+        "slug": "cobre",
+        "name": "Cobre",
+        "description": null,
+        "damageType": "Ácido"
+      },
+      {
+        "slug": "negro",
+        "name": "Negro",
+        "description": null,
+        "damageType": "Ácido"
+      },
+      {
+        "slug": "verde",
+        "name": "Verde",
+        "description": null,
+        "damageType": "Veneno"
+      }
+    ],
+    "sortOrder": 4
+  },
+  {
+    "slug": "tiflin",
+    "name": "Tiflin",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Tiflin"
+    ],
+    "icon": "😈",
+    "image": "Tiefling.png",
+    "description": "Portadores de un linaje infernal antiguo debido a pactos pasados en sus familias. Son astutos, carismáticos y poseen un control innato sobre la magia de las sombras.",
+    "creatureType": "Humanoide",
+    "size": "Mediano (entre 1,2 y 2,1 m) o Pequeño (entre 90 cm y 1,2 m), elegido al seleccionar la especie.",
+    "speedMeters": 9,
+    "languages": "Común e Infernal",
+    "traits": [
+      {
+        "name": "Legado Infernal",
+        "description": "Elige un legado de la tabla \"Legados infernales\" (Abisal, Ctónico o Infernal). Obtienes resistencias y conjuros según el legado seleccionado. Inteligencia, Sabiduría o Carisma es tu aptitud mágica para ellos."
+      },
+      {
+        "name": "Presencia Sobrenatural",
+        "description": "Conoces el truco taumaturgia (usa la misma aptitud mágica que Legado Infernal)."
+      },
+      {
+        "name": "Visión en la Oscuridad",
+        "description": "Tienes visión en la oscuridad hasta 18 m."
+      }
+    ],
+    "legacyAbilityBonuses": {
+      "INT": 1,
+      "CHA": 2
+    },
+    "lineages": [
+      {
+        "slug": "abisal",
+        "name": "Abisal",
+        "description": "Resistencia al veneno y truco rociada venenosa. Nivel 3: Rayo nauseabundo. Nivel 5: Inmovilizar persona.",
+        "damageType": null
+      },
+      {
+        "slug": "ctonico",
+        "name": "Ctónico",
+        "description": "Resistencia a necrótico y truco toque helado. Nivel 3: Falsa vida. Nivel 5: Rayo debilitador.",
+        "damageType": null
+      },
+      {
+        "slug": "infernal",
+        "name": "Infernal",
+        "description": "Resistencia al fuego y truco descarga de fuego. Nivel 3: Reprensión infernal. Nivel 5: Oscuridad.",
+        "damageType": null
+      }
+    ],
+    "sortOrder": 5
+  },
+  {
+    "slug": "gnomo",
+    "name": "Gnomo",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Gnomo"
+    ],
+    "icon": "🧙",
+    "image": "Gnomo.png",
+    "description": "Los gnomos son un pueblo mágico creado por los dioses de la inventiva, las ilusiones y la vida en el subsuelo. Destacan por su ingenio técnico y su agudeza mental.",
+    "creatureType": "Humanoide",
+    "size": "Pequeño (entre 90 cm y 1,2 m de altura)",
+    "speedMeters": 9,
+    "languages": "Común y Gnomo",
+    "traits": [
+      {
+        "name": "Astucia Gnoma",
+        "description": "Tienes ventaja en las tiradas de salvación de Inteligencia, Sabiduría y Carisma."
+      },
+      {
+        "name": "Linaje Gnomo",
+        "description": "Elige un linaje que te otorga capacidades sobrenaturales adicionales. Tu Inteligencia, Sabiduría o Carisma será tu aptitud mágica para los conjuros de linaje."
+      },
+      {
+        "name": "Visión en la Oscuridad",
+        "description": "Tienes visión en la oscuridad hasta 18 m."
+      }
+    ],
+    "legacyAbilityBonuses": {
+      "DEX": 1,
+      "INT": 2
+    },
+    "lineages": [
+      {
+        "slug": "gnomo-de-las-rocas",
+        "name": "Gnomo de las rocas",
+        "description": "Trucos prestidigitación y reparar. Crea un dispositivo mecánico Diminuto (CA 5, 1 pg) con efecto mágico.",
+        "damageType": null
+      },
+      {
+        "slug": "gnomo-de-los-bosques",
+        "name": "Gnomo de los bosques",
+        "description": "Truco ilusión menor. Lanza hablar con los animales de forma gratuita un número de veces igual a tu bonificador por competencia.",
+        "damageType": null
+      }
+    ],
+    "sortOrder": 6
+  },
+  {
+    "slug": "goliat",
+    "name": "Goliat",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Goliat"
+    ],
+    "icon": "🏔️",
+    "image": "Goliath.png",
+    "description": "Los goliats son descendientes lejanos de los gigantes y sobrepasan en altura a la mayoría de especies. Poseen una increíble resistencia física y la herencia elemental de los gigantes.",
+    "creatureType": "Humanoide",
+    "size": "Mediano (entre 2,1 y 2,4 m de altura)",
+    "speedMeters": 10.5,
+    "languages": "Común y Gigante",
+    "traits": [
+      {
+        "name": "Constitución Poderosa",
+        "description": "Tienes ventaja en salvaciones para poner fin al estado de agarrado. Para la capacidad de carga, cuentas como si fueses una categoría de tamaño superior."
+      },
+      {
+        "name": "Forma Grande",
+        "description": "A partir de nivel 5, puedes cambiar tu tamaño a Grande como acción adicional (dura 10 mins). Obtienes ventaja en pruebas de Fuerza y +3m de velocidad (1 uso por descanso largo)."
+      },
+      {
+        "name": "Linaje Gigante",
+        "description": "Elige un linaje de ancestro gigante que te otorga un beneficio sobrenatural activo por competencia veces al día."
+      }
+    ],
+    "legacyAbilityBonuses": {
+      "STR": 2,
+      "CON": 1
+    },
+    "lineages": [
+      {
+        "slug": "gigante-de-fuego-abrasion-del-fuego",
+        "name": "Gigante de Fuego (Abrasión del fuego)",
+        "description": "Al golpear a un objetivo, puedes causarle 1d10 daño de fuego adicional (usos igual a tu bonificador por competencia).",
+        "damageType": null
+      },
+      {
+        "slug": "gigante-de-las-colinas-caida-de-las-colinas",
+        "name": "Gigante de las Colinas (Caída de las colinas)",
+        "description": "Al golpear a una criatura Grande o menor, puedes infligirle el estado de derribada (usos igual a tu bonificador por competencia).",
+        "damageType": null
+      },
+      {
+        "slug": "gigante-de-las-nubes-excursion-de-las-nubes",
+        "name": "Gigante de las Nubes (Excursión de las nubes)",
+        "description": "Acción adicional: te teletransportas mágicamente hasta 9 m a un espacio vacío (usos igual a tu bonificador por competencia).",
+        "damageType": null
+      },
+      {
+        "slug": "gigante-de-escarcha-frio-de-la-escarcha",
+        "name": "Gigante de Escarcha (Frío de la escarcha)",
+        "description": "Al golpear a un objetivo, causas 1d6 daño de frío y reduces su velocidad 3m (usos igual a tu bonificador por competencia).",
+        "damageType": null
+      },
+      {
+        "slug": "gigante-de-piedra-resistencia-de-la-piedra",
+        "name": "Gigante de Piedra (Resistencia de la piedra)",
+        "description": "Reacción al recibir daño: tiras 1d12 + mod Constitución y reduces el daño recibido en ese total (usos igual a tu bonificador por competencia).",
+        "damageType": null
+      },
+      {
+        "slug": "gigante-de-las-tormentas-trueno-de-la-tormenta",
+        "name": "Gigante de las Tormentas (Trueno de la tormenta)",
+        "description": "Reacción cuando una criatura a 18 m o menos te causa daño: le infliges 1d8 daño de trueno (usos igual a tu bonificador por competencia).",
+        "damageType": null
+      }
+    ],
+    "sortOrder": 7
+  },
+  {
+    "slug": "orco",
+    "name": "Orco",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Orco"
+    ],
+    "icon": "🐗",
+    "image": "Orco.png",
+    "description": "Fuertes y corpulentos, los orcos son guerreros natos que poseen una vitalidad incansable y ráfagas de adrenalina que les permiten arremeter con fiereza en el fragor de la batalla.",
+    "creatureType": "Humanoide",
+    "size": "Mediano (entre 1,8 y 2,1 m de altura)",
+    "speedMeters": 9,
+    "languages": "Común y Orco",
+    "traits": [
+      {
+        "name": "Aguante Incansable",
+        "description": "Cuando tus puntos de golpe se reducen a 0 pero no mueres, puedes recuperar 1 punto de golpe (1 vez por descanso largo)."
+      },
+      {
+        "name": "Descarga de Adrenalina",
+        "description": "Puedes realizar la acción de Correr como acción adicional. Al hacerlo, ganas puntos de golpe temporales igual a tu bonificador por competencia (usos por competencia, se recuperan con descanso corto o largo)."
+      },
+      {
+        "name": "Visión en la Oscuridad",
+        "description": "Tienes visión en la oscuridad hasta 36 m."
+      }
+    ],
+    "legacyAbilityBonuses": {
+      "STR": 2,
+      "CON": 1
+    },
+    "lineages": [],
+    "sortOrder": 8
+  },
+  {
+    "slug": "celestino",
+    "name": "Celestino",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Aasimar"
+    ],
+    "icon": "👼",
+    "image": "Aasimar.png",
+    "description": "Los aasimars son mortales cuyas almas albergan una chispa de los Planos Superiores. Descendientes de ángeles o bendecidos por poderes divinos, pueden canalizar su herencia celestial para sanar o desatar la revelación celestial.",
+    "creatureType": "Humanoide",
+    "size": "Mediano (entre 1,2 y 2,1 m de altura) o Pequeño (entre 60 cm y 1,2 m de altura), elegido al seleccionar la especie.",
+    "speedMeters": 9,
+    "languages": "Común y Celestial",
+    "traits": [
+      {
+        "name": "Manos Curativas",
+        "description": "Como acción de magia, tocas a una criatura y tiras d4s igual a tu bonificador por competencia. Se recuperan Puntos de Golpe igual al total (1 vez por descanso largo)."
+      },
+      {
+        "name": "Portador de Luz",
+        "description": "Conoces el truco luz (Carisma es tu aptitud mágica)."
+      },
+      {
+        "name": "Resistencia Celestial",
+        "description": "Resistencia al daño necrótico y al daño radiante."
+      },
+      {
+        "name": "Visión en la Oscuridad",
+        "description": "Tienes visión en la oscuridad hasta 18 m."
+      },
+      {
+        "name": "Revelación Celestial",
+        "description": "A partir de nivel 3, puedes transformarte como acción adicional durante 1 minuto. Puedes infligir daño adicional igual a tu BC una vez por turno (daño necrótico o radiante según la opción de transformación). Se recupera con descanso largo."
+      }
+    ],
+    "legacyAbilityBonuses": {
+      "WIS": 1,
+      "CHA": 2
+    },
+    "lineages": [
+      {
+        "slug": "alas-celestiales",
+        "name": "Alas celestiales",
+        "description": "Dos alas espectrales brotan temporalmente. Obtienes una velocidad de vuelo igual a tu velocidad actual y tu daño adicional es radiante.",
+        "damageType": null
+      },
+      {
+        "slug": "fulgor-interior",
+        "name": "Fulgor interior",
+        "description": "Emites luz brillante en radio de 3m. Al final de tu turno, enemigos a 3m o menos reciben daño radiante igual a tu BC. Daño adicional es radiante.",
+        "damageType": null
+      },
+      {
+        "slug": "mortaja-necrotica",
+        "name": "Mortaja necrótica",
+        "description": "Tus ojos se vuelven pozos de oscuridad. Criaturas a 3m o menos deben superar salvación de Carisma (CD 8 + Car + BC) o asustarse. Daño adicional es necrótico.",
+        "damageType": null
+      }
+    ],
+    "sortOrder": 9
+  }
+]

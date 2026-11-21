@@ -1,0 +1,286 @@
+{
+  "elfo": [
+    {
+      "title": "Tipo de Criatura",
+      "desc": "Humanoide"
+    },
+    {
+      "title": "Tamaño",
+      "desc": "Mediano (entre 1,5 y 1,8 m de altura)"
+    },
+    {
+      "title": "Velocidad",
+      "desc": "9 m"
+    },
+    {
+      "title": "Linaje Feérico",
+      "desc": "Tienes ventaja en las tiradas de salvación para evitar o poner fin al estado de hechizado."
+    },
+    {
+      "title": "Sentidos Agudos",
+      "desc": "Tienes competencia en la habilidad de Percepción, Perspicacia o Supervivencia."
+    },
+    {
+      "title": "Trance",
+      "desc": "No necesitas dormir y la magia no puede dormirte. Finalizas un descanso largo en 4 horas de meditación."
+    },
+    {
+      "title": "Visión en la Oscuridad",
+      "desc": "Tienes visión en la oscuridad hasta 18 m."
+    }
+  ],
+  "enano": [
+    {
+      "title": "Tipo de Criatura",
+      "desc": "Humanoide"
+    },
+    {
+      "title": "Tamaño",
+      "desc": "Mediano (entre 1,2 y 1,5 m de altura)"
+    },
+    {
+      "title": "Velocidad",
+      "desc": "9 m"
+    },
+    {
+      "title": "Afinidad con la Piedra",
+      "desc": "Como acción adicional, ganas la capacidad de sentir vibraciones con un alcance de 18 m durante 10 minutos (usos igual a tu bonificador de competencia, se recuperan con descanso largo)."
+    },
+    {
+      "title": "Aguante Enano",
+      "desc": "Tus puntos de golpe máximos se incrementan en 1 y aumentarán en 1 más cada vez que subas un nivel."
+    },
+    {
+      "title": "Resistencia Enana",
+      "desc": "Resistencia al daño por veneno y ventaja en tiradas de salvación contra envenenado."
+    },
+    {
+      "title": "Visión en la Oscuridad",
+      "desc": "Tienes visión en la oscuridad hasta 36 m."
+    }
+  ],
+  "dracónido": [
+    {
+      "title": "Tipo de Criatura",
+      "desc": "Humanoide"
+    },
+    {
+      "title": "Tamaño",
+      "desc": "Mediano (entre 1,5 y 2,1 m de altura)"
+    },
+    {
+      "title": "Velocidad",
+      "desc": "9 m"
+    },
+    {
+      "title": "Ataque de Aliento",
+      "desc": "Exhalación elemental en cono de 4.5m o línea de 9m (daño 1d10, tirada Destreza CD 8 + Constitución + Competencia)."
+    },
+    {
+      "title": "Resistencia al Daño",
+      "desc": "Resistencia al daño determinado por tu ancestro dracónico."
+    },
+    {
+      "title": "Visión en la Oscuridad",
+      "desc": "Tienes visión en la oscuridad hasta 18 m."
+    },
+    {
+      "title": "Vuelo Dracónico",
+      "desc": "A partir de nivel 5, puedes canalizar magia dracónica para brotar alas espectrales y volar durante 10 minutos (1 vez por descanso largo)."
+    }
+  ],
+  "humano": [
+    {
+      "title": "Tipo de Criatura",
+      "desc": "Humanoide"
+    },
+    {
+      "title": "Tamaño",
+      "desc": "Mediano (entre 1,2 y 2,1 m) o Pequeño (entre 60 cm y 1,2 m), elegido al seleccionar la especie."
+    },
+    {
+      "title": "Velocidad",
+      "desc": "9 m"
+    },
+    {
+      "title": "Diestro",
+      "desc": "Ganas competencia en una habilidad de tu elección."
+    },
+    {
+      "title": "Ingenioso",
+      "desc": "Obtienes inspiración heroica tras finalizar un descanso largo."
+    },
+    {
+      "title": "Versátil",
+      "desc": "Obtienes una dote de origen de tu elección (se recomienda la dote Habilidoso)."
+    }
+  ],
+  "mediano": [
+    {
+      "title": "Tipo de Criatura",
+      "desc": "Humanoide"
+    },
+    {
+      "title": "Tamaño",
+      "desc": "Pequeño (entre 60 y 90 cm de altura)"
+    },
+    {
+      "title": "Velocidad",
+      "desc": "9 m"
+    },
+    {
+      "title": "Agilidad de Mediano",
+      "desc": "Puedes moverte a través del espacio ocupado por cualquier criatura de tamaño superior al tuyo (no puedes terminar tu movimiento en su espacio)."
+    },
+    {
+      "title": "Fortuna",
+      "desc": "Cuando sacas un 1 natural en una prueba de d20 (ataque, habilidad o salvación), puedes volver a tirar el dado y usar el nuevo resultado."
+    },
+    {
+      "title": "Sigiloso por Naturaleza",
+      "desc": "Puedes realizar la acción de esconderte incluso si estás oculto tras una criatura de al menos una categoría de tamaño superior a la tuya."
+    },
+    {
+      "title": "Valiente",
+      "desc": "Tienes ventaja en tiradas de salvación para evitar o poner fin al estado de asustado."
+    }
+  ],
+  "orco": [
+    {
+      "title": "Tipo de Criatura",
+      "desc": "Humanoide"
+    },
+    {
+      "title": "Tamaño",
+      "desc": "Mediano (entre 1,8 y 2,1 m de altura)"
+    },
+    {
+      "title": "Velocidad",
+      "desc": "9 m"
+    },
+    {
+      "title": "Aguante Incansable",
+      "desc": "Cuando tus puntos de golpe se reducen a 0 pero no mueres, puedes recuperar 1 punto de golpe (1 vez por descanso largo)."
+    },
+    {
+      "title": "Descarga de Adrenalina",
+      "desc": "Puedes realizar la acción de Correr como acción adicional. Al hacerlo, ganas puntos de golpe temporales igual a tu bonificador por competencia (usos por competencia, se recuperan con descanso corto o largo)."
+    },
+    {
+      "title": "Visión en la Oscuridad",
+      "desc": "Tienes visión en la oscuridad hasta 36 m."
+    }
+  ],
+  "gnomo": [
+    {
+      "title": "Tipo de Criatura",
+      "desc": "Humanoide"
+    },
+    {
+      "title": "Tamaño",
+      "desc": "Pequeño (entre 90 cm y 1,2 m de altura)"
+    },
+    {
+      "title": "Velocidad",
+      "desc": "9 m"
+    },
+    {
+      "title": "Astucia Gnoma",
+      "desc": "Tienes ventaja en las tiradas de salvación de Inteligencia, Sabiduría y Carisma."
+    },
+    {
+      "title": "Linaje Gnomo",
+      "desc": "Elige un linaje que te otorga capacidades sobrenaturales adicionales. Tu Inteligencia, Sabiduría o Carisma será tu aptitud mágica para los conjuros de linaje."
+    },
+    {
+      "title": "Visión en la Oscuridad",
+      "desc": "Tienes visión en la oscuridad hasta 18 m."
+    }
+  ],
+  "goliat": [
+    {
+      "title": "Tipo de Criatura",
+      "desc": "Humanoide"
+    },
+    {
+      "title": "Tamaño",
+      "desc": "Mediano (entre 2,1 y 2,4 m de altura)"
+    },
+    {
+      "title": "Velocidad",
+      "desc": "10,5 m"
+    },
+    {
+      "title": "Constitución Poderosa",
+      "desc": "Tienes ventaja en salvaciones para poner fin al estado de agarrado. Para la capacidad de carga, cuentas como si fueses una categoría de tamaño superior."
+    },
+    {
+      "title": "Forma Grande",
+      "desc": "A partir de nivel 5, puedes cambiar tu tamaño a Grande como acción adicional (dura 10 mins). Obtienes ventaja en pruebas de Fuerza y +3m de velocidad (1 uso por descanso largo)."
+    },
+    {
+      "title": "Linaje Gigante",
+      "desc": "Elige un linaje de ancestro gigante que te otorga un beneficio sobrenatural activo por competencia veces al día."
+    }
+  ],
+  "tiefling": [
+    {
+      "title": "Tipo de Criatura",
+      "desc": "Humanoide"
+    },
+    {
+      "title": "Tamaño",
+      "desc": "Mediano (entre 1,2 y 2,1 m) o Pequeño (entre 90 cm y 1,2 m), elegido al seleccionar la especie."
+    },
+    {
+      "title": "Velocidad",
+      "desc": "9 m"
+    },
+    {
+      "title": "Legado Infernal",
+      "desc": "Elige un legado de la tabla \"Legados infernales\" (Abisal, Ctónico o Infernal). Obtienes resistencias y conjuros según el legado seleccionado. Inteligencia, Sabiduría o Carisma es tu aptitud mágica para ellos."
+    },
+    {
+      "title": "Presencia Sobrenatural",
+      "desc": "Conoces el truco taumaturgia (usa la misma aptitud mágica que Legado Infernal)."
+    },
+    {
+      "title": "Visión en la Oscuridad",
+      "desc": "Tienes visión en la oscuridad hasta 18 m."
+    }
+  ],
+  "aasimar": [
+    {
+      "title": "Tipo de Criatura",
+      "desc": "Humanoide"
+    },
+    {
+      "title": "Tamaño",
+      "desc": "Mediano (entre 1,2 y 2,1 m de altura) o Pequeño (entre 60 cm y 1,2 m de altura), elegido al seleccionar la especie."
+    },
+    {
+      "title": "Velocidad",
+      "desc": "9 m"
+    },
+    {
+      "title": "Manos Curativas",
+      "desc": "Como acción de magia, tocas a una criatura y tiras d4s igual a tu bonificador por competencia. Se recuperan Puntos de Golpe igual al total (1 vez por descanso largo)."
+    },
+    {
+      "title": "Portador de Luz",
+      "desc": "Conoces el truco luz (Carisma es tu aptitud mágica)."
+    },
+    {
+      "title": "Resistencia Celestial",
+      "desc": "Resistencia al daño necrótico y al daño radiante."
+    },
+    {
+      "title": "Visión en la Oscuridad",
+      "desc": "Tienes visión en la oscuridad hasta 18 m."
+    },
+    {
+      "title": "Revelación Celestial",
+      "desc": "A partir de nivel 3, puedes transformarte como acción adicional durante 1 minuto. Puedes infligir daño adicional igual a tu BC una vez por turno (daño necrótico o radiante según la opción de transformación). Se recupera con descanso largo."
+    }
+  ]
+}

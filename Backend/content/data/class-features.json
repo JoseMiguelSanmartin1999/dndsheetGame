@@ -1,0 +1,2126 @@
+[
+  {
+    "classSlug": "monk",
+    "level": 1,
+    "sortOrder": 0,
+    "slug": "monk-1-artes-marciales",
+    "name": "Artes marciales",
+    "description": "La práctica de las artes marciales te otorga un dominio de los estilos de combate que emplean ataques sin armas y armas de monje (armas cuerpo a cuerpo sencillas y marciales ligeras):\n• Ataque sin armas adicional: Puedes hacer un ataque sin armas como acción adicional.\n• Dado de Artes marciales: Puedes tirar 1d6 (1d8 a nvl 5, 1d10 a nvl 11, 1d12 a nvl 17) en lugar del daño normal de tus ataques sin armas y armas de monje.\n• Ataques diestros: Puedes usar tu modificador por Destreza en lugar de Fuerza para las tiradas de ataque y daño de tus ataques sin armas y armas de monje. Además, cuando uses agarre o empujón con tu ataque sin armas, puedes usar Destreza en lugar de Fuerza para la CD de salvación (CD = 8 + mod. Destreza + BC).",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 1,
+    "sortOrder": 1,
+    "slug": "monk-1-defensa-sin-armadura",
+    "name": "Defensa sin armadura",
+    "description": "Mientras no lleves armadura alguna, tu clase de armadura base será igual a 10 más tus modificadores por Destreza y Constitución. Obtienes este beneficio aunque lleves un escudo.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 2,
+    "sortOrder": 0,
+    "slug": "monk-2-concentracion-de-monje",
+    "name": "Concentración de monje",
+    "description": "Tu concentración y entrenamiento marcial te permiten utilizar una reserva interna de Puntos de Concentración (igual a tu nivel de monje) que recuperas tras un descanso corto o largo. Tu CD de salvación para rasgos de concentración es igual a 8 + mod. Sabiduría + BC.\nEmpiezas con tres de estos rasgos:\n• Defensa paciente: Puedes llevar a cabo la acción de destrabarse como acción adicional. De manera alternativa, puedes gastar 1 punto de concentración para llevar a cabo tanto la acción de destrabarse como la de esquivar como acción adicional.\n• Paso del viento: Puedes llevar a cabo la acción de correr como acción adicional. De manera alternativa, puedes gastar 1 punto de concentración para llevar a cabo tanto la acción de destrabarse como la de correr como acción adicional, y tu distancia de salto se duplicará durante el turno.\n• Ráfaga de golpes: Puedes gastar 1 punto de concentración para hacer dos ataques sin armas como acción adicional.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 2,
+    "sortOrder": 1,
+    "slug": "monk-2-metabolismo-asombroso",
+    "name": "Metabolismo asombroso",
+    "description": "Cuando tires iniciativa, puedes recuperar todos los puntos de concentración gastados. Cuando lo hagas, tira tu dado de Artes marciales y recupera una cantidad de puntos de golpe igual a tu nivel de monje más el resultado obtenido. 1 uso por descanso largo.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 2,
+    "sortOrder": 2,
+    "slug": "monk-2-movimiento-sin-armadura",
+    "name": "Movimiento sin armadura",
+    "description": "Tu velocidad aumenta en 3 m (10 ft) si no llevas armadura ni portas un escudo. Esta bonificación aumenta a +4,5 m (nvl 6), +6 m (nvl 10), +7,5 m (nvl 14) y +9 m (nvl 18).",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 3,
+    "sortOrder": 0,
+    "slug": "monk-3-desviar-ataques",
+    "name": "Desviar ataques",
+    "description": "Cuando una tirada de ataque te acierte y su daño incluya los tipos contundente, cortante o perforante, puedes usar tu reacción para reducir el daño total en 1d10 + mod. Destreza + nivel de monje.\nSi reduces el daño a 0, puedes gastar 1 punto de concentración para redirigir el ataque: elige una criatura a 1,5 m o menos (cuerpo a cuerpo) o a 18 m o menos (a distancia). La criatura debe superar una tirada de salvación de Destreza (vs CD de Concentración) o sufrirá un daño igual a dos tiradas de tu dado de Artes marciales + mod. Destreza del mismo tipo de daño.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 3,
+    "sortOrder": 1,
+    "slug": "monk-3-subclase-de-monje",
+    "name": "Subclase de monje",
+    "description": "Consigues una subclase de monje de tu elección (Guerrero de la Mano Abierta, Guerrero de la Misericordia, Guerrero de la Sombra o Guerrero de los Elementos) que te otorga rasgos en los niveles 3, 6, 11 y 17.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "monk",
+    "level": 4,
+    "sortOrder": 0,
+    "slug": "monk-4-caida-lenta",
+    "name": "Caída lenta",
+    "description": "Puedes llevar a cabo una reacción cuando caigas para reducir cualquier daño que sufras de la caída en una cantidad igual a cinco veces tu nivel de monje.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 4,
+    "sortOrder": 1,
+    "slug": "monk-4-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 5,
+    "sortOrder": 0,
+    "slug": "monk-5-ataque-adicional",
+    "name": "Ataque adicional",
+    "description": "Puedes atacar dos veces en lugar de una siempre que realices la acción de Atacar en tu turno.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 5,
+    "sortOrder": 1,
+    "slug": "monk-5-golpe-aturdidor",
+    "name": "Golpe aturdidor",
+    "description": "Una vez por turno cuando aciertes a una criatura con un arma de monje o un ataque sin armas, puedes gastar 1 punto de concentración para intentar propinar un golpe aturdidor. El objetivo deberá hacer una tirada de salvación de Constitución (vs CD de Concentración). Si la falla, tendrá el estado de aturdido hasta el principio de tu siguiente turno. Si la supera, su velocidad se reducirá a la mitad hasta el principio de tu siguiente turno y la siguiente tirada de ataque realizada contra él tendrá ventaja.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 6,
+    "sortOrder": 0,
+    "slug": "monk-6-golpes-potenciados",
+    "name": "Golpes potenciados",
+    "description": "Siempre que inflijas daño con tu ataque sin armas, puedes elegir entre causar daño de fuerza o su tipo de daño normal.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 6,
+    "sortOrder": 1,
+    "slug": "monk-6-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "monk",
+    "level": 7,
+    "sortOrder": 0,
+    "slug": "monk-7-evasion",
+    "name": "Evasión",
+    "description": "Cuando sufras un efecto que te permita hacer una tirada de salvación de Destreza para sufrir solo la mitad de daño, no recibes daño alguno si la superas y solo sufres la mitad si la fallas. No te beneficias si tienes el estado de incapacitado.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 8,
+    "sortOrder": 0,
+    "slug": "monk-8-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 9,
+    "sortOrder": 0,
+    "slug": "monk-9-movimiento-acrobatico",
+    "name": "Movimiento acrobático",
+    "description": "Mientras no lleves armadura ni portes un escudo, obtienes la capacidad de moverte por superficies verticales y sobre líquidos sin caerte.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 10,
+    "sortOrder": 0,
+    "slug": "monk-10-autorrestablecimiento",
+    "name": "Autorrestablecimiento",
+    "description": "Por pura fuerza de voluntad, puedes eliminar uno de los siguientes estados que te afecten al final de cada uno de tus turnos: asustado, envenenado o hechizado. Además, privarte de comida y bebida no te aplica niveles de cansancio.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 10,
+    "sortOrder": 1,
+    "slug": "monk-10-concentracion-agudizada",
+    "name": "Concentración agudizada",
+    "description": "Tus rasgos Defensa paciente, Paso del viento y Ráfaga de golpes obtienen los siguientes beneficios:\n• Defensa paciente: Cuando gastes un punto de concentración para usar Defensa paciente, obtienes una cantidad de puntos de golpe temporales igual al resultado de dos tiradas de tu dado de Artes marciales.\n• Paso del viento: Cuando gastes un punto de concentración para usar Paso del viento, puedes elegir una criatura voluntaria Grande o más pequeña que esté a 1,5 m o menos de ti. Moverás a la criatura contigo hasta el final de tu turno sin provocar ataques de oportunidad.\n• Ráfaga de golpes: Puedes gastar 1 punto de concentración para usar Ráfaga de golpes y hacer tres ataques sin armas en lugar de dos.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 11,
+    "sortOrder": 0,
+    "slug": "monk-11-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "monk",
+    "level": 12,
+    "sortOrder": 0,
+    "slug": "monk-12-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 13,
+    "sortOrder": 0,
+    "slug": "monk-13-desviar-energia",
+    "name": "Desviar energía",
+    "description": "Ahora puedes usar tu rasgo Desviar ataques contra ataques que causen cualquier tipo de daño, no solo contundente, cortante o perforante.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 14,
+    "sortOrder": 0,
+    "slug": "monk-14-superviviente-disciplinado",
+    "name": "Superviviente disciplinado",
+    "description": "Tu disciplina física y mental te otorga competencia en todas las tiradas de salvación. Además, cuando hagas una tirada de salvación y falles, puedes gastar 1 punto de concentración para repetirla, pero deberás utilizar el nuevo resultado.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 15,
+    "sortOrder": 0,
+    "slug": "monk-15-concentracion-perfecta",
+    "name": "Concentración perfecta",
+    "description": "Cuando tires iniciativa y no utilices Metabolismo asombroso, recuperas los puntos de concentración gastados hasta que tengas 4 si te quedan 3 o menos.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 16,
+    "sortOrder": 0,
+    "slug": "monk-16-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 17,
+    "sortOrder": 0,
+    "slug": "monk-17-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "monk",
+    "level": 18,
+    "sortOrder": 0,
+    "slug": "monk-18-defensa-superior",
+    "name": "Defensa superior",
+    "description": "Al principio de tu turno, puedes gastar 3 puntos de concentración para protegerte del daño durante 1 minuto o hasta que tengas el estado de incapacitado. Durante ese tiempo, tendrás resistencia a todo el daño excepto al de fuerza.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 19,
+    "sortOrder": 0,
+    "slug": "monk-19-don-epico",
+    "name": "Don épico",
+    "description": "Obtienes un don épico que incrementa tus puntuaciones de característica de forma extraordinaria y confiere un beneficio legendario.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "monk",
+    "level": 20,
+    "sortOrder": 0,
+    "slug": "monk-20-cuerpo-y-mente",
+    "name": "Cuerpo y mente",
+    "description": "Has llevado tu cuerpo y mente a otro nivel. Tus puntuaciones de Destreza y Sabiduría aumentan en 4, hasta un máximo de 25.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 1,
+    "sortOrder": 0,
+    "slug": "barbarian-1-defensa-sin-armadura",
+    "name": "Defensa sin armadura",
+    "description": "Mientras no lleves armadura alguna, tu clase de armadura base será igual a 10 más tus modificadores por Destreza y Constitución. Obtienes este beneficio aunque lleves un escudo.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 1,
+    "sortOrder": 1,
+    "slug": "barbarian-1-furia",
+    "name": "Furia",
+    "description": "Puedes imbuirte de un poder primigenio llamado furia, que te otorga una fuerza y resistencia extraordinarias. Puedes dejarte llevar por ella como acción adicional si no llevas puesta una armadura pesada.\n\nRecuperas uno de los usos gastados tras un descanso corto y todos tras un descanso largo.\n\nMientras estés enfurecido, usas las siguientes reglas:\n• Resistencia al daño: Tienes resistencia al daño contundente, cortante y perforante.\n• Daño por furia: Cuando llevas a cabo un ataque que use la Fuerza (ya sea con un arma o un ataque sin armas) y causas daño al objetivo, obtienes un bonificador al daño que aumenta conforme subes de nivel (+2 a +4).\n• Ventaja en Fuerza: Tienes ventaja en las pruebas de Fuerza y en las tiradas de salvación de Fuerza.\n• Sin concentración ni conjuros: No puedes mantener la concentración ni lanzar conjuros.\n• Duración: La furia dura hasta el final de tu siguiente turno y termina antes si te pones una armadura pesada o recibes el estado de incapacitado.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 1,
+    "sortOrder": 2,
+    "slug": "barbarian-1-maestria-con-armas",
+    "name": "Maestría con armas",
+    "description": "Tu entrenamiento con armas te permite utilizar las propiedades de maestría con dos tipos de armas cuerpo a cuerpo sencillas o marciales de tu elección, como las hachas a dos manos y las hachas de mano. Tras finalizar un descanso largo, puedes cambiar una de dichas elecciones.\n\nCuando alcances ciertos niveles de bárbaro, adquirirás la capacidad de usar las propiedades de maestría con más tipos de armas, como se muestra en la columna \"Maestría con armas\".",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 2,
+    "sortOrder": 0,
+    "slug": "barbarian-2-ataque-temerario",
+    "name": "Ataque temerario",
+    "description": "Puedes desechar toda preocupación por la defensa para atacar con ferocidad salvaje. Cuando realices tu primer ataque en tu turno, puedes decidir atacar de manera temeraria. Al hacerlo, tienes ventaja en las tiradas de ataque con armas cuerpo a cuerpo que usen Fuerza durante este turno, pero las tiradas de ataque contra ti tienen ventaja hasta tu siguiente turno.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 2,
+    "sortOrder": 1,
+    "slug": "barbarian-2-sentir-el-peligro",
+    "name": "Sentir el peligro",
+    "description": "Obtienes ventaja en las tiradas de salvación de Destreza contra efectos que puedas ver, como trampas y conjuros. Para obtener este beneficio, no puedes estar cegado, ensordecido ni incapacitado.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 3,
+    "sortOrder": 0,
+    "slug": "barbarian-3-conocimiento-primigenio",
+    "name": "Conocimiento primigenio",
+    "description": "Ganas competencia en otra habilidad de la lista de habilidades de bárbaro. Además, mientras tu Furia esté activa, puedes usar tu Fuerza en lugar de la característica normal para realizar pruebas de ciertas habilidades (como Atletismo, Intimidación, etc.).",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 3,
+    "sortOrder": 1,
+    "slug": "barbarian-3-subclase-de-barbaro",
+    "name": "Subclase de bárbaro",
+    "description": "Eliges un camino de subclase (como Berserker, Tótem o Magia Salvaje) que te otorga rasgos especiales en los niveles 3, 6, 10 y 14.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 4,
+    "sortOrder": 0,
+    "slug": "barbarian-4-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 5,
+    "sortOrder": 0,
+    "slug": "barbarian-5-ataque-adicional",
+    "name": "Ataque adicional",
+    "description": "Puedes atacar dos veces en lugar de una siempre que realices la acción de Atacar en tu turno.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 5,
+    "sortOrder": 1,
+    "slug": "barbarian-5-movimiento-rapido",
+    "name": "Movimiento rápido",
+    "description": "Tu velocidad aumenta en 10 pies (3m) mientras no lleves armadura pesada.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 6,
+    "sortOrder": 0,
+    "slug": "barbarian-6-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 7,
+    "sortOrder": 0,
+    "slug": "barbarian-7-instinto-salvaje",
+    "name": "Instinto salvaje",
+    "description": "Tu instinto es tan agudo que obtienes ventaja en las tiradas de Iniciativa. Si estás sorprendido al principio del combate y no estás incapacitado, puedes actuar normalmente si entras en furia.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 7,
+    "sortOrder": 1,
+    "slug": "barbarian-7-salto-instintivo",
+    "name": "Salto instintivo",
+    "description": "Como parte de la acción adicional que usas para entrar en Furia, puedes moverte hasta la mitad de tu velocidad de movimiento.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 8,
+    "sortOrder": 0,
+    "slug": "barbarian-8-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 9,
+    "sortOrder": 0,
+    "slug": "barbarian-9-golpe-brutal",
+    "name": "Golpe brutal",
+    "description": "Cuando aciertes un ataque temerario, puedes aplicar efectos adicionales como empujar 15 pies, reducir velocidad o añadir daño adicional (+1d10).",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 10,
+    "sortOrder": 0,
+    "slug": "barbarian-10-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 11,
+    "sortOrder": 0,
+    "slug": "barbarian-11-furia-implacable",
+    "name": "Furia implacable",
+    "description": "Si caes a 0 HP mientras estás en furia, puedes hacer una salvación de Con CD 10 para quedarte a 1 HP. Cada uso exitoso aumenta la CD en 5 hasta un descanso corto o largo.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 12,
+    "sortOrder": 0,
+    "slug": "barbarian-12-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 13,
+    "sortOrder": 0,
+    "slug": "barbarian-13-golpe-brutal-mejorado",
+    "name": "Golpe brutal mejorado",
+    "description": "Tus opciones de Golpe brutal mejoran, infligiendo más daño o aplicando peores efectos sobre los enemigos.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 14,
+    "sortOrder": 0,
+    "slug": "barbarian-14-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 15,
+    "sortOrder": 0,
+    "slug": "barbarian-15-furia-persistente",
+    "name": "Furia persistente",
+    "description": "Tu furia es tan intensa que solo termina prematuramente si caes inconsciente o si decides finalizarla.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 16,
+    "sortOrder": 0,
+    "slug": "barbarian-16-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 17,
+    "sortOrder": 0,
+    "slug": "barbarian-17-golpe-brutal-mejorado",
+    "name": "Golpe brutal mejorado",
+    "description": "Tus opciones de Golpe brutal mejoran, infligiendo más daño o aplicando peores efectos sobre los enemigos.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 18,
+    "sortOrder": 0,
+    "slug": "barbarian-18-poderio-indomito",
+    "name": "Poderío indómito",
+    "description": "Si el resultado de una prueba de Fuerza es menor que tu puntuación de Fuerza, puedes usar tu puntuación de Fuerza en lugar del resultado.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 19,
+    "sortOrder": 0,
+    "slug": "barbarian-19-don-epico",
+    "name": "Don épico",
+    "description": "Obtienes un don épico que incrementa tus puntuaciones de característica de forma extraordinaria y confiere un beneficio legendario.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "barbarian",
+    "level": 20,
+    "sortOrder": 0,
+    "slug": "barbarian-20-campeon-primordial",
+    "name": "Campeón primordial",
+    "description": "Tus puntuaciones de Fuerza y Constitución aumentan en 4 puntos, hasta un máximo de 24.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 1,
+    "sortOrder": 0,
+    "slug": "sorcerer-1-lanzamiento-de-conjuros",
+    "name": "Lanzamiento de conjuros",
+    "description": "Puedes lanzar conjuros gracias a tu magia innata. Utilizas tu Carisma como tu característica de lanzamiento para tus conjuros de hechicero.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 1,
+    "sortOrder": 1,
+    "slug": "sorcerer-1-hechiceria-innata",
+    "name": "Hechicería innata",
+    "description": "Como acción adicional, puedes desatar tu magia latente durante 1 minuto. Durante este tiempo:\n• La CD de salvación de tus conjuros de hechicero aumenta en 1.\n• Tienes ventaja en las tiradas de ataque de los conjuros de hechicero que lances.\nPuedes usar este rasgo dos veces y recuperas todos los usos tras finalizar un descanso largo.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 2,
+    "sortOrder": 0,
+    "slug": "sorcerer-2-fuente-de-magia",
+    "name": "Fuente de magia",
+    "description": "Puedes acceder a una fuente de magia que te otorga Puntos de Hechicería. Puedes gastar estos puntos para crear espacios de conjuro adicionales (de nivel 1 a 5) o convertir tus espacios de conjuro en puntos de hechicería.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 2,
+    "sortOrder": 1,
+    "slug": "sorcerer-2-metamagia",
+    "name": "Metamagia",
+    "description": "Ganas la capacidad de moldear tus conjuros. Eliges dos opciones de metamagia para alterar tus conjuros al lanzarlos gastando puntos de hechicería.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 3,
+    "sortOrder": 0,
+    "slug": "sorcerer-3-subclase-de-hechicero",
+    "name": "Subclase de hechicero",
+    "description": "Eliges tu origen mágico de subclase (como Hechicería aberrante, Hechicería de magia salvaje, Hechicería dracónica o Hechicería mecánica) que te otorga rasgos especiales en los niveles 3, 6, 14 y 18.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 4,
+    "sortOrder": 0,
+    "slug": "sorcerer-4-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 5,
+    "sortOrder": 0,
+    "slug": "sorcerer-5-recuperacion-magica",
+    "name": "Recuperación mágica",
+    "description": "Tras finalizar un descanso corto, puedes recuperar una cantidad de puntos de hechicería igual o inferior a la mitad de tu nivel (redondeando hacia abajo). No podrás volver a hacerlo hasta que finalices un descanso largo.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 6,
+    "sortOrder": 0,
+    "slug": "sorcerer-6-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 7,
+    "sortOrder": 0,
+    "slug": "sorcerer-7-encarnacion-magica",
+    "name": "Encarnación mágica",
+    "description": "Si no te quedan usos de Hechicería innata, puedes activar el rasgo gastando 2 puntos de hechicería. Además, mientras Hechicería innata esté activa, puedes usar hasta dos opciones de metamagia en un mismo conjuro.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 8,
+    "sortOrder": 0,
+    "slug": "sorcerer-8-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 10,
+    "sortOrder": 0,
+    "slug": "sorcerer-10-metamagia-mejorada",
+    "name": "Metamagia mejorada",
+    "description": "Obtienes dos opciones más de Metamagia a tu elección (totalizando 4 opciones).",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 12,
+    "sortOrder": 0,
+    "slug": "sorcerer-12-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 14,
+    "sortOrder": 0,
+    "slug": "sorcerer-14-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 16,
+    "sortOrder": 0,
+    "slug": "sorcerer-16-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 17,
+    "sortOrder": 0,
+    "slug": "sorcerer-17-metamagia-suprema",
+    "name": "Metamagia suprema",
+    "description": "Obtienes dos opciones más de Metamagia a tu elección (totalizando 6 opciones).",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 18,
+    "sortOrder": 0,
+    "slug": "sorcerer-18-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 19,
+    "sortOrder": 0,
+    "slug": "sorcerer-19-don-de-final-del-juego",
+    "name": "Don de final del juego",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "sorcerer",
+    "level": 20,
+    "sortOrder": 0,
+    "slug": "sorcerer-20-apoteosis-arcana",
+    "name": "Apoteosis arcana",
+    "description": "Mientras tengas activo Hechicería innata, puedes usar una opción de metamagia en cada uno de tus turnos sin gastar puntos de hechicería.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 1,
+    "sortOrder": 0,
+    "slug": "fighter-1-estilo-de-combate",
+    "name": "Estilo de combate",
+    "description": "Adoptas un estilo de combate particular como tu especialidad (ej. Duelista, Gran arma, Defensa, Arquería, etc.) que te otorga bonos pasivos en combate.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 1,
+    "sortOrder": 1,
+    "slug": "fighter-1-recuperacion-del-viento",
+    "name": "Recuperación del viento",
+    "description": "Puedes activar una fuerza vital de reserva para sanarte. Como acción adicional, recuperas 1d10 + nivel de guerrero puntos de golpe.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 1,
+    "sortOrder": 2,
+    "slug": "fighter-1-maestria-con-armas",
+    "name": "Maestría con armas",
+    "description": "Tu entrenamiento con armas te permite utilizar las propiedades de maestría con dos tipos de armas cuerpo a cuerpo sencillas o marciales de tu elección, como las hachas a dos manos y las hachas de mano. Tras finalizar un descanso largo, puedes cambiar una de dichas elecciones.\n\nCuando alcances ciertos niveles de bárbaro, adquirirás la capacidad de usar las propiedades de maestría con más tipos de armas, como se muestra en la columna \"Maestría con armas\".",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 2,
+    "sortOrder": 0,
+    "slug": "fighter-2-oleada-de-accion",
+    "name": "Oleada de acción",
+    "description": "Puedes superar temporalmente tus límites normales. En tu turno, puedes realizar una acción adicional además de tu acción normal.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 2,
+    "sortOrder": 1,
+    "slug": "fighter-2-tactica-defensiva",
+    "name": "Táctica defensiva",
+    "description": "Obtienes un bonificador a tus tiradas de salvación de Destreza mientras lleves armadura.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 3,
+    "sortOrder": 0,
+    "slug": "fighter-3-subclase-de-guerrero",
+    "name": "Subclase de Guerrero",
+    "description": "Eliges una especialización de subclase (como Caballero Arcano, Campeón, Guerrero Psiónico o Maestro del Combate) que te otorga rasgos especiales en los niveles 3, 7, 10 y 15.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "fighter",
+    "level": 4,
+    "sortOrder": 0,
+    "slug": "fighter-4-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 5,
+    "sortOrder": 0,
+    "slug": "fighter-5-ataque-adicional",
+    "name": "Ataque adicional",
+    "description": "Puedes atacar dos veces en lugar de una siempre que realices la acción de Atacar en tu turno.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 6,
+    "sortOrder": 0,
+    "slug": "fighter-6-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 7,
+    "sortOrder": 0,
+    "slug": "fighter-7-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "fighter",
+    "level": 8,
+    "sortOrder": 0,
+    "slug": "fighter-8-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 9,
+    "sortOrder": 0,
+    "slug": "fighter-9-indomito",
+    "name": "Indómito",
+    "description": "Puedes volver a lanzar una tirada de salvación fallida. Si lo haces, debes usar el nuevo resultado y sumas tu nivel de guerrero a la tirada.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 10,
+    "sortOrder": 0,
+    "slug": "fighter-10-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "fighter",
+    "level": 11,
+    "sortOrder": 0,
+    "slug": "fighter-11-ataque-adicional",
+    "name": "Ataque adicional",
+    "description": "Puedes atacar dos veces en lugar de una siempre que realices la acción de Atacar en tu turno.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 12,
+    "sortOrder": 0,
+    "slug": "fighter-12-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 13,
+    "sortOrder": 0,
+    "slug": "fighter-13-tacticas-indomitas",
+    "name": "Tácticas indómitas",
+    "description": "Cuando usas tu rasgo Indómito, puedes gastar un uso de Recuperación del viento para sumarle un bono extra a la tirada de salvación.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 14,
+    "sortOrder": 0,
+    "slug": "fighter-14-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 15,
+    "sortOrder": 0,
+    "slug": "fighter-15-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "fighter",
+    "level": 16,
+    "sortOrder": 0,
+    "slug": "fighter-16-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 17,
+    "sortOrder": 0,
+    "slug": "fighter-17-oleada-de-accion",
+    "name": "Oleada de acción",
+    "description": "Puedes superar temporalmente tus límites normales. En tu turno, puedes realizar una acción adicional además de tu acción normal.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 17,
+    "sortOrder": 1,
+    "slug": "fighter-17-recuperacion-del-viento",
+    "name": "Recuperación del viento",
+    "description": "Puedes activar una fuerza vital de reserva para sanarte. Como acción adicional, recuperas 1d10 + nivel de guerrero puntos de golpe.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 18,
+    "sortOrder": 0,
+    "slug": "fighter-18-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "fighter",
+    "level": 19,
+    "sortOrder": 0,
+    "slug": "fighter-19-don-de-final-del-juego",
+    "name": "Don de final del juego",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "fighter",
+    "level": 20,
+    "sortOrder": 0,
+    "slug": "fighter-20-ataque-adicional",
+    "name": "Ataque adicional",
+    "description": "Puedes atacar dos veces en lugar de una siempre que realices la acción de Atacar en tu turno.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 1,
+    "sortOrder": 0,
+    "slug": "bard-1-lanzamiento-de-conjuros",
+    "name": "Lanzamiento de conjuros",
+    "description": "Puedes lanzar conjuros gracias a tu magia innata. Utilizas tu Carisma como tu característica de lanzamiento para tus conjuros de hechicero.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 1,
+    "sortOrder": 1,
+    "slug": "bard-1-inspiracion-bardica",
+    "name": "Inspiración bárdica",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 2,
+    "sortOrder": 0,
+    "slug": "bard-2-polifacetico",
+    "name": "Polifacético",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 2,
+    "sortOrder": 1,
+    "slug": "bard-2-cancion-de-descanso",
+    "name": "Canción de descanso",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 3,
+    "sortOrder": 0,
+    "slug": "bard-3-subclase-de-bardo",
+    "name": "Subclase de Bardo",
+    "description": null,
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "bard",
+    "level": 3,
+    "sortOrder": 1,
+    "slug": "bard-3-pericia",
+    "name": "Pericia",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 4,
+    "sortOrder": 0,
+    "slug": "bard-4-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 5,
+    "sortOrder": 0,
+    "slug": "bard-5-fuente-de-inspiracion",
+    "name": "Fuente de inspiración",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 6,
+    "sortOrder": 0,
+    "slug": "bard-6-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "bard",
+    "level": 8,
+    "sortOrder": 0,
+    "slug": "bard-8-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 9,
+    "sortOrder": 0,
+    "slug": "bard-9-pericia",
+    "name": "Pericia",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 12,
+    "sortOrder": 0,
+    "slug": "bard-12-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 14,
+    "sortOrder": 0,
+    "slug": "bard-14-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "bard",
+    "level": 16,
+    "sortOrder": 0,
+    "slug": "bard-16-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 18,
+    "sortOrder": 0,
+    "slug": "bard-18-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "bard",
+    "level": 19,
+    "sortOrder": 0,
+    "slug": "bard-19-don-de-final-del-juego",
+    "name": "Don de final del juego",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "bard",
+    "level": 20,
+    "sortOrder": 0,
+    "slug": "bard-20-inspiracion-superior",
+    "name": "Inspiración superior",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 1,
+    "sortOrder": 0,
+    "slug": "warlock-1-magia-del-pacto",
+    "name": "Magia del pacto",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 1,
+    "sortOrder": 1,
+    "slug": "warlock-1-favor-del-patron",
+    "name": "Favor del patrón",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 1,
+    "sortOrder": 2,
+    "slug": "warlock-1-magia-sobrenatural",
+    "name": "Magia sobrenatural",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 2,
+    "sortOrder": 0,
+    "slug": "warlock-2-invocaciones-sobrenaturales",
+    "name": "Invocaciones sobrenaturales",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 3,
+    "sortOrder": 0,
+    "slug": "warlock-3-subclase-de-brujo",
+    "name": "Subclase de Brujo",
+    "description": null,
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "warlock",
+    "level": 3,
+    "sortOrder": 1,
+    "slug": "warlock-3-regalo-del-pacto",
+    "name": "Regalo del pacto",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 4,
+    "sortOrder": 0,
+    "slug": "warlock-4-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 6,
+    "sortOrder": 0,
+    "slug": "warlock-6-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "warlock",
+    "level": 8,
+    "sortOrder": 0,
+    "slug": "warlock-8-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 10,
+    "sortOrder": 0,
+    "slug": "warlock-10-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "warlock",
+    "level": 11,
+    "sortOrder": 0,
+    "slug": "warlock-11-arcanismo-mistico-nivel-6",
+    "name": "Arcanismo místico (Nivel 6)",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 12,
+    "sortOrder": 0,
+    "slug": "warlock-12-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 13,
+    "sortOrder": 0,
+    "slug": "warlock-13-arcanismo-mistico-nivel-7",
+    "name": "Arcanismo místico (Nivel 7)",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 14,
+    "sortOrder": 0,
+    "slug": "warlock-14-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "warlock",
+    "level": 15,
+    "sortOrder": 0,
+    "slug": "warlock-15-arcanismo-mistico-nivel-8",
+    "name": "Arcanismo místico (Nivel 8)",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 16,
+    "sortOrder": 0,
+    "slug": "warlock-16-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 17,
+    "sortOrder": 0,
+    "slug": "warlock-17-arcanismo-mistico-nivel-9",
+    "name": "Arcanismo místico (Nivel 9)",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 19,
+    "sortOrder": 0,
+    "slug": "warlock-19-don-de-final-del-juego",
+    "name": "Don de final del juego",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "warlock",
+    "level": 20,
+    "sortOrder": 0,
+    "slug": "warlock-20-maestro-sobrenatural",
+    "name": "Maestro sobrenatural",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "cleric",
+    "level": 1,
+    "sortOrder": 0,
+    "slug": "cleric-1-lanzamiento-de-conjuros",
+    "name": "Lanzamiento de conjuros",
+    "description": "Puedes lanzar conjuros gracias a tu magia innata. Utilizas tu Carisma como tu característica de lanzamiento para tus conjuros de hechicero.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "cleric",
+    "level": 1,
+    "sortOrder": 1,
+    "slug": "cleric-1-canalizar-divinidad",
+    "name": "Canalizar divinidad",
+    "description": "Puedes canalizar energía divina directamente de los Planos Exteriores (2 usos a nivel 3, 3 a nivel 11). Recuperas 1 uso tras un descanso corto y todos tras un descanso largo.\nEmpiezas con Sentidos divinos: como acción adicional, detectas celestiales, infernales, muertos vivientes y zonas sagradas/profanadas a 18 m durante 10 minutos.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "cleric",
+    "level": 2,
+    "sortOrder": 0,
+    "slug": "cleric-2-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "cleric",
+    "level": 3,
+    "sortOrder": 0,
+    "slug": "cleric-3-subclase-de-clerigo",
+    "name": "Subclase de Clérigo",
+    "description": null,
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "cleric",
+    "level": 4,
+    "sortOrder": 0,
+    "slug": "cleric-4-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "cleric",
+    "level": 5,
+    "sortOrder": 0,
+    "slug": "cleric-5-destruir-infrecuentes",
+    "name": "Destruir infrecuentes",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "cleric",
+    "level": 6,
+    "sortOrder": 0,
+    "slug": "cleric-6-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "cleric",
+    "level": 8,
+    "sortOrder": 0,
+    "slug": "cleric-8-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "cleric",
+    "level": 10,
+    "sortOrder": 0,
+    "slug": "cleric-10-intervencion-divina",
+    "name": "Intervención divina",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "cleric",
+    "level": 12,
+    "sortOrder": 0,
+    "slug": "cleric-12-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "cleric",
+    "level": 14,
+    "sortOrder": 0,
+    "slug": "cleric-14-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "cleric",
+    "level": 16,
+    "sortOrder": 0,
+    "slug": "cleric-16-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "cleric",
+    "level": 17,
+    "sortOrder": 0,
+    "slug": "cleric-17-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "cleric",
+    "level": 19,
+    "sortOrder": 0,
+    "slug": "cleric-19-don-de-final-del-juego",
+    "name": "Don de final del juego",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "cleric",
+    "level": 20,
+    "sortOrder": 0,
+    "slug": "cleric-20-intervencion-divina-mejorada",
+    "name": "Intervención divina mejorada",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 1,
+    "sortOrder": 0,
+    "slug": "druid-1-lanzamiento-de-conjuros",
+    "name": "Lanzamiento de conjuros",
+    "description": "Puedes lanzar conjuros gracias a tu magia innata. Utilizas tu Carisma como tu característica de lanzamiento para tus conjuros de hechicero.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 1,
+    "sortOrder": 1,
+    "slug": "druid-1-druidico",
+    "name": "Druídico",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 2,
+    "sortOrder": 0,
+    "slug": "druid-2-forma-salvaje",
+    "name": "Forma salvaje",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 2,
+    "sortOrder": 1,
+    "slug": "druid-2-subclase-de-druida",
+    "name": "Subclase de Druida",
+    "description": null,
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "druid",
+    "level": 3,
+    "sortOrder": 0,
+    "slug": "druid-3-subclase-de-druida",
+    "name": "Subclase de Druida",
+    "description": null,
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "druid",
+    "level": 4,
+    "sortOrder": 0,
+    "slug": "druid-4-forma-salvaje-mejorada",
+    "name": "Forma salvaje mejorada",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 4,
+    "sortOrder": 1,
+    "slug": "druid-4-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 6,
+    "sortOrder": 0,
+    "slug": "druid-6-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "druid",
+    "level": 8,
+    "sortOrder": 0,
+    "slug": "druid-8-forma-salvaje-mejorada",
+    "name": "Forma salvaje mejorada",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 8,
+    "sortOrder": 1,
+    "slug": "druid-8-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 10,
+    "sortOrder": 0,
+    "slug": "druid-10-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "druid",
+    "level": 12,
+    "sortOrder": 0,
+    "slug": "druid-12-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 14,
+    "sortOrder": 0,
+    "slug": "druid-14-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "druid",
+    "level": 16,
+    "sortOrder": 0,
+    "slug": "druid-16-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 18,
+    "sortOrder": 0,
+    "slug": "druid-18-cuerpo-atemporal",
+    "name": "Cuerpo atemporal",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 18,
+    "sortOrder": 1,
+    "slug": "druid-18-conjuros-bestiales",
+    "name": "Conjuros bestiales",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 19,
+    "sortOrder": 0,
+    "slug": "druid-19-don-de-final-del-juego",
+    "name": "Don de final del juego",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "druid",
+    "level": 20,
+    "sortOrder": 0,
+    "slug": "druid-20-archidruida",
+    "name": "Archidruida",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 1,
+    "sortOrder": 0,
+    "slug": "ranger-1-enemigo-predilecto",
+    "name": "Enemigo predilecto",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 1,
+    "sortOrder": 1,
+    "slug": "ranger-1-explorador-natural",
+    "name": "Explorador natural",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 2,
+    "sortOrder": 0,
+    "slug": "ranger-2-estilo-de-combate",
+    "name": "Estilo de combate",
+    "description": "Adoptas un estilo de combate particular como tu especialidad (ej. Duelista, Gran arma, Defensa, Arquería, etc.) que te otorga bonos pasivos en combate.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 2,
+    "sortOrder": 1,
+    "slug": "ranger-2-lanzamiento-de-conjuros",
+    "name": "Lanzamiento de conjuros",
+    "description": "Puedes lanzar conjuros gracias a tu magia innata. Utilizas tu Carisma como tu característica de lanzamiento para tus conjuros de hechicero.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 3,
+    "sortOrder": 0,
+    "slug": "ranger-3-subclase-de-explorador",
+    "name": "Subclase de Explorador",
+    "description": null,
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "ranger",
+    "level": 3,
+    "sortOrder": 1,
+    "slug": "ranger-3-conciencia-primigenia",
+    "name": "Conciencia primigenia",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 4,
+    "sortOrder": 0,
+    "slug": "ranger-4-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 5,
+    "sortOrder": 0,
+    "slug": "ranger-5-ataque-adicional",
+    "name": "Ataque adicional",
+    "description": "Puedes atacar dos veces en lugar de una siempre que realices la acción de Atacar en tu turno.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 7,
+    "sortOrder": 0,
+    "slug": "ranger-7-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "ranger",
+    "level": 8,
+    "sortOrder": 0,
+    "slug": "ranger-8-paso-de-las-tierras",
+    "name": "Paso de las tierras",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 8,
+    "sortOrder": 1,
+    "slug": "ranger-8-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 10,
+    "sortOrder": 0,
+    "slug": "ranger-10-ocultacion-natural",
+    "name": "Ocultación natural",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 10,
+    "sortOrder": 1,
+    "slug": "ranger-10-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "ranger",
+    "level": 11,
+    "sortOrder": 0,
+    "slug": "ranger-11-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "ranger",
+    "level": 12,
+    "sortOrder": 0,
+    "slug": "ranger-12-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 14,
+    "sortOrder": 0,
+    "slug": "ranger-14-desvanecerse",
+    "name": "Desvanecerse",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 14,
+    "sortOrder": 1,
+    "slug": "ranger-14-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "ranger",
+    "level": 15,
+    "sortOrder": 0,
+    "slug": "ranger-15-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "ranger",
+    "level": 16,
+    "sortOrder": 0,
+    "slug": "ranger-16-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 18,
+    "sortOrder": 0,
+    "slug": "ranger-18-sentidos-feroces",
+    "name": "Sentidos feroces",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 19,
+    "sortOrder": 0,
+    "slug": "ranger-19-don-de-final-del-juego",
+    "name": "Don de final del juego",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "ranger",
+    "level": 20,
+    "sortOrder": 0,
+    "slug": "ranger-20-cazador-del-enemigo",
+    "name": "Cazador del enemigo",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 1,
+    "sortOrder": 0,
+    "slug": "paladin-1-imponer-las-manos",
+    "name": "Imponer las manos",
+    "description": "Tu toque bendito puede curar heridas. Tienes una reserva de poder de curación que se rellena tras finalizar un descanso largo (igual a 5 veces tu nivel de paladín).\nComo acción adicional, puedes tocar a una criatura (que puedes ser tú) y extraer energía de la reserva para restaurar Puntos de Golpe.\nTambién puedes gastar 5 puntos de golpe de la reserva para eliminar el estado de envenenada de la criatura (o aturdida, cegada, ensordecida, hechizada o paralizada a nivel 14 con Toque reparador).",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 1,
+    "sortOrder": 1,
+    "slug": "paladin-1-lanzamiento-de-conjuros-paladin",
+    "name": "Lanzamiento de conjuros (Paladín)",
+    "description": "Has aprendido a lanzar conjuros gracias a la oración y la meditación. Utilizas tu Carisma como aptitud mágica para tus conjuros de paladín (CD de salvación = 8 + mod. Carisma + BC; Ataque = mod. Carisma + BC). Puedes utilizar un símbolo sagrado como canalizador mágico.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 1,
+    "sortOrder": 2,
+    "slug": "paladin-1-maestria-con-armas",
+    "name": "Maestría con armas",
+    "description": "Tu entrenamiento con armas te permite utilizar las propiedades de maestría con dos tipos de armas cuerpo a cuerpo sencillas o marciales de tu elección, como las hachas a dos manos y las hachas de mano. Tras finalizar un descanso largo, puedes cambiar una de dichas elecciones.\n\nCuando alcances ciertos niveles de bárbaro, adquirirás la capacidad de usar las propiedades de maestría con más tipos de armas, como se muestra en la columna \"Maestría con armas\".",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 2,
+    "sortOrder": 0,
+    "slug": "paladin-2-castigo-de-paladin",
+    "name": "Castigo de paladín",
+    "description": "Siempre tienes el conjuro castigo divino preparado. Además, puedes lanzarlo una vez sin gastar un espacio de conjuro, recuperando la capacidad de hacerlo tras finalizar un descanso largo.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 2,
+    "sortOrder": 1,
+    "slug": "paladin-2-estilo-de-combate",
+    "name": "Estilo de combate",
+    "description": "Adoptas un estilo de combate particular como tu especialidad (ej. Duelista, Gran arma, Defensa, Arquería, etc.) que te otorga bonos pasivos en combate.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 3,
+    "sortOrder": 0,
+    "slug": "paladin-3-canalizar-divinidad",
+    "name": "Canalizar divinidad",
+    "description": "Puedes canalizar energía divina directamente de los Planos Exteriores (2 usos a nivel 3, 3 a nivel 11). Recuperas 1 uso tras un descanso corto y todos tras un descanso largo.\nEmpiezas con Sentidos divinos: como acción adicional, detectas celestiales, infernales, muertos vivientes y zonas sagradas/profanadas a 18 m durante 10 minutos.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 3,
+    "sortOrder": 1,
+    "slug": "paladin-3-subclase-de-paladin",
+    "name": "Subclase de paladín",
+    "description": "Consigues una subclase de paladín de tu elección (Juramento de entrega, Juramento de la gloria, Juramento de los antiguos o Juramento de venganza) que te otorga rasgos en los niveles 3, 7, 15 y 20.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "paladin",
+    "level": 4,
+    "sortOrder": 0,
+    "slug": "paladin-4-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 5,
+    "sortOrder": 0,
+    "slug": "paladin-5-ataque-adicional",
+    "name": "Ataque adicional",
+    "description": "Puedes atacar dos veces en lugar de una siempre que realices la acción de Atacar en tu turno.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 5,
+    "sortOrder": 1,
+    "slug": "paladin-5-corcel-fiel",
+    "name": "Corcel fiel",
+    "description": "Puedes invocar la ayuda de un corcel sobrenatural. Siempre tienes el conjuro hallar corcel preparado. También puedes lanzarlo una vez sin gastar un espacio de conjuro por descanso largo.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 6,
+    "sortOrder": 0,
+    "slug": "paladin-6-aura-de-proteccion",
+    "name": "Aura de protección",
+    "description": "Irradias un aura protectora e invisible en una emanación de 3 m (9 m a nivel 18). Tus aliados dentro del aura y tú obtenéis un bonificador a todas las tiradas de salvación igual a tu modificador por Carisma (mínimo de +1).",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 7,
+    "sortOrder": 0,
+    "slug": "paladin-7-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "paladin",
+    "level": 8,
+    "sortOrder": 0,
+    "slug": "paladin-8-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 9,
+    "sortOrder": 0,
+    "slug": "paladin-9-abjurar-de-los-enemigos",
+    "name": "Abjurar de los enemigos",
+    "description": "Como acción de magia, puedes gastar uno de los usos de Canalizar divinidad para sobrecoger a tus enemigos. Muestras tu símbolo sagrado o arma a una cantidad de criaturas a 18 m o menos igual a tu modificador por Carisma (mínimo 1). Cada objetivo deberá superar una tirada de salvación de Sabiduría o quedará asustado durante 1 minuto.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 10,
+    "sortOrder": 0,
+    "slug": "paladin-10-aura-de-coraje",
+    "name": "Aura de coraje",
+    "description": "Tus aliados y tú tenéis inmunidad al estado de asustado mientras estéis dentro de tu Aura de protección.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 11,
+    "sortOrder": 0,
+    "slug": "paladin-11-golpes-radiantes",
+    "name": "Golpes radiantes",
+    "description": "Tus golpes tienen un poder sobrenatural. Cuando aciertes a un objetivo con una tirada de ataque usando un arma cuerpo a cuerpo o un ataque sin armas, el objetivo recibirá 1d8 de daño radiante adicional.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 12,
+    "sortOrder": 0,
+    "slug": "paladin-12-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 14,
+    "sortOrder": 0,
+    "slug": "paladin-14-toque-reparador",
+    "name": "Toque reparador",
+    "description": "Cuando uses Imponer las manos sobre una criatura, también podrás eliminar uno o más de los siguientes estados gastando 5 puntos de golpe de la reserva por cada uno: asustado, aturdido, cegado, ensordecido, hechizado o paralizado.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 15,
+    "sortOrder": 0,
+    "slug": "paladin-15-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "paladin",
+    "level": 16,
+    "sortOrder": 0,
+    "slug": "paladin-16-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 18,
+    "sortOrder": 0,
+    "slug": "paladin-18-expansion-de-aura",
+    "name": "Expansión de aura",
+    "description": "Tu Aura de protección ahora es una emanación de 9 m (30 ft) de radio.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 19,
+    "sortOrder": 0,
+    "slug": "paladin-19-don-epico",
+    "name": "Don épico",
+    "description": "Obtienes un don épico que incrementa tus puntuaciones de característica de forma extraordinaria y confiere un beneficio legendario.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "paladin",
+    "level": 20,
+    "sortOrder": 0,
+    "slug": "paladin-20-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "rogue",
+    "level": 1,
+    "sortOrder": 0,
+    "slug": "rogue-1-ataque-furtivo",
+    "name": "Ataque furtivo",
+    "description": "Una vez por turno, puedes infligir daño adicional (1d6 a nvl 1, aumentando hasta 10d6 a nvl 19) a una criatura a la que aciertes con un arma sutil o a distancia si tienes ventaja en la tirada. No necesitas ventaja si al menos un aliado no incapacitado está a 1,5 m del objetivo y no sufres desventaja.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 1,
+    "sortOrder": 1,
+    "slug": "rogue-1-jerga-de-ladrones",
+    "name": "Jerga de ladrones",
+    "description": "Conoces el dialecto secreto de los delincuentes y un idioma adicional de tu elección.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 1,
+    "sortOrder": 2,
+    "slug": "rogue-1-maestria-con-armas",
+    "name": "Maestría con armas",
+    "description": "Tu entrenamiento con armas te permite utilizar las propiedades de maestría con dos tipos de armas cuerpo a cuerpo sencillas o marciales de tu elección, como las hachas a dos manos y las hachas de mano. Tras finalizar un descanso largo, puedes cambiar una de dichas elecciones.\n\nCuando alcances ciertos niveles de bárbaro, adquirirás la capacidad de usar las propiedades de maestría con más tipos de armas, como se muestra en la columna \"Maestría con armas\".",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 1,
+    "sortOrder": 3,
+    "slug": "rogue-1-pericia",
+    "name": "Pericia",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 2,
+    "sortOrder": 0,
+    "slug": "rogue-2-accion-astuta",
+    "name": "Acción astuta",
+    "description": "Tu agilidad mental te permite llevar a cabo una de las siguientes acciones como acción adicional en tu turno: Correr, Destrabarse o Esconderse.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 3,
+    "sortOrder": 0,
+    "slug": "rogue-3-punteria-certera",
+    "name": "Puntería certera",
+    "description": "Como acción adicional, te concedes ventaja en tu siguiente tirada de ataque del turno actual si no te has movido en este turno. Tras usarlo, tu velocidad es 0 hasta el final del turno.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 3,
+    "sortOrder": 1,
+    "slug": "rogue-3-subclase-de-picaro",
+    "name": "Subclase de pícaro",
+    "description": "Consigues una subclase de pícaro de tu elección (Asesino, Embaucador arcano, Ladrón o Rebanaalmas) que te otorga rasgos en los niveles 3, 9, 13 y 17.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "rogue",
+    "level": 4,
+    "sortOrder": 0,
+    "slug": "rogue-4-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 5,
+    "sortOrder": 0,
+    "slug": "rogue-5-esquiva-asombrosa",
+    "name": "Esquiva asombrosa",
+    "description": "Cuando un atacante que puedas ver te acierte con una tirada de ataque, puedes usar tu reacción para reducir a la mitad el daño que te causa dicho ataque.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 5,
+    "sortOrder": 1,
+    "slug": "rogue-5-golpe-astuto",
+    "name": "Golpe astuto",
+    "description": "Cuando infliges daño de Ataque furtivo, puedes renunciar a dados de daño para añadir efectos tácticos:\n• Retirada (coste: 1d6): Te mueves hasta la mitad de tu velocidad sin provocar ataques de oportunidad.\n• Tropiezo (coste: 1d6): Objetivo Grande o menor cae derribado si falla salvación de Destreza (CD = 8 + DES + BC).\n• Veneno (coste: 1d6): Envenenas al objetivo por 1 minuto si falla salvación de Constitución (requiere útiles de envenenador).",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 6,
+    "sortOrder": 0,
+    "slug": "rogue-6-pericia",
+    "name": "Pericia",
+    "description": null,
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 7,
+    "sortOrder": 0,
+    "slug": "rogue-7-evasion",
+    "name": "Evasión",
+    "description": "Cuando sufras un efecto que te permita hacer una tirada de salvación de Destreza para sufrir solo la mitad de daño, no recibes daño alguno si la superas y solo sufres la mitad si la fallas. No te beneficias si tienes el estado de incapacitado.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 7,
+    "sortOrder": 1,
+    "slug": "rogue-7-talentos-fiables",
+    "name": "Talentos fiables",
+    "description": "Cuando hagas una prueba de característica que utilice una de tus competencias en habilidades o con herramientas, puedes sustituir un resultado de 9 o menos en el d20 por un 10.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 8,
+    "sortOrder": 0,
+    "slug": "rogue-8-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 9,
+    "sortOrder": 0,
+    "slug": "rogue-9-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "rogue",
+    "level": 10,
+    "sortOrder": 0,
+    "slug": "rogue-10-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 11,
+    "sortOrder": 0,
+    "slug": "rogue-11-golpe-astuto-mejorado",
+    "name": "Golpe astuto mejorado",
+    "description": "Puedes aplicar hasta dos efectos de Golpe astuto en el mismo Ataque furtivo pagando el coste en dados de cada efecto.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 12,
+    "sortOrder": 0,
+    "slug": "rogue-12-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 13,
+    "sortOrder": 0,
+    "slug": "rogue-13-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "rogue",
+    "level": 14,
+    "sortOrder": 0,
+    "slug": "rogue-14-golpes-taimados",
+    "name": "Golpes taimados",
+    "description": "Añades nuevas opciones avanzadas a tu Golpe astuto:\n• Confundir (coste: 2d6): Salvación de Constitución o el objetivo solo puede moverse, o hacer una acción, o hacer una acción adicional en su próximo turno.\n• Noquear (coste: 6d6): Salvación de Constitución o el objetivo queda inconsciente durante 1 minuto.\n• Ofuscar (coste: 3d6): Salvación de Destreza o el objetivo queda cegado hasta el final de su siguiente turno.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 15,
+    "sortOrder": 0,
+    "slug": "rogue-15-mente-escurridiza",
+    "name": "Mente escurridiza",
+    "description": "Tu disciplina mental te otorga competencia en las tiradas de salvación de Sabiduría y Carisma.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 16,
+    "sortOrder": 0,
+    "slug": "rogue-16-mejora-de-caracteristica",
+    "name": "Mejora de característica",
+    "description": "Puedes aumentar una puntuación de característica en 2, o dos puntuaciones en 1, o elegir una Dote.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 17,
+    "sortOrder": 0,
+    "slug": "rogue-17-rasgo-de-subclase",
+    "name": "Rasgo de subclase",
+    "description": "Obtienes un beneficio específico de la subclase elegida para tu aventurero.",
+    "isSubclassPlaceholder": true
+  },
+  {
+    "classSlug": "rogue",
+    "level": 18,
+    "sortOrder": 0,
+    "slug": "rogue-18-elusivo",
+    "name": "Elusivo",
+    "description": "Ninguna tirada de ataque contra ti tendrá ventaja a menos que tengas el estado de incapacitado.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 19,
+    "sortOrder": 0,
+    "slug": "rogue-19-don-epico",
+    "name": "Don épico",
+    "description": "Obtienes un don épico que incrementa tus puntuaciones de característica de forma extraordinaria y confiere un beneficio legendario.",
+    "isSubclassPlaceholder": false
+  },
+  {
+    "classSlug": "rogue",
+    "level": 20,
+    "sortOrder": 0,
+    "slug": "rogue-20-golpe-de-suerte",
+    "name": "Golpe de suerte",
+    "description": "Si fallas una prueba con d20, puedes convertir el resultado en un 20 automático (1 uso por descanso corto o largo).",
+    "isSubclassPlaceholder": false
+  }
+]

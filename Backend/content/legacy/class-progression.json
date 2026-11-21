@@ -1,0 +1,1008 @@
+{
+  "MONK_PROGRESS_MAP": {
+    "1": {
+      "features": [
+        "Artes marciales",
+        "Defensa sin armadura"
+      ]
+    },
+    "2": {
+      "features": [
+        "Concentración de monje",
+        "Metabolismo asombroso",
+        "Movimiento sin armadura"
+      ]
+    },
+    "3": {
+      "features": [
+        "Desviar ataques",
+        "Subclase de monje"
+      ]
+    },
+    "4": {
+      "features": [
+        "Caída lenta",
+        "Mejora de característica"
+      ]
+    },
+    "5": {
+      "features": [
+        "Ataque adicional",
+        "Golpe aturdidor"
+      ]
+    },
+    "6": {
+      "features": [
+        "Golpes potenciados",
+        "Rasgo de subclase"
+      ]
+    },
+    "7": {
+      "features": [
+        "Evasión"
+      ]
+    },
+    "8": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "9": {
+      "features": [
+        "Movimiento acrobático"
+      ]
+    },
+    "10": {
+      "features": [
+        "Autorrestablecimiento",
+        "Concentración agudizada"
+      ]
+    },
+    "11": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "12": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "13": {
+      "features": [
+        "Desviar energía"
+      ]
+    },
+    "14": {
+      "features": [
+        "Superviviente disciplinado"
+      ]
+    },
+    "15": {
+      "features": [
+        "Concentración perfecta"
+      ]
+    },
+    "16": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "17": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "18": {
+      "features": [
+        "Defensa superior"
+      ]
+    },
+    "19": {
+      "features": [
+        "Don épico"
+      ]
+    },
+    "20": {
+      "features": [
+        "Cuerpo y mente"
+      ]
+    }
+  },
+  "BARBARIAN_PROGRESS_MAP": {
+    "1": {
+      "features": [
+        "Defensa sin armadura",
+        "Furia",
+        "Maestría con armas"
+      ]
+    },
+    "2": {
+      "features": [
+        "Ataque temerario",
+        "Sentir el peligro"
+      ]
+    },
+    "3": {
+      "features": [
+        "Conocimiento primigenio",
+        "Subclase de bárbaro"
+      ]
+    },
+    "4": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "5": {
+      "features": [
+        "Ataque adicional",
+        "Movimiento rápido"
+      ]
+    },
+    "6": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "7": {
+      "features": [
+        "Instinto salvaje",
+        "Salto instintivo"
+      ]
+    },
+    "8": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "9": {
+      "features": [
+        "Golpe brutal"
+      ]
+    },
+    "10": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "11": {
+      "features": [
+        "Furia implacable"
+      ]
+    },
+    "12": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "13": {
+      "features": [
+        "Golpe brutal mejorado"
+      ]
+    },
+    "14": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "15": {
+      "features": [
+        "Furia persistente"
+      ]
+    },
+    "16": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "17": {
+      "features": [
+        "Golpe brutal mejorado"
+      ]
+    },
+    "18": {
+      "features": [
+        "Poderío indómito"
+      ]
+    },
+    "19": {
+      "features": [
+        "Don épico"
+      ]
+    },
+    "20": {
+      "features": [
+        "Campeón primordial"
+      ]
+    }
+  },
+  "SORCERER_PROGRESS_MAP": {
+    "1": {
+      "features": [
+        "Lanzamiento de conjuros",
+        "Hechicería innata"
+      ]
+    },
+    "2": {
+      "features": [
+        "Fuente de magia",
+        "Metamagia"
+      ]
+    },
+    "3": {
+      "features": [
+        "Subclase de hechicero"
+      ]
+    },
+    "4": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "5": {
+      "features": [
+        "Recuperación mágica"
+      ]
+    },
+    "6": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "7": {
+      "features": [
+        "Encarnación mágica"
+      ]
+    },
+    "8": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "10": {
+      "features": [
+        "Metamagia mejorada"
+      ]
+    },
+    "12": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "14": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "16": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "17": {
+      "features": [
+        "Metamagia suprema"
+      ]
+    },
+    "18": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "19": {
+      "features": [
+        "Don de final del juego"
+      ]
+    },
+    "20": {
+      "features": [
+        "Apoteosis arcana"
+      ]
+    }
+  },
+  "FIGHTER_PROGRESS_MAP": {
+    "1": {
+      "features": [
+        "Estilo de combate",
+        "Recuperación del viento",
+        "Maestría con armas"
+      ]
+    },
+    "2": {
+      "features": [
+        "Oleada de acción",
+        "Táctica defensiva"
+      ]
+    },
+    "3": {
+      "features": [
+        "Subclase de Guerrero"
+      ]
+    },
+    "4": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "5": {
+      "features": [
+        "Ataque adicional"
+      ]
+    },
+    "6": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "7": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "8": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "9": {
+      "features": [
+        "Indómito"
+      ]
+    },
+    "10": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "11": {
+      "features": [
+        "Ataque adicional"
+      ]
+    },
+    "12": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "13": {
+      "features": [
+        "Tácticas indómitas"
+      ]
+    },
+    "14": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "15": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "16": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "17": {
+      "features": [
+        "Oleada de acción",
+        "Recuperación del viento"
+      ]
+    },
+    "18": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "19": {
+      "features": [
+        "Don de final del juego"
+      ]
+    },
+    "20": {
+      "features": [
+        "Ataque adicional"
+      ]
+    }
+  },
+  "BARD_PROGRESS_MAP": {
+    "1": {
+      "features": [
+        "Lanzamiento de conjuros",
+        "Inspiración bárdica"
+      ]
+    },
+    "2": {
+      "features": [
+        "Polifacético",
+        "Canción de descanso"
+      ]
+    },
+    "3": {
+      "features": [
+        "Subclase de Bardo",
+        "Pericia"
+      ]
+    },
+    "4": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "5": {
+      "features": [
+        "Fuente de inspiración"
+      ]
+    },
+    "6": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "8": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "9": {
+      "features": [
+        "Pericia"
+      ]
+    },
+    "12": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "14": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "16": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "18": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "19": {
+      "features": [
+        "Don de final del juego"
+      ]
+    },
+    "20": {
+      "features": [
+        "Inspiración superior"
+      ]
+    }
+  },
+  "WARLOCK_PROGRESS_MAP": {
+    "1": {
+      "features": [
+        "Magia del pacto",
+        "Favor del patrón",
+        "Magia sobrenatural"
+      ]
+    },
+    "2": {
+      "features": [
+        "Invocaciones sobrenaturales"
+      ]
+    },
+    "3": {
+      "features": [
+        "Subclase de Brujo",
+        "Regalo del pacto"
+      ]
+    },
+    "4": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "6": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "8": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "10": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "11": {
+      "features": [
+        "Arcanismo místico (Nivel 6)"
+      ]
+    },
+    "12": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "13": {
+      "features": [
+        "Arcanismo místico (Nivel 7)"
+      ]
+    },
+    "14": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "15": {
+      "features": [
+        "Arcanismo místico (Nivel 8)"
+      ]
+    },
+    "16": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "17": {
+      "features": [
+        "Arcanismo místico (Nivel 9)"
+      ]
+    },
+    "19": {
+      "features": [
+        "Don de final del juego"
+      ]
+    },
+    "20": {
+      "features": [
+        "Maestro sobrenatural"
+      ]
+    }
+  },
+  "CLERIC_PROGRESS_MAP": {
+    "1": {
+      "features": [
+        "Lanzamiento de conjuros",
+        "Canalizar divinidad"
+      ]
+    },
+    "2": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "3": {
+      "features": [
+        "Subclase de Clérigo"
+      ]
+    },
+    "4": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "5": {
+      "features": [
+        "Destruir infrecuentes"
+      ]
+    },
+    "6": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "8": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "10": {
+      "features": [
+        "Intervención divina"
+      ]
+    },
+    "12": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "14": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "16": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "17": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "19": {
+      "features": [
+        "Don de final del juego"
+      ]
+    },
+    "20": {
+      "features": [
+        "Intervención divina mejorada"
+      ]
+    }
+  },
+  "DRUID_PROGRESS_MAP": {
+    "1": {
+      "features": [
+        "Lanzamiento de conjuros",
+        "Druídico"
+      ]
+    },
+    "2": {
+      "features": [
+        "Forma salvaje",
+        "Subclase de Druida"
+      ]
+    },
+    "3": {
+      "features": [
+        "Subclase de Druida"
+      ]
+    },
+    "4": {
+      "features": [
+        "Forma salvaje mejorada",
+        "Mejora de característica"
+      ]
+    },
+    "6": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "8": {
+      "features": [
+        "Forma salvaje mejorada",
+        "Mejora de característica"
+      ]
+    },
+    "10": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "12": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "14": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "16": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "18": {
+      "features": [
+        "Cuerpo atemporal",
+        "Conjuros bestiales"
+      ]
+    },
+    "19": {
+      "features": [
+        "Don de final del juego"
+      ]
+    },
+    "20": {
+      "features": [
+        "Archidruida"
+      ]
+    }
+  },
+  "RANGER_PROGRESS_MAP": {
+    "1": {
+      "features": [
+        "Enemigo predilecto",
+        "Explorador natural"
+      ]
+    },
+    "2": {
+      "features": [
+        "Estilo de combate",
+        "Lanzamiento de conjuros"
+      ]
+    },
+    "3": {
+      "features": [
+        "Subclase de Explorador",
+        "Conciencia primigenia"
+      ]
+    },
+    "4": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "5": {
+      "features": [
+        "Ataque adicional"
+      ]
+    },
+    "7": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "8": {
+      "features": [
+        "Paso de las tierras",
+        "Mejora de característica"
+      ]
+    },
+    "10": {
+      "features": [
+        "Ocultación natural",
+        "Rasgo de subclase"
+      ]
+    },
+    "11": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "12": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "14": {
+      "features": [
+        "Desvanecerse",
+        "Rasgo de subclase"
+      ]
+    },
+    "15": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "16": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "18": {
+      "features": [
+        "Sentidos feroces"
+      ]
+    },
+    "19": {
+      "features": [
+        "Don de final del juego"
+      ]
+    },
+    "20": {
+      "features": [
+        "Cazador del enemigo"
+      ]
+    }
+  },
+  "PALADIN_PROGRESS_MAP": {
+    "1": {
+      "features": [
+        "Imponer las manos",
+        "Lanzamiento de conjuros (Paladín)",
+        "Maestría con armas"
+      ]
+    },
+    "2": {
+      "features": [
+        "Castigo de paladín",
+        "Estilo de combate"
+      ]
+    },
+    "3": {
+      "features": [
+        "Canalizar divinidad",
+        "Subclase de paladín"
+      ]
+    },
+    "4": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "5": {
+      "features": [
+        "Ataque adicional",
+        "Corcel fiel"
+      ]
+    },
+    "6": {
+      "features": [
+        "Aura de protección"
+      ]
+    },
+    "7": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "8": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "9": {
+      "features": [
+        "Abjurar de los enemigos"
+      ]
+    },
+    "10": {
+      "features": [
+        "Aura de coraje"
+      ]
+    },
+    "11": {
+      "features": [
+        "Golpes radiantes"
+      ]
+    },
+    "12": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "14": {
+      "features": [
+        "Toque reparador"
+      ]
+    },
+    "15": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "16": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "18": {
+      "features": [
+        "Expansión de aura"
+      ]
+    },
+    "19": {
+      "features": [
+        "Don épico"
+      ]
+    },
+    "20": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    }
+  },
+  "ROGUE_PROGRESS_MAP": {
+    "1": {
+      "features": [
+        "Ataque furtivo",
+        "Jerga de ladrones",
+        "Maestría con armas",
+        "Pericia"
+      ]
+    },
+    "2": {
+      "features": [
+        "Acción astuta"
+      ]
+    },
+    "3": {
+      "features": [
+        "Puntería certera",
+        "Subclase de pícaro"
+      ]
+    },
+    "4": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "5": {
+      "features": [
+        "Esquiva asombrosa",
+        "Golpe astuto"
+      ]
+    },
+    "6": {
+      "features": [
+        "Pericia"
+      ]
+    },
+    "7": {
+      "features": [
+        "Evasión",
+        "Talentos fiables"
+      ]
+    },
+    "8": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "9": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "10": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "11": {
+      "features": [
+        "Golpe astuto mejorado"
+      ]
+    },
+    "12": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "13": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "14": {
+      "features": [
+        "Golpes taimados"
+      ]
+    },
+    "15": {
+      "features": [
+        "Mente escurridiza"
+      ]
+    },
+    "16": {
+      "features": [
+        "Mejora de característica"
+      ]
+    },
+    "17": {
+      "features": [
+        "Rasgo de subclase"
+      ]
+    },
+    "18": {
+      "features": [
+        "Elusivo"
+      ]
+    },
+    "19": {
+      "features": [
+        "Don épico"
+      ]
+    },
+    "20": {
+      "features": [
+        "Golpe de suerte"
+      ]
+    }
+  }
+}

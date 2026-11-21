@@ -1,0 +1,92 @@
+{
+  "_info": "Qué contenido está en el SRD 5.2.1 (CC-BY-4.0) y qué no. Lo que no está se conserva como contenido propio (HOMEBREW) con un nombre nuevo y queda marcado como 'needsRewrite' hasta reescribir su texto y ajustar su mecánica. Los nombres propuestos ('to') son editables: cambia el texto aquí y vuelve a correr build-content.",
+  "classes": {
+    "Bárbaro": "barbarian", "Bardo": "bard", "Brujo": "warlock", "Clérigo": "cleric",
+    "Druida": "druid", "Explorador": "ranger", "Guerrero": "fighter", "Hechicero": "sorcerer",
+    "Mago": "wizard", "Monje": "monk", "Paladín": "paladin", "Pícaro": "rogue"
+  },
+  "subclasses": {
+    "srd": [
+      "Senda del Berserker", "Colegio del Conocimiento", "Patrón Infernal", "Dominio de la Vida",
+      "Círculo de la Tierra", "Cazador", "Campeón", "Hechicería dracónica", "Evocador",
+      "Guerrero de la Mano Abierta", "Juramento de entrega", "Ladrón"
+    ],
+    "renamed": [
+      { "from": "Senda del Árbol del Mundo", "to": "Senda de la Raíz Eterna" },
+      { "from": "Senda del Corazón Salvaje", "to": "Senda del Espíritu Bestial" },
+      { "from": "Senda del Fanático", "to": "Senda del Fervor Sagrado" },
+      { "from": "Colegio de la Danza", "to": "Colegio del Paso Ligero" },
+      { "from": "Colegio del Glamour", "to": "Colegio de la Corte Encantada" },
+      { "from": "Colegio del Valor", "to": "Colegio de los Cantares de Gesta" },
+      { "from": "Patrón Celestial", "to": "Patrón del Alba" },
+      { "from": "Patrón Feérico", "to": "Patrón de los Bosques Velados" },
+      { "from": "Patrón Primigenio", "to": "Patrón del Abismo Estelar" },
+      { "from": "Dominio de la Guerra", "to": "Dominio del Estandarte" },
+      { "from": "Dominio de la Luz", "to": "Dominio del Sol Naciente" },
+      { "from": "Dominio del Engaño", "to": "Dominio de las Máscaras" },
+      { "from": "Círculo de la Luna", "to": "Círculo de las Mil Formas" },
+      { "from": "Círculo de las Estrellas", "to": "Círculo del Firmamento" },
+      { "from": "Círculo del Mar", "to": "Círculo de las Mareas" },
+      { "from": "Acechador en la penumbra", "to": "Rastreador de las Sombras" },
+      { "from": "Errante feérico", "to": "Peregrino del Crepúsculo" },
+      { "from": "Señor de las bestias", "to": "Vínculo Salvaje" },
+      { "from": "Caballero Arcano", "to": "Guardián Arcano" },
+      { "from": "Guerrero Psiónico", "to": "Guerrero de la Mente Férrea" },
+      { "from": "Maestro del Combate", "to": "Táctico de Batalla" },
+      { "from": "Hechicería aberrante", "to": "Hechicería del Vacío" },
+      { "from": "Hechicería de magia salvaje", "to": "Hechicería del Caos" },
+      { "from": "Hechicería mecánica", "to": "Hechicería del Orden" },
+      { "from": "Abjurador", "to": "Custodio Arcano" },
+      { "from": "Adivino", "to": "Vidente" },
+      { "from": "Ilusionista", "to": "Tejedor de Espejismos" },
+      { "from": "Guerrero de la Misericordia", "to": "Camino de la Mano Sanadora" },
+      { "from": "Guerrero de la Sombra", "to": "Camino del Velo Nocturno" },
+      { "from": "Guerrero de los Elementos", "to": "Camino de los Cuatro Vientos" },
+      { "from": "Juramento de la gloria", "to": "Juramento del Laurel" },
+      { "from": "Juramento de los antiguos", "to": "Juramento del Bosque Primigenio" },
+      { "from": "Juramento de venganza", "to": "Juramento de la Justicia Implacable" },
+      { "from": "Asesino", "to": "Hoja Silenciosa" },
+      { "from": "Embaucador arcano", "to": "Prestidigitador de Sombras" },
+      { "from": "Rebanaalmas", "to": "Filo Psíquico" }
+    ]
+  },
+  "backgrounds": {
+    "srd": ["Acólito", "Criminal", "Erudito", "Soldado"],
+    "renamed": [
+      { "from": "Animador", "to": "Juglar" },
+      { "from": "Artesano", "to": "Aprendiz de Gremio" },
+      { "from": "Campesino", "to": "Labriego" },
+      { "from": "Charlatán", "to": "Embaucador de Feria" },
+      { "from": "Comerciante", "to": "Mercader Ambulante" },
+      { "from": "Ermitaño", "to": "Anacoreta" },
+      { "from": "Escriba", "to": "Copista" },
+      { "from": "Guardia", "to": "Centinela" },
+      { "from": "Guía", "to": "Batidor" },
+      { "from": "Marinero", "to": "Lobo de Mar" },
+      { "from": "Noble", "to": "Heredero de Linaje" },
+      { "from": "Vagabundo", "to": "Trotamundos" }
+    ]
+  },
+  "species": {
+    "srd": ["Humano", "Elfo", "Enano", "Mediano", "Dracónido", "Tiflin", "Gnomo", "Goliat", "Orco"],
+    "renamed": [
+      { "from": "Aasimar", "to": "Celestino" }
+    ]
+  },
+  "feats": {
+    "srd": ["Alerta", "Atacante Salvaje", "Habilidoso", "Iniciado en la Magia"],
+    "renamed": [
+      { "from": "Afortunado", "to": "Buena Estrella" },
+      { "from": "Duro", "to": "Piel Curtida" },
+      { "from": "Fabricante", "to": "Manos de Artesano" },
+      { "from": "Matón de Taberna", "to": "Pendenciero" },
+      { "from": "Músico", "to": "Trovador" },
+      { "from": "Sanador", "to": "Curandero de Campo" }
+    ]
+  },
+  "pendingVerification": {
+    "spells": "Casi todos los conjuros están en el SRD 5.2.1, pero no todos. Quedan con verified=false hasta cotejarlos uno a uno con el SRD.",
+    "warlockInvocations": "Cotejar con el SRD 5.2.1.",
+    "sorcererMetamagic": "Cotejar con el SRD 5.2.1."
+  }
+}

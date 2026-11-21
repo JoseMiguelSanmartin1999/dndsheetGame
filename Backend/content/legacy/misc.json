@@ -1,0 +1,76 @@
+{
+  "pointBuyCosts": {
+    "8": 0,
+    "9": 1,
+    "10": 2,
+    "11": 3,
+    "12": 4,
+    "13": 5,
+    "14": 7,
+    "15": 9
+  },
+  "allSkillsList": [
+    "Atletismo",
+    "Acrobacias",
+    "Juego de manos",
+    "Sigilo",
+    "Conocimiento arcano",
+    "Historia",
+    "Investigación",
+    "Naturaleza",
+    "Religión",
+    "Medicina",
+    "Percepción",
+    "Perspicacia",
+    "Supervivencia",
+    "Trato con animales",
+    "Engaño",
+    "Interpretación",
+    "Intimidación",
+    "Persuasión"
+  ],
+  "allToolsList": [
+    "Herramientas de ladrón",
+    "Herramientas de navegante",
+    "Útiles de herborista",
+    "Útiles para falsificar",
+    "Suministros de calígrafo",
+    "Herramientas de carpintero",
+    "Herramientas de cartógrafo",
+    "Instrumentos musicales",
+    "Herramientas de artesano",
+    "Útiles de juego"
+  ],
+  "guideTabs": [
+    {
+      "title": "1. Estilo de Juego Ideal",
+      "icon": "⚔️",
+      "content": "\n        <p>Elegir tu clase define tu forma de interactuar con el mundo y los desafíos de combate:</p>\n        <ul class=\"list-disc pl-5 mt-2 space-y-2\">\n          <li><strong>Cuerpo a Cuerpo (Tanque/DPS):</strong> Si disfrutas estar en el centro de la acción, absorber daño y golpear duro, clases como el <strong class=\"text-amber-400\">Bárbaro</strong>, el <strong class=\"text-amber-400\">Guerrero</strong> y el <strong class=\"text-amber-400\">Paladín</strong> son tu mejor opción.</li>\n          <li><strong>Combate a Distancia:</strong> Si prefieres atacar de lejos con arcos, ballestas o hechizos arcanos tácticos, considera el <strong class=\"text-amber-400\">Explorador</strong>, el <strong class=\"text-amber-400\">Pícaro</strong> (arquero) o magos.</li>\n          <li><strong>Lanzamiento de Magia Pura:</strong> Si te atrae la idea de canalizar conjuros poderosos y efectos variables, el <strong class=\"text-amber-400\">Mago</strong>, el <strong class=\"text-amber-400\">Hechicero</strong>, el <strong class=\"text-amber-400\">Brujo</strong> y el <strong class=\"text-amber-400\">Clérigo</strong> son la clave arquetípica.</li>\n          <li><strong>Sigilo y Habilidad:</strong> Si prefieres usar la astucia, desactivar trampas y sorprender por la espalda, el <strong class=\"text-amber-400\">Pícaro</strong> y el <strong class=\"text-amber-400\">Explorador</strong> son maestros.</li>\n          <li><strong>Soporte y Curación:</strong> Para curar heridas, bendecir a tus aliados y potenciar al grupo, el <strong class=\"text-amber-400\">Clérigo</strong>, el <strong class=\"text-amber-400\">Bardo</strong> y el <strong class=\"text-amber-400\">Druida</strong> son esenciales.</li>\n        </ul>\n      "
+    },
+    {
+      "title": "2. Nivel de Experiencia",
+      "icon": "🎲",
+      "content": "\n        <p>D&D ofrece mecánicas con diferentes niveles de complejidad para adaptarse a ti:</p>\n        <ul class=\"list-disc pl-5 mt-2 space-y-2\">\n          <li><strong>Nivel Principiante:</strong> Si eres nuevo en D&D, te recomendamos iniciar con clases directas y de mecánicas estables como el <strong class=\"text-amber-400\">Guerrero</strong>, el <strong class=\"text-amber-400\">Bárbaro</strong> o el <strong class=\"text-amber-400\">Pícaro</strong>. Te permitirán aprender las bases sin abrumarte gestionando hechizos diarios.</li>\n          <li><strong>Nivel Experimentado:</strong> Si ya conoces las reglas y buscas mayor profundidad estratégica, aventúrate con clases que administran recursos cambiantes como el <strong class=\"text-amber-400\">Mago</strong> (grimorio), el <strong class=\"text-amber-400\">Hechicero</strong> (metamagia) y el <strong class=\"text-amber-400\">Druida</strong> (forma salvaje).</li>\n        </ul>\n      "
+    },
+    {
+      "title": "3. Trasfondo e Historia",
+      "icon": "📜",
+      "content": "\n        <p>La clase es el marco narrativo para moldear la personalidad de tu héroe:</p>\n        <ul class=\"list-disc pl-5 mt-2 space-y-2\">\n          <li><strong>¿Cómo imaginas a tu personaje?:</strong> ¿Es un caballero noble custodiando un juramento sagrado, un mago erudito buscando tomos prohibidos, o un pícaro astuto criado en los barrios bajos?</li>\n          <li><strong>¿Qué lo motiva a ir de aventura?:</strong> ¿Busca venganza, obtener un conocimiento olvidado, redimir sus pecados, o simplemente conseguir oro? Tu clase proporciona los recursos y habilidades de combate para respaldar sus motivos.</li>\n        </ul>\n      "
+    },
+    {
+      "title": "4. El Rol en el Grupo",
+      "icon": "👥",
+      "content": "\n        <p>Un buen grupo de aventureros equilibra sus talentos en la mesa:</p>\n        <ul class=\"list-disc pl-5 mt-2 space-y-2\">\n          <li><strong>El Tanque:</strong> Absorbe daño y defiende a los aliados débiles (<strong class=\"text-amber-400\">Guerrero, Bárbaro, Paladín</strong>).</li>\n          <li><strong>El Apoyo/Sanador:</strong> Restaura puntos de golpe y otorga ventajas tácticas (<strong class=\"text-amber-400\">Clérigo, Bardo, Druida</strong>).</li>\n          <li><strong>Daño por Hechizos:</strong> Inflige daño mágico en área o controla el campo (<strong class=\"text-amber-400\">Mago, Hechicero, Brujo</strong>).</li>\n          <li><strong>Utilidad / Infiltración:</strong> Abre cerraduras, encuentra trampas y obtiene información de espionaje (<strong class=\"text-amber-400\">Pícaro, Explorador</strong>).</li>\n        </ul>\n      "
+    },
+    {
+      "title": "5. Tus Preferencias",
+      "icon": "🌟",
+      "content": "\n        <p>Alinea tu clase con los atributos físicos o mentales que más te atraigan:</p>\n        <ul class=\"list-disc pl-5 mt-2 space-y-2\">\n          <li><strong>Fuerza y Poder Físico:</strong> Bárbaro, Guerrero, Paladín.</li>\n          <li><strong>Agilidad y Reflejos:</strong> Pícaro, Explorador, Monje.</li>\n          <li><strong>Inteligencia y Estudio Arcane:</strong> Mago.</li>\n          <li><strong>Sabiduría y Conexión Espiritual/Natural:</strong> Clérigo, Druida, Monje.</li>\n          <li><strong>Carisma y Presencia/Liderazgo:</strong> Bardo, Hechicero, Brujo, Paladín.</li>\n        </ul>\n      "
+    },
+    {
+      "title": "6. Estilo de Campaña",
+      "icon": "🗺️",
+      "content": "\n        <p>Habla con tu Dungeon Master (DM) para conocer el tono de la partida:</p>\n        <ul class=\"list-disc pl-5 mt-2 space-y-2\">\n          <li><strong>Campañas de Combate y Mazmorras:</strong> Clases con fuerte aguante y daño sostenido serán altamente resolutivas (<strong class=\"text-amber-400\">Guerrero, Bárbaro, Clérigo</strong>).</li>\n          <li><strong>Campañas de Intriga Política y Rol Social:</strong> Clases con alto Carisma y habilidades de persuasión o engaño brillarán más (<strong class=\"text-amber-400\">Bardo, Pícaro, Hechicero</strong>).</li>\n          <li><strong>Campañas de Exploración y Zonas Salvajes:</strong> Clases expertas en rastreo y geografía salvaje serán fundamentales (<strong class=\"text-amber-400\">Explorador, Druida</strong>).</li>\n        </ul>\n      "
+    }
+  ]
+}

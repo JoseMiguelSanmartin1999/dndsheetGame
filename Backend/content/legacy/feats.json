@@ -1,0 +1,76 @@
+{
+  "afortunado": {
+    "title": "Afortunado",
+    "benefits": [
+      "<strong>Puntos de suerte:</strong> Tienes una cantidad de puntos de suerte igual a tu bonificador por competencia. Los recuperas tras un descanso largo.",
+      "<strong>Ventaja:</strong> Cuando tires un d20 para una prueba, puedes gastar 1 punto de suerte para otorgarte ventaja en la tirada.",
+      "<strong>Desventaja:</strong> Cuando una criatura tire un ataque contra ti, puedes gastar 1 punto para imponerle desventaja."
+    ]
+  },
+  "alerta": {
+    "title": "Alerta",
+    "benefits": [
+      "<strong>Competencia en iniciativa:</strong> Sumas tu bonificador por competencia a tus tiradas de iniciativa.",
+      "<strong>Intercambio de iniciativa:</strong> Justo después de tirar iniciativa, puedes cambiar tu posición en el orden de combate con un aliado dispuesto que no esté incapacitado."
+    ]
+  },
+  "salvaje": {
+    "title": "Atacante Salvaje",
+    "benefits": [
+      "<strong>Daño doble:</strong> Una vez por turno, cuando aciertes con un arma, puedes tirar dos veces los dados de daño del arma y usar el resultado que prefieras."
+    ]
+  },
+  "duro": {
+    "title": "Duro",
+    "benefits": [
+      "<strong>Salud incrementada:</strong> Tus puntos de golpe máximos aumentan en una cantidad igual al doble de tu nivel de personaje.",
+      "<strong>Crecimiento por nivel:</strong> Cada vez que subas de nivel, tus puntos de golpe máximos aumentan en 2 puntos adicionales."
+    ]
+  },
+  "fabricante": {
+    "title": "Fabricante",
+    "benefits": [
+      "<strong>Competencia con herramientas:</strong> Ganas competencia con tres herramientas de artesano que elijas de la tabla \"Fabricación rápida\".",
+      "<strong>Descuento del 20%:</strong> Consigues un 20% de descuento al comprar cualquier objeto no mágico.",
+      "<strong>Fabricación rápida:</strong> Tras un descanso largo, puedes crear un objeto temporal (linterna, red, yesca, escalera) que durará hasta tu próximo descanso largo."
+    ]
+  },
+  "habilidoso": {
+    "title": "Habilidoso",
+    "benefits": [
+      "<strong>Competencia extra:</strong> Ganas competencia en cualquier combinación de tres habilidades o herramientas que elijas.",
+      "<strong>Repetible:</strong> Puedes elegir esta dote más de una vez."
+    ]
+  },
+  "iniciado en la magia": {
+    "title": "Iniciado en la Magia",
+    "benefits": [
+      "<strong>Dos trucos:</strong> Aprendes dos trucos a tu elección de la lista de clérigo, druida o mago.",
+      "<strong>Conjuro de nivel 1:</strong> Eliges un conjuro de nivel 1 de la misma lista. Siempre lo tienes preparado y lo puedes lanzar gratis una vez por descanso largo.",
+      "<strong>Aptitud mágica:</strong> Usas Inteligencia, Sabiduría o Carisma como aptitud para lanzarlos (a tu elección al seleccionar la dote)."
+    ]
+  },
+  "matón": {
+    "title": "Matón de Taberna",
+    "benefits": [
+      "<strong>Ataque desarmado mejorado:</strong> Tu ataque sin armas causa 1d4 + mod. Fuerza de daño contundente.",
+      "<strong>Repetir tiradas de daño:</strong> Puedes volver a tirar los 1 en tus dados de daño de ataques desarmados.",
+      "<strong>Armas improvisadas:</strong> Tienes competencia con armas improvisadas.",
+      "<strong>Empujar:</strong> Al acertar un ataque sin armas, puedes empujar a la criatura 1.5 metros (una vez por turno)."
+    ]
+  },
+  "músico": {
+    "title": "Músico",
+    "benefits": [
+      "<strong>Formación instrumental:</strong> Ganas competencia con tres instrumentos musicales de tu elección.",
+      "<strong>Canción alentadora:</strong> Tras finalizar un descanso corto o largo, tocas para dar inspiración heroica a tus aliados (hasta tu bonificador por competencia)."
+    ]
+  },
+  "sanador": {
+    "title": "Sanador",
+    "benefits": [
+      "<strong>Médico de batalla:</strong> Gasta un uso de útiles de sanador como acción para tratar a un aliado; este gasta un dado de golpe y recupera esa cantidad + tu bonificador de competencia.",
+      "<strong>Repetir curación:</strong> Puedes volver a tirar los 1 al restaurar puntos de golpe con un conjuro o médico de batalla."
+    ]
+  }
+}

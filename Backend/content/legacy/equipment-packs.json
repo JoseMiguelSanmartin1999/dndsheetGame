@@ -1,0 +1,101 @@
+{
+  "paquete de artista": {
+    "title": "Paquete de Artista",
+    "items": [
+      "Campana",
+      "Cantimplora",
+      "3 disfraces",
+      "Espejo",
+      "8 frascos de aceite",
+      "Linterna de ojo de buey",
+      "Mochila",
+      "Petate",
+      "Raciones para 9 días",
+      "Yesquero"
+    ]
+  },
+  "paquete de diplomático": {
+    "title": "Paquete de Diplomático",
+    "items": [
+      "Cofre",
+      "2 estuches para mapas o pergaminos",
+      "4 frascos de aceite",
+      "5 hojas de papel",
+      "5 hojas de pergamino",
+      "Lámpara",
+      "Perfume",
+      "5 plumas",
+      "Ropas de calidad",
+      "Tinta",
+      "Yesquero"
+    ]
+  },
+  "paquete de erudito": {
+    "title": "Paquete de Erudito",
+    "items": [
+      "10 frascos de aceite",
+      "10 hojas de pergamino",
+      "Lámpara",
+      "Libro",
+      "Mochila",
+      "Pluma",
+      "Tinta",
+      "Yesquero"
+    ]
+  },
+  "paquete de explorador": {
+    "title": "Paquete de Explorador",
+    "items": [
+      "10 antorchas",
+      "Cantimplora",
+      "Cuerda",
+      "2 frascos de aceite",
+      "Mochila",
+      "Petate",
+      "Raciones para 10 días",
+      "Yesquero"
+    ]
+  },
+  "paquete de explorador de mazmorras": {
+    "title": "Paquete de Explorador de Mazmorras",
+    "items": [
+      "Abrojos",
+      "10 antorchas",
+      "Cantimplora",
+      "Cuerda",
+      "2 frascos de aceite",
+      "Mochila",
+      "Palanqueta",
+      "Raciones para 10 días",
+      "Yesquero"
+    ]
+  },
+  "paquete de ladrón": {
+    "title": "Paquete de Ladrón",
+    "items": [
+      "Bolas de metal",
+      "Campana",
+      "Cantimplora",
+      "Cuerda",
+      "7 frascos de aceite",
+      "Linterna sorda",
+      "Mochila",
+      "Palanqueta",
+      "Raciones para 5 días",
+      "10 velas",
+      "Yesquero"
+    ]
+  },
+  "paquete de sacerdote": {
+    "title": "Paquete de Sacerdote",
+    "items": [
+      "Agua bendita",
+      "Lámpara",
+      "Manta",
+      "Mochila",
+      "Raciones para 7 días",
+      "Túnica",
+      "Yesquero"
+    ]
+  }
+}

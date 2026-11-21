@@ -1,0 +1,551 @@
+[
+  {
+    "slug": "sorcerer-hechiceria-del-vacio",
+    "classSlug": "sorcerer",
+    "name": "Hechicería del Vacío",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Hechicería aberrante"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "sorcerer-hechiceria-del-caos",
+    "classSlug": "sorcerer",
+    "name": "Hechicería del Caos",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Hechicería de magia salvaje"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "sorcerer-hechiceria-draconica",
+    "classSlug": "sorcerer",
+    "name": "Hechicería dracónica",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Hechicería dracónica"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "sorcerer-hechiceria-del-orden",
+    "classSlug": "sorcerer",
+    "name": "Hechicería del Orden",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Hechicería mecánica"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "barbarian-senda-de-la-raiz-eterna",
+    "classSlug": "barbarian",
+    "name": "Senda de la Raíz Eterna",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Senda del Árbol del Mundo"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "barbarian-senda-del-berserker",
+    "classSlug": "barbarian",
+    "name": "Senda del Berserker",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Senda del Berserker"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "barbarian-senda-del-espiritu-bestial",
+    "classSlug": "barbarian",
+    "name": "Senda del Espíritu Bestial",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Senda del Corazón Salvaje"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "barbarian-senda-del-fervor-sagrado",
+    "classSlug": "barbarian",
+    "name": "Senda del Fervor Sagrado",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Senda del Fanático"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "bard-colegio-del-paso-ligero",
+    "classSlug": "bard",
+    "name": "Colegio del Paso Ligero",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Colegio de la Danza"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "bard-colegio-del-conocimiento",
+    "classSlug": "bard",
+    "name": "Colegio del Conocimiento",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Colegio del Conocimiento"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "bard-colegio-de-la-corte-encantada",
+    "classSlug": "bard",
+    "name": "Colegio de la Corte Encantada",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Colegio del Glamour"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "bard-colegio-de-los-cantares-de-gesta",
+    "classSlug": "bard",
+    "name": "Colegio de los Cantares de Gesta",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Colegio del Valor"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "warlock-patron-del-alba",
+    "classSlug": "warlock",
+    "name": "Patrón del Alba",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Patrón Celestial"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "warlock-patron-de-los-bosques-velados",
+    "classSlug": "warlock",
+    "name": "Patrón de los Bosques Velados",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Patrón Feérico"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "warlock-patron-infernal",
+    "classSlug": "warlock",
+    "name": "Patrón Infernal",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Patrón Infernal"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "warlock-patron-del-abismo-estelar",
+    "classSlug": "warlock",
+    "name": "Patrón del Abismo Estelar",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Patrón Primigenio"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "cleric-dominio-del-estandarte",
+    "classSlug": "cleric",
+    "name": "Dominio del Estandarte",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Dominio de la Guerra"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "cleric-dominio-del-sol-naciente",
+    "classSlug": "cleric",
+    "name": "Dominio del Sol Naciente",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Dominio de la Luz"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "cleric-dominio-de-la-vida",
+    "classSlug": "cleric",
+    "name": "Dominio de la Vida",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Dominio de la Vida"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "cleric-dominio-de-las-mascaras",
+    "classSlug": "cleric",
+    "name": "Dominio de las Máscaras",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Dominio del Engaño"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "druid-circulo-de-las-mil-formas",
+    "classSlug": "druid",
+    "name": "Círculo de las Mil Formas",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Círculo de la Luna"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "druid-circulo-de-la-tierra",
+    "classSlug": "druid",
+    "name": "Círculo de la Tierra",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Círculo de la Tierra",
+      "Círculo de la Tierra (Árido)",
+      "Círculo de la Tierra (Polar)",
+      "Círculo de la Tierra (Templado)",
+      "Círculo de la Tierra (Tropical)"
+    ],
+    "variants": [
+      {
+        "slug": "arido",
+        "name": "Árido"
+      },
+      {
+        "slug": "polar",
+        "name": "Polar"
+      },
+      {
+        "slug": "templado",
+        "name": "Templado"
+      },
+      {
+        "slug": "tropical",
+        "name": "Tropical"
+      }
+    ]
+  },
+  {
+    "slug": "druid-circulo-del-firmamento",
+    "classSlug": "druid",
+    "name": "Círculo del Firmamento",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Círculo de las Estrellas"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "druid-circulo-de-las-mareas",
+    "classSlug": "druid",
+    "name": "Círculo de las Mareas",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Círculo del Mar"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "ranger-rastreador-de-las-sombras",
+    "classSlug": "ranger",
+    "name": "Rastreador de las Sombras",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Acechador en la penumbra"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "ranger-cazador",
+    "classSlug": "ranger",
+    "name": "Cazador",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Cazador"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "ranger-peregrino-del-crepusculo",
+    "classSlug": "ranger",
+    "name": "Peregrino del Crepúsculo",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Errante feérico"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "ranger-vinculo-salvaje",
+    "classSlug": "ranger",
+    "name": "Vínculo Salvaje",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Señor de las bestias"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "fighter-guardian-arcano",
+    "classSlug": "fighter",
+    "name": "Guardián Arcano",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Caballero Arcano"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "fighter-campeon",
+    "classSlug": "fighter",
+    "name": "Campeón",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Campeón"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "fighter-guerrero-de-la-mente-ferrea",
+    "classSlug": "fighter",
+    "name": "Guerrero de la Mente Férrea",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Guerrero Psiónico"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "fighter-tactico-de-batalla",
+    "classSlug": "fighter",
+    "name": "Táctico de Batalla",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Maestro del Combate"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "wizard-custodio-arcano",
+    "classSlug": "wizard",
+    "name": "Custodio Arcano",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Abjurador"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "wizard-vidente",
+    "classSlug": "wizard",
+    "name": "Vidente",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Adivino"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "wizard-evocador",
+    "classSlug": "wizard",
+    "name": "Evocador",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Evocador"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "wizard-tejedor-de-espejismos",
+    "classSlug": "wizard",
+    "name": "Tejedor de Espejismos",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Ilusionista"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "paladin-juramento-de-entrega",
+    "classSlug": "paladin",
+    "name": "Juramento de entrega",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Juramento de entrega"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "paladin-juramento-del-laurel",
+    "classSlug": "paladin",
+    "name": "Juramento del Laurel",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Juramento de la gloria"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "paladin-juramento-del-bosque-primigenio",
+    "classSlug": "paladin",
+    "name": "Juramento del Bosque Primigenio",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Juramento de los antiguos"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "paladin-juramento-de-la-justicia-implacable",
+    "classSlug": "paladin",
+    "name": "Juramento de la Justicia Implacable",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Juramento de venganza"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "monk-guerrero-de-la-mano-abierta",
+    "classSlug": "monk",
+    "name": "Guerrero de la Mano Abierta",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Guerrero de la Mano Abierta"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "monk-camino-de-la-mano-sanadora",
+    "classSlug": "monk",
+    "name": "Camino de la Mano Sanadora",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Guerrero de la Misericordia"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "monk-camino-del-velo-nocturno",
+    "classSlug": "monk",
+    "name": "Camino del Velo Nocturno",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Guerrero de la Sombra"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "monk-camino-de-los-cuatro-vientos",
+    "classSlug": "monk",
+    "name": "Camino de los Cuatro Vientos",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Guerrero de los Elementos"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "rogue-hoja-silenciosa",
+    "classSlug": "rogue",
+    "name": "Hoja Silenciosa",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Asesino"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "rogue-prestidigitador-de-sombras",
+    "classSlug": "rogue",
+    "name": "Prestidigitador de Sombras",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Embaucador arcano"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "rogue-ladron",
+    "classSlug": "rogue",
+    "name": "Ladrón",
+    "source": "SRD_5_2_1",
+    "needsRewrite": false,
+    "legacyNames": [
+      "Ladrón"
+    ],
+    "variants": []
+  },
+  {
+    "slug": "rogue-filo-psiquico",
+    "classSlug": "rogue",
+    "name": "Filo Psíquico",
+    "source": "HOMEBREW",
+    "needsRewrite": true,
+    "legacyNames": [
+      "Rebanaalmas"
+    ],
+    "variants": []
+  }
+]
