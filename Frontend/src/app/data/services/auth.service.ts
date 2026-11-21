@@ -8,7 +8,10 @@ export interface User {
   email: string;
   username: string;
   dateOfBirth: string;
-  role: string;
+  role: 'user' | 'admin' | string;
+  status?: 'active' | 'suspended';
+  /** Personajes activos permitidos (5 por defecto; el admin puede ampliarlo). */
+  maxCharacters?: number;
   hasPlayedBefore: boolean;
   createdAt: string;
 }
