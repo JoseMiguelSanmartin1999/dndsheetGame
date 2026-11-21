@@ -9,23 +9,23 @@ import { CharacterService, Character } from '../../data/services/character.servi
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   template: `
-    <div class="min-h-screen bg-[#08080a] bg-radial from-[#151010] via-[#08080a] to-[#040405] text-neutral-200 p-4 md:p-8 print-layout font-sans-clean">
+    <div class="min-h-screen bg-hollin bg-radial from-[#151010] via-hollin to-hollin text-neutral-200 p-4 md:p-8 print-layout font-sans-clean">
       
       <!-- CONTENEDOR DE CARGA / ERROR -->
       <div *ngIf="loading || errorLoading" class="max-w-4xl mx-auto py-24 text-center no-print">
         <div *ngIf="loading" class="space-y-4 animate-pulse">
           <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
-            <div class="absolute inset-0 rounded-full border-4 border-t-[#d4af37] border-r-red-700 border-b-transparent border-l-transparent animate-spin"></div>
+            <div class="absolute inset-0 rounded-full border-4 border-t-pergamino border-r-red-700 border-b-transparent border-l-transparent animate-spin"></div>
             <span class="text-3xl">📜</span>
           </div>
-          <h2 class="text-[#d4af37] font-fantasy uppercase tracking-widest text-lg">Consultando Pergamino...</h2>
+          <h2 class="text-pergamino font-fantasy uppercase tracking-widest text-lg">Consultando Pergamino...</h2>
         </div>
 
-        <div *ngIf="errorLoading" class="bg-[#121215] border border-red-800/40 rounded-xl p-8 space-y-6 max-w-md mx-auto">
+        <div *ngIf="errorLoading" class="bg-fragua border border-red-800/40 rounded-xl p-8 space-y-6 max-w-md mx-auto">
           <span class="text-4xl">⚡</span>
           <h2 class="text-red-500 font-fantasy uppercase font-bold">Aventurero Extraviado</h2>
           <p class="text-xs text-neutral-400">No se pudo hallar la crónica del aventurero solicitado en el templo de datos.</p>
-          <a routerLink="/dashboard" class="inline-block bg-[#1e1e24] hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-2 px-6 rounded text-xs uppercase tracking-widest transition">
+          <a routerLink="/dashboard" class="inline-block bg-yunque hover:bg-neutral-800 border border-neutral-800 text-neutral-300 py-2 px-6 rounded text-xs uppercase tracking-widest transition">
             Volver a la Taberna
           </a>
         </div>
@@ -33,13 +33,13 @@ import { CharacterService, Character } from '../../data/services/character.servi
 
       <!-- MODAL DE SUBIDA DE NIVEL Y PUNTOS DE GOLPE (HP) -->
       <div *ngIf="showLevelUpModal" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4 no-print">
-        <div class="bg-[#121215] border border-[#d4af37]/35 rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl relative animate-fade-in text-left">
+        <div class="bg-fragua border border-pergamino/35 rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl relative animate-fade-in text-left">
           
           <button (click)="showLevelUpModal = false" class="absolute top-4 right-4 text-neutral-500 hover:text-neutral-200 text-lg focus:outline-none cursor-pointer">✕</button>
           
           <div class="text-center">
             <span class="text-3xl">🛡️</span>
-            <h3 class="text-[#d4af37] font-fantasy uppercase tracking-widest text-sm font-bold mt-2">¡NUEVO NIVEL DISPONIBLE!</h3>
+            <h3 class="text-pergamino font-fantasy uppercase tracking-widest text-sm font-bold mt-2">¡NUEVO NIVEL DISPONIBLE!</h3>
             <p class="text-[9.5px] text-neutral-450 mt-1 uppercase">Subiendo al Nivel {{ (character?.level || 0) + 1 }}</p>
           </div>
 
@@ -52,7 +52,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
               <!-- Opción Promedio -->
               <button 
                 (click)="selectAverageHp()"
-                class="bg-neutral-900/60 border border-neutral-850 hover:border-amber-600/60 hover:bg-[#1c1815]/20 p-4 rounded-xl text-center transition cursor-pointer select-none focus:outline-none flex flex-col justify-between"
+                class="bg-neutral-900/60 border border-neutral-850 hover:border-amber-600/60 hover:bg-yunque/20 p-4 rounded-xl text-center transition cursor-pointer select-none focus:outline-none flex flex-col justify-between"
               >
                 <div>
                   <span class="text-[7.5px] text-neutral-500 uppercase block font-bold tracking-wider mb-1">Usar Promedio</span>
@@ -66,7 +66,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
               <!-- Opción Tirar Dado -->
               <button 
                 (click)="rollHpDie()"
-                class="bg-neutral-900/60 border border-neutral-850 hover:border-amber-600/60 hover:bg-[#1c1815]/20 p-4 rounded-xl text-center transition cursor-pointer select-none focus:outline-none flex flex-col justify-between"
+                class="bg-neutral-900/60 border border-neutral-850 hover:border-amber-600/60 hover:bg-yunque/20 p-4 rounded-xl text-center transition cursor-pointer select-none focus:outline-none flex flex-col justify-between"
               >
                 <div>
                   <span class="text-[7.5px] text-neutral-500 uppercase block font-bold tracking-wider mb-1">Tirar d{{ getClassHitDie() }}</span>
@@ -87,12 +87,12 @@ import { CharacterService, Character } from '../../data/services/character.servi
               <p class="text-[9.5px] text-neutral-350 font-sans">
                 HP Obtenido: <strong>{{ rolledHp }}</strong> (dado) + <strong>{{ getFinalModifierValue('constitution') }}</strong> (CON)
                 <span *ngIf="getLevelUpHpBonus() > 0"> + <strong>{{ getLevelUpHpBonus() }}</strong> (bonos)</span>
-                = <strong class="text-[#d4af37] text-xs font-mono">+{{ Math.max(1, rolledHp + getFinalModifierValue('constitution')) + getLevelUpHpBonus() }} HP</strong>
+                = <strong class="text-pergamino text-xs font-mono">+{{ Math.max(1, rolledHp + getFinalModifierValue('constitution')) + getLevelUpHpBonus() }} HP</strong>
               </p>
               
               <button 
                 (click)="confirmRolledHp()"
-                class="w-full bg-[#d4af37]/10 hover:bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/20 hover:border-[#d4af37]/50 text-[8px] font-bold py-2 rounded uppercase tracking-wider transition cursor-pointer select-none mt-2"
+                class="w-full bg-pergamino/10 hover:bg-pergamino/20 text-pergamino border border-pergamino/20 hover:border-pergamino/50 text-[8px] font-bold py-2 rounded uppercase tracking-wider transition cursor-pointer select-none mt-2"
               >
                 Aceptar Resultado
               </button>
@@ -105,11 +105,11 @@ import { CharacterService, Character } from '../../data/services/character.servi
       <div *ngIf="!loading && !errorLoading && character" class="max-w-6xl mx-auto space-y-5 animate-fade-in print-layout">
         
         <!-- Botones de Acción y Pestañas (Se ocultan al imprimir) -->
-        <div class="bg-gradient-to-r from-neutral-950 via-[#0e0e11] to-neutral-950 border border-[#d4af37]/25 rounded-2xl p-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10 shrink-0 no-print">
+        <div class="bg-gradient-to-r from-neutral-950 via-fragua to-neutral-950 border border-pergamino/25 rounded-2xl p-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10 shrink-0 no-print">
           <div class="flex items-center gap-3">
             <a 
               routerLink="/dashboard" 
-              class="bg-[#121215] hover:bg-[#1e1e24] border border-neutral-800 text-neutral-350 hover:text-neutral-200 py-1.5 px-3.5 rounded-lg text-[10px] uppercase tracking-widest transition flex items-center gap-2 cursor-pointer font-fantasy"
+              class="bg-fragua hover:bg-yunque border border-neutral-800 text-neutral-350 hover:text-neutral-200 py-1.5 px-3.5 rounded-lg text-[10px] uppercase tracking-widest transition flex items-center gap-2 cursor-pointer font-fantasy"
             >
               <span>🏰</span> Volver
             </a>
@@ -121,7 +121,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
               <span>⚙️</span> Editar Personaje
             </a>
             <div>
-              <h2 class="font-fantasy text-[#d4af37] text-xs uppercase tracking-widest font-extrabold flex items-center gap-2">
+              <h2 class="font-fantasy text-pergamino text-xs uppercase tracking-widest font-extrabold flex items-center gap-2">
                 FORJA & LEYENDA
               </h2>
               <p class="text-[8px] text-neutral-455 uppercase tracking-wide">Ficha de Aventurero Oficial</p>
@@ -179,13 +179,13 @@ import { CharacterService, Character } from '../../data/services/character.servi
         <!-- Cabecera de impresión exclusiva (Ficha Principal) -->
         <div class="col-span-12 hidden print:flex justify-between items-center border-b border-neutral-800 pb-1 mb-2">
           <span class="text-[9px] font-fantasy font-bold uppercase tracking-wider text-neutral-500">Hoja de Aventurero: {{ character.name }}</span>
-          <span class="text-[8px] font-fantasy font-bold uppercase tracking-wider text-[#d4af37]">Ficha Principal (Nvl {{ character.level }})</span>
+          <span class="text-[8px] font-fantasy font-bold uppercase tracking-wider text-pergamino">Ficha Principal (Nvl {{ character.level }})</span>
         </div>
 
         <!-- FILA SUPERIOR: INFORMACIÓN GENERAL -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-[#121215] border border-neutral-850 p-4 rounded-xl card-print">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-fragua border border-neutral-850 p-4 rounded-xl card-print">
           <div class="space-y-1">
-            <label class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">Nombre del Aventurero</label>
+            <label class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy">Nombre del Aventurero</label>
             <div class="text-xs text-neutral-200 font-bold bg-neutral-900/80 border border-neutral-855 px-3 py-1.5 rounded truncate min-h-[30px] flex items-center">
               {{ character.name }}
             </div>
@@ -210,7 +210,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
                 <select 
                   [disabled]="(character.level || 0) > 3 && !!character.subclass"
                   (change)="onSubclassSelected($event)"
-                  class="w-full text-xs text-neutral-200 font-bold bg-neutral-900/80 border border-neutral-855 hover:border-neutral-700 focus:border-[#d4af37] focus:outline-none px-3 py-1.5 rounded truncate min-h-[30px] cursor-pointer appearance-none disabled:cursor-not-allowed disabled:opacity-75"
+                  class="w-full text-xs text-neutral-200 font-bold bg-neutral-900/80 border border-neutral-855 hover:border-neutral-700 focus:border-pergamino focus:outline-none px-3 py-1.5 rounded truncate min-h-[30px] cursor-pointer appearance-none disabled:cursor-not-allowed disabled:opacity-75"
                 >
                   <option value="">-- Elige Subclase --</option>
                   <option 
@@ -222,7 +222,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
                   </option>
                 </select>
                 <!-- Icono de flechita para el select -->
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[#d4af37]">
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-pergamino">
                   <span class="text-[7px]">▼</span>
                 </div>
               </div>
@@ -245,7 +245,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
           <div class="grid grid-cols-3 gap-2">
             <div class="space-y-1 text-center font-fantasy">
               <label class="text-[8px] text-neutral-455 uppercase font-bold tracking-wider font-fantasy">Nivel</label>
-              <div class="text-xs text-amber-400 font-bold bg-neutral-900/80 border border-[#d4af37]/15 py-1 rounded min-h-[30px] flex items-center justify-between px-2.5 font-mono select-none">
+              <div class="text-xs text-amber-400 font-bold bg-neutral-900/80 border border-pergamino/15 py-1 rounded min-h-[30px] flex items-center justify-between px-2.5 font-mono select-none">
                 <button (click)="decreaseLevel()" class="text-neutral-500 hover:text-red-500 font-bold px-1.5 cursor-pointer no-print focus:outline-none transition">−</button>
                 <span>{{ character.level }}</span>
                 <button (click)="increaseLevel()" class="text-neutral-500 hover:text-green-500 font-bold px-1.5 cursor-pointer no-print focus:outline-none transition">+</button>
@@ -272,10 +272,10 @@ import { CharacterService, Character } from '../../data/services/character.servi
         <!-- FILA DE ATRIBUTOS CLÁSICOS (Visible siempre en pantalla para mayor accesibilidad) -->
         <div class="grid grid-cols-3 md:grid-cols-6 gap-3 card-print">
           <div *ngFor="let attr of getAttributesArray(character)" 
-               class="bg-gradient-to-b from-[#121215] to-[#0a0a0c] border border-neutral-850 hover:border-[#d4af37]/35 rounded-xl p-3 flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_12px_rgba(212,175,55,0.08)] card-print relative overflow-hidden group">
+               class="bg-gradient-to-b from-fragua to-hollin border border-neutral-850 hover:border-pergamino/35 rounded-xl p-3 flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_12px_rgba(234,220,194,0.08)] card-print relative overflow-hidden group">
             <span class="text-[9px] font-bold text-neutral-450 uppercase tracking-widest font-fantasy">{{ attr.name }}</span>
             <span class="text-2xl font-bold font-serif text-neutral-100 my-1 font-fantasy">{{ attr.value }}</span>
-            <div class="bg-[#16161a] border border-neutral-800 text-[#d4af37] font-mono font-bold text-xs px-2.5 py-0.5 rounded shadow-inner select-none card-print">
+            <div class="bg-yunque border border-neutral-800 text-pergamino font-mono font-bold text-xs px-2.5 py-0.5 rounded shadow-inner select-none card-print">
               {{ getModifier(attr.value) }}
             </div>
             <span class="text-[7.5px] text-neutral-550 mt-1 uppercase tracking-wider font-mono">
@@ -294,19 +294,19 @@ import { CharacterService, Character } from '../../data/services/character.servi
             
             <!-- Salvaciones -->
             <div class="bg-neutral-900/30 border border-neutral-850 p-4 rounded-xl space-y-2 card-print">
-              <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-1">Tiradas de Salvación</span>
+              <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-1">Tiradas de Salvación</span>
               <div class="grid grid-cols-3 gap-3 pt-1 text-[11px]">
                 <div 
                   *ngFor="let attr of getAttributesArray(character)" 
-                  class="flex items-center justify-between p-1.5 bg-[#121215]/40 rounded border border-neutral-900/30"
+                  class="flex items-center justify-between p-1.5 bg-fragua/40 rounded border border-neutral-900/30"
                 >
                   <div class="flex items-center gap-1.5">
-                    <span class="text-[9px]" [class.text-[#d4af37]]="hasClassSavingThrowProficiency(attr.key)">
+                    <span class="text-[9px]" [class.text-pergamino]="hasClassSavingThrowProficiency(attr.key)">
                       {{ hasClassSavingThrowProficiency(attr.key) ? '●' : '○' }}
                     </span>
                     <span class="text-neutral-350 font-fantasy text-[9px] uppercase tracking-wider">{{ attr.key }}</span>
                   </div>
-                  <span class="font-mono text-[10px] font-bold text-[#d4af37]">
+                  <span class="font-mono text-[10px] font-bold text-pergamino">
                     {{ getSavingThrowModifier(attr.key) }}
                   </span>
                 </div>
@@ -321,10 +321,10 @@ import { CharacterService, Character } from '../../data/services/character.servi
                 <!-- Atletismo -->
                 <div class="flex justify-between items-center py-0.5 border-b border-neutral-900/20">
                   <div class="flex items-center gap-1.5">
-                    <span [class.text-[#d4af37]]="hasSkillProficiency('Atletismo')">{{ hasSkillProficiency('Atletismo') ? '●' : '○' }}</span>
+                    <span [class.text-pergamino]="hasSkillProficiency('Atletismo')">{{ hasSkillProficiency('Atletismo') ? '●' : '○' }}</span>
                     <span class="text-neutral-300">Atletismo <span class="text-[8px] text-neutral-500">(Fue)</span></span>
                   </div>
-                  <span class="font-mono text-[#d4af37] text-[10px]">{{ getSkillModifier('strength', 'Atletismo') }}</span>
+                  <span class="font-mono text-pergamino text-[10px]">{{ getSkillModifier('strength', 'Atletismo') }}</span>
                 </div>
 
                 <!-- DES -->
@@ -337,10 +337,10 @@ import { CharacterService, Character } from '../../data/services/character.servi
                   class="flex justify-between items-center py-0.5 border-b border-neutral-900/20"
                 >
                   <div class="flex items-center gap-1.5">
-                    <span [class.text-[#d4af37]]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
+                    <span [class.text-pergamino]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
                     <span class="text-neutral-300">{{ skill.name }} <span class="text-[8px] text-neutral-500">(Des)</span></span>
                   </div>
-                  <span class="font-mono text-[#d4af37] text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
+                  <span class="font-mono text-pergamino text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
                 </div>
 
                 <!-- INT -->
@@ -355,10 +355,10 @@ import { CharacterService, Character } from '../../data/services/character.servi
                   class="flex justify-between items-center py-0.5 border-b border-neutral-900/20"
                 >
                   <div class="flex items-center gap-1.5">
-                    <span [class.text-[#d4af37]]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
+                    <span [class.text-pergamino]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
                     <span class="text-neutral-300">{{ skill.name }} <span class="text-[8px] text-neutral-500">(Int)</span></span>
                   </div>
-                  <span class="font-mono text-[#d4af37] text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
+                  <span class="font-mono text-pergamino text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
                 </div>
 
                 <!-- SAB -->
@@ -373,10 +373,10 @@ import { CharacterService, Character } from '../../data/services/character.servi
                   class="flex justify-between items-center py-0.5 border-b border-neutral-900/20"
                 >
                   <div class="flex items-center gap-1.5">
-                    <span [class.text-[#d4af37]]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
+                    <span [class.text-pergamino]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
                     <span class="text-neutral-300">{{ skill.name }} <span class="text-[8px] text-neutral-500">(Sab)</span></span>
                   </div>
-                  <span class="font-mono text-[#d4af37] text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
+                  <span class="font-mono text-pergamino text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
                 </div>
 
                 <!-- CAR -->
@@ -390,10 +390,10 @@ import { CharacterService, Character } from '../../data/services/character.servi
                   class="flex justify-between items-center py-0.5 border-b border-neutral-900/20"
                 >
                   <div class="flex items-center gap-1.5">
-                    <span [class.text-[#d4af37]]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
+                    <span [class.text-pergamino]="hasSkillProficiency(skill.name)">{{ hasSkillProficiency(skill.name) ? '●' : '○' }}</span>
                     <span class="text-neutral-300">{{ skill.name }} <span class="text-[8px] text-neutral-500">(Car)</span></span>
                   </div>
-                  <span class="font-mono text-[#d4af37] text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
+                  <span class="font-mono text-pergamino text-[10px]">{{ getSkillModifier(skill.attr, skill.name) }}</span>
                 </div>
 
               </div>
@@ -410,9 +410,9 @@ import { CharacterService, Character } from '../../data/services/character.servi
               <div class="xl:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-2">
                 
                 <!-- CA Armadura -->
-                <div class="bg-[#121215] border border-neutral-850 p-2 rounded-xl text-center relative overflow-hidden flex flex-col justify-between items-center card-print shadow-sm">
+                <div class="bg-fragua border border-neutral-850 p-2 rounded-xl text-center relative overflow-hidden flex flex-col justify-between items-center card-print shadow-sm">
                   <span class="text-[7.5px] text-neutral-500 uppercase font-bold tracking-wider block font-fantasy">CA Armadura</span>
-                  <span class="text-xl font-black font-mono text-[#d4af37] my-1 block">
+                  <span class="text-xl font-black font-mono text-pergamino my-1 block">
                     {{ getCalculatedArmorClass() }}
                   </span>
                   <span class="text-[7px] text-neutral-550 font-mono block truncate">
@@ -421,16 +421,16 @@ import { CharacterService, Character } from '../../data/services/character.servi
                 </div>
 
                 <!-- Iniciativa -->
-                <div class="bg-[#121215] border border-neutral-850 p-2 rounded-xl text-center relative overflow-hidden flex flex-col justify-between items-center card-print shadow-sm">
+                <div class="bg-fragua border border-neutral-850 p-2 rounded-xl text-center relative overflow-hidden flex flex-col justify-between items-center card-print shadow-sm">
                   <span class="text-[7.5px] text-neutral-500 uppercase font-bold tracking-wider block font-fantasy">Iniciativa</span>
-                  <span class="text-xl font-black font-mono text-[#d4af37] my-1 block">
+                  <span class="text-xl font-black font-mono text-pergamino my-1 block">
                     {{ getFinalModifier('dexterity') }}
                   </span>
                   <span class="text-[7px] text-neutral-550 font-mono block">(Mod Des)</span>
                 </div>
 
                 <!-- Velocidad -->
-                <div class="bg-[#121215] border border-neutral-850 p-2 rounded-xl text-center relative overflow-hidden flex flex-col justify-between items-center card-print shadow-sm">
+                <div class="bg-fragua border border-neutral-850 p-2 rounded-xl text-center relative overflow-hidden flex flex-col justify-between items-center card-print shadow-sm">
                   <span class="text-[7.5px] text-neutral-500 uppercase font-bold tracking-wider block font-fantasy">Velocidad</span>
                   <span class="text-base font-black text-amber-500 my-1 block font-mono">
                     {{ getOriginData(character.race).speed }}
@@ -443,8 +443,8 @@ import { CharacterService, Character } from '../../data/services/character.servi
                   type="button"
                   (click)="toggleHeroicInspiration()"
                   [title]="hasHeroicInspiration() ? 'Inspiración Heroica Activa. Haz clic para utilizarla.' : 'Sin Inspiración Heroica. Haz clic para otorgarla.'"
-                  class="bg-[#121215] border p-2 rounded-xl text-center relative overflow-hidden flex flex-col justify-between items-center cursor-pointer transition-all duration-300 card-print group hover:scale-[1.02] shadow-sm select-none"
-                  [ngClass]="hasHeroicInspiration() ? 'border-amber-500/80 shadow-[0_0_15px_rgba(212,175,55,0.3)] bg-gradient-to-b from-[#1e190e] to-[#121215]' : 'border-neutral-850 hover:border-neutral-750'"
+                  class="bg-fragua border p-2 rounded-xl text-center relative overflow-hidden flex flex-col justify-between items-center cursor-pointer transition-all duration-300 card-print group hover:scale-[1.02] shadow-sm select-none"
+                  [ngClass]="hasHeroicInspiration() ? 'border-amber-500/80 shadow-[0_0_15px_rgba(234,220,194,0.3)] bg-gradient-to-b from-yunque to-fragua' : 'border-neutral-850 hover:border-neutral-750'"
                 >
                   <span class="text-[7.5px] uppercase font-bold tracking-wider block font-fantasy" [ngClass]="hasHeroicInspiration() ? 'text-amber-400' : 'text-neutral-500'">
                     Inspiración
@@ -470,13 +470,13 @@ import { CharacterService, Character } from '../../data/services/character.servi
               </div>
 
               <!-- Panel Interactivo de Control de Salud (HP) -->
-              <div class="xl:col-span-6 bg-gradient-to-br from-[#141419] to-[#0c0c0e] border border-amber-600/30 p-3 rounded-xl space-y-2.5 card-print text-left shadow-lg relative overflow-hidden flex flex-col justify-between">
+              <div class="xl:col-span-6 bg-gradient-to-br from-[#141419] to-hollin border border-amber-600/30 p-3 rounded-xl space-y-2.5 card-print text-left shadow-lg relative overflow-hidden flex flex-col justify-between">
                 
                 <!-- Encabezado del Panel -->
                 <div class="flex justify-between items-center border-b border-neutral-850/80 pb-1.5">
                   <div class="flex items-center gap-1.5">
                     <span class="text-xs select-none">❤️</span>
-                    <span class="text-[8.5px] text-[#d4af37] font-bold uppercase tracking-wider font-fantasy">Puntos de Golpe (PG)</span>
+                    <span class="text-[8.5px] text-pergamino font-bold uppercase tracking-wider font-fantasy">Puntos de Golpe (PG)</span>
                   </div>
                   <span class="text-[8px] text-neutral-400 font-mono">
                     Nivel {{ character.level }} • Máx Cap: <strong class="text-amber-400 font-bold">{{ getMaxHp() }} HP</strong>
@@ -514,9 +514,9 @@ import { CharacterService, Character } from '../../data/services/character.servi
 
                 <!-- Controles Simplificados de HP (+ / - con Cantidad) -->
                 <div class="pt-2 border-t border-neutral-850/80 flex items-center justify-between gap-2 no-print">
-                  <span class="text-[8px] text-[#d4af37] font-bold uppercase tracking-wider font-fantasy">Ajustar HP:</span>
+                  <span class="text-[8px] text-pergamino font-bold uppercase tracking-wider font-fantasy">Ajustar HP:</span>
                   
-                  <div class="flex items-center gap-1.5 bg-[#0a0a0c] border border-neutral-800 p-1 rounded-lg">
+                  <div class="flex items-center gap-1.5 bg-hollin border border-neutral-800 p-1 rounded-lg">
                     <!-- Botón Restar / Daño (-) -->
                     <button 
                       (click)="applyHpDamage()" 
@@ -532,7 +532,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
                       [(ngModel)]="hpAdjustAmount"
                       min="1"
                       placeholder="1"
-                      class="w-14 bg-[#141418] border border-neutral-750 focus:border-[#d4af37] focus:outline-none text-center font-mono font-bold text-xs text-neutral-200 py-1 rounded appearance-none"
+                      class="w-14 bg-[#141418] border border-neutral-750 focus:border-pergamino focus:outline-none text-center font-mono font-bold text-xs text-neutral-200 py-1 rounded appearance-none"
                     />
 
                     <!-- Botón Sumar / Curar (+) -->
@@ -558,12 +558,12 @@ import { CharacterService, Character } from '../../data/services/character.servi
             <!-- Capacidad de Carga y Tamaño -->
             <div class="bg-neutral-900/30 border border-neutral-855 p-3 rounded-xl space-y-2 text-left card-print">
               <div class="flex justify-between items-center border-b border-neutral-900 pb-1">
-                <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">Carga y Tamaño de Criatura</span>
+                <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy">Carga y Tamaño de Criatura</span>
                 <span class="text-[8px] text-neutral-550 uppercase tracking-wider font-mono">Categoría: {{ character.sizeClass }} ({{ getSizeLetter(character.sizeClass) }})</span>
               </div>
 
               <div class="grid grid-cols-2 gap-3 text-[10px]">
-                <div class="bg-[#121215] border border-neutral-855 p-2 rounded card-print">
+                <div class="bg-fragua border border-neutral-855 p-2 rounded card-print">
                   <span class="text-[7.5px] text-neutral-500 uppercase font-bold tracking-wider block">Carga Máxima</span>
                   <span class="font-mono font-bold text-neutral-300 block">
                     {{ getCarryingCapacity(character.stats.strength, character.sizeClass, character.race).maxKg }} kg / 
@@ -571,7 +571,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
                   </span>
                 </div>
 
-                <div class="bg-[#121215] border border-neutral-855 p-2 rounded card-print">
+                <div class="bg-fragua border border-neutral-855 p-2 rounded card-print">
                   <span class="text-[7.5px] text-neutral-500 uppercase font-bold tracking-wider block">Arrastrar/Levantar/Empujar</span>
                   <span class="font-mono font-bold text-neutral-300 block">
                     {{ getCarryingCapacity(character.stats.strength, character.sizeClass, character.race).dragKg }} kg / 
@@ -584,110 +584,110 @@ import { CharacterService, Character } from '../../data/services/character.servi
             <!-- Rasgos y Competencias combinados para optimizar espacio vertical -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <!-- Rasgos de Clase / Progresión de Bárbaro -->
-              <div class="bg-neutral-900/40 border border-[#d4af37]/15 p-3.5 rounded-xl space-y-2 card-print flex flex-col justify-between">
+              <div class="bg-neutral-900/40 border border-pergamino/15 p-3.5 rounded-xl space-y-2 card-print flex flex-col justify-between">
                 <div class="space-y-2 w-full">
                   <div class="flex items-center justify-between border-b border-neutral-900 pb-1 mb-1">
-                    <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">Rasgos de {{ getClassData(character.class).name }}</span>
+                    <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy">Rasgos de {{ getClassData(character.class).name }}</span>
                   </div>
                   
                   <!-- Contenedor general para clases que tienen rasgos (Bárbaro, Hechicero, Guerrero, Monje, Paladín y Pícaro) -->
                   <div *ngIf="isBarbarian() || isSorcerer() || isFighter() || isMonk() || isPaladin() || isRogue()" class="space-y-2">
                     
                     <!-- Estadísticas Rápidas: Bárbaro -->
-                    <div *ngIf="isBarbarian()" class="bg-[#121215] border border-neutral-855 p-2 rounded text-[8.5px] grid grid-cols-3 gap-1.5 text-center font-mono">
+                    <div *ngIf="isBarbarian()" class="bg-fragua border border-neutral-855 p-2 rounded text-[8.5px] grid grid-cols-3 gap-1.5 text-center font-mono">
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Furias</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getBarbarianRagesCount(character.level) }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getBarbarianRagesCount(character.level) }}</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Daño Furia</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getBarbarianRageDamage(character.level) }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getBarbarianRageDamage(character.level) }}</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Maestrías</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getBarbarianWeaponMasteries(character.level) }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getBarbarianWeaponMasteries(character.level) }}</span>
                       </div>
                     </div>
 
                     <!-- Estadísticas Rápidas: Hechicero -->
-                    <div *ngIf="isSorcerer()" class="bg-[#121215] border border-neutral-855 p-2 rounded text-[8.5px] grid grid-cols-2 gap-1.5 text-center font-mono">
+                    <div *ngIf="isSorcerer()" class="bg-fragua border border-neutral-855 p-2 rounded text-[8.5px] grid grid-cols-2 gap-1.5 text-center font-mono">
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Puntos Hechicería</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getSorcererPoints(character.level) }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getSorcererPoints(character.level) }}</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Metamagias</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ character.sorcererMetamagic?.length || 0 }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ character.sorcererMetamagic?.length || 0 }}</span>
                       </div>
                     </div>
 
                     <!-- Estadísticas Rápidas: Monje (D&D 2024) -->
-                    <div *ngIf="isMonk()" class="bg-[#121215] border border-neutral-855 p-2 rounded text-[8.5px] grid grid-cols-4 gap-1 gap-y-1.5 text-center font-mono">
+                    <div *ngIf="isMonk()" class="bg-fragua border border-neutral-855 p-2 rounded text-[8.5px] grid grid-cols-4 gap-1 gap-y-1.5 text-center font-mono">
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Concentración</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getMonkFocusPoints(character.level) - monkFocusSpent }} / {{ getMonkFocusPoints(character.level) }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getMonkFocusPoints(character.level) - monkFocusSpent }} / {{ getMonkFocusPoints(character.level) }}</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Artes M.</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getMonkMartialArtsDie(character.level) }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getMonkMartialArtsDie(character.level) }}</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Mov. Extra</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[8.5px]">{{ getMonkUnarmoredMovement(character.level) }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[8.5px]">{{ getMonkUnarmoredMovement(character.level) }}</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">CD Salva</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getMonkFocusSaveDC() }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getMonkFocusSaveDC() }}</span>
                       </div>
                     </div>
 
                     <!-- Estadísticas Rápidas: Paladín (D&D 2024) -->
-                    <div *ngIf="isPaladin()" class="bg-[#121215] border border-neutral-855 p-2 rounded text-[8.5px] grid grid-cols-4 gap-1 gap-y-1.5 text-center font-mono">
+                    <div *ngIf="isPaladin()" class="bg-fragua border border-neutral-855 p-2 rounded text-[8.5px] grid grid-cols-4 gap-1 gap-y-1.5 text-center font-mono">
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Reserva Cura</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getPaladinLayOnHandsMax(character.level) - paladinLayOnHandsSpent }} / {{ getPaladinLayOnHandsMax(character.level) }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getPaladinLayOnHandsMax(character.level) - paladinLayOnHandsSpent }} / {{ getPaladinLayOnHandsMax(character.level) }}</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Canalizar D.</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getPaladinChannelDivinityMax(character.level) - paladinChannelDivinitySpent }} / {{ getPaladinChannelDivinityMax(character.level) }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getPaladinChannelDivinityMax(character.level) - paladinChannelDivinitySpent }} / {{ getPaladinChannelDivinityMax(character.level) }}</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Bono Aura</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[9px]">{{ getPaladinAuraSaveBonus() }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[9px]">{{ getPaladinAuraSaveBonus() }}</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Conj. Prep.</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getPaladinPreparedSpellsCount(character.level) }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getPaladinPreparedSpellsCount(character.level) }}</span>
                       </div>
                     </div>
 
                     <!-- Estadísticas Rápidas: Pícaro (D&D 2024) -->
-                    <div *ngIf="isRogue()" class="bg-[#121215] border border-neutral-855 p-2 rounded text-[8.5px] grid grid-cols-4 gap-1 gap-y-1.5 text-center font-mono">
+                    <div *ngIf="isRogue()" class="bg-fragua border border-neutral-855 p-2 rounded text-[8.5px] grid grid-cols-4 gap-1 gap-y-1.5 text-center font-mono">
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Atq Furtivo</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getRogueSneakAttackDice(character.level) }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getRogueSneakAttackDice(character.level) }}</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">CD Golp. Ast.</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[10px]">{{ getRogueCunningStrikeDC() }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[10px]">{{ getRogueCunningStrikeDC() }}</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Acc. Astuta</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[8.5px]">Nvl 2</span>
+                        <span class="text-pergamino font-bold font-serif text-[8.5px]">Nvl 2</span>
                       </div>
                       <div>
                         <span class="text-neutral-500 block text-[6.5px] uppercase">Talentos F.</span>
-                        <span class="text-[#d4af37] font-bold font-serif text-[8.5px]">{{ character.level >= 7 ? 'Mín. 10' : 'Nvl 7' }}</span>
+                        <span class="text-pergamino font-bold font-serif text-[8.5px]">{{ character.level >= 7 ? 'Mín. 10' : 'Nvl 7' }}</span>
                       </div>
                     </div>
 
                     <!-- Panel Interactivo de Concentración y Acciones de Monje -->
-                    <div *ngIf="isMonk()" class="space-y-2 mt-2 p-2.5 border border-[#d4af37]/20 rounded-xl bg-neutral-950/20 text-left text-[8.5px] no-print">
+                    <div *ngIf="isMonk()" class="space-y-2 mt-2 p-2.5 border border-pergamino/20 rounded-xl bg-neutral-950/20 text-left text-[8.5px] no-print">
                       <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5">
-                        <span class="text-[8px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">🥊 Reserva de Concentración</span>
+                        <span class="text-[8px] text-pergamino uppercase font-bold tracking-wider font-fantasy">🥊 Reserva de Concentración</span>
                         <div class="flex items-center gap-1 font-mono">
                           <button (click)="spendMonkFocus(1)" class="px-1.5 py-0.5 bg-neutral-800 hover:bg-neutral-700 text-red-400 font-bold rounded cursor-pointer transition text-[7.5px]">-1 Pt</button>
-                          <button (click)="restMonkFocus()" class="px-2 py-0.5 bg-[#d4af37]/20 hover:bg-[#d4af37]/30 text-[#d4af37] font-bold rounded cursor-pointer transition text-[7.5px]">Descansar</button>
+                          <button (click)="restMonkFocus()" class="px-2 py-0.5 bg-pergamino/20 hover:bg-pergamino/30 text-pergamino font-bold rounded cursor-pointer transition text-[7.5px]">Descansar</button>
                         </div>
                       </div>
 
@@ -700,12 +700,12 @@ import { CharacterService, Character } from '../../data/services/character.servi
                         </button>
                       </div>
 
-                      <div *ngIf="uncannyMetabolismResult" class="p-2 bg-[#121215] border border-amber-600/30 rounded space-y-1 animate-fade-in">
+                      <div *ngIf="uncannyMetabolismResult" class="p-2 bg-fragua border border-amber-600/30 rounded space-y-1 animate-fade-in">
                         <span class="text-amber-400 font-bold block">¡Metabolismo Asombroso!</span>
-                        <p class="text-neutral-300">Recuperas <strong class="text-[#d4af37]">+{{ uncannyMetabolismResult.hpHealed }} HP</strong> y restauras todos tus Puntos de Concentración.</p>
+                        <p class="text-neutral-300">Recuperas <strong class="text-pergamino">+{{ uncannyMetabolismResult.hpHealed }} HP</strong> y restauras todos tus Puntos de Concentración.</p>
                       </div>
 
-                      <div *ngIf="deflectAttacksResult" class="p-2 bg-[#121215] border border-neutral-700 rounded space-y-1 animate-fade-in">
+                      <div *ngIf="deflectAttacksResult" class="p-2 bg-fragua border border-neutral-700 rounded space-y-1 animate-fade-in">
                         <span class="text-neutral-200 font-bold block">Desviar Ataques (Reacción):</span>
                         <p class="text-neutral-350">Reducción de daño: <strong class="text-amber-400">{{ deflectAttacksResult.reduction }} HP</strong>.</p>
                         <p class="text-neutral-350" *ngIf="character.level >= 3">Si reduces daño a 0 (gastando 1 Pt): Rediriges <strong class="text-red-400">{{ deflectAttacksResult.redirectDamage }} daño</strong> (Salvación DES vs CD {{ getMonkFocusSaveDC() }}).</p>
@@ -713,20 +713,20 @@ import { CharacterService, Character } from '../../data/services/character.servi
                     </div>
 
                     <!-- Panel Interactivo de Imponer las Manos y Canalizar Divinidad de Paladín -->
-                    <div *ngIf="isPaladin()" class="space-y-2 mt-2 p-2.5 border border-[#d4af37]/20 rounded-xl bg-neutral-950/20 text-left text-[8.5px] no-print">
+                    <div *ngIf="isPaladin()" class="space-y-2 mt-2 p-2.5 border border-pergamino/20 rounded-xl bg-neutral-950/20 text-left text-[8.5px] no-print">
                       <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5">
-                        <span class="text-[8px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">✨ Imponer las Manos</span>
+                        <span class="text-[8px] text-pergamino uppercase font-bold tracking-wider font-fantasy">✨ Imponer las Manos</span>
                         <div class="flex items-center gap-1 font-mono">
                           <button (click)="spendLayOnHands(5)" class="px-1.5 py-0.5 bg-neutral-800 hover:bg-neutral-700 text-amber-400 font-bold rounded cursor-pointer transition text-[7.5px]">-5 HP</button>
-                          <button (click)="restLayOnHands()" class="px-2 py-0.5 bg-[#d4af37]/20 hover:bg-[#d4af37]/30 text-[#d4af37] font-bold rounded cursor-pointer transition text-[7.5px]">Restablecer</button>
+                          <button (click)="restLayOnHands()" class="px-2 py-0.5 bg-pergamino/20 hover:bg-pergamino/30 text-pergamino font-bold rounded cursor-pointer transition text-[7.5px]">Restablecer</button>
                         </div>
                       </div>
 
                       <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5 pt-1">
-                        <span class="text-[8px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">☀️ Canalizar Divinidad</span>
+                        <span class="text-[8px] text-pergamino uppercase font-bold tracking-wider font-fantasy">☀️ Canalizar Divinidad</span>
                         <div class="flex items-center gap-1 font-mono">
                           <button (click)="spendChannelDivinity(1)" [disabled]="character.level < 3" class="px-1.5 py-0.5 bg-neutral-800 hover:bg-neutral-700 text-amber-400 font-bold rounded cursor-pointer transition text-[7.5px] disabled:opacity-50">-1 Uso</button>
-                          <button (click)="restChannelDivinity()" [disabled]="character.level < 3" class="px-2 py-0.5 bg-[#d4af37]/20 hover:bg-[#d4af37]/30 text-[#d4af37] font-bold rounded cursor-pointer transition text-[7.5px] disabled:opacity-50">Restablecer</button>
+                          <button (click)="restChannelDivinity()" [disabled]="character.level < 3" class="px-2 py-0.5 bg-pergamino/20 hover:bg-pergamino/30 text-pergamino font-bold rounded cursor-pointer transition text-[7.5px] disabled:opacity-50">Restablecer</button>
                         </div>
                       </div>
 
@@ -746,9 +746,9 @@ import { CharacterService, Character } from '../../data/services/character.servi
                     </div>
 
                     <!-- Panel Interactivo de Maniobras de Pícaro (D&D 2024) -->
-                    <div *ngIf="isRogue()" class="space-y-2 mt-2 p-2.5 border border-[#d4af37]/20 rounded-xl bg-neutral-950/20 text-left text-[8.5px] no-print">
+                    <div *ngIf="isRogue()" class="space-y-2 mt-2 p-2.5 border border-pergamino/20 rounded-xl bg-neutral-950/20 text-left text-[8.5px] no-print">
                       <div class="flex justify-between items-center border-b border-neutral-900 pb-1.5">
-                        <span class="text-[8px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">🗡️ Puntería Certera (Nvl 3)</span>
+                        <span class="text-[8px] text-pergamino uppercase font-bold tracking-wider font-fantasy">🗡️ Puntería Certera (Nvl 3)</span>
                         <button (click)="toggleSteadyAim()" [disabled]="character.level < 3"
                           class="px-2 py-0.5 rounded font-mono text-[7.5px] font-bold transition cursor-pointer border disabled:opacity-50"
                           [class.bg-amber-955/40]="rogueSteadyAimActive" [class.border-amber-600/40]="rogueSteadyAimActive" [class.text-amber-300]="rogueSteadyAimActive"
@@ -785,10 +785,10 @@ import { CharacterService, Character } from '../../data/services/character.servi
                       <div 
                         *ngFor="let feature of getActiveFeatures()" 
                         (click)="viewFeatureInGlosary(feature)"
-                        class="px-2.5 py-1.5 bg-[#121215]/50 border border-neutral-850 hover:border-amber-600/40 rounded flex justify-between items-center cursor-pointer hover:bg-[#1a1616]/40 transition group"
+                        class="px-2.5 py-1.5 bg-fragua/50 border border-neutral-850 hover:border-amber-600/40 rounded flex justify-between items-center cursor-pointer hover:bg-hollin/40 transition group"
                       >
                         <span class="font-fantasy text-neutral-200 group-hover:text-amber-500 uppercase text-[8px] font-bold tracking-wide">{{ feature }}</span>
-                        <span class="text-[7px] text-[#d4af37] flex items-center gap-1 group-hover:text-amber-500">📖 Leer Rasgo</span>
+                        <span class="text-[7px] text-pergamino flex items-center gap-1 group-hover:text-amber-500">📖 Leer Rasgo</span>
                       </div>
                     </div>
 
@@ -796,25 +796,25 @@ import { CharacterService, Character } from '../../data/services/character.servi
                     <div *ngIf="isSorcerer() && character.sorcererMetamagic && character.sorcererMetamagic.length > 0" class="space-y-1.5 mt-2">
                       <span class="text-[7.5px] text-neutral-450 uppercase font-bold tracking-widest block border-t border-neutral-900 pt-1.5">Metamagias Seleccionadas</span>
                       <div class="grid grid-cols-1 gap-1">
-                        <div *ngFor="let meta of character.sorcererMetamagic" class="border border-neutral-850 rounded bg-[#121215]/20 p-2 text-left">
-                          <span class="font-fantasy text-[#d4af37] uppercase text-[8px] font-bold block">{{ meta }}</span>
+                        <div *ngFor="let meta of character.sorcererMetamagic" class="border border-neutral-850 rounded bg-fragua/20 p-2 text-left">
+                          <span class="font-fantasy text-pergamino uppercase text-[8px] font-bold block">{{ meta }}</span>
                           <span class="text-neutral-400 text-[7.5px] leading-normal font-sans block">{{ getMetamagicDescription(meta) }}</span>
                         </div>
                       </div>
                     </div>
 
                     <!-- Simulador de Sobrecarga de Magia Salvaje (Solo Hechicero) -->
-                    <div *ngIf="isSorcerer() && character.subclass && character.subclass.toLowerCase().includes('salvaje')" class="space-y-2 mt-3 p-3 border border-[#d4af37]/20 rounded-xl bg-neutral-950/20 text-left">
+                    <div *ngIf="isSorcerer() && character.subclass && character.subclass.toLowerCase().includes('salvaje')" class="space-y-2 mt-3 p-3 border border-pergamino/20 rounded-xl bg-neutral-950/20 text-left">
                       <div class="flex justify-between items-center">
-                        <span class="text-[8px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">🎲 Sobrecarga de Magia Salvaje (1d100)</span>
-                        <button (click)="rollWildMagic()" class="bg-[#d4af37]/10 hover:bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/20 hover:border-[#d4af37]/50 text-[7.5px] font-bold px-2 py-1 rounded transition select-none cursor-pointer">
+                        <span class="text-[8px] text-pergamino uppercase font-bold tracking-wider font-fantasy">🎲 Sobrecarga de Magia Salvaje (1d100)</span>
+                        <button (click)="rollWildMagic()" class="bg-pergamino/10 hover:bg-pergamino/20 text-pergamino border border-pergamino/20 hover:border-pergamino/50 text-[7.5px] font-bold px-2 py-1 rounded transition select-none cursor-pointer">
                           TIRAR d100
                         </button>
                       </div>
-                      <div *ngIf="wildMagicRoll !== null" class="mt-2 p-2 bg-[#121215]/80 border border-neutral-850 rounded text-[9px] animate-fade-in space-y-1">
+                      <div *ngIf="wildMagicRoll !== null" class="mt-2 p-2 bg-fragua/80 border border-neutral-850 rounded text-[9px] animate-fade-in space-y-1">
                         <div class="flex items-center gap-1.5 border-b border-neutral-900 pb-1 mb-1">
                           <span class="text-neutral-500 font-mono text-[7.5px] uppercase">Resultado:</span>
-                          <span class="text-[#d4af37] font-bold font-mono text-[10px]">{{ wildMagicRoll }}</span>
+                          <span class="text-pergamino font-bold font-mono text-[10px]">{{ wildMagicRoll }}</span>
                         </div>
                         <p class="text-neutral-350 leading-relaxed font-sans text-[8.5px]">
                           {{ wildMagicEffect }}
@@ -823,17 +823,17 @@ import { CharacterService, Character } from '../../data/services/character.servi
                     </div>
 
                     <!-- Simulador de Manifestaciones del Orden (Solo Hechicero) -->
-                    <div *ngIf="isSorcerer() && character.subclass && character.subclass.toLowerCase().includes('mecánica')" class="space-y-2 mt-3 p-3 border border-[#d4af37]/20 rounded-xl bg-neutral-950/20 text-left">
+                    <div *ngIf="isSorcerer() && character.subclass && character.subclass.toLowerCase().includes('mecánica')" class="space-y-2 mt-3 p-3 border border-pergamino/20 rounded-xl bg-neutral-950/20 text-left">
                       <div class="flex justify-between items-center">
-                        <span class="text-[8px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">⚙️ Manifestación del Orden (1d6)</span>
-                        <button (click)="rollOrderManifestation()" class="bg-[#d4af37]/10 hover:bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/20 hover:border-[#d4af37]/50 text-[7.5px] font-bold px-2 py-1 rounded transition select-none cursor-pointer">
+                        <span class="text-[8px] text-pergamino uppercase font-bold tracking-wider font-fantasy">⚙️ Manifestación del Orden (1d6)</span>
+                        <button (click)="rollOrderManifestation()" class="bg-pergamino/10 hover:bg-pergamino/20 text-pergamino border border-pergamino/20 hover:border-pergamino/50 text-[7.5px] font-bold px-2 py-1 rounded transition select-none cursor-pointer">
                           TIRAR d6
                         </button>
                       </div>
-                      <div *ngIf="orderRoll !== null" class="mt-2 p-2 bg-[#121215]/80 border border-neutral-850 rounded text-[9px] animate-fade-in space-y-1">
+                      <div *ngIf="orderRoll !== null" class="mt-2 p-2 bg-fragua/80 border border-neutral-850 rounded text-[9px] animate-fade-in space-y-1">
                         <div class="flex items-center gap-1.5 border-b border-neutral-900 pb-1 mb-1">
                           <span class="text-neutral-500 font-mono text-[7.5px] uppercase">Resultado:</span>
-                          <span class="text-[#d4af37] font-bold font-mono text-[10px]">{{ orderRoll }}</span>
+                          <span class="text-pergamino font-bold font-mono text-[10px]">{{ orderRoll }}</span>
                         </div>
                         <p class="text-neutral-350 leading-relaxed font-sans text-[8.5px]">
                           {{ orderEffect }}
@@ -898,7 +898,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
           <!-- Cabecera de impresión exclusiva -->
           <div class="col-span-12 hidden print:flex justify-between items-center border-b border-neutral-800 pb-1 mb-2">
             <span class="text-[9px] font-fantasy font-bold uppercase tracking-wider text-neutral-500">Hoja de Aventurero: {{ character.name }}</span>
-            <span class="text-[8px] font-fantasy font-bold uppercase tracking-wider text-[#d4af37]">Grimorio y Equipo Inicial (Nvl {{ character.level }})</span>
+            <span class="text-[8px] font-fantasy font-bold uppercase tracking-wider text-pergamino">Grimorio y Equipo Inicial (Nvl {{ character.level }})</span>
           </div>
           
           <!-- COLUMNA 1: APARATO MÁGICO (md:col-span-5) -->
@@ -911,19 +911,19 @@ import { CharacterService, Character } from '../../data/services/character.servi
             <div *ngIf="isSpellcaster()" class="space-y-3">
               <div class="bg-neutral-900/40 border border-neutral-855 p-3.5 rounded-xl space-y-2 card-print">
                 <div class="flex justify-between items-center border-b border-neutral-900 pb-1">
-                  <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">Aptitud Mágica</span>
+                  <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy">Aptitud Mágica</span>
                   <span class="text-[9px] font-bold text-neutral-250 font-fantasy uppercase">{{ getSpellcastingAbilityName() }}</span>
                 </div>
                 <div class="grid grid-cols-2 gap-2.5">
-                  <div class="bg-[#121215] border border-neutral-850 p-2 rounded text-center card-print">
+                  <div class="bg-fragua border border-neutral-850 p-2 rounded text-center card-print">
                     <span class="text-[7.5px] text-neutral-500 uppercase block font-fantasy">CD Salvación</span>
-                    <span class="text-lg font-bold font-mono text-[#d4af37] mt-0.5 block">
+                    <span class="text-lg font-bold font-mono text-pergamino mt-0.5 block">
                       {{ getSpellSaveDC() }}
                     </span>
                   </div>
-                  <div class="bg-[#121215] border border-neutral-850 p-2 rounded text-center card-print">
+                  <div class="bg-fragua border border-neutral-850 p-2 rounded text-center card-print">
                     <span class="text-[7.5px] text-neutral-500 block font-fantasy">Ataque Conjuro</span>
-                    <span class="text-lg font-bold font-mono text-[#d4af37] mt-0.5 block">
+                    <span class="text-lg font-bold font-mono text-pergamino mt-0.5 block">
                       {{ getSpellAttackBonus() }}
                     </span>
                   </div>
@@ -933,7 +933,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
               <!-- Ranuras de Conjuro Dinámicas e Interactivas -->
               <div *ngIf="getSpellSlotsList().length > 0" class="bg-neutral-900/45 border border-neutral-855 p-3.5 rounded-xl space-y-2.5 card-print text-left">
                 <div class="flex justify-between items-center border-b border-neutral-900 pb-1">
-                  <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">Ranuras de Conjuro</span>
+                  <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy">Ranuras de Conjuro</span>
                   
                   <button 
                     (click)="resetAllSpellSlots()"
@@ -956,8 +956,8 @@ import { CharacterService, Character } from '../../data/services/character.servi
                         [class.border-amber-600/70]="i >= getUsedSlotsForLevel(slotGroup.level)"
                         [class.text-amber-500]="i >= getUsedSlotsForLevel(slotGroup.level)"
                         [class.bg-amber-955/20]="i < getUsedSlotsForLevel(slotGroup.level)"
-                        [class.border-[#d4af37]/80]="i < getUsedSlotsForLevel(slotGroup.level)"
-                        [class.text-[#d4af37]]="i < getUsedSlotsForLevel(slotGroup.level)"
+                        [class.border-pergamino/80]="i < getUsedSlotsForLevel(slotGroup.level)"
+                        [class.text-pergamino]="i < getUsedSlotsForLevel(slotGroup.level)"
                         [class.font-bold]="i < getUsedSlotsForLevel(slotGroup.level)"
                       >
                         {{ i < getUsedSlotsForLevel(slotGroup.level) ? '◆' : '◇' }}
@@ -978,9 +978,9 @@ import { CharacterService, Character } from '../../data/services/character.servi
               </div>
 
               <!-- Conjuros Preparados -->
-              <div class="bg-neutral-900/40 border border-[#d4af37]/15 p-3.5 rounded-xl space-y-3 card-print">
+              <div class="bg-neutral-900/40 border border-pergamino/15 p-3.5 rounded-xl space-y-3 card-print">
                 <div class="border-b border-neutral-900 pb-1.5 flex justify-between items-center">
-                  <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy">Conjuros Preparados</span>
+                  <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy">Conjuros Preparados</span>
                   
                   <button 
                     *ngIf="!editSpellsMode"
@@ -998,10 +998,10 @@ import { CharacterService, Character } from '../../data/services/character.servi
                       <div 
                         *ngFor="let spell of character.preparedSpells" 
                         (click)="viewSpellInGlosary(spell)"
-                        class="px-2.5 py-1.5 bg-[#121215]/60 border border-neutral-855 hover:border-amber-600/40 rounded flex justify-between items-center cursor-pointer hover:bg-[#1a1616]/40 transition group"
+                        class="px-2.5 py-1.5 bg-fragua/60 border border-neutral-855 hover:border-amber-600/40 rounded flex justify-between items-center cursor-pointer hover:bg-hollin/40 transition group"
                       >
                         <span class="font-fantasy text-neutral-200 group-hover:text-amber-500 uppercase text-[8px] font-bold tracking-wide">{{ spell }}</span>
-                        <span class="text-[7px] text-[#d4af37] flex items-center gap-1 group-hover:text-amber-500">📖 Leer Hechizo</span>
+                        <span class="text-[7px] text-pergamino flex items-center gap-1 group-hover:text-amber-500">📖 Leer Hechizo</span>
                       </div>
                     </div>
                   </div>
@@ -1024,7 +1024,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
                   <div class="space-y-1 max-h-[140px] overflow-y-auto custom-scrollbar border border-neutral-900 p-1.5 rounded bg-neutral-950/20">
                     <div 
                       *ngFor="let spell of tempPreparedSpells"
-                      class="px-2 py-1 bg-[#121215]/80 border border-neutral-850 rounded flex justify-between items-center text-[8px]"
+                      class="px-2 py-1 bg-fragua/80 border border-neutral-850 rounded flex justify-between items-center text-[8px]"
                     >
                       <span class="font-fantasy text-neutral-300 uppercase font-bold">{{ spell }}</span>
                       <button 
@@ -1073,7 +1073,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
                       <div class="max-h-[140px] overflow-y-auto custom-scrollbar border border-neutral-900 rounded bg-[#101012]/40 divide-y divide-neutral-950 p-1">
                         <div 
                           *ngFor="let spellName of getFilteredSpellsForCurrentLevel()" 
-                          class="flex items-center justify-between py-1 px-1.5 hover:bg-[#1a1616]/30 transition group rounded"
+                          class="flex items-center justify-between py-1 px-1.5 hover:bg-hollin/30 transition group rounded"
                         >
                           <span class="text-[7.5px] text-neutral-300 font-medium tracking-wide truncate max-w-[160px] group-hover:text-amber-500" [title]="spellName">
                             {{ spellName }}
@@ -1141,8 +1141,8 @@ import { CharacterService, Character } from '../../data/services/character.servi
             </div>
 
             <!-- Dote de Origen/Trasfondo -->
-            <div class="bg-neutral-900/40 border border-[#d4af37]/15 p-4 rounded-xl space-y-2 card-print">
-              <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-1">Dote de Trasfondo</span>
+            <div class="bg-neutral-900/40 border border-pergamino/15 p-4 rounded-xl space-y-2 card-print">
+              <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-1">Dote de Trasfondo</span>
               <div>
                 <h4 class="text-xs text-neutral-255 font-bold mb-1 font-fantasy">{{ getFeatInfo(getBackgroundData(character.background).keyFeat).title }}</h4>
                 <ul class="space-y-1 list-none pl-0 mt-1.5">
@@ -1180,23 +1180,23 @@ import { CharacterService, Character } from '../../data/services/character.servi
               <div class="bg-neutral-900/35 border border-neutral-850 p-3.5 rounded-xl space-y-1.5 card-print">
                 <span class="text-[9px] text-neutral-450 uppercase font-bold tracking-wider font-fantasy block">Monedas de Inicio</span>
                 <div class="grid grid-cols-5 gap-1.5 pt-0.5 text-center">
-                  <div class="bg-[#121215] border border-neutral-855 p-1 rounded card-print">
+                  <div class="bg-fragua border border-neutral-855 p-1 rounded card-print">
                     <div class="text-[6.5px] text-neutral-500 font-bold">PC</div>
                     <div class="text-xs text-amber-800 font-bold font-mono">0</div>
                   </div>
-                  <div class="bg-[#121215] border border-neutral-855 p-1 rounded card-print">
+                  <div class="bg-fragua border border-neutral-855 p-1 rounded card-print">
                     <div class="text-[6.5px] text-neutral-500 font-bold">PP</div>
                     <div class="text-xs text-neutral-400 font-bold font-mono">0</div>
                   </div>
-                  <div class="bg-[#121215] border border-neutral-855 p-1 rounded card-print">
+                  <div class="bg-fragua border border-neutral-855 p-1 rounded card-print">
                     <div class="text-[6.5px] text-neutral-500 font-bold">PE</div>
                     <div class="text-xs text-cyan-600 font-bold font-mono">0</div>
                   </div>
-                  <div class="bg-[#121215] border border-neutral-855 p-1 rounded card-print">
-                    <div class="text-[6.5px] text-[#d4af37] font-bold">PO</div>
-                    <div class="text-xs text-[#d4af37] font-bold font-mono">{{ getStartingGold() }}</div>
+                  <div class="bg-fragua border border-neutral-855 p-1 rounded card-print">
+                    <div class="text-[6.5px] text-pergamino font-bold">PO</div>
+                    <div class="text-xs text-pergamino font-bold font-mono">{{ getStartingGold() }}</div>
                   </div>
-                  <div class="bg-[#121215] border border-neutral-855 p-1 rounded card-print">
+                  <div class="bg-fragua border border-neutral-855 p-1 rounded card-print">
                     <div class="text-[6.5px] text-neutral-500 font-bold">PPT</div>
                     <div class="text-xs text-teal-400 font-bold font-mono">0</div>
                   </div>
@@ -1232,12 +1232,12 @@ import { CharacterService, Character } from '../../data/services/character.servi
                     <tbody>
                       <tr *ngFor="let weapon of getEquippedWeaponsDetails()" class="border-b border-neutral-900/60 last:border-0">
                         <td class="py-2 pr-1 font-bold text-neutral-250 flex items-center gap-1">
-                          <span class="bg-[#121215] border border-neutral-800 text-neutral-400 font-mono text-[8px] px-1 py-0.5 rounded font-bold card-print">
+                          <span class="bg-fragua border border-neutral-800 text-neutral-400 font-mono text-[8px] px-1 py-0.5 rounded font-bold card-print">
                             {{ weapon.quantity }}x
                           </span>
                           <span class="truncate max-w-[85px]" [title]="weapon.name">{{ weapon.name }}</span>
                         </td>
-                        <td class="py-2 pr-1 text-center font-bold text-[#d4af37] font-mono text-[10.5px]">
+                        <td class="py-2 pr-1 text-center font-bold text-pergamino font-mono text-[10.5px]">
                           {{ weapon.attackBonus }}
                           <span class="text-[7px] text-neutral-500 block font-light font-mono mt-0.5">
                             +{{ weapon.abilityModValue }} ({{ weapon.abilityModKey }})
@@ -1283,7 +1283,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
                       <tr *ngFor="let armor of getEquippedArmorsDetails()" class="border-b border-neutral-900/60 last:border-0">
                         <td class="py-2 pr-1 font-bold text-neutral-250 font-fantasy text-[9.5px]">{{ armor.name }}</td>
                         <td class="py-2 pr-1 text-neutral-450 text-[9px] leading-tight font-light truncate max-w-[100px]" [title]="armor.type">{{ armor.type }}</td>
-                        <td class="py-2 pr-1 text-center font-bold text-[#d4af37] font-mono">{{ armor.ca }}</td>
+                        <td class="py-2 pr-1 text-center font-bold text-pergamino font-mono">{{ armor.ca }}</td>
                         <td class="py-2 pr-1 text-center font-mono text-neutral-400">{{ armor.strength }}</td>
                         <td class="py-2 pr-1 text-center">
                           <span *ngIf="armor.stealth === 'Desventaja'" class="bg-red-955/20 border border-red-800/40 text-red-500 px-1 py-0.5 rounded text-[8px] font-bold card-print">
@@ -1300,8 +1300,8 @@ import { CharacterService, Character } from '../../data/services/character.servi
             </div>
             
             <!-- Resumen Conceptual Narrativo -->
-            <div class="bg-neutral-900/40 border border-[#d4af37]/10 p-3 rounded-xl space-y-1 card-print">
-              <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-0.5">Vida Pasada</span>
+            <div class="bg-neutral-900/40 border border-pergamino/10 p-3 rounded-xl space-y-1 card-print">
+              <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-0.5">Vida Pasada</span>
               <p class="text-[10px] text-neutral-355 leading-relaxed font-light">
                 {{ getBackgroundData(character.background).concept }}
               </p>
@@ -1315,24 +1315,24 @@ import { CharacterService, Character } from '../../data/services/character.servi
           <!-- Cabecera de impresión exclusiva -->
           <div class="col-span-12 hidden print:flex justify-between items-center border-b border-neutral-800 pb-1 mb-2">
             <span class="text-[9px] font-fantasy font-bold uppercase tracking-wider text-neutral-500">Hoja de Aventurero: {{ character.name }}</span>
-            <span class="text-[8px] font-fantasy font-bold uppercase tracking-wider text-[#d4af37]">Crónicas & Apariencia (Nvl {{ character.level }})</span>
+            <span class="text-[8px] font-fantasy font-bold uppercase tracking-wider text-pergamino">Crónicas & Apariencia (Nvl {{ character.level }})</span>
           </div>
           
           <!-- COLUMNA 1: DETALLES DE APARIENCIA (md:col-span-4) -->
           <div class="md:col-span-4 space-y-4">
             
-            <div class="bg-[#121215] border border-neutral-850 p-4 rounded-xl space-y-3.5 card-print">
-              <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-0.5">Atributos Físicos</span>
+            <div class="bg-fragua border border-neutral-850 p-4 rounded-xl space-y-3.5 card-print">
+              <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-0.5">Atributos Físicos</span>
               <div class="grid grid-cols-3 gap-2 text-center">
-                <div class="bg-[#18181c] border border-neutral-800 p-1.5 rounded card-print">
+                <div class="bg-yunque border border-neutral-800 p-1.5 rounded card-print">
                   <span class="text-[7px] text-neutral-500 uppercase block font-fantasy">Altura</span>
                   <span class="text-xs font-bold text-neutral-200 font-mono">{{ character.height }} m</span>
                 </div>
-                <div class="bg-[#18181c] border border-neutral-800 p-1.5 rounded card-print">
+                <div class="bg-yunque border border-neutral-800 p-1.5 rounded card-print">
                   <span class="text-[7px] text-neutral-500 uppercase block font-fantasy">Tamaño</span>
                   <span class="text-xs font-bold text-neutral-200 uppercase truncate" [title]="character.sizeClass">{{ character.sizeClass }}</span>
                 </div>
-                <div class="bg-[#18181c] border border-neutral-800 p-1.5 rounded card-print">
+                <div class="bg-yunque border border-neutral-800 p-1.5 rounded card-print">
                   <span class="text-[7px] text-neutral-500 uppercase block font-fantasy">Especie</span>
                   <span class="text-xs font-bold text-neutral-200 truncate" [title]="character.race">{{ character.race }}</span>
                 </div>
@@ -1341,7 +1341,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
 
             <!-- Resumen de Rasgos Físicos -->
             <div class="bg-neutral-900/30 border border-neutral-855 p-4 rounded-xl space-y-1.5 text-left card-print">
-              <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-0.5">Descripción Física</span>
+              <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-0.5">Descripción Física</span>
               <div class="text-[10.5px] text-neutral-355 leading-relaxed font-light whitespace-pre-wrap">
                 {{ character.physicalDesc || 'Sin descripción física documentada.' }}
               </div>
@@ -1351,12 +1351,12 @@ import { CharacterService, Character } from '../../data/services/character.servi
           <!-- COLUMNA 2: NARRATIVA E HISTORIA (md:col-span-8) -->
           <div class="md:col-span-8 space-y-4">
             
-            <div class="bg-[#121215] border border-neutral-850 p-5 rounded-xl relative overflow-hidden min-h-[250px] flex flex-col justify-between card-print">
+            <div class="bg-fragua border border-neutral-850 p-5 rounded-xl relative overflow-hidden min-h-[250px] flex flex-col justify-between card-print">
               <div class="absolute top-4 right-4 text-4xl opacity-10 select-none no-print">📜</div>
               
               <div class="space-y-3">
-                <span class="text-[9px] text-[#d4af37] uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-1">Crónica de Héroe</span>
-                <p class="text-[11px] text-neutral-300 leading-relaxed font-fantasy italic whitespace-pre-wrap pl-4 border-l border-[#d4af37]/35 max-h-[300px] overflow-y-auto custom-scrollbar scroll-print">
+                <span class="text-[9px] text-pergamino uppercase font-bold tracking-wider font-fantasy block border-b border-neutral-900 pb-1">Crónica de Héroe</span>
+                <p class="text-[11px] text-neutral-300 leading-relaxed font-fantasy italic whitespace-pre-wrap pl-4 border-l border-pergamino/35 max-h-[300px] overflow-y-auto custom-scrollbar scroll-print">
                   "{{ character.history || 'Esta historia aún no ha sido escrita en los pergaminos del reino...' }}"
                 </p>
               </div>
@@ -1373,9 +1373,9 @@ import { CharacterService, Character } from '../../data/services/character.servi
           
           <!-- LADO IZQUIERDO: RASGOS DE CLASE Y SUBCLASE -->
           <div class="md:col-span-6 space-y-4">
-            <div class="bg-[#0e0e11]/90 border border-[#d4af37]/20 rounded-2xl p-5 space-y-4 shadow-xl">
+            <div class="bg-fragua/90 border border-pergamino/20 rounded-2xl p-5 space-y-4 shadow-xl">
               <div class="border-b border-neutral-900 pb-2 flex items-center justify-between">
-                <h3 class="font-fantasy text-[#d4af37] text-xs uppercase tracking-widest font-extrabold flex items-center gap-2">
+                <h3 class="font-fantasy text-pergamino text-xs uppercase tracking-widest font-extrabold flex items-center gap-2">
                   📖 Rasgos de Clase y Subclase
                 </h3>
                 <span class="text-[7.5px] text-neutral-500 uppercase font-mono">Total Activos: {{ getActiveFeatures().length }}</span>
@@ -1386,10 +1386,10 @@ import { CharacterService, Character } from '../../data/services/character.servi
                   *ngFor="let feature of getActiveFeatures()"
                   [id]="'glosary-' + feature.replace(' ', '-')"
                   class="p-3 border border-neutral-850 rounded-xl bg-neutral-950/20 text-left transition duration-300"
-                  [class.border-[#d4af37]/50]="selectedGlosaryTerm === feature"
-                  [class.bg-[#d4af37]/5]="selectedGlosaryTerm === feature"
+                  [class.border-pergamino/50]="selectedGlosaryTerm === feature"
+                  [class.bg-pergamino/5]="selectedGlosaryTerm === feature"
                 >
-                  <span class="font-fantasy text-[#d4af37] uppercase text-[9px] font-bold block mb-1 tracking-wider">
+                  <span class="font-fantasy text-pergamino uppercase text-[9px] font-bold block mb-1 tracking-wider">
                     {{ feature }}
                   </span>
                   <p class="text-neutral-350 text-[9px] leading-relaxed font-sans whitespace-pre-line">
@@ -1406,9 +1406,9 @@ import { CharacterService, Character } from '../../data/services/character.servi
 
           <!-- LADO DERECHO: CONJUROS PREPARADOS -->
           <div class="md:col-span-6 space-y-4">
-            <div class="bg-[#0e0e11]/90 border border-[#d4af37]/20 rounded-2xl p-5 space-y-4 shadow-xl">
+            <div class="bg-fragua/90 border border-pergamino/20 rounded-2xl p-5 space-y-4 shadow-xl">
               <div class="border-b border-neutral-900 pb-2 flex items-center justify-between">
-                <h3 class="font-fantasy text-[#d4af37] text-xs uppercase tracking-widest font-extrabold flex items-center gap-2">
+                <h3 class="font-fantasy text-pergamino text-xs uppercase tracking-widest font-extrabold flex items-center gap-2">
                   ✨ Grimorio y Descripciones de Hechizos
                 </h3>
                 <span class="text-[7.5px] text-neutral-500 uppercase font-mono">Preparados: {{ character.preparedSpells?.length || 0 }}</span>
@@ -1419,10 +1419,10 @@ import { CharacterService, Character } from '../../data/services/character.servi
                   *ngFor="let spell of character.preparedSpells || []"
                   [id]="'glosary-' + spell.replace(' ', '-')"
                   class="p-3 border border-neutral-850 rounded-xl bg-neutral-950/20 text-left transition duration-300"
-                  [class.border-[#d4af37]/50]="selectedGlosaryTerm === spell"
-                  [class.bg-[#d4af37]/5]="selectedGlosaryTerm === spell"
+                  [class.border-pergamino/50]="selectedGlosaryTerm === spell"
+                  [class.bg-pergamino/5]="selectedGlosaryTerm === spell"
                 >
-                  <span class="font-fantasy text-[#d4af37] uppercase text-[9px] font-bold block mb-1 tracking-wider">
+                  <span class="font-fantasy text-pergamino uppercase text-[9px] font-bold block mb-1 tracking-wider">
                     {{ spell }}
                   </span>
                   <p class="text-neutral-350 text-[9px] leading-relaxed font-sans whitespace-pre-line">
@@ -1444,10 +1444,10 @@ import { CharacterService, Character } from '../../data/services/character.servi
   `,
   styles: [`
     .font-fantasy {
-      font-family: 'Cinzel', serif;
+      font-family: var(--font-serif);
     }
     .font-sans-clean {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-sans);
     }
 
     .animate-fade-in {
@@ -1509,7 +1509,7 @@ import { CharacterService, Character } from '../../data/services/character.servi
       .text-neutral-200, .text-neutral-300, .text-neutral-350, .text-neutral-405, .text-neutral-450 {
         color: black !important;
       }
-      .text-amber-500, [class*="text-[#d4af37]"] {
+      .text-amber-500, [class*="text-pergamino"] {
         color: #8b6508 !important;
       }
       .text-red-500, .text-red-400 {

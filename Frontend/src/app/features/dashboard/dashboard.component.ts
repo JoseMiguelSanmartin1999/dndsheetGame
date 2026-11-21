@@ -1,336 +1,170 @@
-import { Component, inject, OnInit, effect, signal } from '@angular/core';
+import { Component, inject, OnInit, computed, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../data/services/auth.service';
 import { CharacterService, Character } from '../../data/services/character.service';
+import { apiErrorMessage } from '../../core/api-error';
+
+/** Imagen de cada clase en /assets/clases (nombre sin tildes). */
+const CLASS_IMAGES: Record<string, string> = {
+  barbaro: 'Barbaros.png', bardo: 'Bardo.png', brujo: 'Brujo.png', clerigo: 'Clerigo.png',
+  druida: 'Druida.png', explorador: 'Explorador.png', guerrero: 'Guerrero.png', hechicero: 'Hechicero.png',
+  mago: 'Mago.png', monje: 'Monje.png', paladin: 'Paladin.png', picaro: 'Picaro.png',
+};
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <div class="min-h-screen bg-[#08080a] bg-radial from-[#130d0d] via-[#08080a] to-[#040405] text-neutral-200 p-6 md:p-10">
-      
-      <!-- Contenedor Centrado -->
-      <div class="max-w-7xl mx-auto space-y-10">
-        
-        <!-- Encabezado del Perfil (Bienvenida Inmersiva) -->
-        <header class="bg-[#121215] border border-[#d4af37]/20 rounded-xl p-6 md:p-8 shadow-2xl relative overflow-hidden backdrop-blur-md">
-          <div class="absolute -right-10 -top-10 text-9xl opacity-5 select-none pointer-events-none font-serif">🎲</div>
-          
-          <div class="flex flex-col md:flex-row items-center md:items-start gap-6 relative z-10 text-center md:text-left">
-            <!-- Inicial del Nombre en Grande -->
-            <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-red-800 to-amber-500 flex items-center justify-center font-serif text-white font-bold text-4xl border-2 border-[#d4af37]/40 shadow-xl uppercase shrink-0">
-              {{ (authService.currentUser()?.username || 'A').charAt(0) }}
-            </div>
-            
-            <div class="space-y-2">
-              <span class="text-xs uppercase tracking-widest text-[#d4af37] font-semibold">El Gremio de Aventureros</span>
-              <h1 class="text-3xl md:text-4xl font-serif font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-neutral-100 via-[#d4af37] to-neutral-100 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
-                Saludos, {{ authService.currentUser()?.username || 'Aventurero' }}
-              </h1>
-              <p class="text-sm text-neutral-400 font-light max-w-2xl leading-relaxed">
-                Bienvenido de vuelta a la taberna de <span class="text-red-400">Forja de Héroes</span>. Aquí reposa tu pergamino de aventurero. A continuación, puedes consultar tu hoja de personajes activos en tu campaña.
-              </p>
-            </div>
-          </div>
-        </header>
-
-        <!-- Sección de Hojas de Personaje -->
-        <section class="space-y-6">
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-neutral-900 pb-4">
-            <div class="space-y-1 text-center sm:text-left">
-              <h2 class="text-2xl font-serif font-bold text-[#d4af37] tracking-wider uppercase">Mis Aventureros</h2>
-              <p class="text-xs text-neutral-500">Consulta, edita o crea nuevas hojas de personaje de D&D 5e (Máximo 5).</p>
-            </div>
-            
-            <!-- Botón de crear personaje (Deshabilitado si tiene 5 o más) -->
-            <a 
-              *ngIf="characters().length < 5"
-              routerLink="/character-creator"
-              class="bg-gradient-to-r from-red-800 via-amber-600 to-red-800 hover:from-red-700 hover:to-amber-500 text-white font-semibold py-2.5 px-5 rounded-lg text-sm transition duration-300 uppercase tracking-widest border border-red-500/25 shadow-lg hover:shadow-[0_0_15px_rgba(239,68,68,0.3)] font-serif flex items-center gap-2 cursor-pointer"
-            >
-              <span>⚔️</span> Forjar Nuevo Aventurero
-            </a>
-            <div 
-              *ngIf="characters().length >= 5"
-              class="bg-red-955/20 border border-red-800/40 text-red-400 font-semibold py-2.5 px-5 rounded-lg text-xs uppercase tracking-wider font-serif flex items-center gap-2 select-none"
-              title="Has alcanzado el límite de 5 personajes"
-            >
-              <span>⚠️</span> Límite de 5 Personajes Alcanzado
-            </div>
-          </div>
-
-          <!-- Mensaje cuando no hay personajes -->
-          <div 
-            *ngIf="characters().length === 0" 
-            class="text-center py-16 bg-[#121215] border border-neutral-900 rounded-xl space-y-4"
-          >
-            <span class="text-5xl block">📜</span>
-            <div class="space-y-1">
-              <h3 class="font-serif font-bold text-[#d4af37] text-lg">Aún no has forjado ningún aventurero</h3>
-              <p class="text-xs text-neutral-400 max-w-sm mx-auto leading-relaxed">
-                Tus crónicas están en blanco. Visita la Forja para crear tu primer héroe de campaña de D&D.
-              </p>
-            </div>
-            <a 
-              routerLink="/character-creator"
-              class="inline-block bg-gradient-to-r from-red-800 to-amber-600 hover:from-red-700 hover:to-amber-500 text-white text-xs font-semibold uppercase tracking-wider py-2.5 px-6 rounded-lg transition font-serif cursor-pointer"
-            >
-              Forjar Aventurero
-            </a>
-          </div>
-
-          <!-- Cuadrícula de Tarjetas de Hojas de Personajes -->
-          <div *ngIf="characters().length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            <!-- Recorrer aventureros reales guardados en la BD -->
-            <div 
-              *ngFor="let char of characters()"
-              class="bg-[#121215] border border-neutral-800/80 hover:border-[#d4af37]/30 rounded-xl overflow-hidden shadow-xl hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition duration-300 group flex flex-col justify-between"
-            >
-              <div>
-                <!-- Banner de Clase/Color -->
-                <div class="h-2 bg-gradient-to-r from-red-700 via-amber-500 to-red-700"></div>
-
-                <!-- Cabecera de Tarjeta -->
-                <div class="p-5 flex items-center gap-4 border-b border-neutral-900">
-                  <div class="w-12 h-12 rounded-lg bg-neutral-800 flex items-center justify-center text-2xl border border-neutral-700 shadow-md">
-                    {{ char.avatar }}
-                  </div>
-                  <div>
-                    <h3 class="font-serif font-bold text-lg text-neutral-200 group-hover:text-amber-400 transition">
-                      {{ char.name }}
-                    </h3>
-                    <p class="text-xs text-neutral-400 leading-none mt-1">
-                      Nivel {{ char.level }} • {{ char.race }}{{ char.originLineage ? ' (' + char.originLineage + ')' : '' }} {{ char.class }}
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Atributos Core D&D -->
-                <div class="p-5 grid grid-cols-6 gap-2 text-center bg-[#0d0d0f]/50">
-                  <div class="bg-[#18181c] border border-neutral-900 rounded p-1.5 flex flex-col justify-center">
-                    <span class="text-[9px] uppercase tracking-widest text-[#d4af37] font-sans">FUE</span>
-                    <span class="text-sm font-bold text-neutral-200">{{ char.stats.strength }}</span>
-                  </div>
-                  <div class="bg-[#18181c] border border-neutral-900 rounded p-1.5 flex flex-col justify-center">
-                    <span class="text-[9px] uppercase tracking-widest text-[#d4af37] font-sans">DES</span>
-                    <span class="text-sm font-bold text-neutral-200">{{ char.stats.dexterity }}</span>
-                  </div>
-                  <div class="bg-[#18181c] border border-neutral-900 rounded p-1.5 flex flex-col justify-center">
-                    <span class="text-[9px] uppercase tracking-widest text-[#d4af37] font-sans">CON</span>
-                    <span class="text-sm font-bold text-neutral-200">{{ char.stats.constitution }}</span>
-                  </div>
-                  <div class="bg-[#18181c] border border-neutral-900 rounded p-1.5 flex flex-col justify-center">
-                    <span class="text-[9px] uppercase tracking-widest text-[#d4af37] font-sans">INT</span>
-                    <span class="text-sm font-bold text-neutral-200">{{ char.stats.intelligence }}</span>
-                  </div>
-                  <div class="bg-[#18181c] border border-neutral-900 rounded p-1.5 flex flex-col justify-center">
-                    <span class="text-[9px] uppercase tracking-widest text-[#d4af37] font-sans">SAB</span>
-                    <span class="text-sm font-bold text-neutral-200">{{ char.stats.wisdom }}</span>
-                  </div>
-                  <div class="bg-[#18181c] border border-neutral-900 rounded p-1.5 flex flex-col justify-center">
-                    <span class="text-[9px] uppercase tracking-widest text-[#d4af37] font-sans">CAR</span>
-                    <span class="text-sm font-bold text-neutral-200">{{ char.stats.charisma }}</span>
-                  </div>
-                </div>
-
-                <!-- Estadísticas Secundarias -->
-                <div class="p-5 space-y-3">
-                  <div class="flex justify-between items-center text-xs">
-                    <span class="text-neutral-400">Puntos de Golpe Máximos:</span>
-                    <span class="font-bold text-red-400">{{ char.hp }} HP</span>
-                  </div>
-                  <div class="w-full bg-neutral-900 rounded-full h-1.5 overflow-hidden">
-                    <div class="bg-red-600 h-1.5 rounded-full" style="width: 100%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Acciones de Tarjeta (Observar, Editar, Eliminar) -->
-              <div class="p-5 pt-0 flex gap-2">
-                <button 
-                  (click)="observeCharacter(char)"
-                  class="flex-1 bg-[#18181c] hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 text-neutral-300 py-2 rounded text-xs transition duration-200 cursor-pointer"
-                >
-                  👀 Observar
-                </button>
-                <button 
-                  (click)="editCharacter(char)"
-                  class="flex-1 bg-[#1e1e24] hover:bg-[#d4af37]/10 border border-neutral-800 hover:border-[#d4af37]/45 text-neutral-300 hover:text-[#d4af37] py-2 rounded text-xs transition duration-200 cursor-pointer"
-                >
-                  ✍️ Editar
-                </button>
-                <button 
-                  (click)="deleteCharacter(char)"
-                  class="bg-[#1e1e24] hover:bg-red-950/40 border border-neutral-800 hover:border-red-900/50 text-neutral-400 hover:text-red-400 px-3.5 rounded text-xs transition duration-200 cursor-pointer"
-                  title="Eliminar Aventurero"
-                >
-                  🗑️
-                </button>
-              </div>
-
-            </div>
-
-          </div>
-        </section>
-
-      </div>
-    </div>
-
-    <!-- MODAL DE OBSERVAR: DETALLE COMPLETO DEL PERSONAJE (INMERSIVO) -->
-    <div 
-      *ngIf="showObserveModal && selectedChar" 
-      class="fixed inset-0 bg-black/85 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fade-in text-left"
-    >
-      <div 
-        class="bg-[#08080a] border border-[#d4af37]/35 rounded-2xl w-full max-w-4xl h-[85vh] flex flex-col shadow-2xl overflow-hidden"
-      >
-        <!-- Cabecera del Modal -->
-        <div class="bg-gradient-to-r from-neutral-950 via-[#0e0e11] to-neutral-950 border-b border-[#d4af37]/20 p-5 flex justify-between items-center shrink-0">
-          <div class="flex items-center gap-3">
-            <span class="text-3xl">{{ selectedChar.avatar }}</span>
-            <div>
-              <h2 class="font-serif text-[#d4af37] text-lg uppercase tracking-widest font-extrabold">
-                {{ selectedChar.name }}
-              </h2>
-              <p class="text-[9px] text-neutral-450 uppercase tracking-wide">
-                Nivel {{ selectedChar.level }} • {{ selectedChar.race }}{{ selectedChar.originLineage ? ' (' + selectedChar.originLineage + ')' : '' }} {{ selectedChar.class }}
-              </p>
-            </div>
-          </div>
-          <button 
-            (click)="closeObserveModal()"
-            class="text-neutral-400 hover:text-red-400 transition text-2xl font-bold cursor-pointer focus:outline-none"
-          >
-            &times;
-          </button>
+    <main class="salon">
+      <header class="salon-cabecera">
+        <div>
+          <h1 class="titulo">Tus personajes</h1>
+          <p class="salon-sub">
+            {{ characters().length }} de {{ maxCharacters() }} huecos ocupados
+            <ng-container *ngIf="authService.currentUser() as user">en la cuenta de {{ user.username }}</ng-container>
+          </p>
         </div>
+        <a *ngIf="characters().length < maxCharacters()" routerLink="/character-creator" class="btn-forja">Crear personaje</a>
+      </header>
 
-        <!-- Contenido Scrollable -->
-        <div class="flex-1 overflow-y-auto p-6 bg-[#0c0c0f]/50 space-y-6 custom-scrollbar">
-          
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-            
-            <!-- Bloque Izquierdo (Atributos): 4 cols -->
-            <div class="md:col-span-4 bg-[#121215] border border-neutral-900 rounded-xl p-5 space-y-4">
-              <h3 class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider border-b border-neutral-900 pb-2">Atributos del Aventurero</h3>
-              
-              <div class="space-y-3">
-                <div 
-                  *ngFor="let attr of getAttributesArray(selectedChar)" 
-                  class="flex justify-between items-center bg-[#18181c] border border-neutral-850 p-2.5 rounded-lg"
-                >
-                  <div>
-                    <span class="text-[10px] font-bold text-neutral-350 block leading-tight">{{ attr.name }}</span>
-                    <span class="text-[8px] text-neutral-500 uppercase">{{ attr.key }}</span>
-                  </div>
-                  <div class="text-right flex items-center gap-3">
-                    <span class="text-sm font-bold text-neutral-200 font-mono">{{ attr.value }}</span>
-                    <span class="text-[11px] font-bold text-amber-500 font-mono bg-neutral-900 border border-neutral-850 px-2 py-0.5 rounded shadow-inner min-w-[32px] text-center">
-                      {{ getModifier(attr.value) }}
-                    </span>
-                  </div>
-                </div>
+      <p *ngIf="loadError" class="aviso aviso-error" role="alert">{{ loadError }}</p>
+
+      <ul class="estante" aria-label="Personajes">
+        <li *ngFor="let char of characters()" class="ficha">
+          <div class="ficha-retrato">
+            <img [src]="portrait(char)" alt="" loading="lazy" (error)="onPortraitError($event)" />
+            <span class="ficha-nivel" [attr.aria-label]="'Nivel ' + char.level">{{ char.level }}</span>
+          </div>
+          <div class="ficha-cuerpo">
+            <h2 class="ficha-nombre">{{ char.name }}</h2>
+            <p class="ficha-linaje">{{ char.class }} de nivel {{ char.level }}</p>
+            <p class="ficha-origen">{{ char.race }}<span *ngIf="char.originLineage"> ({{ char.originLineage }})</span>, {{ char.background }}</p>
+
+            <dl class="ficha-atributos">
+              <div *ngFor="let attr of getAttributesArray(char)" [title]="attr.name">
+                <dt>{{ attr.key }}</dt>
+                <dd>{{ attr.value }}<small>{{ getModifier(attr.value) }}</small></dd>
               </div>
-            </div>
+            </dl>
 
-            <!-- Bloque Central (Detalles e Historia): 8 cols -->
-            <div class="md:col-span-8 space-y-6">
-              
-              <!-- Ficha General Rápida -->
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div class="bg-[#121215] border border-neutral-900 p-4 rounded-xl text-center">
-                  <span class="text-[9px] text-neutral-500 uppercase font-bold tracking-wider block">Puntos de Golpe</span>
-                  <span class="text-base font-bold text-red-500 font-mono mt-1 block">{{ selectedChar.hp }} HP</span>
-                </div>
-                <div class="bg-[#121215] border border-neutral-900 p-4 rounded-xl text-center">
-                  <span class="text-[9px] text-neutral-500 uppercase font-bold tracking-wider block">Trasfondo</span>
-                  <span class="text-xs font-bold text-neutral-200 truncate mt-1 block">{{ selectedChar.background }}</span>
-                </div>
-                <div class="bg-[#121215] border border-neutral-900 p-4 rounded-xl text-center">
-                  <span class="text-[9px] text-neutral-500 uppercase font-bold tracking-wider block">Altura</span>
-                  <span class="text-xs font-bold text-[#d4af37] font-mono mt-1 block">{{ selectedChar.height }} m</span>
-                </div>
-                <div class="bg-[#121215] border border-neutral-900 p-4 rounded-xl text-center">
-                  <span class="text-[9px] text-neutral-500 uppercase font-bold tracking-wider block">Tamaño</span>
-                  <span class="text-xs font-bold text-neutral-200 mt-1 block">{{ selectedChar.sizeClass }}</span>
-                </div>
-              </div>
-
-              <!-- Habilidades Competentes -->
-              <div class="bg-[#121215] border border-neutral-900 p-5 rounded-xl space-y-3">
-                <h4 class="text-[10px] text-[#d4af37] uppercase font-bold tracking-wider border-b border-neutral-900 pb-2">Habilidades con Competencia</h4>
-                <div class="flex flex-wrap gap-2 pt-1">
-                  <span *ngIf="selectedChar.classSkills.length === 0" class="text-[10px] text-neutral-500 italic">Ninguna seleccionada</span>
-                  <span 
-                    *ngFor="let skill of selectedChar.classSkills"
-                    class="text-[10px] bg-red-950/20 border border-red-800/40 text-red-400 px-3 py-1 rounded-full font-medium"
-                  >
-                    {{ skill }}
-                  </span>
-                  <span 
-                    *ngFor="let skilledFeat of selectedChar.skilledFeatSelection || []"
-                    class="text-[10px] bg-amber-955/20 border border-amber-600/40 text-[#d4af37] px-3 py-1 rounded-full font-medium"
-                  >
-                    {{ skilledFeat }} (Habilidoso)
-                  </span>
-                </div>
-              </div>
-
-              <!-- Biografía y Crónicas -->
-              <div class="bg-[#121215] border border-neutral-900 p-5 rounded-xl space-y-4">
-                <div>
-                  <h4 class="text-[10px] text-neutral-450 uppercase font-bold tracking-wider mb-1.5 border-b border-neutral-900 pb-1">Historia de Origen</h4>
-                  <p class="text-xs text-neutral-300 leading-relaxed font-light whitespace-pre-wrap max-h-40 overflow-y-auto custom-scrollbar">
-                    {{ selectedChar.history || 'Este aventurero no ha registrado su historia de origen.' }}
-                  </p>
-                </div>
-                
-                <div class="pt-2 border-t border-neutral-900/60">
-                  <h4 class="text-[10px] text-neutral-455 uppercase font-bold tracking-wider mb-1.5 border-b border-neutral-900 pb-1">Aspecto Físico</h4>
-                  <p class="text-xs text-neutral-300 leading-relaxed font-light whitespace-pre-wrap max-h-40 overflow-y-auto custom-scrollbar">
-                    {{ selectedChar.physicalDesc || 'Este aventurero no ha registrado su apariencia física.' }}
-                  </p>
-                </div>
-              </div>
-
+            <p class="ficha-pg">
+              <span>Puntos de golpe</span>
+              <strong>{{ char.currentHp ?? char.hp }} / {{ char.hp }}</strong>
+            </p>
+            <div class="ficha-barra" role="presentation">
+              <span [style.width.%]="hpPercent(char)"></span>
             </div>
           </div>
+          <div class="ficha-acciones">
+            <button type="button" class="btn-hierro principal" (click)="observeCharacter(char)">Abrir hoja</button>
+            <button type="button" class="btn-hierro" (click)="editCharacter(char)">Editar</button>
+            <button type="button" class="btn-hierro peligro" (click)="deleteCharacter(char)" [attr.aria-label]="'Eliminar a ' + char.name" title="Eliminar">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3m-8 0 1 13h8l1-13" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </li>
 
-        </div>
+        <li *ngFor="let slot of emptySlots(); let first = first" class="hueco">
+          <a *ngIf="first" routerLink="/character-creator" class="hueco-enlace">
+            <span class="hueco-yunque" aria-hidden="true">
+              <svg viewBox="0 0 64 40" width="64" height="40" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h42c0 6 6 9 12 9-4 5-12 6-18 6l-2 9h8v4H16v-4h8l-2-9C12 23 6 17 6 8Z" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="hueco-texto">{{ characters().length === 0 ? 'Crea tu primer personaje' : 'Crear otro personaje' }}</span>
+            <span class="hueco-ayuda">El creador te guía paso a paso.</span>
+          </a>
+          <span *ngIf="!first" class="hueco-libre">Hueco libre</span>
+        </li>
+      </ul>
 
-        <!-- Pie de Modal -->
-        <div class="p-5 bg-gradient-to-r from-neutral-950 via-[#0e0e11] to-neutral-950 border-t border-[#d4af37]/20 flex justify-end gap-2 shrink-0">
-          <button 
-            (click)="editCharacter(selectedChar)"
-            class="bg-gradient-to-r from-[#d4af37] to-amber-600 hover:from-yellow-500 hover:to-amber-500 text-neutral-950 font-serif font-bold py-2 px-6 rounded-lg text-xs uppercase tracking-wider transition cursor-pointer"
-          >
-            Editar Ficha
-          </button>
-          <button 
-            (click)="closeObserveModal()"
-            class="bg-[#121215] hover:bg-neutral-850 border border-neutral-800 text-neutral-300 py-2 px-6 rounded-lg text-xs uppercase tracking-wider transition cursor-pointer"
-          >
-            Cerrar Ficha
-          </button>
-        </div>
-      </div>
-    </div>
-  `
+      <p *ngIf="characters().length >= maxCharacters()" class="salon-limite">
+        Has llenado tus {{ maxCharacters() }} huecos. Para crear otro personaje, elimina uno.
+      </p>
+    </main>
+  `,
+  styles: [`
+    .salon { max-width: 80rem; margin: 0 auto; padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2.5rem) 4rem; }
+    .salon-cabecera { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 2rem; }
+    .salon-cabecera h1 { font-size: clamp(2.4rem, 5vw, 3.4rem); margin: 0; }
+    .salon-sub { margin: 0.35rem 0 0; color: var(--color-ceniza); font-size: 1.05rem; }
+    .aviso { margin-bottom: 1.5rem; }
+
+    .estante { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr)); }
+    /* En pantallas anchas, los cinco huecos de la cuenta en una sola fila */
+    @media (min-width: 1180px) { .estante { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; } .ficha-nombre { font-size: 1.5rem; } .ficha-cuerpo, .ficha-acciones { padding-left: 0.85rem; padding-right: 0.85rem; } .ficha-atributos { gap: 0.25rem; } }
+
+    .ficha {
+      display: flex; flex-direction: column;
+      background: var(--color-fragua);
+      border: 1px solid color-mix(in srgb, var(--color-pergamino) 10%, transparent);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .ficha-retrato { position: relative; aspect-ratio: 16 / 10; background: var(--color-yunque); }
+    .ficha-retrato img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block; }
+    .ficha-retrato::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, var(--color-fragua) 100%); }
+    /* Nivel grabado en una placa de hierro, el detalle que se ve primero */
+    .ficha-nivel {
+      position: absolute; z-index: 1; top: 0.75rem; left: 0.75rem;
+      min-width: 2.6rem; height: 2.6rem; padding: 0 0.4rem;
+      display: grid; place-items: center;
+      font-family: var(--font-serif); font-weight: 700; font-size: 1.35rem; color: #fff3e0;
+      background: radial-gradient(circle at 50% 35%, var(--color-brasa), var(--color-escoria));
+      border: 2px solid color-mix(in srgb, var(--color-incandescente) 55%, transparent);
+      border-radius: 999px;
+      box-shadow: 0 4px 14px -4px #000;
+    }
+    .ficha-cuerpo { padding: 0 1.1rem 1rem; margin-top: -1.6rem; position: relative; z-index: 1; }
+    .ficha-nombre { font-family: var(--font-serif); font-weight: 700; font-size: 1.75rem; line-height: 1.05; margin: 0; color: var(--color-pergamino); overflow-wrap: anywhere; }
+    .ficha-linaje { margin: 0.3rem 0 0; color: var(--color-amber-300); font-weight: 500; }
+    .ficha-origen { margin: 0.1rem 0 0; color: var(--color-ceniza); font-size: 0.95rem; }
+
+    .ficha-atributos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.35rem; margin: 1rem 0 0; }
+    .ficha-atributos div { background: var(--color-yunque); border-radius: 6px; padding: 0.35rem 0 0.4rem; text-align: center; }
+    .ficha-atributos dt { font-size: 0.75rem; color: var(--color-ceniza); }
+    .ficha-atributos dd { margin: 0; font-weight: 700; font-size: 1.05rem; font-variant-numeric: lining-nums tabular-nums; line-height: 1.1; }
+    .ficha-atributos small { display: block; font-weight: 500; font-size: 0.75rem; color: var(--color-amber-300); }
+
+    .ficha-pg { display: flex; justify-content: space-between; margin: 0.9rem 0 0.35rem; font-size: 0.95rem; color: var(--color-ceniza); }
+    .ficha-pg strong { color: var(--color-pergamino); font-variant-numeric: tabular-nums; }
+    .ficha-barra { height: 6px; border-radius: 99px; background: var(--color-yunque); overflow: hidden; }
+    .ficha-barra span { display: block; height: 100%; background: linear-gradient(90deg, #9c2a1c, #d9483a); }
+
+    .ficha-acciones { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.25rem 1.1rem 1.1rem; }
+    .ficha-acciones > * { flex: 1 1 auto; }
+    .ficha-acciones .principal { flex: 1 1 100%; border-color: color-mix(in srgb, var(--color-brasa) 45%, transparent); }
+    .ficha-acciones .peligro:hover { border-color: #d9534a; color: #f6c7c1; background: color-mix(in srgb, #b3261e 18%, var(--color-yunque)); }
+
+    .hueco {
+      min-height: 14rem;
+      border: 2px dashed color-mix(in srgb, var(--color-pergamino) 14%, transparent);
+      border-radius: 10px;
+      display: grid;
+    }
+    .hueco-libre { place-self: center; color: var(--color-neutral-600); }
+    .hueco-enlace {
+      display: grid; place-content: center; justify-items: center; gap: 0.35rem; text-align: center;
+      padding: 1.5rem; color: var(--color-pergamino); text-decoration: none; border-radius: 8px;
+      transition: background 0.15s;
+    }
+    .hueco-enlace:hover { background: color-mix(in srgb, var(--color-brasa) 7%, transparent); }
+    .hueco:has(.hueco-enlace:hover) { border-color: color-mix(in srgb, var(--color-brasa) 60%, transparent); }
+    .hueco-yunque { color: var(--color-brasa); margin-bottom: 0.5rem; }
+    .hueco-texto { font-family: var(--font-serif); font-weight: 700; font-size: 1.5rem; line-height: 1.15; }
+    .hueco-ayuda { color: var(--color-ceniza); }
+    .salon-limite { margin-top: 1.5rem; color: var(--color-ceniza); }
+  `]
 })
 export class DashboardComponent implements OnInit {
   authService = inject(AuthService);
   characterService = inject(CharacterService);
   router = inject(Router);
 
-  // Lista real de personajes de la BD
   characters = signal<Character[]>([]);
-
-  // Estado del modal de observación
-  showObserveModal = false;
-  selectedChar: Character | null = null;
+  loadError = '';
+  maxCharacters = computed(() => this.authService.currentUser()?.maxCharacters ?? 5);
+  emptySlots = computed(() => Array.from({ length: Math.max(0, this.maxCharacters() - this.characters().length) }));
 
   constructor() {
     effect(() => {
@@ -350,44 +184,48 @@ export class DashboardComponent implements OnInit {
     if (this.authService.isAuthenticated()) {
       this.characterService.getCharacters().subscribe({
         next: (chars) => {
+          this.loadError = '';
           this.characters.set(chars);
         },
         error: (err) => {
-          console.error('Error cargando personajes del gremio:', err);
+          this.loadError = apiErrorMessage(err, 'No se pudieron cargar tus personajes. Comprueba que el servidor está en marcha y recarga la página.');
         }
       });
     }
   }
 
   editCharacter(char: Character): void {
-    this.closeObserveModal();
     this.router.navigate(['/character-creator'], { queryParams: { edit: char.id } });
   }
 
   deleteCharacter(char: Character): void {
-    if (confirm(`¿Estás seguro de que deseas eliminar permanentemente al aventurero "${char.name}"? Esta acción no se puede deshacer.`)) {
-      if (char.id) {
-        this.characterService.deleteCharacter(char.id).subscribe({
-          next: () => {
-            alert(`Aventurero "${char.name}" ha sido retirado del Gremio.`);
-            this.loadCharacters();
-          },
-          error: (err) => {
-            console.error(err);
-            alert('No se pudo retirar al aventurero. Inténtalo de nuevo.');
-          }
-        });
+    if (!char.id) return;
+    if (!confirm(`¿Eliminar a ${char.name}? Dejará libre su hueco y no aparecerá más en tu lista.`)) return;
+    this.characterService.deleteCharacter(char.id).subscribe({
+      next: () => this.loadCharacters(),
+      error: (err) => {
+        this.loadError = apiErrorMessage(err, `No se pudo eliminar a ${char.name}. Inténtalo de nuevo.`);
       }
-    }
+    });
   }
 
   observeCharacter(char: Character): void {
     this.router.navigate(['/character-sheet', char.id]);
   }
 
-  closeObserveModal(): void {
-    this.showObserveModal = false;
-    this.selectedChar = null;
+  portrait(char: Character): string {
+    const key = (char.class || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+    return `/assets/clases/${CLASS_IMAGES[key] ?? 'Guerrero.png'}`;
+  }
+
+  onPortraitError(event: Event): void {
+    (event.target as HTMLImageElement).src = '/assets/emblema.webp';
+  }
+
+  hpPercent(char: Character): number {
+    const max = Number(char.hp) || 1;
+    const current = Number(char.currentHp ?? char.hp) || 0;
+    return Math.max(0, Math.min(100, (current / max) * 100));
   }
 
   getModifier(score: number): string {
