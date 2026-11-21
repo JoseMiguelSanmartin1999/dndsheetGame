@@ -9,6 +9,7 @@
  *
  * Es idempotente: lo ya migrado (mismo legacyId) se salta.
  */
+import dns from 'node:dns';
 import mongoose from 'mongoose';
 import { PrismaClient } from '@prisma/client';
 import { mapLegacyCharacter, mapLegacyUser, type ContentLookup } from './legacy-mapping';
@@ -18,7 +19,16 @@ const prisma = new PrismaClient();
 
 async function main() {
   if (!process.env.MONGO_URI) throw new Error('Falta MONGO_URI');
-  await mongoose.connect(process.env.MONGO_URI);
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+  } catch (e: any) {
+    // En algunas redes de Windows el DNS del router no responde consultas SRV
+    // (mongodb+srv://). Se reintenta una vez con DNS públicos.
+    if (e?.code !== 'ENOTFOUND' || e?.syscall !== 'querySrv') throw e;
+    console.warn('El DNS de tu red no resolvió el registro SRV de Atlas; reintentando con 1.1.1.1 y 8.8.8.8...');
+    dns.setServers(['1.1.1.1', '8.8.8.8']);
+    await mongoose.connect(process.env.MONGO_URI);
+  }
   const db = mongoose.connection.db!;
 
   const lookup: ContentLookup = {
