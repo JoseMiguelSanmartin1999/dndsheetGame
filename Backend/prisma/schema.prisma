@@ -1,0 +1,434 @@
+// Esquema de PostgreSQL.
+// Principio: el contenido de juego (clases, subclases, especies, trasfondos,
+// dotes, conjuros...) vive en la BD y se edita desde el panel de admin; el
+// personaje guarda las ELECCIONES del jugador, no números calculados.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------- enums
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+}
+
+/// De dónde viene el contenido. Solo SRD_5_2_1 y HOMEBREW se pueden publicar.
+enum ContentSource {
+  SRD_5_2_1
+  HOMEBREW
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum Ability {
+  STR
+  DEX
+  CON
+  INT
+  WIS
+  CHA
+}
+
+enum SpellSchool {
+  ABJURATION
+  CONJURATION
+  DIVINATION
+  ENCHANTMENT
+  EVOCATION
+  ILLUSION
+  NECROMANCY
+  TRANSMUTATION
+}
+
+enum FeatCategory {
+  ORIGIN
+  GENERAL
+  FIGHTING_STYLE
+  EPIC_BOON
+}
+
+enum ClassOptionKind {
+  INVOCATION
+  METAMAGIC
+  FIGHTING_STYLE
+  OTHER
+}
+
+// ---------------------------------------------------------------- usuarios
+
+model User {
+  id                  String      @id @default(uuid()) @db.Uuid
+  email               String      @unique
+  username            String      @unique @db.VarChar(30)
+  passwordHash        String      @map("password_hash")
+  dateOfBirth         DateTime    @map("date_of_birth") @db.Date
+  hasPlayedBefore     Boolean     @default(false) @map("has_played_before")
+  role                Role        @default(USER)
+  status              UserStatus  @default(ACTIVE)
+  /// Límite de personajes activos. El admin puede ampliarlo por usuario.
+  maxCharacters       Int         @default(5) @map("max_characters")
+  failedLoginAttempts Int         @default(0) @map("failed_login_attempts")
+  lockUntil           DateTime?   @map("lock_until")
+  /// Id que tenía en MongoDB, para la migración de datos.
+  legacyId            String?     @unique @map("legacy_id")
+  createdAt           DateTime    @default(now()) @map("created_at")
+  updatedAt           DateTime    @updatedAt @map("updated_at")
+  characters          Character[]
+  auditLogs           AuditLog[]
+
+  @@map("users")
+}
+
+// ---------------------------------------------------------------- contenido de juego
+
+model GameClass {
+  id             String         @id @default(uuid()) @db.Uuid
+  slug           String         @unique
+  name           String
+  source         ContentSource
+  status         ContentStatus  @default(PUBLISHED)
+  needsRewrite   Boolean        @default(false) @map("needs_rewrite")
+  hitDie         Int            @map("hit_die")
+  primaryAbilities Ability[]   @map("primary_abilities")
+  complexity     String?
+  playstyle      String?
+  tagline        String?
+  description    String?
+  icon           String?
+  image          String?
+  sortOrder      Int            @default(0) @map("sort_order")
+  /// Datos adicionales que aún no tienen columna propia (espacios de conjuro, competencias...).
+  data           Json           @default("{}")
+  version        Int            @default(1)
+  createdAt      DateTime       @default(now()) @map("created_at")
+  updatedAt      DateTime       @updatedAt @map("updated_at")
+  features       ClassFeature[]
+  subclasses     Subclass[]
+  spellLists     SpellListEntry[]
+  options        ClassOption[]
+  characters     Character[]
+
+  @@map("classes")
+}
+
+model ClassFeature {
+  id                    String    @id @default(uuid()) @db.Uuid
+  classId               String    @map("class_id") @db.Uuid
+  gameClass             GameClass @relation(fields: [classId], references: [id], onDelete: Cascade)
+  slug                  String    @unique
+  level                 Int
+  name                  String
+  description           String?
+  /// "Subclase de X" o "Rasgo de subclase": el motor lo sustituye por el rasgo real.
+  isSubclassPlaceholder Boolean   @default(false) @map("is_subclass_placeholder")
+  sortOrder             Int       @default(0) @map("sort_order")
+  data                  Json      @default("{}")
+  createdAt             DateTime  @default(now()) @map("created_at")
+  updatedAt             DateTime  @updatedAt @map("updated_at")
+
+  @@index([classId, level])
+  @@map("class_features")
+}
+
+model Subclass {
+  id           String           @id @default(uuid()) @db.Uuid
+  classId      String           @map("class_id") @db.Uuid
+  gameClass    GameClass        @relation(fields: [classId], references: [id], onDelete: Cascade)
+  slug         String           @unique
+  name         String
+  source       ContentSource
+  status       ContentStatus    @default(PUBLISHED)
+  needsRewrite Boolean          @default(false) @map("needs_rewrite")
+  /// Nombres anteriores, para migrar personajes guardados con el nombre viejo.
+  legacyNames  String[]         @map("legacy_names")
+  description  String?
+  /// Variantes (p. ej. los terrenos del Círculo de la Tierra).
+  variants     Json             @default("[]")
+  data         Json             @default("{}")
+  version      Int              @default(1)
+  createdAt    DateTime         @default(now()) @map("created_at")
+  updatedAt    DateTime         @updatedAt @map("updated_at")
+  spellLists   SpellListEntry[]
+  characters   Character[]
+
+  @@index([classId])
+  @@map("subclasses")
+}
+
+model Species {
+  id                   String          @id @default(uuid()) @db.Uuid
+  slug                 String          @unique
+  name                 String
+  source               ContentSource
+  status               ContentStatus   @default(PUBLISHED)
+  needsRewrite         Boolean         @default(false) @map("needs_rewrite")
+  legacyNames          String[]        @map("legacy_names")
+  description          String?
+  creatureType         String          @default("Humanoide") @map("creature_type")
+  size                 String?
+  speedMeters          Decimal         @default(9) @map("speed_meters") @db.Decimal(4, 1)
+  languages            String?
+  /// [{ name, description }]
+  traits               Json            @default("[]")
+  /// Bonos de las reglas 2014; en las reglas 2024 los aumentos vienen del trasfondo.
+  legacyAbilityBonuses Json            @default("{}") @map("legacy_ability_bonuses")
+  icon                 String?
+  image                String?
+  sortOrder            Int             @default(0) @map("sort_order")
+  data                 Json            @default("{}")
+  version              Int             @default(1)
+  createdAt            DateTime        @default(now()) @map("created_at")
+  updatedAt            DateTime        @updatedAt @map("updated_at")
+  lineages             SpeciesLineage[]
+  characters           Character[]
+
+  @@map("species")
+}
+
+model SpeciesLineage {
+  id          String      @id @default(uuid()) @db.Uuid
+  speciesId   String      @map("species_id") @db.Uuid
+  species     Species     @relation(fields: [speciesId], references: [id], onDelete: Cascade)
+  slug        String
+  name        String
+  description String?
+  damageType  String?     @map("damage_type")
+  data        Json        @default("{}")
+  characters  Character[]
+
+  @@unique([speciesId, slug])
+  @@map("species_lineages")
+}
+
+model Feat {
+  id           String        @id @default(uuid()) @db.Uuid
+  slug         String        @unique
+  name         String
+  source       ContentSource
+  status       ContentStatus @default(PUBLISHED)
+  needsRewrite Boolean       @default(false) @map("needs_rewrite")
+  legacyNames  String[]      @map("legacy_names")
+  category     FeatCategory
+  prerequisite String?
+  /// Lista de beneficios en texto (HTML simple permitido: <strong>).
+  benefits     Json          @default("[]")
+  data         Json          @default("{}")
+  version      Int           @default(1)
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+  backgrounds  Background[]
+
+  @@map("feats")
+}
+
+model Background {
+  id                 String        @id @default(uuid()) @db.Uuid
+  slug               String        @unique
+  name               String
+  source             ContentSource
+  status             ContentStatus @default(PUBLISHED)
+  needsRewrite       Boolean       @default(false) @map("needs_rewrite")
+  legacyNames        String[]      @map("legacy_names")
+  concept            String?
+  /// Las tres características entre las que se reparten +2/+1 o +1/+1/+1.
+  abilityOptions     Ability[]     @map("ability_options")
+  featId             String?       @map("feat_id") @db.Uuid
+  feat               Feat?         @relation(fields: [featId], references: [id], onDelete: SetNull)
+  /// Variante de la dote (p. ej. Iniciado en la Magia de clérigo).
+  featOption         String?       @map("feat_option")
+  skillProficiencies String[]      @map("skill_proficiencies")
+  toolProficiency    String?       @map("tool_proficiency")
+  /// Equipamiento inicial: opciones A/B (paquete u oro). Se completará en la fase 2.
+  equipment          Json          @default("{}")
+  recommendations    String?
+  icon               String?
+  image              String?
+  sortOrder          Int           @default(0) @map("sort_order")
+  data               Json          @default("{}")
+  version            Int           @default(1)
+  createdAt          DateTime      @default(now()) @map("created_at")
+  updatedAt          DateTime      @updatedAt @map("updated_at")
+  characters         Character[]
+
+  @@map("backgrounds")
+}
+
+model Spell {
+  id               String           @id @default(uuid()) @db.Uuid
+  slug             String           @unique
+  name             String
+  source           ContentSource
+  status           ContentStatus    @default(PUBLISHED)
+  /// false hasta cotejarlo con el SRD 5.2.1.
+  verified         Boolean          @default(false)
+  needsRewrite     Boolean          @default(false) @map("needs_rewrite")
+  level            Int
+  school           SpellSchool?
+  ritual           Boolean          @default(false)
+  concentration    Boolean          @default(false)
+  castingTime      String?          @map("casting_time")
+  range            String?
+  components       String?
+  duration         String?
+  /// Resumen de una línea para jugadores novatos.
+  shortDescription String?          @map("short_description")
+  description      String?
+  data             Json             @default("{}")
+  version          Int              @default(1)
+  createdAt        DateTime         @default(now()) @map("created_at")
+  updatedAt        DateTime         @updatedAt @map("updated_at")
+  lists            SpellListEntry[]
+  characterSpells  CharacterSpell[]
+
+  @@index([level])
+  @@map("spells")
+}
+
+/// Qué clases o subclases pueden aprender cada conjuro.
+model SpellListEntry {
+  id         String     @id @default(uuid()) @db.Uuid
+  spellId    String     @map("spell_id") @db.Uuid
+  spell      Spell      @relation(fields: [spellId], references: [id], onDelete: Cascade)
+  classId    String?    @map("class_id") @db.Uuid
+  gameClass  GameClass? @relation(fields: [classId], references: [id], onDelete: Cascade)
+  subclassId String?    @map("subclass_id") @db.Uuid
+  subclass   Subclass?  @relation(fields: [subclassId], references: [id], onDelete: Cascade)
+
+  @@unique([spellId, classId, subclassId])
+  @@index([classId])
+  @@index([subclassId])
+  @@map("spell_list_entries")
+}
+
+/// Opciones que se eligen dentro de una clase: invocaciones, metamagia, estilos de combate...
+model ClassOption {
+  id           String          @id @default(uuid()) @db.Uuid
+  classId      String          @map("class_id") @db.Uuid
+  gameClass    GameClass       @relation(fields: [classId], references: [id], onDelete: Cascade)
+  slug         String          @unique
+  kind         ClassOptionKind
+  name         String
+  source       ContentSource
+  status       ContentStatus   @default(PUBLISHED)
+  verified     Boolean         @default(false)
+  needsRewrite Boolean         @default(false) @map("needs_rewrite")
+  prerequisite String?
+  cost         Int?
+  description  String?
+  sortOrder    Int             @default(0) @map("sort_order")
+  data         Json            @default("{}")
+  createdAt    DateTime        @default(now()) @map("created_at")
+  updatedAt    DateTime        @updatedAt @map("updated_at")
+
+  @@index([classId, kind])
+  @@map("class_options")
+}
+
+model EquipmentPack {
+  id        String        @id @default(uuid()) @db.Uuid
+  slug      String        @unique
+  name      String
+  source    ContentSource
+  status    ContentStatus @default(PUBLISHED)
+  items     Json          @default("[]")
+  createdAt DateTime      @default(now()) @map("created_at")
+  updatedAt DateTime      @updatedAt @map("updated_at")
+
+  @@map("equipment_packs")
+}
+
+// ---------------------------------------------------------------- personajes
+
+model Character {
+  id                 String           @id @default(uuid()) @db.Uuid
+  userId             String           @map("user_id") @db.Uuid
+  user               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name               String           @db.VarChar(60)
+  level              Int              @default(1)
+  experience         Int              @default(0)
+  classId            String           @map("class_id") @db.Uuid
+  gameClass          GameClass        @relation(fields: [classId], references: [id])
+  subclassId         String?          @map("subclass_id") @db.Uuid
+  subclass           Subclass?        @relation(fields: [subclassId], references: [id], onDelete: SetNull)
+  subclassVariant    String?          @map("subclass_variant")
+  speciesId          String           @map("species_id") @db.Uuid
+  species            Species          @relation(fields: [speciesId], references: [id])
+  lineageId          String?          @map("lineage_id") @db.Uuid
+  lineage            SpeciesLineage?  @relation(fields: [lineageId], references: [id], onDelete: SetNull)
+  backgroundId       String           @map("background_id") @db.Uuid
+  background         Background       @relation(fields: [backgroundId], references: [id])
+  /// Puntuaciones base antes de bonos: { STR, DEX, CON, INT, WIS, CHA }.
+  baseScores         Json             @map("base_scores")
+  /// Reparto de +2/+1 o +1/+1/+1 del trasfondo.
+  backgroundBonuses  Json             @default("{}") @map("background_bonuses")
+  hpMax              Int              @map("hp_max")
+  hpCurrent          Int              @map("hp_current")
+  hpTemp             Int              @default(0) @map("hp_temp")
+  heroicInspiration  Boolean          @default(false) @map("heroic_inspiration")
+  /// Todas las elecciones que aún no tienen tabla propia: habilidades de clase,
+  /// invocaciones, metamagia, orden divina, dote de origen, etc.
+  choices            Json             @default("{}")
+  /// Estado de partida: espacios de conjuro usados, condiciones, salvaciones de muerte...
+  playState          Json             @default("{}") @map("play_state")
+  avatar             String?
+  history            String?
+  physicalDesc       String?          @map("physical_desc")
+  heightCm           Int?             @map("height_cm")
+  sizeClass          String?          @map("size_class")
+  notes              String?
+  /// Enlace público de solo lectura (fase 5).
+  shareSlug          String?          @unique @map("share_slug")
+  legacyId           String?          @unique @map("legacy_id")
+  deletedAt          DateTime?        @map("deleted_at")
+  createdAt          DateTime         @default(now()) @map("created_at")
+  updatedAt          DateTime         @updatedAt @map("updated_at")
+  spells             CharacterSpell[]
+
+  @@index([userId])
+  @@map("characters")
+}
+
+model CharacterSpell {
+  characterId String    @map("character_id") @db.Uuid
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  spellId     String    @map("spell_id") @db.Uuid
+  spell       Spell     @relation(fields: [spellId], references: [id], onDelete: Cascade)
+  /// Quién le da el conjuro: "class", "subclass", "feat:iniciado-en-la-magia", "species"...
+  origin      String    @default("class")
+  prepared    Boolean   @default(false)
+
+  @@id([characterId, spellId, origin])
+  @@map("character_spells")
+}
+
+// ---------------------------------------------------------------- sistema
+
+model AuditLog {
+  id        String   @id @default(uuid()) @db.Uuid
+  actorId   String?  @map("actor_id") @db.Uuid
+  actor     User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  action    String
+  entity    String
+  entityId  String?  @map("entity_id")
+  diff      Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([entity, entityId])
+  @@map("audit_logs")
+}

@@ -1,0 +1,7629 @@
+[
+  {
+    "slug": "agarre-electrizante",
+    "name": "Agarre electrizante",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Toque cargado con 1d8 de daño de relámpago.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "amistad",
+    "name": "Amistad",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento. Ventaja en pruebas de Carisma contra un objetivo no hostil (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "apreton-electrizante",
+    "name": "Apretón electrizante",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Ataque de toque; 1d8 daño de relámpago. El objetivo con armadura metálica sufre desventaja.",
+    "description": "Evocación (1 acción). Toque eléctrico. Causa 1d8 daño de relámpago, da ventaja si lleva armadura de metal y no puede usar reacciones este turno.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "burla-danina",
+    "name": "Burla dañina",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento (Recomendado). Causa 1d4 daño psíquico y desventaja en la próxima tirada de ataque del objetivo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "crear-llama",
+    "name": "Crear llama",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración (Recomendado). Llama en tu mano que da luz o arrojas para hacer 1d8 daño de fuego.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "descarga-de-fuego",
+    "name": "Descarga de fuego",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Ataque de conjuro a 36 m; 1d10 daño de fuego.",
+    "description": "Evocación (1 acción). Ataque de conjuro a 36m. Causa 1d10 daño de fuego y prende objetos inflamables.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "descarga-sobrenatural",
+    "name": "Descarga sobrenatural",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Rayo de energía que inflige 1d10 de daño de fuerza (36 m).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "warlock"
+      }
+    ]
+  },
+  {
+    "slug": "elementalismo",
+    "name": "Elementalismo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Crea efectos elementales menores (brisas, chispas, vapor, calor).",
+    "description": "Transmutación. Creas efectos elementales menores como brisas, polvo, chispas o vapor.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "estallido-magico",
+    "name": "Estallido mágico",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Lanzas rayo de magia pura; inflige 1d6 daño elemental (ácido, frío, fuego, rayo, veneno o trueno). Si sacas un 6, explota.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "fragmento-mental",
+    "name": "Fragmento mental",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Causa 1d6 daño psíquico y resta 1d4 a la próxima salvación del objetivo.",
+    "description": "Encantamiento. Causa 1d6 daño psíquico y resta 1d4 a la próxima salvación del objetivo.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "guardia-de-cuchillas",
+    "name": "Guardia de cuchillas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Resistencia a daño físico hasta el final de tu próximo turno.",
+    "description": "Abjuración (1 acción). Trazas un sigilo de protección en el aire. Tienes resistencia al daño físico hasta el final de tu próximo turno.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "guia",
+    "name": "Guía",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Adivinación (Concentración). Otorga +1d4 a una prueba de característica.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "ilusion-menor",
+    "name": "Ilusión menor",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Creas un sonido o imagen hasta tu siguiente turno o 1 minuto.",
+    "description": "Ilusión (1 acción). Creas un sonido o una imagen tridimensional a 9m que dura 1 minuto.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "impacto-certero",
+    "name": "Impacto certero",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Adivinación. Ventaja en tu próxima tirada de ataque contra un objetivo a tu alcance.",
+    "description": "Adivinación. Obtienes ventaja en tu próxima tirada de ataque contra un objetivo a tu alcance.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "latigo-de-espinas",
+    "name": "Látigo de espinas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Ataque cuerpo a cuerpo a 9 m inflige 1d6 daño perforante y acerca 3 m.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "llama-sagrada",
+    "name": "Llama sagrada",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Llama descendente inflige 1d8 daño radiante a un objetivo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "luces-danzantes",
+    "name": "Luces danzantes",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Recomendado). Creas hasta cuatro luces flotantes que puedes mover como acción adicional (Concentración).",
+    "description": "Evocación (Concentración). Creas hasta cuatro luces del tamaño de linternas que puedes mover como acción adicional.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "luz",
+    "name": "Luz",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Un objeto emite luz brillante en 6 m durante 1 hora.",
+    "description": "Evocación (1 acción). Hace que un objeto brille con luz brillante en 6m y luz tenue en 6m adicionales durante 1 hora.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "mano-de-mago",
+    "name": "Mano de mago",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Mano espectral para manipular objetos o abrir puertas a 9 m.",
+    "description": "Conjuración (1 acción). Invoca una mano espectral a 9m que puedes usar para manipular objetos (hasta 5 kg).",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "mensaje",
+    "name": "Mensaje",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Susurras un mensaje a distancia a una criatura que puede responderte.",
+    "description": "Transmutación (1 acción). Envías un mensaje susurrado a una criatura a 36m que puede responder de la misma forma en secreto.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "palabra-de-resplandor",
+    "name": "Palabra de resplandor",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Explosión de luz radiante causa 1d6 de daño a enemigos cercanos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "piedad-con-los-moribundos",
+    "name": "Piedad con los moribundos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Estabiliza a una criatura moribunda con 0 puntos de golpe.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "prestidigitacion",
+    "name": "Prestidigitación",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Trucos mágicos menores: limpiar, colorear, encender o enfriar objetos.",
+    "description": "Transmutación (1 acción). Realizas trucos mágicos menores (limpiar/ensuciar, calentar/enfriar, encender velas, etc.).",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "rayo-de-escarcha",
+    "name": "Rayo de escarcha",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación (Recomendado). Ataque de conjuro a 18 m; 1d8 daño de frío y reduce velocidad en 3 m.",
+    "description": "Evocación (1 acción). Rayo helado a 18m. Causa 1d8 daño de frío y reduce la velocidad del objetivo en 3m.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "reparar",
+    "name": "Reparar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Repara una fisura en un objeto de menos de 30 cm.",
+    "description": "Transmutación. Reparas una única rotura o fisura en un objeto de menos de 30 cm.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "resistencia",
+    "name": "Resistencia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Aliado gana +1d4 en su próxima tirada de salvación.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "rociada-venenosa",
+    "name": "Rociada venenosa",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Genera una bocanada de gas tóxico que inflige 1d12 daño de veneno.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "rociado-venenoso",
+    "name": "Rociado venenoso",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Proyectas gas venenoso; el objetivo sufre 1d12 daño de veneno (Salvador de Constitución).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "saber-druidico",
+    "name": "Saber druídico",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación (Recomendado). Creas un efecto natural menor o predices el tiempo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "salpicadura-acida",
+    "name": "Salpicadura ácida",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación (Recomendado). Burbuja de ácido; uno o dos objetivos sufren 1d6 daño ácido.",
+    "description": "Evocación (1 acción). Creas una burbuja de ácido. Uno o dos objetivos a 18m deben superar salvación de Destreza o recibir 1d6 daño ácido.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "salpicadura-de-acido",
+    "name": "Salpicadura de ácido",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Lanzas burbuja de ácido que hace 1d6 daño a una o dos criaturas juntas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "shillelagh",
+    "name": "Shillelagh",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Imbuye tu bastón o garrote para usar Sabiduría en ataque e infligir 1d8 daño de fuerza.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "tanido-para-los-muertos",
+    "name": "Tañido para los muertos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Envuelve a un objetivo en energía espectral; 1d8 daño necrótico (Salvador de Sabiduría).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "tanido-por-los-muertos",
+    "name": "Tañido por los muertos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Tañido causa 1d8 daño de necro (o 1d12 si no tiene todos los HP).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "taumaturgia",
+    "name": "Taumaturgia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Manifestaciones divinas menores (cambiar ojos, voz alta, abrir puertas).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "toque-helado",
+    "name": "Toque helado",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Ataque de conjuro a 36 m; 1d8 daño necrótico y el objetivo no puede recuperar PG.",
+    "description": "Nigromancia (1 acción). Ataque de conjuro a 36m. Causa 1d8 daño necrótico y el objetivo no puede recuperar puntos de golpe hasta tu próximo turno.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "tronar",
+    "name": "Tronar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. 1d8 daño de trueno en una onda de fuerza y empuja 3 m.",
+    "description": "Evocación (1 acción). Creas una onda de fuerza sónica. 1d8 daño de trueno y empuja 3m.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "voluta-estelar",
+    "name": "Voluta estelar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 0,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Creas un destello de luz estelar que causa 1d4 daño radiante y evita que el objetivo use reacciones.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "alarma",
+    "name": "Alarma",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ABJURATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Abjuración (Ritual). Creas una alarma mágica que avisa si alguien cruza un área de 6 m.",
+    "description": "Abjuración. Protege un área dando una alerta mental o audible si una criatura entra.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "armadura-de-agathys",
+    "name": "Armadura de Agathys",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Ganas 5 HP temporales y si te golpean cuerpo a cuerpo, inflige 5 de daño de frío.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "warlock"
+      }
+    ]
+  },
+  {
+    "slug": "armadura-de-mago",
+    "name": "Armadura de mago",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración (Recomendado). CA base = 13 + mod. Des hasta que te pongas armadura o el conjuro acabe.",
+    "description": "Abjuración (1 acción). Envuelve a una criatura sin armadura en fuerza mágica, CA base = 13 + Des.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "bendicion",
+    "name": "Bendición",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Bendice a tres criaturas, añadiendo 1d4 a sus ataques y salvaciones.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "brazos-de-hadar",
+    "name": "Brazos de Hadar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Tentáculos oscuros infligen 2d6 de daño de fuerza y evitan reacciones.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "warlock"
+      }
+    ]
+  },
+  {
+    "slug": "buenas-bayas",
+    "name": "Buenas bayas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Creas 10 bayas mágicas; cada una sana 1 pg y alimenta por un día.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "caida-de-pluma",
+    "name": "Caída de pluma",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación (Reacción). Hasta 5 criaturas descienden a 18 m/ronda y no reciben daño de caída.",
+    "description": "Transmutación (Reacción). Hasta 5 criaturas cayendo descienden lentamente (3m por ronda) y no sufren daño por caída.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "castigo-abrasador",
+    "name": "Castigo abrasador",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Tu próximo ataque cuerpo a cuerpo causa 1d6 de daño por fuego y prende fuego al objetivo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "castigo-divino",
+    "name": "Castigo divino",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Tu ataque causa 2d8 de daño radiante adicional a un enemigo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "comprender-idiomas",
+    "name": "Comprender idiomas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación (Ritual). Entiendes cualquier idioma hablado o escrito durante 1 hora.",
+    "description": "Adivinación. Entiendes el significado de cualquier idioma hablado o escrito durante 1 hora.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "crear-o-destruir-agua",
+    "name": "Crear o destruir agua",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Crea o destruye hasta 40 litros de agua en recipientes o lluvia.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "cuchillo-de-hielo",
+    "name": "Cuchillo de hielo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Cuchillo inflige 1d10 daño perforante y explota causando 2d6 daño de frío en área.",
+    "description": "Conjuración. Proyectil de hielo a 18m causa 1d10 daño perforante, y explota en frío causando 2d6 daño en 1,5m.",
+    "lists": [
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "curar-heridas",
+    "name": "Curar heridas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Cura 2d8 + modificador de Carisma a una criatura al tocarla.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "deteccion-de-magia",
+    "name": "Detección de magia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación (Ritual). Sientes auras mágicas a 9 m.",
+    "description": null,
+    "lists": [
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "detectar-el-bien-y-el-mal",
+    "name": "Detectar el bien y el mal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Adivinación (Concentración). Detectas celestiales, elementales, feéricos, fiordos, no muertos y aberraciones.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "detectar-magia",
+    "name": "Detectar magia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": true,
+    "shortDescription": "Adivinación (Ritual, Recomendado). Percibes magia y su escuela a 9 m (Concentración).",
+    "description": "Adivinación (Concentración). Percibes la presencia de magia a 9m y ves el aura de escuelas mágicas.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "detectar-venenos-y-enfermedades",
+    "name": "Detectar venenos y enfermedades",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación (Ritual). Detectas veneno, criaturas venenosas y enfermedades a 9 m.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "disfrazarse",
+    "name": "Disfrazarse",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Cambias tu apariencia (ropa, rasgos) durante 1 hora.",
+    "description": "Ilusión. Alteras tu apariencia física y equipo con una ilusión durante 1 hora.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "dormir",
+    "name": "Dormir",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Duerme criaturas que sumen hasta 5d8 PG en un área de 4,5 m.",
+    "description": "Encantamiento. Duerme a criaturas en base a un pozo de 5d8 puntos de golpe.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "duelo-compelido",
+    "name": "Duelo compelido",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Obligas a un enemigo a centrar sus ataques en ti.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "encantar-animal",
+    "name": "Encantar animal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento. Convence a una bestia de que no eres una amenaza (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "encontrar-familiar",
+    "name": "Encontrar familiar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "CONJURATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Conjuración (Ritual). Convocas un espíritu feérico como animal familiar permanente.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "enmaranar",
+    "name": "Enmarañar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Plantas enredan y retienen a criaturas en un área.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "entender-idiomas",
+    "name": "Entender idiomas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación (Ritual). Comprendes literalmente cualquier idioma hablado o escrito durante 1 hora.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "escudo",
+    "name": "Escudo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración (Reacción). +5 a la CA e inmunidad a proyectil mágico hasta el inicio de tu turno.",
+    "description": "Abjuración (Reacción). Te otorga +5 a la CA e inmunidad a proyectil mágico hasta el inicio de tu próximo turno.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "escudo-de-fe",
+    "name": "Escudo de fe",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración, Acción adicional). Otorga +2 a la CA a una criatura elegida.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "falsa-vida",
+    "name": "Falsa vida",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Obtienes 1d4+4 puntos de golpe temporales por 1 hora.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "falso-vida",
+    "name": "Falso vida",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Ganas 1d4+4 PG temporales durante 1 hora.",
+    "description": "Nigromancia. Otorga 1d4+4 puntos de golpe temporales por 1 hora.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "favor-divino",
+    "name": "Favor divino",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración, Acción adicional). Tus ataques con armas infligen 1d4 daño radiante extra.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "fuego-feerico",
+    "name": "Fuego feérico",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación. Otorga ventaja en tiradas de ataque contra objetivos en el área (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "golpe-apresador",
+    "name": "Golpe apresador",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Tu próximo ataque de arma atrapa a la víctima en enredaderas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "grasa",
+    "name": "Grasa",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Terreno resbaladizo en un área de 3 m; las criaturas que fallen Destreza caen derribadas.",
+    "description": "Conjuración. Terreno resbaladizo de 3m. Quien entre o empiece su turno debe superar Destreza o caer derribado.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "hablar-con-los-animales",
+    "name": "Hablar con los animales",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación. Obtienes la capacidad de comunicarte verbalmente con bestias durante 10 minutos (Ritual).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "hechizar-persona",
+    "name": "Hechizar persona",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento (Recomendado). Encanta a un humanoide a 9 m; te ve como un conocido amistoso.",
+    "description": "Encantamiento. Hechiza a un humanoide si falla salvación de Sabiduría.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "heroismo",
+    "name": "Heroísmo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Da inmunidad al miedo y puntos de golpe temporales por turno.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "identificar",
+    "name": "Identificar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación (Ritual). Determinas las propiedades mágicas de un objeto o conjuro activo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "imagen-silenciosa",
+    "name": "Imagen silenciosa",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Concentración). Creas una imagen tridimensional inmóvil a 18 m.",
+    "description": "Ilusión. Creas una imagen tridimensional a 18m sin sonido que puedes animar.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "infligir-heridas",
+    "name": "Infligir heridas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Ataque de conjuro cuerpo a cuerpo causa 3d10 daño necrótico.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "maleficio",
+    "name": "Maleficio",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento. Infliges 1d6 de daño necrótico extra al objetivo y le das desventaja en una característica (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "warlock"
+      }
+    ]
+  },
+  {
+    "slug": "manos-ardientes",
+    "name": "Manos ardientes",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Cono de fuego de 4,5 m que inflige 3d6 daño de fuego (Salvador Destreza mitad).",
+    "description": "Evocación. Cono de 4,5m causa 3d6 daño de fuego, mitad si supera salvación de Destreza.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "marca-del-cazador",
+    "name": "Marca del cazador",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Adivinación (Concentración). Eliges objetivo; tus ataques le infligen 1d6 de daño extra.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "nube-de-oscurecimiento",
+    "name": "Nube de oscurecimiento",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Nube opaca en esfera de 6 m a 18 m durante 10 min.",
+    "description": "Conjuración. Creas una nube de niebla de 6m de radio que ciega la visión.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "ola-atronadora",
+    "name": "Ola atronadora",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Ola de fuerza que causa 2d8 daño de trueno y empuja 3 m en un cubo de 4.5 m.",
+    "description": "Evocación. Causa 2d8 daño de trueno en un cubo de 4.5m y empuja a las criaturas.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "orbe-cromatico",
+    "name": "Orbe cromático",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Lanzas orbe elemental que inflige 3d8 de daño del tipo elemental que elijas.",
+    "description": "Evocación. Lanzador arroja una esfera de energía elemental a 27m que inflige 3d8 de daño del tipo elegido.",
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "orden-imperiosa",
+    "name": "Orden imperiosa",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Das una orden de una sola palabra que el objetivo debe obedecer.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "palabra-de-curacion",
+    "name": "Palabra de curación",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración (Recomendado). Acción adicional. Cura 1d4 + modificador de Carisma a una criatura a 18 m.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "perdicion",
+    "name": "Perdición",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento. Hasta 3 criaturas restan 1d4 a sus tiradas de ataque y salvación (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "proteccion-contra-el-bien-y-el-mal",
+    "name": "Protección contra el bien y el mal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Protege a una criatura de aberraciones, celestiales, elementales, etc.",
+    "description": "Abjuración (Concentración). Protege contra aberraciones, celestiales, elementales, feéricos, demonios y muertos vivientes.",
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "proyectil-magico",
+    "name": "Proyectil mágico",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación (Recomendado). Tres dardos infalibles de 1d4+1 daño de fuerza cada uno.",
+    "description": "Evocación. Creas tres dardos mágicos infalibles que impactan causando 1d4+1 daño de fuerza cada uno.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "purificar-comida-y-bebida",
+    "name": "Purificar comida y bebida",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "TRANSMUTATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Transmutación (Ritual). Purifica toda la comida y bebida no mágica en un radio de 1.5 metros.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "druid"
+      }
+    ]
+  },
+  {
+    "slug": "rayo-de-enfermedad",
+    "name": "Rayo de enfermedad",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Ataque de conjuro; 2d8 daño veneno y envenenado (Salvador Constitución).",
+    "description": "Nigromancia. Causa 2d8 daño de veneno y envenena si falla salvación de Constitución.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "rayo-de-hechiceria",
+    "name": "Rayo de hechicería",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Rayo inflige 1d12 daño de rayo; puedes repetir daño usando tu acción.",
+    "description": "Evocación. Ataque de conjuro a 36m causa 1d12 daño de relámpago, y puedes infligir daño continuo en turnos siguientes.",
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "rayo-nauseabundo",
+    "name": "Rayo nauseabundo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Rayo causa 2d8 daño de veneno y envenena si fallan salvación.",
+    "description": "Nigromancia. Ataque de conjuro causa 2d8 daño de veneno y envenena.",
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "reprension-infernal",
+    "name": "Reprensión infernal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Reacción al recibir daño; rodea al atacante en llamas infligiendo 2d10 de daño de fuego.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "warlock"
+      }
+    ]
+  },
+  {
+    "slug": "retirada-expeditiva",
+    "name": "Retirada expeditiva",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Acción adicional. Permite correr/destrabarse.",
+    "description": "Transmutación (Concentración). Permite realizar la acción de Correr como acción adicional.",
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "risa-horrible-de-tasha",
+    "name": "Risa horrible de Tasha",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento. Hace que una criatura caiga al suelo propensa e incapacitada por la risa (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "rociada-de-color",
+    "name": "Rociada de color",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Destello de luz que ciega criaturas en un cono de 4,5 m.",
+    "description": "Ilusión. Destello de luces ciega a criaturas en cono de 4.5m.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "saeta-guia",
+    "name": "Saeta guía",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Rayo inflige 4d6 daño radiante; próximo ataque contra él tiene ventaja.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "salto",
+    "name": "Salto",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Triplica la distancia de salto de un objetivo durante 1 min.",
+    "description": "Transmutación. Triplica la distancia de salto de un objetivo durante 1 minuto.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "santuario",
+    "name": "Santuario",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Protege a criatura elegida; atacantes deben superar salvación de Sabiduría.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "sirviente-invisible",
+    "name": "Sirviente invisible",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Crea una fuerza invisible e informe que realiza tareas sencillas a tus órdenes (Ritual).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "susurros-discordantes",
+    "name": "Susurros discordantes",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento (Recomendado). Causa 3d6 daño psíquico y obliga al objetivo a huir usando su reacción.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "texto-ilusorio",
+    "name": "Texto ilusorio",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Escribes un mensaje ocultando su verdadero significado con magia (Ritual).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "tormenta-de-espinas",
+    "name": "Tormenta de espinas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Flecha estalla en espinas infligiendo daño perforante en área.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "zancada-prodigiosa",
+    "name": "Zancada prodigiosa",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 1,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Aumenta la velocidad de movimiento de una criatura en 3 m durante 1 hora.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "druid"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "abrir",
+    "name": "Abrir",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Abre una puerta o cofre cerrado con llave o magia.",
+    "description": "Transmutación. Abre instantáneamente una puerta o cofre cerrado mágica o físicamente.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "agrandar-reducir",
+    "name": "Agrandar/reducir",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación. Duplica o reduce el tamaño de una criatura/objeto (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "aliento-de-dragon",
+    "name": "Aliento de dragón",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Exhalas cono de daño elemental que causa 3d6 en cada turno.",
+    "description": "Transmutación (Concentración). Escupes energía elemental (cono de 4,5m, 3d6 de daño) como acción en cada turno.",
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "alterar-el-propio-aspecto",
+    "name": "Alterar el propio aspecto",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Cambias tu fisionomía, adaptas branquias o garras.",
+    "description": "Transmutación (Concentración). Modifica tu cuerpo para obtener respiración acuática, armas naturales o cambiar de apariencia.",
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "arma-espiritual",
+    "name": "Arma espiritual",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Creas un arma flotante que ataca como acción adicional causando 1d8 + mod Sab.",
+    "description": "Evocación. Invoca un arma flotante que ataca como acción adicional e inflige 1d8 + mod daño de fuerza.",
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "arma-magica",
+    "name": "Arma mágica",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). El arma se vuelve mágica con un bonificador de +1 a ataques y daño.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "augurio",
+    "name": "Augurio",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación (Ritual). Indagas si una acción próxima traerá buenos o malos resultados.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "aura-magica-de-nystul",
+    "name": "Aura mágica de Nystul",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Oculta o falsifica el aura mágica de un objeto o criatura durante 24 h.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "auxilio",
+    "name": "Auxilio",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Incrementa los puntos de golpe máximos y actuales de tres criaturas en 5.",
+    "description": "Abjuración. Incrementa los puntos de golpe máximos y actuales en 5 a tres aliados durante 8 horas.",
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "boca-magica",
+    "name": "Boca mágica",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Objeto repite un mensaje prefijado al cumplirse un activador (Ritual).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "calentar-metal",
+    "name": "Calentar metal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación. Calienta metal causando 2d8 daño ígneo al portador (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "calmar-emociones",
+    "name": "Calmar emociones",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento. Suprime miedo/encanto o apacigua hostilidad (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "castigo-marcado",
+    "name": "Castigo marcado",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Tu próximo ataque causa 2d6 daño radiante y revela al objetivo invisible.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "cerradura-arcana",
+    "name": "Cerradura arcana",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Sella mágicamente una puerta o contenedor; solo tú puedes abrirlo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "clavo-mental",
+    "name": "Clavo mental",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Adivinación (Concentración). Flecha psíquica inflige 3d6 daño y rastreas la ubicación del objetivo.",
+    "description": "Adivinación. Inflige 3d6 daño psíquico a un objetivo a 18m y conoces su ubicación.",
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "contorno-borroso",
+    "name": "Contorno borroso",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Concentración). Tu cuerpo se vuelve borroso; los ataques contra ti tienen desventaja.",
+    "description": "Ilusión. Te vuelves borroso, haciendo que los atacantes tengan desventaja en sus tiradas.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "cordon-de-flechas",
+    "name": "Cordón de flechas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Inyectas magia en 4 flechas que se disparan si una criatura se acerca.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "corona-de-la-locura",
+    "name": "Corona de la locura",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento. Obliga a humanoide a atacar a sus aliados (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "corona-de-locura",
+    "name": "Corona de locura",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Obliga a un humanoide a atacar a sus aliados.",
+    "description": "Encantamiento (Concentración). Obliga a un humanoide a atacar a sus aliados.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "crecimiento-espinoso",
+    "name": "Crecimiento espinoso",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación. Terreno se llena de espinas infligiendo daño al moverse (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "detectar-pensamientos",
+    "name": "Detectar pensamientos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Adivinación (Concentración). Lees los pensamientos superficiales de criaturas a 9 m.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "detectar-trampas",
+    "name": "Detectar trampas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Adivinación. Detectas la presencia de cualquier trampa a 36 metros en tu línea de visión.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "dulce-descanso",
+    "name": "Dulce descanso",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "NECROMANCY",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Nigromancia (Ritual). Impide que cadáver sea convertido en no-muerto o empiece a descomponerse.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "embelesar",
+    "name": "Embelesar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Distrae a criaturas para que tengan desventaja en Percepción.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "encontrar-corcel",
+    "name": "Encontrar corcel",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Convocas un espíritu divino que toma forma de un corcel leal.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "esfera-de-llamas",
+    "name": "Esfera de llamas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Crea esfera de fuego rodante que inflige 2d6 daño en área.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "flecha-acida-de-melf",
+    "name": "Flecha ácida de Melf",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Proyectil de ácido; 4d4 daño más 2d4 al inicio de tu próximo turno.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "fuerza-fantasmal",
+    "name": "Fuerza fantasmal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Concentración). Creas una ilusión que el objetivo cree real e inflige daño psíquico.",
+    "description": "Ilusión. Creas una ilusión mental que inflige daño psíquico al objetivo haciéndole creer que es real.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "hacer-anicos",
+    "name": "Hacer añicos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Estallido sonoro que causa 3d8 daño de trueno en área.",
+    "description": "Evocación. Ruido ensordecedor que inflige 3d8 daño de trueno, los objetos no orgánicos tienen desventaja.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "hoja-de-fuego",
+    "name": "Hoja de fuego",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Creas una espada de fuego que causa 3d6 daño ígneo al golpear.",
+    "description": "Evocación. Creas una espada de fuego en tu mano que causa 3d6 daño de fuego al impactar.",
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "imagen-multiple",
+    "name": "Imagen múltiple",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Creas tres duplicados ilusorios que confunden los ataques enemigos.",
+    "description": "Ilusión. Creas tres duplicados ilusorios de ti mismo que confunden los ataques enemigos.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "inmovilizar-persona",
+    "name": "Inmovilizar persona",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento. Paraliza a un humanoide a 18 m (Concentración).",
+    "description": "Encantamiento. Paraliza a un humanoide si falla su salvación de Sabiduría.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "invisibilidad",
+    "name": "Invisibilidad",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Concentración). El objetivo se vuelve invisible hasta que ataque o lance un conjuro.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "invocar-bestia",
+    "name": "Invocar bestia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración. Invocas a un espíritu animal terrestre, acuático o aéreo (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "levitar",
+    "name": "Levitar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Eleva a un objetivo hasta 6 m verticalmente.",
+    "description": "Transmutación (Concentración). Eleva a un objetivo hasta 6m verticalmente.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "llama-permanente",
+    "name": "Llama permanente",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Antorcha sin calor que brilla indefinidamente sin combustible.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "localizar-animales-o-plantas",
+    "name": "Localizar animales o plantas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación. Conoces dirección/distancia de una especie a 8 km (Ritual).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "localizar-objeto",
+    "name": "Localizar objeto",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Adivinación (Concentración). Sientes la dirección de un objeto conocido a 300 metros.",
+    "description": "Adivinación (Concentración). Sientes la dirección de un objeto conocido a 300m.",
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "mensajero-animal",
+    "name": "Mensajero animal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Envías a un animal pequeño a entregar un mensaje (Ritual).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "nube-de-dagas",
+    "name": "Nube de dagas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Torbellino de dagas voladoras en cubo de 1,5 m; 4d4 daño cortante.",
+    "description": "Conjuración. Torbellino de dagas voladoras en un cubo de 1.5m causa 4d4 daño cortante continuo.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "oscuridad",
+    "name": "Oscuridad",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Esfera de oscuridad mágica de 4,5 m de radio.",
+    "description": "Evocación (Concentración). Crea una esfera de oscuridad mágica de 4,5m de radio que bloquea la visión en penumbra.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "pasar-sin-rastro",
+    "name": "Pasar sin rastro",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). +10 a pruebas de Sigilo para aliados cercanos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "paso-brumoso",
+    "name": "Paso brumoso",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración (Acción adicional). Te teletransportas hasta 9 m a un espacio visible.",
+    "description": "Conjuración (Acción adicional). Te teletransportas hasta 9m a un espacio vacío visible.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "subclassSlug": "fighter-guardian-arcano"
+      }
+    ]
+  },
+  {
+    "slug": "piel-robliza",
+    "name": "Piel robliza",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Piel se endurece haciendo que la CA mínima sea 16.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "plegaria-de-curacion",
+    "name": "Plegaria de curación",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Cura a hasta seis criaturas aliadas que puedas ver por 2d8 + mod Sab.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "potenciar-caracteristica",
+    "name": "Potenciar característica",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación. Otorga ventaja en pruebas de una característica elegida (Concentración).",
+    "description": "Transmutación. Otorga ventaja en pruebas del atributo seleccionado.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "proteccion-contra-veneno",
+    "name": "Protección contra veneno",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Da resistencia al veneno y neutraliza venenos activos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "rafaga-de-viento",
+    "name": "Ráfaga de viento",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Viento fuerte de 18 m empuja a las criaturas y dispersa gases.",
+    "description": "Evocación (Concentración). Línea de viento de 18m empuja a criaturas y apaga llamas.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "rayo-abrasador",
+    "name": "Rayo abrasador",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Disparas hasta tres rayos de fuego de 2d6 cada uno a 36 m.",
+    "description": "Evocación. Disparas tres rayos de fuego de 2d6 de daño a 36m.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "rayo-debilitador",
+    "name": "Rayo debilitador",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Nigromancia (Concentración). Ataque de conjuro; el objetivo causa la mitad de daño con armas de Fuerza.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "restablecimiento-menor",
+    "name": "Restablecimiento menor",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Cura ceguedad, sordera, parálisis o envenenamiento.",
+    "description": "Abjuración. Cura los estados de cegado, ensordecido, paralizado o envenenado.",
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "sentidos-de-la-bestia",
+    "name": "Sentidos de la bestia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": true,
+    "shortDescription": "Adivinación (Ritual). Usas sentidos de una bestia voluntaria (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "silencio",
+    "name": "Silencio",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ILLUSION",
+    "ritual": true,
+    "concentration": true,
+    "shortDescription": "Ilusionismo. Inmuniza contra sonido en esfera de 6m (Concentración, Ritual).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "sordera-ceguera",
+    "name": "Sordera/ceguera",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Ciega o ensordece a un objetivo que falle salvación de Constitución.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "sugerencia",
+    "name": "Sugerencia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). El objetivo sigue tu sugerencia si falla Sabiduría.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "sugestion",
+    "name": "Sugestión",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento. Influyes en una criatura con orden razonable por 8h (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "telarana",
+    "name": "Telaraña",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Red pegajosa que restringe a las criaturas en un cubo de 6 m.",
+    "description": "Conjuración. Crea una red de telarañas resbaladizas y pegajosas que restringen a los enemigos.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "trepar-cual-aracnido",
+    "name": "Trepar cual arácnido",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). El objetivo gana velocidad de trepar igual a su velocidad caminar por 1 hora.",
+    "description": "Transmutación. Otorga la habilidad de trepar por paredes y techos con las manos libres.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "truco-de-la-cuerda",
+    "name": "Truco de la cuerda",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Cuerda vertical con abertura extradimensional oculta para hasta 8 criaturas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "ver-invisibilidad",
+    "name": "Ver invisibilidad",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Adivinación. Ves criaturas invisibles durante 1 hora.",
+    "description": "Adivinación. Ves criaturas y objetos invisibles o en el Plano Etereo durante 1 hora.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "vigor-arcano",
+    "name": "Vigor arcano",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Te da 2d12+4 puntos de golpe temporales por 1 hora.",
+    "description": "Abjuración. Recuperas 2d8 puntos de golpe como acción.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "vinculo-protector",
+    "name": "Vínculo protector",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Proteges a un aliado; ganas resistencia a todo daño pero sufres su mismo daño.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "vision-en-la-oscuridad",
+    "name": "Visión en la oscuridad",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. El objetivo ve en penumbra como luz brillante a 18 m durante 8 horas.",
+    "description": "Transmutación. Otorga visión en la oscuridad a 18m durante 8 horas.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "zona-de-la-verdad",
+    "name": "Zona de la verdad",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 2,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Impide mentir en una esfera de 4.5 metros.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "acelerar",
+    "name": "Acelerar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Dobla la velocidad, +2 CA, y da una acción adicional de ataque durante 1 min.",
+    "description": "Transmutación. Otorga una acción adicional, +2 CA y doble velocidad al objetivo durante 1 minuto.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "animar-a-los-muertos",
+    "name": "Animar a los muertos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Creas un guerrero no muerto de un cadáver que controlas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "arma-de-energia",
+    "name": "Arma de energía",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). El arma inflige 1d4 de daño elemental adicional.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "arma-elemental",
+    "name": "Arma elemental",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Arma causa 1d4 daño elemental extra y gana +1 a ataques.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "aura-de-vitalidad",
+    "name": "Aura de vitalidad",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Aura cura 2d6 HP a un aliado a tu elección como acción adicional.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "bola-de-fuego",
+    "name": "Bola de fuego",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación (Recomendado). Explosión en esfera de 6 m de radio; 8d6 daño de fuego.",
+    "description": "Evocación. Explosión de fuego en 6m de radio a 45m inflige 8d6 daño de fuego.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "caminar-sobre-el-agua",
+    "name": "Caminar sobre el agua",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Transmutación (Ritual). Permite caminar sobre agua, barro, nieve o lava a diez criaturas.",
+    "description": "Transmutación. Permite a diez aliados caminar sobre líquidos durante 1 hora.",
+    "lists": [
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "castigo-deslumbrante",
+    "name": "Castigo deslumbrante",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Tu próximo ataque causa 3d8 daño radiante y ciega al objetivo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "circulo-magico",
+    "name": "Círculo mágico",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Cilindro de energía de 3 m de radio que protege contra ciertos tipos de criaturas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "clarividencia",
+    "name": "Clarividencia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Adivinación (Concentración). Sensor invisible para ver o escuchar un lugar a distancia.",
+    "description": "Adivinación. Crea un sensor invisible para escuchar o ver un área distante.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "conjurar-animales",
+    "name": "Conjurar animales",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Invocas espíritus que toman forma de bestias.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "conjurar-descarga-de-proyectiles",
+    "name": "Conjurar descarga de proyectiles",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Creas una lluvia de proyectiles que causa 8d8 daño en área.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "contrahechizo",
+    "name": "Contrahechizo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración (Reacción). Interrumpe el conjuro que otra criatura está lanzando.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "corcel-fantasma",
+    "name": "Corcel fantasma",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ILLUSION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Ilusionismo (Ritual). Convocas a un caballo de monta ilusorio y veloz durante 1 hora.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "crear-comida-y-agua",
+    "name": "Crear comida y agua",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Crea 20 kilos de comida y 110 litros de agua limpia.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "crecimiento-vegetal",
+    "name": "Crecimiento vegetal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Llena de vegetación un área haciendo el terreno muy difícil.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "desplazamiento",
+    "name": "Desplazamiento",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Concentración). Proyecta tu imagen a un lado; los atacantes tienen desventaja.",
+    "description": "Transmutación. Te proyecta a un lado, causando desventaja en todos los ataques contra ti.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "disipar-magia",
+    "name": "Disipar magia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Cancela conjuros o efectos mágicos activos de nivel 3 o inferior.",
+    "description": "Abjuración. Termina conjuros activos en un objetivo u objeto.",
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "don-de-lenguas",
+    "name": "Don de lenguas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Adivinación. El objetivo puede entender y ser entendido en cualquier idioma.",
+    "description": "Adivinación. Puedes entender y ser entendido en cualquier idioma hablado.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "espiritus-guardianes",
+    "name": "Espíritus guardianes",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Espíritus giran a tu alrededor dañando y ralentizando enemigos a 4.5 m.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "fingir-muerte",
+    "name": "Fingir muerte",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "NECROMANCY",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Nigromancia (Ritual). El objetivo parece muerto durante 1 hora; protegido contra hechizos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "flecha-de-relampago",
+    "name": "Flecha de relámpago",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Tu próximo disparo de arma causa 4d8 daño de relámpago y explota.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "forma-gaseosa",
+    "name": "Forma gaseosa",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Un objetivo se convierte en nube gaseosa con resistencias.",
+    "description": "Transmutación. Transforma a un objetivo en una nube de gas con resistencia a daño.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "fundirse-con-la-piedra",
+    "name": "Fundirse con la piedra",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Transmutación (Ritual). Te introduces físicamente en un bloque de piedra sólido.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "glifo-custodio",
+    "name": "Glifo custodio",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ABJURATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Abjuración (Ritual). Inscribes un glifo que lanza un conjuro de nivel ≤ 3 al activarse.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "hablar-con-las-plantas",
+    "name": "Hablar con las plantas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Te comunicas con plantas y las interrogas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "hablar-con-los-muertos",
+    "name": "Hablar con los muertos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Concedes vida temporal a un cadáver para hacerle hasta 5 preguntas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "hambre-de-hadar",
+    "name": "Hambre de Hadar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Esfera de oscuridad que inflige daño de frío y ácido, y causa ceguera.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "warlock"
+      }
+    ]
+  },
+  {
+    "slug": "imagen-mayor",
+    "name": "Imagen mayor",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Concentración). Ilusión realista de objeto, criatura o fenómeno con sonido.",
+    "description": "Ilusión. Crea una ilusión realista con sonido, olor y temperatura.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "imponer-maldicion",
+    "name": "Imponer maldición",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Nigromancia (Concentración). Maldices a una criatura restando en tiradas o causando daño extra.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "indetectabilidad",
+    "name": "Indetectabilidad",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Protege a una criatura contra adivinación y sensores mágicos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "indetectable",
+    "name": "Indetectable",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Un objetivo no puede ser detectado por magia de adivinación durante 24 horas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "invocar-feerico",
+    "name": "Invocar feérico",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Convocas un espíritu feérico que lucha a tus órdenes.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "invocar-muerto-viviente",
+    "name": "Invocar muerto viviente",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Nigromancia (Concentración). Convocas un espíritu no muerto que lucha a tu lado.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "levantar-maldicion",
+    "name": "Levantar maldición",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Termina con todas las maldiciones en una criatura u objeto tocado.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "luz-del-dia",
+    "name": "Luz del día",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Esfera de 18 m emite luz brillante equivalente a la luz solar.",
+    "description": "Evocación. Esfera de 18m de luz brillante equivalente a la luz solar.",
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "manto-del-cruzado",
+    "name": "Manto del cruzado",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Otorga a tus aliados cercanos +1d4 daño radiante en sus ataques.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "muro-de-viento",
+    "name": "Muro de viento",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación. Muro de viento repele flechas, gases e inflige daño (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "nube-apestosa",
+    "name": "Nube apestosa",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Nube que hace que las criaturas que fallen Constitución pierdan su acción.",
+    "description": "Conjuración. Crea una nube de gas que causa náuseas a quienes fallen Constitución.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "palabra-de-curacion-en-masa",
+    "name": "Palabra de curación en masa",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Cura 1d4 + mod Carisma a hasta 6 criaturas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "patron-hipnotico",
+    "name": "Patrón hipnótico",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo. Patrón de luces que incapacita y paraliza (Concentración).",
+    "description": "Ilusión. Un patrón de colores parpadeantes incapacita y duerme a enemigos.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "pequena-choza-de-leomund",
+    "name": "Pequeña choza de Leomund",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Cúpula de fuerza protectora de 3 m de radio (Ritual).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "proteccion-contra-energia",
+    "name": "Protección contra energía",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Otorga resistencia a ácido, frío, fuego, rayo o trueno.",
+    "description": "Abjuración (Concentración). Otorga resistencia a ácido, frío, fuego, relámpago o trueno.",
+    "lists": [
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "ralentizar",
+    "name": "Ralentizar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación. Altera tiempo reduciendo CA, velocidad y reacciones de 6 enemigos (Concentración).",
+    "description": "Transmutación. Reduce a la mitad la velocidad, CA y número de ataques de los enemigos.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "recado",
+    "name": "Recado",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Adivinación. Envías un mensaje mental a cualquier distancia y recibes respuesta.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "relampago",
+    "name": "Relámpago",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Línea de relámpago de 30 m; 8d6 daño (Salvador Destreza mitad).",
+    "description": "Evocación. Línea eléctrica de 30m inflige 8d6 daño de relámpago.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "respirar-bajo-el-agua",
+    "name": "Respirar bajo el agua",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Transmutación. Hasta 10 criaturas pueden respirar bajo el agua durante 24 horas.",
+    "description": "Transmutación. Permite respirar bajo el agua durante 24 horas.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "revivir",
+    "name": "Revivir",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Devuelve la vida a una criatura muerta en el último minuto con 1 HP.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "senal-de-esperanza",
+    "name": "Señal de esperanza",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Aliados curan el máximo posible y tienen ventaja en salvaciones de Sabiduría.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "sudario-de-espiritus",
+    "name": "Sudario de espíritus",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Nigromancia (Concentración). Espíritus te rodean, dañando a tus enemigos y evitando su curación.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "terror",
+    "name": "Terror",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo. Creas una imagen terrorífica que hace huir a enemigos (Concentración).",
+    "description": "Ilusión (Concentración). Proyecta una imagen fantasmal que asusta a enemigos en un cono de 9m.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "toque-vampirico",
+    "name": "Toque vampírico",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Nigromancia (Concentración). Tu toque causa 3d6 daño necrótico y te sana.",
+    "description": "Nigromancia. Ataque de toque causa 3d6 daño necrótico y te sana la mitad.",
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "tormenta-de-aguanieve",
+    "name": "Tormenta de aguanieve",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Lluvia helada dificulta movimiento y rompe concentración.",
+    "description": "Conjuración. Lluvia congelante crea terreno difícil y extingue fuegos.",
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "volar",
+    "name": "Volar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 3,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Otorga vuelo de 18 m durante 10 minutos.",
+    "description": "Transmutación (Concentración). Otorga velocidad de vuelo de 18m durante 10 minutos.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "adivinacion",
+    "name": "Adivinación",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación (Ritual). Recibes presagio sobre el resultado de una acción en los próximos 7 días.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "asesino-fantasmal",
+    "name": "Asesino fantasmal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Concentración). Imagen aterradora solo para el objetivo; 4d10 daño psíquico.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "aura-de-pureza",
+    "name": "Aura de pureza",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Protege a aliados de enfermedades, venenos y condiciones mentales.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "aura-de-vida",
+    "name": "Aura de vida",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Aura protege a aliados de reducciones de HP y los levanta si caen a 0 HP.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "castigo-estupefaciente",
+    "name": "Castigo estupefaciente",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Tu próximo ataque causa 4d6 daño psíquico y desventaja en tiradas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "cofre-oculto-de-leomund",
+    "name": "Cofre oculto de Leomund",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Cofre extradimensional al que solo tú accedes mediante una réplica miniatura.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "compulsion",
+    "name": "Compulsión",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento. Obliga a enemigos elegidos a moverse en la dirección que indiques (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "confusion",
+    "name": "Confusión",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Las criaturas en 3 m actúan aleatoriamente.",
+    "description": "Encantamiento. Confunde a los enemigos, obligándoles a actuar aleatoriamente.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "conjurar-elementales-menores",
+    "name": "Conjurar elementales menores",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Invocas espíritus elementales que dañan enemigos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "conjurar-seres-del-bosque",
+    "name": "Conjurar seres del bosque",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Invocas espíritus feéricos de la naturaleza.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "controlar-agua",
+    "name": "Controlar agua",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Manipulas agua: dividir, elevar o crear remolino.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "desterrar",
+    "name": "Desterrar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración. Envía temporalmente a una criatura a otro plano de existencia (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "warlock"
+      }
+    ]
+  },
+  {
+    "slug": "destierro",
+    "name": "Destierro",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Desplazas a una criatura a un semiplano o su plano de origen.",
+    "description": "Abjuración. Destierra a un objetivo a otro plano de existencia durante 1 minuto.",
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "dominar-bestia",
+    "name": "Dominar bestia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Tomas el control absoluto de una bestia.",
+    "description": "Encantamiento. Tomas el control telepático absoluto de una bestia.",
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "enredadera",
+    "name": "Enredadera",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Enredadera inteligente apresa y arrastra a enemigos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "escudo-de-fuego",
+    "name": "Escudo de fuego",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Te rodeas de llamas que te dan resistencia y dañan a atacantes.",
+    "description": "Evocación. Te rodeas de llamas que otorgan resistencia al frío o fuego y dañan a atacantes en 2d8.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "esfera-elastica-de-otiluke",
+    "name": "Esfera elástica de Otiluke",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Esfera de fuerza de 3 m de diámetro que encierra a un objetivo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "esfera-vitriolica",
+    "name": "Esfera vitriólica",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Explosión de ácido inflige 10d4 daño de ácido (y 5d4 el próximo turno).",
+    "description": "Evocación. Lanzas una bola de ácido que explota causando 10d4 daño de ácido.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "fabricar",
+    "name": "Fabricar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Transformas materia prima en un objeto usando tu competencia en herramientas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "fuente-de-luz-lunar",
+    "name": "Fuente de luz lunar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación. Crea luz brillante, inflige daño radiante y te vuelve invisible (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "guarda-contra-la-muerte",
+    "name": "Guarda contra la muerte",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Si la criatura cae a 0 HP, en su lugar se mantiene con 1 HP por primera vez.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "guardian-de-la-fe",
+    "name": "Guardián de la fe",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Guardián inmóvil ataca a enemigos cercanos infligiendo daño radiante.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "hechizar-monstruo",
+    "name": "Hechizar monstruo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Hechizas a cualquier criatura si falla Sabiduría.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "invisibilidad-mejorada",
+    "name": "Invisibilidad mejorada",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Concentración). El objetivo se vuelve invisible durante 1 minuto.",
+    "description": "Ilusión. Te vuelves invisible y no se cancela aunque ataques o lances conjuros.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "invocar-aberracion",
+    "name": "Invocar aberración",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Convocas una aberración con ataques de tentáculos o rayos oculares.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "invocar-automata",
+    "name": "Invocar autómata",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Convocas un autómata metálico robusto que ataca a tu señal.",
+    "description": "Conjuración (Concentración). Invoca un espíritu mecánico con ataques de fuerza.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "invocar-elemental",
+    "name": "Invocar elemental",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Convocas un espíritu elemental con ataques de fuego, agua, tierra o aire.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "libertad-de-movimiento",
+    "name": "Libertad de movimiento",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Ignora terreno difícil, parálisis y ataduras.",
+    "description": "Abjuración. El objetivo ignora terreno difícil y no puede ser paralizado ni retenido.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "localizar-criatura",
+    "name": "Localizar criatura",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Adivinación (Concentración). Sientes la dirección de una criatura conocida a 300 metros.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "marchitar",
+    "name": "Marchitar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Absorbe la humedad de una criatura, causando 8d8 daño necrótico.",
+    "description": "Nigromancia. Absorbe la humedad corporal de un objetivo infligiendo 8d8 daño necrótico.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "mastin-fiel-de-mordenkainen",
+    "name": "Mastín fiel de Mordenkainen",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Perro guardián invisible que vigila y muerde a intrusos (4d8 daño).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "moldear-la-piedra",
+    "name": "Moldear la piedra",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Das una nueva forma a una piedra existente de tamaño mediano o menor.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "muro-de-fuego",
+    "name": "Muro de fuego",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Crea un muro de llamas que causa 5d8 daño de fuego a quienes lo crucen.",
+    "description": "Evocación. Crea una muralla de fuego ardiente que inflige 5d8 daño de fuego a quien pase.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "ojo-arcano",
+    "name": "Ojo arcano",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Adivinación (Concentración). Creas un ojo invisible flotante que puedes desplazar para explorar.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "piel-petrea",
+    "name": "Piel pétrea",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Concedes resistencia al daño físico no mágico a una criatura.",
+    "description": "Abjuración. Otorga resistencia contra daño físico no mágico.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "polimorfar",
+    "name": "Polimorfar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Transforma una criatura en una bestia de CR igual o menor.",
+    "description": "Transmutación. Transforma a una criatura en una bestia de tu elección.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "puerta-dimensional",
+    "name": "Puerta dimensional",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Teletransportas a ti mismo y a un acompañante a cualquier lugar a 150 m.",
+    "description": "Conjuración. Te teletransportas a ti y a un aliado a una distancia de hasta 150m.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "sanctasanctorum-privado-de-mordenkainen",
+    "name": "Sanctasanctórum privado de Mordenkainen",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Proteges un área contra sensores, teletransporte e intrusos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "tentaculos-negros-de-evard",
+    "name": "Tentáculos negros de Evard",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Tentáculos pegajosos que agarran y dañan (3d6) en un área.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "terreno-alucinatorio",
+    "name": "Terreno alucinatorio",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Haces que un terreno natural parezca, suene y huela como otro distinto.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "tormenta-de-hielo",
+    "name": "Tormenta de hielo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 4,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Cilindro de granizo y frío; 2d8 contundente + 4d6 frío.",
+    "description": "Evocación. Lluvia de granizo inflige 2d8 daño por impacto y 4d6 daño por frío.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "alterar-los-recuerdos",
+    "name": "Alterar los recuerdos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Modificas la memoria reciente de una criatura.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "alzar-a-los-muertos",
+    "name": "Alzar a los muertos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Devuelve a la vida a un cadáver muerto hace menos de 10 días.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "animar-objetos",
+    "name": "Animar objetos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Animas hasta 10 objetos no mágicos que atacan como tus aliados.",
+    "description": "Transmutación. Anima objetos inanimados para que ataquen a tus órdenes.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "apariencia",
+    "name": "Apariencia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Altera la apariencia física de cualquier número de criaturas.",
+    "description": "Ilusión. Cambias el aspecto visual de hasta diez aliados.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "atadura-planar",
+    "name": "Atadura planar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Obliga a un celestial, elemental, feérico o fiordo a servirte.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "castigo-desterrador",
+    "name": "Castigo desterrador",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Tu próximo ataque causa 5d10 daño por fuerza y puede desterrar al objetivo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "circulo-de-poder",
+    "name": "Círculo de poder",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Esfera de 9 m protege a aliados, dándoles ventaja en salvaciones mágicas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "circulo-de-teletransportacion",
+    "name": "Círculo de teletransportación",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Abre un portal hacia un círculo de teletransportación permanente.",
+    "description": "Conjuración. Abre un portal de teletransportación a un círculo rúnico permanente.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "comunion",
+    "name": "Comunión",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación (Ritual). Haces tres preguntas de Sí o No directamente a tu deidad.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "comunion-con-la-naturaleza",
+    "name": "Comunión con la naturaleza",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación. Obtienes conocimiento espiritual del entorno (Ritual).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "warlock"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "conjurar-elemental",
+    "name": "Conjurar elemental",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Convocas un elemental mayor.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "conjurar-lluvia-de-flechas",
+    "name": "Conjurar lluvia de flechas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Lluvia de flechas causa 8d8 daño en área.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "cono-de-frio",
+    "name": "Cono de frío",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Cono de 18 m de frío; 8d8 daño de frío.",
+    "description": "Evocación. Ráfaga helada en cono de 18m causa 8d8 daño de frío.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "conocer-las-leyendas",
+    "name": "Conocer las leyendas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Adivinación. Conoces historias/leyendas de una persona, lugar u objeto.",
+    "description": "Adivinación. Trae a tu mente relatos o datos históricos sobre una persona, lugar u objeto legendario.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "consagrar",
+    "name": "Consagrar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Consagra un área impidiendo la entrada de celestiales/fiadores y bendice el terreno.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "contactar-con-otro-plano",
+    "name": "Contactar con otro plano",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Adivinación. Haces hasta 5 preguntas a una entidad planar de forma mental.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "contagio",
+    "name": "Contagio",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Tu golpe transmite una enfermedad debilitante al objetivo (ceguera, fiebre, etc.).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "corcaj-veloz",
+    "name": "Corcaj veloz",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Permite realizar dos ataques adicionales con proyectiles por turno como acción adicional.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "creacion",
+    "name": "Creación",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Creas una copia de materia no viva de hasta 5 pies cúbicos.",
+    "description": "Ilusión. Creas materia no viva como madera, piedra o metal temporalmente.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "curar-heridas-en-masa",
+    "name": "Curar heridas en masa",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Cura 3d8 + mod Carisma a hasta 6 aliados a 9 m.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "despertar",
+    "name": "Despertar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Concede intelecto humano y lenguaje a una planta o bestia.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "disipar-el-bien-y-el-mal",
+    "name": "Disipar el bien y el mal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Te protege de aberraciones, celestiales, elementales, etc.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "dominar-persona",
+    "name": "Dominar persona",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Controlas a un humanoide que falle Sabiduría.",
+    "description": "Encantamiento. Tomas el control telepático absoluto de un humanoide.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "enganar",
+    "name": "Engañar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Concentración). Te vuelves invisible y creas un doble ilusorio activo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "enlace-telepatico-de-rary",
+    "name": "Enlace telepático de Rary",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "DIVINATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Adivinación (Ritual). Enlace mental para comunicarse sin importar distancia.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "ensueno",
+    "name": "Ensueño",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Envías un mensajero a los sueños de una criatura para conversar.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "escudrinar",
+    "name": "Escudriñar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Adivinación (Concentración). Ves y oyes a un objetivo lejano a través de un sensor mágico.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "estatica-sinaptica",
+    "name": "Estática sináptica",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Daño psíquico en esfera de 6 m; 8d6 y los afectados restan 1d6 a sus ataques.",
+    "description": "Evocación. Explosión de energía psíquica inflige 8d6 daño psíquico y confunde.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "geas",
+    "name": "Geas",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Mandato mágico obliga a criatura a seguir tus órdenes bajo pena de daño.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      },
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "golpe-de-viento-acerado",
+    "name": "Golpe de viento acerado",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Te teletransportas atacando a hasta cinco objetivos por 6d10 daño de fuerza.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "golpe-flamigero",
+    "name": "Golpe flamígero",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Columna de fuego inflige 4d6 daño de fuego y 4d6 daño radiante en radio de 3 m.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "inmovilizar-monstruo",
+    "name": "Inmovilizar monstruo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Paraliza a cualquier criatura si falla Sabiduría.",
+    "description": "Encantamiento. Paraliza a cualquier criatura que falle salvación de Sabiduría.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "invocar-celestial",
+    "name": "Invocar celestial",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Invocas a un espíritu celestial para luchar en combate.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "cleric"
+      }
+    ]
+  },
+  {
+    "slug": "invocar-dragon",
+    "name": "Invocar dragón",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Convocas un espíritu de dragón menor que ataca con su aliento.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "mano-de-bigby",
+    "name": "Mano de Bigby",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Mano de fuerza gigante que ataca o bloquea.",
+    "description": "Evocación. Invoca una mano gigante de fuerza que golpea, empuja o sujeta enemigos.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "muro-de-fuerza",
+    "name": "Muro de fuerza",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Barrera invisible de fuerza indestructible.",
+    "description": "Evocación (Concentración). Crea una barrera invisible de fuerza indestructible de hasta 10 paneles de 3m.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "muro-de-piedra",
+    "name": "Muro de piedra",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Creas un muro de piedra sólido que puede volverse permanente.",
+    "description": "Evocación. Crea una barrera física de paneles de piedra sólida.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "nube-aniquiladora",
+    "name": "Nube aniquiladora",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Nube de gas ácido verde que causa 10d8 daño ácido.",
+    "description": "Conjuración. Crea una nube de gas venenoso que desciende y causa 5d8 daño de veneno por ronda.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "ola-destructiva",
+    "name": "Ola destructiva",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Creas una onda de fuerza que inflige 5d6 daño radiante y 5d6 daño de trueno.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "pasamuros",
+    "name": "Pasamuros",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Abre un pasaje temporal de hasta 6 m de profundidad en una pared.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "paso-arboreo",
+    "name": "Paso arbóreo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración. Te teletransportas de un árbol a otro consumiendo movimiento (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "plaga-de-insectos",
+    "name": "Plaga de insectos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Esfera de langostas muerde e inflige 4d10 daño perforante.",
+    "description": "Conjuración. Enjambre de langostas devoradoras causa 4d10 daño perforante continuo.",
+    "lists": [
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "presencia-regia-de-yolande",
+    "name": "Presencia regia de Yolande",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Emanación derriba a tus enemigos e inflige daño radiante.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "restablecimiento-mayor",
+    "name": "Restablecimiento mayor",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Cura fatiga, petrificación, maldiciones o reducciones de stats.",
+    "description": "Abjuración. Elimina reducciones de características, cansancio, maldiciones o petrificación.",
+    "lists": [
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "cleric"
+      },
+      {
+        "classSlug": "ranger"
+      }
+    ]
+  },
+  {
+    "slug": "retener-monstruo",
+    "name": "Retener monstruo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento. Paraliza a cualquier criatura que falle salvación de Sabiduría (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "warlock"
+      }
+    ]
+  },
+  {
+    "slug": "revivir-a-los-muertos",
+    "name": "Revivir a los muertos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Devuelve la vida a un cadáver muerto hace menos de 10 días.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "paladin"
+      }
+    ]
+  },
+  {
+    "slug": "telequinesis",
+    "name": "Telequinesis",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Mueves o levantas mentalmente criaturas u objetos pesados.",
+    "description": "Transmutación. Mueves o levantas mentalmente criaturas u objetos pesados.",
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "tormenta-resplandeciente-de-jallarzi",
+    "name": "Tormenta resplandeciente de Jallarzi",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 5,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Tormenta causa daño radiante y silencia a lanzadores.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "baile-irresistible-de-otto",
+    "name": "Baile irresistible de Otto",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). El objetivo baila incontrolablemente, perdiendo ataques y CA.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "caldero-burbujeante-de-tasha",
+    "name": "Caldero burbujeante de Tasha",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Convocas un caldero mágico para crear pociones y vapores dañinos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "circulo-de-muerte",
+    "name": "Círculo de muerte",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Explosión de energía necrótica causa 8d6 daño en esfera de 18 m de radio.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "contingencia",
+    "name": "Contingencia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Preparas un conjuro para que se active automáticamente al cumplirse una condición.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "crear-muerto-viviente",
+    "name": "Crear muerto viviente",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Creas guls bajo tu control a partir de cadáveres.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "de-la-carne-a-la-piedra",
+    "name": "De la carne a la piedra",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Petrificas gradualmente a una criatura si falla salvaciones.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "desintegrar",
+    "name": "Desintegrar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Rayo desintegrador inflige 10d6+40 de daño por fuerza; reduce a polvo al morir.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "encontrar-el-camino",
+    "name": "Encontrar el camino",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Adivinación. Conoces ruta más corta hacia una localización conocida (Concentración).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "esfera-congelante-de-otiluke",
+    "name": "Esfera congelante de Otiluke",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Esfera de frío estalla infligiendo 10d6 daño de frío en área grande.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "festin-de-heroes",
+    "name": "Festín de héroes",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Banquete otorga inmunidad a veneno/miedo y +2d10 HP max.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "globo-de-invulnerabilidad",
+    "name": "Globo de invulnerabilidad",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Barrera móvil bloquea todos los conjuros de nivel 5 o inferior.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "guardas-y-guardias",
+    "name": "Guardas y guardias",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Protege un área con niebla, cerraduras mágicas y efectos ilusorios.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "ilusion-programada",
+    "name": "Ilusión programada",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Crea una ilusión realista que se activa ante un detonante específico.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "invocacion-instantanea-de-drawmij",
+    "name": "Invocación instantánea de Drawmij",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "CONJURATION",
+    "ritual": true,
+    "concentration": false,
+    "shortDescription": "Conjuración (Ritual). Teletransporta un objeto marcado directamente a tu mano.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "invocar-infernal",
+    "name": "Invocar infernal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Convocas un diablo o demonio para luchar por ti.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "mal-de-ojo",
+    "name": "Mal de ojo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Nigromancia (Concentración). Tu mirada asusta, duerme o debilita a criaturas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "mover-la-tierra",
+    "name": "Mover la tierra",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Modificas la topografía de tierra o arena en un área.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "muro-de-hielo",
+    "name": "Muro de hielo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Creas una barrera de hielo que daña a quienes la crucen.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "puerta-arcana",
+    "name": "Puerta arcana",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Crea dos portales de teletransporte conectados.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "puerto-arcano",
+    "name": "Puerto arcano",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Crea un portal temporal entre dos localizaciones conocidas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "rayo-solar",
+    "name": "Rayo solar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Haz de luz solar inflige 6d8 daño radiante y ciega en una línea.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "relampago-en-cadena",
+    "name": "Relámpago en cadena",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Disparas un relámpago que salta a hasta cuatro objetivos por 10d8 daño.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "sugestion-en-masa",
+    "name": "Sugestión en masa",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Sugieres una línea de conducta a hasta 12 criaturas por 24 horas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "urna-magica",
+    "name": "Urna mágica",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Transfieres tu alma a una gema y puedes poseer cuerpos ajenos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "vision-veraz",
+    "name": "Visión veraz",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 6,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Adivinación. Ves la realidad: lo invisible, ilusiones y el plano etéreo por 1 hora.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "bola-de-fuego-de-explosion-retardada",
+    "name": "Bola de fuego de explosión retardada",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Bola de fuego que acumula daño por ronda (12d6 base).",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "dedo-de-la-muerte",
+    "name": "Dedo de la muerte",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Inflige 7d8+30 daño necrótico; si el objetivo muere, se levanta como zombi fiel.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "desplazamiento-entre-planos",
+    "name": "Desplazamiento entre planos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Transporta a hasta 8 criaturas voluntarias a otro plano de existencia.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "espada-de-mordenkainen",
+    "name": "Espada de Mordenkainen",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Evocación (Concentración). Espada flotante de fuerza ataca infligiendo 3d10 daño por fuerza.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "espejismo-arcano",
+    "name": "Espejismo arcano",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Altera la apariencia y geografía de un área de 1.5 km permanentemente.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "excursion-eterea",
+    "name": "Excursión etérea",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Entras al Plano Etéreo para moverte a través de objetos del plano material.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "invertir-la-gravedad",
+    "name": "Invertir la gravedad",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Invierte la gravedad en un cilindro, elevando a criaturas al cielo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "jaula-de-fuerza",
+    "name": "Jaula de fuerza",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Crea una jaula o caja invisible de fuerza indestructible que atrapa criaturas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "mansion-magnifica-de-mordenkainen",
+    "name": "Mansión magnífica de Mordenkainen",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Abre un portal hacia una mansión extradimensional con comida y sirvientes.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "palabra-de-poder-fortalecer",
+    "name": "Palabra de poder: fortalecer",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Otorga 150 pg temporales a hasta 6 aliados.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "proyectar-imagen",
+    "name": "Proyectar imagen",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Concentración). Proyectas un duplicado de ti mismo que puede ver, oír y hablar.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "recluir",
+    "name": "Recluir",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Envías a un objetivo a un estado de animación suspendida e invisible.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "regenerar",
+    "name": "Regenerar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Regenera HP y extremidades amputadas de una criatura.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "resurreccion",
+    "name": "Resurrección",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Resucita a un cadáver muerto hace menos de un siglo.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "rociada-prismatica",
+    "name": "Rociada prismática",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Ocho rayos de luz de colores infligen daño elemental o estados negativos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "simbolo",
+    "name": "Símbolo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Inscribes una runa dañina que aplica efectos nocivos al ser leída o activada.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "simulacro",
+    "name": "Simulacro",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Ilusionismo. Creas un duplicado de hielo de una criatura con la mitad de sus HP.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "teletransporte",
+    "name": "Teletransporte",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Teletransporta instantáneamente a tu grupo a cualquier lugar del mismo plano.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "tormenta-de-fuego",
+    "name": "Tormenta de fuego",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 7,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Tormenta de fuego causa 7d10 daño de fuego en múltiples cubos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "antipatia-simpatia",
+    "name": "Antipatía/simpatía",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Atrae o repele a un tipo de criatura hacia un objeto o área.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "campo-antimagia",
+    "name": "Campo antimagia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Abjuración (Concentración). Esfera de 3 m de radio suprime toda magia en su interior.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "clon",
+    "name": "Clon",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Creas un duplicado inerte de una criatura; tu alma se transfiere a él si mueres.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "controlar-el-clima",
+    "name": "Controlar el clima",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Cambias la temperatura, viento y precipitación exterior.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "dominar-monstruo",
+    "name": "Dominar monstruo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Encantamiento (Concentración). Tomas el control mental absoluto de cualquier criatura.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "explosion-solar",
+    "name": "Explosión solar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Destello de luz solar causa 12d6 daño radiante y ceguera permanente en área grande.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "laberinto",
+    "name": "Laberinto",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Destierras a una criatura a un laberinto extradimensional.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "labia",
+    "name": "Labia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Cualquier tirada de Engaño/Persuasión inferior a 15 se convierte en 15.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "mente-en-blanco",
+    "name": "Mente en blanco",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Inmuniza al objetivo contra daño psíquico, detección y lectura de mente.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "nube-incendiaria",
+    "name": "Nube incendiaria",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Nube de humo ardiente causa 10d8 daño de fuego por ronda.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "ofuscacion",
+    "name": "Ofuscación",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Vuelves invisible e indetectable a una criatura durante 8 horas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "palabra-de-poder-aturdir",
+    "name": "Palabra de poder: aturdir",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Aturde instantáneamente a una criatura si tiene 150 HP o menos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "semiplano",
+    "name": "Semiplano",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. Abre un portal de 12 metros a un semiplano de piedra vacío creado por ti.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "telepatia",
+    "name": "Telepatía",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Adivinación. Crea un enlace mental bidireccional ilimitado con una criatura que conozcas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "terremoto",
+    "name": "Terremoto",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 8,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Sacudida sísmica derriba estructuras y abre fisuras.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "cambiar-de-forma",
+    "name": "Cambiar de forma",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Te transformas en cualquier criatura de tu CR o inferior.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "cautiverio",
+    "name": "Cautiverio",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Aprisiona a una criatura bajo tierra, en una gema o en cadenas de forma permanente.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "deseo",
+    "name": "Deseo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Conjuración. El conjuro más poderoso; puede duplicar cualquier hechizo de nivel 8 o inferior o pedir deseos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "muro-prismatico",
+    "name": "Muro prismático",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "ABJURATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Abjuración. Crea una barrera multicolor de 7 capas protectoras que dañan a atacantes.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "palabra-de-poder-matar",
+    "name": "Palabra de poder: matar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Mata instantáneamente a una criatura si tiene 100 HP o menos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "palabra-de-poder-sanar",
+    "name": "Palabra de poder: sanar",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "ENCHANTMENT",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Encantamiento. Sana por completo todos los pg de criatura.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "parar-el-tiempo",
+    "name": "Parar el tiempo",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Transmutación. Detiene el tiempo para los demás durante 1d4+1 rondas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "polimorfar-verdadero",
+    "name": "Polimorfar verdadero",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "TRANSMUTATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Transmutación (Concentración). Transforma una criatura en otra de forma permanente.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "portal",
+    "name": "Portal",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "CONJURATION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Conjuración (Concentración). Abre un portal interplanar hacia un lugar específico o una criatura.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  },
+  {
+    "slug": "presciencia",
+    "name": "Presciencia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Adivinación. Otorga ventaja en todas las tiradas y desventaja a tus atacantes por 8 horas.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "presencia",
+    "name": "Presencia",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "DIVINATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Adivinación. Concedes ventaja en ataques/salvaciones y desventaja a tus atacantes.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "bard"
+      }
+    ]
+  },
+  {
+    "slug": "proyeccion-astral",
+    "name": "Proyección astral",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "NECROMANCY",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Nigromancia. Proyectas tu cuerpo astral al Plano Astral, dejando tu cuerpo físico.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "terror-abyecto",
+    "name": "Terror abyecto",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "ILLUSION",
+    "ritual": false,
+    "concentration": true,
+    "shortDescription": "Ilusionismo (Concentración). Creas una pesadilla viviente que incapacita a todos tus enemigos.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      }
+    ]
+  },
+  {
+    "slug": "tormenta-de-meteoritos",
+    "name": "Tormenta de meteoritos",
+    "source": "SRD_5_2_1",
+    "verified": false,
+    "level": 9,
+    "school": "EVOCATION",
+    "ritual": false,
+    "concentration": false,
+    "shortDescription": "Evocación. Lluvia de meteoros inflige 20d6 daño de fuego y 20d6 daño contundente.",
+    "description": null,
+    "lists": [
+      {
+        "classSlug": "wizard"
+      },
+      {
+        "classSlug": "sorcerer"
+      }
+    ]
+  }
+]

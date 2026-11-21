@@ -1,0 +1,77 @@
+{
+  "hechicero": [
+    "Hechicería aberrante",
+    "Hechicería de magia salvaje",
+    "Hechicería dracónica",
+    "Hechicería mecánica"
+  ],
+  "bárbaro": [
+    "Senda del Árbol del Mundo",
+    "Senda del Berserker",
+    "Senda del Corazón Salvaje",
+    "Senda del Fanático"
+  ],
+  "bardo": [
+    "Colegio de la Danza",
+    "Colegio del Conocimiento",
+    "Colegio del Glamour",
+    "Colegio del Valor"
+  ],
+  "brujo": [
+    "Patrón Celestial",
+    "Patrón Feérico",
+    "Patrón Infernal",
+    "Patrón Primigenio"
+  ],
+  "clérigo": [
+    "Dominio de la Guerra",
+    "Dominio de la Luz",
+    "Dominio de la Vida",
+    "Dominio del Engaño"
+  ],
+  "druida": [
+    "Círculo de la Luna",
+    "Círculo de la Tierra (Árido)",
+    "Círculo de la Tierra (Polar)",
+    "Círculo de la Tierra (Templado)",
+    "Círculo de la Tierra (Tropical)",
+    "Círculo de las Estrellas",
+    "Círculo del Mar"
+  ],
+  "explorador": [
+    "Acechador en la penumbra",
+    "Cazador",
+    "Errante feérico",
+    "Señor de las bestias"
+  ],
+  "guerrero": [
+    "Caballero Arcano",
+    "Campeón",
+    "Guerrero Psiónico",
+    "Maestro del Combate"
+  ],
+  "mago": [
+    "Abjurador",
+    "Adivino",
+    "Evocador",
+    "Ilusionista"
+  ],
+  "paladín": [
+    "Juramento de entrega",
+    "Juramento de la gloria",
+    "Juramento de los antiguos",
+    "Juramento de venganza"
+  ],
+  "monje": [
+    "Guerrero de la Mano Abierta",
+    "Guerrero de la Misericordia",
+    "Guerrero de la Sombra",
+    "Guerrero de los Elementos"
+  ],
+  "pícaro": [
+    "Asesino",
+    "Embaucador arcano",
+    "Ladrón",
+    "Rebanaalmas"
+  ]
+}

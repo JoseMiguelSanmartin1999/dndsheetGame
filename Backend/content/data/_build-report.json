@@ -1,0 +1,49 @@
+{
+  "summary": {
+    "classes": {
+      "total": 12,
+      "srd": 12,
+      "homebrew": 0
+    },
+    "classFeatures": 236,
+    "subclasses": {
+      "total": 48,
+      "srd": 12,
+      "homebrew": 36
+    },
+    "backgrounds": {
+      "total": 16,
+      "srd": 4,
+      "homebrew": 12
+    },
+    "species": {
+      "total": 10,
+      "srd": 9,
+      "homebrew": 1
+    },
+    "feats": {
+      "total": 10,
+      "srd": 4,
+      "homebrew": 6
+    },
+    "spells": 383,
+    "classOptions": 38,
+    "equipmentPacks": 7
+  },
+  "warnings": [
+    "[class-features] Mago no tiene progresión por nivel en el código actual",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Amigos\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Salva de veneno\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Esfera de flames\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Contrahchizo\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Encantarse\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Disparos de color\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Onda de choque\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Caída silenciosa\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Ceguera/Sordera\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Fuerza de toro\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Nublar\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Rayo de debilitamiento\"",
+    "[spells] descripción huérfana (no está en ninguna lista): \"Piel de corteza\""
+  ]
+}

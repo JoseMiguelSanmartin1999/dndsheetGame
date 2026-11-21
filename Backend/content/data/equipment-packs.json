@@ -1,0 +1,115 @@
+[
+  {
+    "slug": "paquete-de-artista",
+    "name": "Paquete de Artista",
+    "source": "SRD_5_2_1",
+    "items": [
+      "Campana",
+      "Cantimplora",
+      "3 disfraces",
+      "Espejo",
+      "8 frascos de aceite",
+      "Linterna de ojo de buey",
+      "Mochila",
+      "Petate",
+      "Raciones para 9 días",
+      "Yesquero"
+    ]
+  },
+  {
+    "slug": "paquete-de-diplomatico",
+    "name": "Paquete de Diplomático",
+    "source": "SRD_5_2_1",
+    "items": [
+      "Cofre",
+      "2 estuches para mapas o pergaminos",
+      "4 frascos de aceite",
+      "5 hojas de papel",
+      "5 hojas de pergamino",
+      "Lámpara",
+      "Perfume",
+      "5 plumas",
+      "Ropas de calidad",
+      "Tinta",
+      "Yesquero"
+    ]
+  },
+  {
+    "slug": "paquete-de-erudito",
+    "name": "Paquete de Erudito",
+    "source": "SRD_5_2_1",
+    "items": [
+      "10 frascos de aceite",
+      "10 hojas de pergamino",
+      "Lámpara",
+      "Libro",
+      "Mochila",
+      "Pluma",
+      "Tinta",
+      "Yesquero"
+    ]
+  },
+  {
+    "slug": "paquete-de-explorador",
+    "name": "Paquete de Explorador",
+    "source": "SRD_5_2_1",
+    "items": [
+      "10 antorchas",
+      "Cantimplora",
+      "Cuerda",
+      "2 frascos de aceite",
+      "Mochila",
+      "Petate",
+      "Raciones para 10 días",
+      "Yesquero"
+    ]
+  },
+  {
+    "slug": "paquete-de-explorador-de-mazmorras",
+    "name": "Paquete de Explorador de Mazmorras",
+    "source": "SRD_5_2_1",
+    "items": [
+      "Abrojos",
+      "10 antorchas",
+      "Cantimplora",
+      "Cuerda",
+      "2 frascos de aceite",
+      "Mochila",
+      "Palanqueta",
+      "Raciones para 10 días",
+      "Yesquero"
+    ]
+  },
+  {
+    "slug": "paquete-de-ladron",
+    "name": "Paquete de Ladrón",
+    "source": "SRD_5_2_1",
+    "items": [
+      "Bolas de metal",
+      "Campana",
+      "Cantimplora",
+      "Cuerda",
+      "7 frascos de aceite",
+      "Linterna sorda",
+      "Mochila",
+      "Palanqueta",
+      "Raciones para 5 días",
+      "10 velas",
+      "Yesquero"
+    ]
+  },
+  {
+    "slug": "paquete-de-sacerdote",
+    "name": "Paquete de Sacerdote",
+    "source": "SRD_5_2_1",
+    "items": [
+      "Agua bendita",
+      "Lámpara",
+      "Manta",
+      "Mochila",
+      "Raciones para 7 días",
+      "Túnica",
+      "Yesquero"
+    ]
+  }
+]

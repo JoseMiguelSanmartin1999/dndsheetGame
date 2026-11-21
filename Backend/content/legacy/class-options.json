@@ -1,0 +1,196 @@
+{
+  "warlockInvocationsList": [
+    {
+      "name": "Armadura de sombras",
+      "req": "Nivel 1",
+      "desc": "Puedes lanzar armadura de mago sobre ti mismo a voluntad sin gastar espacio de conjuro."
+    },
+    {
+      "name": "Castigo arcano",
+      "req": "Nivel 5, Pacto del filo",
+      "desc": "Al golpear con tu arma de pacto, puedes gastar espacio de conjuro para causar 1d8 daño de fuerza por nivel y derribar."
+    },
+    {
+      "name": "Descarga agónica",
+      "req": "Nivel 2",
+      "desc": "Sumas tu modificador de Carisma a las tiradas de daño de tu Descarga Sobrenatural."
+    },
+    {
+      "name": "Descarga ahuyentadora",
+      "req": "Nivel 2",
+      "desc": "Cuando aciertas con tu Descarga Sobrenatural, puedes empujar a la criatura hasta 3 metros en línea recta."
+    },
+    {
+      "name": "Devorador de vida",
+      "req": "Nivel 9, Pacto del filo",
+      "desc": "Al golpear con tu arma de pacto, causas daño necrótico adicional igual a tu modificador de Carisma."
+    },
+    {
+      "name": "Don de las profundidades",
+      "req": "Nivel 5",
+      "desc": "Puedes respirar bajo el agua y obtienes una velocidad de nado igual a tu velocidad de caminar."
+    },
+    {
+      "name": "Don de los protectores",
+      "req": "Nivel 9, Pacto del grimorio",
+      "desc": "Una criatura cuyo nombre figure en tu grimorio y caiga a 0 HP, cae a 1 HP en su lugar."
+    },
+    {
+      "name": "Filo sediento",
+      "req": "Nivel 5, Pacto del filo",
+      "desc": "Puedes realizar dos ataques con tu arma de pacto en lugar de uno cuando usas la acción de atacar."
+    },
+    {
+      "name": "Hoja devoradora",
+      "req": "Nivel 12, Pacto del filo",
+      "desc": "Puedes realizar tres ataques con tu arma de pacto en lugar de uno cuando usas la acción de atacar."
+    },
+    {
+      "name": "Inversión del amo de las cadenas",
+      "req": "Nivel 5, Pacto de la cadena",
+      "desc": "Tu familiar ataca como acción adicional, tiene resistencia a daño y puedes hacer que use tu CD de salvación."
+    },
+    {
+      "name": "Lanza sobrenatural",
+      "req": "Nivel 1",
+      "desc": "Cuando lanzas Descarga Sobrenatural, su alcance aumenta a 90 metros."
+    },
+    {
+      "name": "Lecciones de los primeros",
+      "req": "Nivel 2",
+      "desc": "Obtienes una dote de nivel 1 de tu elección de entre las dotes de origen."
+    },
+    {
+      "name": "Maestro de las formas innumerables",
+      "req": "Nivel 5",
+      "desc": "Puedes lanzar alterar el propio aspecto a voluntad sin gastar espacio de conjuro."
+    },
+    {
+      "name": "Máscara de los mil rostros",
+      "req": "Nivel 2",
+      "desc": "Puedes lanzar disfrazarse a voluntad sin gastar espacio de conjuro."
+    },
+    {
+      "name": "Mente sobrenatural",
+      "req": "Nivel 1",
+      "desc": "Tienes ventaja en las tiradas de salvación de Constitución para mantener la concentración."
+    },
+    {
+      "name": "Mirada de las dos mentes",
+      "req": "Nivel 5",
+      "desc": "Acción para percibir a través de los sentidos de un humanoide voluntario y poder lanzar conjuros desde su posición."
+    },
+    {
+      "name": "Pacto de la cadena",
+      "req": "Nivel 1",
+      "desc": "Puedes lanzar encontrar familiar como acción de magia sin gastar espacio de conjuro para invocar familiares especiales."
+    },
+    {
+      "name": "Pacto del filo",
+      "req": "Nivel 1",
+      "desc": "Conjuras en tu mano un arma de pacto cuerpo a cuerpo sencilla o marcial. Atacas y dañas usando tu Carisma."
+    },
+    {
+      "name": "Pacto del grimorio",
+      "req": "Nivel 1",
+      "desc": "Conjuras un Libro de las Sombras con 3 trucos y 2 conjuros rituales de nivel 1 de cualquier clase."
+    },
+    {
+      "name": "Paso ascendente",
+      "req": "Nivel 5",
+      "desc": "Puedes lanzar levitar sobre ti mismo a voluntad sin gastar espacio de conjuro."
+    },
+    {
+      "name": "Salto sobrenatural",
+      "req": "Nivel 2",
+      "desc": "Puedes lanzar salto sobre ti mismo a voluntad sin gastar espacio de conjuro."
+    },
+    {
+      "name": "Susurros del sepulcro",
+      "req": "Nivel 7",
+      "desc": "Puedes lanzar hablar con los muertos a voluntad sin gastar espacio de conjuro."
+    },
+    {
+      "name": "Uno con las sombras",
+      "req": "Nivel 5",
+      "desc": "En luz tenue u oscuridad, puedes usar tu acción para volverte invisible hasta que te muevas o actúes."
+    },
+    {
+      "name": "Vigor infernal",
+      "req": "Nivel 2",
+      "desc": "Puedes lanzar falsa vida sobre ti a voluntad sin gastar espacio de conjuro."
+    },
+    {
+      "name": "Visión bruja",
+      "req": "Nivel 15",
+      "desc": "Puedes ver la verdadera forma de cualquier criatura oculta por magia a 9 metros."
+    },
+    {
+      "name": "Visiones brumosas",
+      "req": "Nivel 2",
+      "desc": "Puedes lanzar imagen silenciosa a voluntad sin gastar espacio de conjuro."
+    },
+    {
+      "name": "Visiones de reinos remotos",
+      "req": "Nivel 9",
+      "desc": "Puedes lanzar ojo arcano a voluntad sin gastar espacio de conjuro."
+    },
+    {
+      "name": "Vista del diablo",
+      "req": "Nivel 2",
+      "desc": "Puedes ver normalmente en la oscuridad tanto mágica como no mágica a una distancia de 36 metros."
+    }
+  ],
+  "sorcererMetamagicList": [
+    {
+      "name": "Conjuro Acelerado",
+      "cost": 2,
+      "desc": "Cuando lanzas un conjuro con tiempo de una acción, gastas 2 puntos para lanzarlo como acción adicional. No puedes lanzar otro conjuro de nivel 1+ este turno tras usarlo."
+    },
+    {
+      "name": "Conjuro Buscador",
+      "cost": 1,
+      "desc": "Si fallas una tirada de ataque con un conjuro, gastas 1 punto para volver a lanzar el d20. Puedes usarlo con otra metamagia."
+    },
+    {
+      "name": "Conjuro Cuidado",
+      "cost": 1,
+      "desc": "Al lanzar un conjuro con tirada de salvación, gastas 1 punto y proteges hasta Carisma (mín. 1) criaturas. Tienen éxito automático y no sufren daño si normalmente recibirían la mitad."
+    },
+    {
+      "name": "Conjuro Distante",
+      "cost": 1,
+      "desc": "Duplica el alcance de un conjuro de al menos 1.5 m, o hace que un conjuro de toque tenga un alcance de 9 m."
+    },
+    {
+      "name": "Conjuro Extendido",
+      "cost": 1,
+      "desc": "Duplica la duración de un conjuro de al menos 1 minuto (máx. 24h). Otorga ventaja para mantener la concentración en ese conjuro."
+    },
+    {
+      "name": "Conjuro Gemelo",
+      "cost": 1,
+      "desc": "Al lanzar un conjuro monobjetivo modificable por nivel para añadir objetivos, gastas 1 punto para incrementar su nivel efectivo en 1."
+    },
+    {
+      "name": "Conjuro Intensificado",
+      "cost": 2,
+      "desc": "Gasta 2 puntos para dar desventaja a un objetivo en su primera tirada de salvación contra el conjuro."
+    },
+    {
+      "name": "Conjuro Potenciado",
+      "cost": 1,
+      "desc": "Gasta 1 punto para repetir hasta tu modificador de Carisma (mín. 1) dados de daño de un conjuro."
+    },
+    {
+      "name": "Conjuro Sutil",
+      "cost": 1,
+      "desc": "Gasta 1 punto para lanzar el conjuro sin componentes verbales, somáticos ni materiales (salvo consumibles o con coste)."
+    },
+    {
+      "name": "Conjuro Transmutado",
+      "cost": 1,
+      "desc": "Gasta 1 punto para cambiar el tipo de daño de un conjuro a ácido, frío, fuego, relámpago, trueno o veneno."
+    }
+  ]
+}

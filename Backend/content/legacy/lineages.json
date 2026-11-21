@@ -1,0 +1,122 @@
+{
+  "elvenLineages": [
+    {
+      "name": "Alto elfo",
+      "desc": "Truco prestidigitación. Nivel 3: Detectar magia, Nivel 5: Paso brumoso."
+    },
+    {
+      "name": "Drow",
+      "desc": "Visión en la oscuridad 36m, truco luces danzantes. Nivel 3: Fuego feérico, Nivel 5: Oscuridad."
+    },
+    {
+      "name": "Elfo de los bosques",
+      "desc": "Velocidad +1.5m (10.5m total), truco saber druídico. Nivel 3: Zancada prodigiosa, Nivel 5: Pasar sin rastro."
+    }
+  ],
+  "dragonLineages": [
+    {
+      "name": "Rojo",
+      "element": "Fuego"
+    },
+    {
+      "name": "Oro",
+      "element": "Fuego"
+    },
+    {
+      "name": "Oropel",
+      "element": "Fuego"
+    },
+    {
+      "name": "Azul",
+      "element": "Relámpago"
+    },
+    {
+      "name": "Bronce",
+      "element": "Relámpago"
+    },
+    {
+      "name": "Blanco",
+      "element": "Frío"
+    },
+    {
+      "name": "Plata",
+      "element": "Frío"
+    },
+    {
+      "name": "Cobre",
+      "element": "Ácido"
+    },
+    {
+      "name": "Negro",
+      "element": "Ácido"
+    },
+    {
+      "name": "Verde",
+      "element": "Veneno"
+    }
+  ],
+  "gnomeLineages": [
+    {
+      "name": "Gnomo de las rocas",
+      "desc": "Trucos prestidigitación y reparar. Crea un dispositivo mecánico Diminuto (CA 5, 1 pg) con efecto mágico."
+    },
+    {
+      "name": "Gnomo de los bosques",
+      "desc": "Truco ilusión menor. Lanza hablar con los animales de forma gratuita un número de veces igual a tu bonificador por competencia."
+    }
+  ],
+  "goliathLineages": [
+    {
+      "name": "Gigante de Fuego (Abrasión del fuego)",
+      "desc": "Al golpear a un objetivo, puedes causarle 1d10 daño de fuego adicional (usos igual a tu bonificador por competencia)."
+    },
+    {
+      "name": "Gigante de las Colinas (Caída de las colinas)",
+      "desc": "Al golpear a una criatura Grande o menor, puedes infligirle el estado de derribada (usos igual a tu bonificador por competencia)."
+    },
+    {
+      "name": "Gigante de las Nubes (Excursión de las nubes)",
+      "desc": "Acción adicional: te teletransportas mágicamente hasta 9 m a un espacio vacío (usos igual a tu bonificador por competencia)."
+    },
+    {
+      "name": "Gigante de Escarcha (Frío de la escarcha)",
+      "desc": "Al golpear a un objetivo, causas 1d6 daño de frío y reduces su velocidad 3m (usos igual a tu bonificador por competencia)."
+    },
+    {
+      "name": "Gigante de Piedra (Resistencia de la piedra)",
+      "desc": "Reacción al recibir daño: tiras 1d12 + mod Constitución y reduces el daño recibido en ese total (usos igual a tu bonificador por competencia)."
+    },
+    {
+      "name": "Gigante de las Tormentas (Trueno de la tormenta)",
+      "desc": "Reacción cuando una criatura a 18 m o menos te causa daño: le infliges 1d8 daño de trueno (usos igual a tu bonificador por competencia)."
+    }
+  ],
+  "tieflingLineages": [
+    {
+      "name": "Abisal",
+      "desc": "Resistencia al veneno y truco rociada venenosa. Nivel 3: Rayo nauseabundo. Nivel 5: Inmovilizar persona."
+    },
+    {
+      "name": "Ctónico",
+      "desc": "Resistencia a necrótico y truco toque helado. Nivel 3: Falsa vida. Nivel 5: Rayo debilitador."
+    },
+    {
+      "name": "Infernal",
+      "desc": "Resistencia al fuego y truco descarga de fuego. Nivel 3: Reprensión infernal. Nivel 5: Oscuridad."
+    }
+  ],
+  "aasimarLineages": [
+    {
+      "name": "Alas celestiales",
+      "desc": "Dos alas espectrales brotan temporalmente. Obtienes una velocidad de vuelo igual a tu velocidad actual y tu daño adicional es radiante."
+    },
+    {
+      "name": "Fulgor interior",
+      "desc": "Emites luz brillante en radio de 3m. Al final de tu turno, enemigos a 3m o menos reciben daño radiante igual a tu BC. Daño adicional es radiante."
+    },
+    {
+      "name": "Mortaja necrótica",
+      "desc": "Tus ojos se vuelven pozos de oscuridad. Criaturas a 3m o menos deben superar salvación de Carisma (CD 8 + Car + BC) o asustarse. Daño adicional es necrótico."
+    }
+  ]
+}
