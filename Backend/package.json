@@ -18,11 +18,11 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate deploy",
-    "db:migrate:dev": "prisma migrate dev",
-    "db:seed": "prisma db seed",
-    "db:seed:sync": "prisma db seed -- --sync",
+    "db:generate": "node node_modules/prisma/build/index.js generate",
+    "db:migrate": "node node_modules/prisma/build/index.js migrate deploy",
+    "db:migrate:dev": "node node_modules/prisma/build/index.js migrate dev",
+    "db:seed": "node node_modules/prisma/build/index.js db seed",
+    "db:seed:sync": "node node_modules/prisma/build/index.js db seed -- --sync",
     "db:migrate-mongo": "node --env-file=.env -r ts-node/register prisma/migrate-from-mongo.ts",
     "content:extract": "node scripts/extract-legacy-content.mjs",
     "content:build": "node scripts/build-content.mjs"
@@ -88,6 +88,6 @@
     "testEnvironment": "node"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "node -r ts-node/register prisma/seed.ts"
   }
 }
