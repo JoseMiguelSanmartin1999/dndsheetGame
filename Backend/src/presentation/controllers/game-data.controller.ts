@@ -1,55 +1,87 @@
-import { Controller, Get, Put, Body, Param } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { ClassMongooseEntity, ClassSchemaName } from '../../infrastructure/persistence/class.schema';
-import { BackgroundMongooseEntity, BackgroundSchemaName } from '../../infrastructure/persistence/background.schema';
-import { OriginMongooseEntity, OriginSchemaName } from '../../infrastructure/persistence/origin.schema';
-import { RaceMongooseEntity, RaceSchemaName } from '../../infrastructure/persistence/race.schema';
+import { Controller, Get, Put, Body, Param, ParseUUIDPipe, NotFoundException } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
+import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { Public, Roles, CurrentUser } from '../../infrastructure/security/auth.decorators';
+import type { AuthUser } from '../../infrastructure/security/auth.decorators';
+import { ContentLookupService } from '../../infrastructure/persistence/prisma/content-lookup.service';
+import {
+  toLegacyBackground,
+  toLegacyClass,
+  toLegacySpecies,
+} from '../../infrastructure/persistence/prisma/legacy-content.mapper';
 
-@ApiTags('Game Data')
+/**
+ * Endpoints que usa el frontend actual. Devuelven la forma y los nombres de
+ * antes de la migración. Los datos nuevos (con nombres nuevos) están en /content.
+ */
+@ApiTags('Game Data (compatibilidad)')
 @Controller('game-data')
 export class GameDataController {
   constructor(
-    @InjectModel(ClassSchemaName) private readonly classModel: Model<ClassMongooseEntity>,
-    @InjectModel(BackgroundSchemaName) private readonly backgroundModel: Model<BackgroundMongooseEntity>,
-    @InjectModel(OriginSchemaName) private readonly originModel: Model<OriginMongooseEntity>,
-    @InjectModel(RaceSchemaName) private readonly raceModel: Model<RaceMongooseEntity>,
+    private readonly prisma: PrismaService,
+    private readonly lookup: ContentLookupService,
   ) {}
 
+  @Public()
   @Get('classes')
-  @ApiOperation({ summary: 'Obtener todas las clases de D&D' })
-  @ApiResponse({ status: 200, description: 'Lista de clases recuperada con éxito.' })
+  @ApiOperation({ summary: 'Clases (forma antigua)' })
   async getClasses() {
-    return this.classModel.find().collation({ locale: 'es', strength: 1 }).sort({ name: 1 }).exec();
+    const rows = await this.prisma.gameClass.findMany({ where: { status: 'PUBLISHED' } });
+    return rows.map(toLegacyClass).sort((a, b) => a.name.localeCompare(b.name, 'es'));
   }
 
+  @Public()
   @Get('backgrounds')
-  @ApiOperation({ summary: 'Obtener todos los trasfondos de D&D' })
-  @ApiResponse({ status: 200, description: 'Lista de trasfondos recuperada con éxito.' })
+  @ApiOperation({ summary: 'Trasfondos (forma antigua)' })
   async getBackgrounds() {
-    return this.backgroundModel.find().collation({ locale: 'es', strength: 1 }).sort({ name: 1 }).exec();
+    const rows = await this.prisma.background.findMany({
+      where: { status: 'PUBLISHED' },
+      include: { feat: { select: { name: true, legacyNames: true } } },
+      orderBy: { sortOrder: 'asc' },
+    });
+    return rows.map(toLegacyBackground).sort((a, b) => a.name.localeCompare(b.name, 'es'));
   }
 
+  @Public()
   @Get('origins')
-  @ApiOperation({ summary: 'Obtener todos los orígenes de D&D (redireccionado a colección de razas)' })
-  @ApiResponse({ status: 200, description: 'Lista de orígenes recuperada con éxito.' })
+  @ApiOperation({ summary: 'Especies (forma antigua, antes "orígenes")' })
   async getOrigins() {
-    return this.raceModel.find().collation({ locale: 'es', strength: 1 }).sort({ name: 1 }).exec();
+    return this.getSpecies();
   }
 
+  @Public()
   @Get('races')
-  @ApiOperation({ summary: 'Obtener todas las razas en general' })
-  @ApiResponse({ status: 200, description: 'Lista de razas recuperada con éxito.' })
+  @ApiOperation({ summary: 'Especies (forma antigua, antes "razas")' })
   async getRaces() {
-    return this.raceModel.find().collation({ locale: 'es', strength: 1 }).sort({ name: 1 }).exec();
+    return this.getSpecies();
   }
 
   @Put('races/:id')
-  @ApiOperation({ summary: 'Editar una raza existente por ID' })
-  @ApiResponse({ status: 200, description: 'Raza actualizada con éxito.' })
-  @ApiResponse({ status: 404, description: 'Raza no encontrada.' })
-  async updateRace(@Param('id') id: string, @Body() updateData: Partial<RaceMongooseEntity>) {
-    return this.raceModel.findByIdAndUpdate(id, updateData, { new: true }).exec();
+  @Roles('admin')
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Editar los textos de una especie (solo admin)' })
+  async updateRace(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() body: { name?: string; description?: string; icon?: string; image?: string },
+    @CurrentUser() admin: AuthUser,
+  ) {
+    const before = await this.prisma.species.findUnique({ where: { id } });
+    if (!before) throw new NotFoundException('Especie no encontrada.');
+    const data: Record<string, string> = {};
+    for (const k of ['name', 'description', 'icon', 'image'] as const) if (typeof body?.[k] === 'string') data[k] = body[k]!;
+    const updated = await this.prisma.$transaction(async (tx) => {
+      const row = await tx.species.update({ where: { id }, data: { ...data, version: { increment: 1 } } });
+      await tx.auditLog.create({
+        data: { actorId: admin.id, action: 'update', entity: 'species', entityId: id, diff: { before: Object.fromEntries(Object.keys(data).map((k) => [k, (before as any)[k]])), after: data } },
+      });
+      return row;
+    });
+    this.lookup.invalidate();
+    return toLegacySpecies(updated);
+  }
+
+  private async getSpecies() {
+    const rows = await this.prisma.species.findMany({ where: { status: 'PUBLISHED' }, orderBy: { sortOrder: 'asc' } });
+    return rows.map(toLegacySpecies).sort((a, b) => a.name.localeCompare(b.name, 'es'));
   }
 }

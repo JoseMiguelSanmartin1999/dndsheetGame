@@ -69,6 +69,8 @@ const classes = legacy('classes.json').map((c, i) => ({
   icon: c.icon,
   image: c.image,
   sortOrder: i,
+  // Forma original, para la API compatible con el frontend actual.
+  legacy: c,
 }));
 write('classes.json', classes);
 
@@ -172,6 +174,7 @@ const backgrounds = legacy('backgrounds.json').map((b, i) => {
     toolProficiency: b.tools,
     recommendations: b.recommendations,
     sortOrder: i,
+    legacy: b,
   };
 });
 write('backgrounds.json', backgrounds);
@@ -207,6 +210,7 @@ const species = legacy('origins.json').map((s, i) => {
       slug: slugify(l.name), name: l.name, description: l.desc ?? null, damageType: l.element ?? null,
     })),
     sortOrder: i,
+    legacy: s,
   };
 });
 write('species.json', species);

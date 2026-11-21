@@ -1,23 +1,11 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { ClassMongooseEntity, ClassSchema, ClassSchemaName } from './class.schema';
-import { BackgroundMongooseEntity, BackgroundSchema, BackgroundSchemaName } from './background.schema';
-import { OriginMongooseEntity, OriginSchema, OriginSchemaName } from './origin.schema';
-import { RaceMongooseEntity, RaceSchema, RaceSchemaName } from './race.schema';
-import { GameDataSeeder } from './game-data.seeder';
 import { GameDataController } from '../../presentation/controllers/game-data.controller';
+import { ContentController } from '../../presentation/controllers/content.controller';
+import { ContentLookupService } from './prisma/content-lookup.service';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([
-      { name: ClassSchemaName, schema: ClassSchema },
-      { name: BackgroundSchemaName, schema: BackgroundSchema },
-      { name: OriginSchemaName, schema: OriginSchema },
-      { name: RaceSchemaName, schema: RaceSchema },
-    ]),
-  ],
-  controllers: [GameDataController],
-  providers: [GameDataSeeder],
-  exports: [MongooseModule],
+  controllers: [GameDataController, ContentController],
+  providers: [ContentLookupService],
+  exports: [ContentLookupService],
 })
 export class GameDataModule {}

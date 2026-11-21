@@ -1,3 +1,6 @@
+export type UserRole = 'user' | 'admin';
+export type UserStatus = 'active' | 'suspended';
+
 export class User {
   id?: string;
   email: string;
@@ -5,7 +8,9 @@ export class User {
   dateOfBirth: Date;
   passwordHash: string;
   hasPlayedBefore: boolean;
-  role: string;
+  role: UserRole;
+  status?: UserStatus;
+  maxCharacters?: number;
   failedLoginAttempts: number;
   lockUntil?: Date;
   createdAt?: Date;

@@ -23,7 +23,18 @@
     ],
     "toolProficiency": "Suministros de calígrafo",
     "recommendations": "Clérigo (encaje perfecto), Paladín (para un trasfondo devoto), o Monje (formación en un monasterio).",
-    "sortOrder": 0
+    "sortOrder": 0,
+    "legacy": {
+      "name": "Acólito",
+      "icon": "⛪",
+      "concept": "Servías en un templo, estudiando religión y realizando ceremonias.",
+      "statImprovement": "Inteligencia, Sabiduría, Carisma",
+      "keyFeat": "Iniciado en la Magia (Clérigo)",
+      "skills": "Perspicacia, Religión",
+      "tools": "Suministros de calígrafo",
+      "recommendations": "Clérigo (encaje perfecto), Paladín (para un trasfondo devoto), o Monje (formación en un monasterio).",
+      "image": "image_34.png"
+    }
   },
   {
     "slug": "juglar",
@@ -49,7 +60,18 @@
     ],
     "toolProficiency": "Un tipo de instrumento musical",
     "recommendations": "Bardo (la opción obvia), Pícaro (para un artista ágil), o un Guerrero (espadachín vistoso).",
-    "sortOrder": 1
+    "sortOrder": 1,
+    "legacy": {
+      "name": "Animador",
+      "icon": "🎭",
+      "concept": "Pasaste tu juventud actuando en ferias y festivales como músico o acróbata.",
+      "statImprovement": "Fuerza, Destreza, Carisma",
+      "keyFeat": "Músico",
+      "skills": "Acrobacias, Interpretación",
+      "tools": "Un tipo de instrumento musical",
+      "recommendations": "Bardo (la opción obvia), Pícaro (para un artista ágil), o un Guerrero (espadachín vistoso).",
+      "image": "image_35.png"
+    }
   },
   {
     "slug": "aprendiz-de-gremio",
@@ -75,7 +97,18 @@
     ],
     "toolProficiency": "Un tipo de herramientas de artesano",
     "recommendations": "Artífice (temáticamente ideal), un Guerrero o Paladín (que forja su propio equipo), o un Pícaro (ingenioso fabricante de trampas).",
-    "sortOrder": 2
+    "sortOrder": 2,
+    "legacy": {
+      "name": "Artesano",
+      "icon": "🛠️",
+      "concept": "Comenzaste como aprendiz en un taller, creando objetos y tratando con clientes.",
+      "statImprovement": "Fuerza, Destreza, Inteligencia",
+      "keyFeat": "Crafter (Fabricante)",
+      "skills": "Investigación, Persuasión",
+      "tools": "Un tipo de herramientas de artesano",
+      "recommendations": "Artífice (temáticamente ideal), un Guerrero o Paladín (que forja su propio equipo), o un Pícaro (ingenioso fabricante de trampas).",
+      "image": "image_36.png"
+    }
   },
   {
     "slug": "labriego",
@@ -101,7 +134,18 @@
     ],
     "toolProficiency": "Herramientas de carpintero",
     "recommendations": "Bárbaro o Guerrero (un héroe del pueblo simple y fuerte), o un Druida o Explorador (con conexión simple con la tierra).",
-    "sortOrder": 3
+    "sortOrder": 3,
+    "legacy": {
+      "name": "Campesino",
+      "icon": "🌾",
+      "concept": "Te criaste cultivando la tierra y cuidando animales, ganando paciencia y salud.",
+      "statImprovement": "Fuerza, Constitución, Sabiduría",
+      "keyFeat": "Duro",
+      "skills": "Naturaleza, Trato con Animales",
+      "tools": "Herramientas de carpintero",
+      "recommendations": "Bárbaro o Guerrero (un héroe del pueblo simple y fuerte), o un Druida o Explorador (con conexión simple con la tierra).",
+      "image": "image_37.png"
+    }
   },
   {
     "slug": "embaucador-de-feria",
@@ -127,7 +171,18 @@
     ],
     "toolProficiency": "Útiles para falsificar",
     "recommendations": "Pícaro (encaje perfecto), Bardo (un narrador manipulador), o incluso un Brujo (que engaña para obtener poder).",
-    "sortOrder": 4
+    "sortOrder": 4,
+    "legacy": {
+      "name": "Charlatán",
+      "icon": "🃏",
+      "concept": "Un embaucador de taberna experto en engañar a la gente con mentiras y trucos.",
+      "statImprovement": "Destreza, Constitución, Carisma",
+      "keyFeat": "Skilled (Habilidoso)",
+      "skills": "Engaño, Juego de Manos",
+      "tools": "Útiles para falsificar",
+      "recommendations": "Pícaro (encaje perfecto), Bardo (un narrador manipulador), o incluso un Brujo (que engaña para obtener poder).",
+      "image": "image_38.png"
+    }
   },
   {
     "slug": "mercader-ambulante",
@@ -153,7 +208,18 @@
     ],
     "toolProficiency": "Herramientas de navegante",
     "recommendations": "Bardo (el negociador del grupo), Pícaro (mente astuta para los negocios), o un Explorador (un guía de caravanas).",
-    "sortOrder": 5
+    "sortOrder": 5,
+    "legacy": {
+      "name": "Comerciante",
+      "icon": "💰",
+      "concept": "Aprendiz de tendero o caravanero que viajaba comprando y vendiendo mercancías.",
+      "statImprovement": "Constitución, Inteligencia, Carisma",
+      "keyFeat": "Afortunado",
+      "skills": "Persuasión, Trato con Animales",
+      "tools": "Herramientas de navegante",
+      "recommendations": "Bardo (el negociador del grupo), Pícaro (mente astuta para los negocios), o un Explorador (un guía de caravanas).",
+      "image": "image_39.png"
+    }
   },
   {
     "slug": "criminal",
@@ -179,7 +245,18 @@
     ],
     "toolProficiency": "Herramientas de ladrón",
     "recommendations": "Pícaro (arquetipo clásico), Bardo (un espía astuto), o un Explorador (un cazador urbano).",
-    "sortOrder": 6
+    "sortOrder": 6,
+    "legacy": {
+      "name": "Criminal",
+      "icon": "👣",
+      "concept": "Te buscabas la vida en callejones oscuros, ya sea en una banda o en solitario.",
+      "statImprovement": "Destreza, Constitución, Inteligencia",
+      "keyFeat": "Alerta",
+      "skills": "Juego de Manos, Sigilo",
+      "tools": "Herramientas de ladrón",
+      "recommendations": "Pícaro (arquetipo clásico), Bardo (un espía astuto), o un Explorador (un cazador urbano).",
+      "image": "image_40.png"
+    }
   },
   {
     "slug": "anacoreta",
@@ -205,7 +282,18 @@
     ],
     "toolProficiency": "Útiles de herborista",
     "recommendations": "Druida o Guardabosques (un solitario de la naturaleza), Monje (formación ascética), o un Clérigo (sirviente en aislamiento).",
-    "sortOrder": 7
+    "sortOrder": 7,
+    "legacy": {
+      "name": "Ermitaño",
+      "icon": "⛺",
+      "concept": "Viviste en soledad en la naturaleza o en un monasterio, reflexionando sobre el mundo.",
+      "statImprovement": "Constitución, Sabiduría, Carisma",
+      "keyFeat": "Healer (Sanador)",
+      "skills": "Medicina, Religión",
+      "tools": "Útiles de herborista",
+      "recommendations": "Druida o Guardabosques (un solitario de la naturaleza), Monje (formación ascética), o un Clérigo (sirviente en aislamiento).",
+      "image": "image_41.png"
+    }
   },
   {
     "slug": "erudito",
@@ -231,7 +319,18 @@
     ],
     "toolProficiency": "Suministros de calígrafo",
     "recommendations": "Mago (la opción principal), un Artífice (investigador), o un Brujo (que busca conocimientos prohibidos).",
-    "sortOrder": 8
+    "sortOrder": 8,
+    "legacy": {
+      "name": "Erudito",
+      "icon": "📖",
+      "concept": "Viajabas entre bibliotecas, estudiando libros para adquirir conocimientos arcanos e históricos.",
+      "statImprovement": "Constitución, Inteligencia, Sabiduría",
+      "keyFeat": "Magic Initiate (Mago)",
+      "skills": "Conocimiento Arcano, Historia",
+      "tools": "Suministros de calígrafo",
+      "recommendations": "Mago (la opción principal), un Artífice (investigador), o un Brujo (que busca conocimientos prohibidos).",
+      "image": "image_42.png"
+    }
   },
   {
     "slug": "copista",
@@ -257,7 +356,18 @@
     ],
     "toolProficiency": "Suministros de calígrafo",
     "recommendations": "Mago (copiando hechizos), Artífice (diseños técnicos), o un Pícaro (un falsificador meticuloso).",
-    "sortOrder": 9
+    "sortOrder": 9,
+    "legacy": {
+      "name": "Escriba",
+      "icon": "✒️",
+      "concept": "Trabajabas en un scriptorium, copiando textos con precisión y atención al detalle.",
+      "statImprovement": "Destreza, Inteligencia, Sabiduría",
+      "keyFeat": "Skilled (Habilidoso)",
+      "skills": "Investigación, Percepción",
+      "tools": "Suministros de calígrafo",
+      "recommendations": "Mago (copiando hechizos), Artífice (diseños técnicos), o un Pícaro (un falsificador meticuloso).",
+      "image": "image_43.png"
+    }
   },
   {
     "slug": "centinela",
@@ -283,7 +393,18 @@
     ],
     "toolProficiency": "Un tipo de juego",
     "recommendations": "Guerrero (un soldado de ciudad), Paladín (un protector devoto), o incluso un Pícaro (un \"vigilante\" urbano).",
-    "sortOrder": 10
+    "sortOrder": 10,
+    "legacy": {
+      "name": "Guardia",
+      "icon": "💂",
+      "concept": "Pasaste innumerables horas ojo avisor en tu puesto de la torre, vigilando intrusos y rateros.",
+      "statImprovement": "Fuerza, Inteligencia, Sabiduría",
+      "keyFeat": "Alerta",
+      "skills": "Atletismo, Percepción",
+      "tools": "Un tipo de juego",
+      "recommendations": "Guerrero (un soldado de ciudad), Paladín (un protector devoto), o incluso un Pícaro (un \"vigilante\" urbano).",
+      "image": "image_44.png"
+    }
   },
   {
     "slug": "batidor",
@@ -309,7 +430,18 @@
     ],
     "toolProficiency": "Herramientas de cartógrafo",
     "recommendations": "Druida (encaje temático), Explorador (maestro de la supervivencia), o un Bárbaro (guía tribal).",
-    "sortOrder": 11
+    "sortOrder": 11,
+    "legacy": {
+      "name": "Guía",
+      "icon": "🗺️",
+      "concept": "Te criaste en plena naturaleza lejana, sirviendo de guía a sacerdotes de la tierra.",
+      "statImprovement": "Destreza, Constitución, Sabiduría",
+      "keyFeat": "Iniciado en la Magia (Druida)",
+      "skills": "Sigilo, Supervivencia",
+      "tools": "Herramientas de cartógrafo",
+      "recommendations": "Druida (encaje temático), Explorador (maestro de la supervivencia), o un Bárbaro (guía tribal).",
+      "image": "image_45.png"
+    }
   },
   {
     "slug": "lobo-de-mar",
@@ -335,7 +467,18 @@
     ],
     "toolProficiency": "Herramientas de navegante",
     "recommendations": "Guerrero (un luchador curtido en el mar), Pícaro (pirata ágil), o un Bárbaro (un corsario tribal).",
-    "sortOrder": 12
+    "sortOrder": 12,
+    "legacy": {
+      "name": "Marinero",
+      "icon": "⚓",
+      "concept": "Llevaste una vida en la mar, enfrentándote a tormentas y visitando tabernas de puertos.",
+      "statImprovement": "Fuerza, Destreza, Sabiduría",
+      "keyFeat": "Matón de taberna",
+      "skills": "Acrobacias, Percepción",
+      "tools": "Herramientas de navegante",
+      "recommendations": "Guerrero (un luchador curtido en el mar), Pícaro (pirata ágil), o un Bárbaro (un corsario tribal).",
+      "image": "image_46.png"
+    }
   },
   {
     "slug": "heredero-de-linaje",
@@ -361,7 +504,18 @@
     ],
     "toolProficiency": "Un tipo de juego",
     "recommendations": "Paladín (encaje clásico), Bardo (un diplomático refinado), o un Guerrero (un oficial de noble cuna).",
-    "sortOrder": 13
+    "sortOrder": 13,
+    "legacy": {
+      "name": "Noble",
+      "icon": "👑",
+      "concept": "Te criaste en un castillo entre riqueza y poder, recibiendo una educación sobre liderazgo.",
+      "statImprovement": "Fuerza, Inteligencia, Carisma",
+      "keyFeat": "Skilled (Habilidoso)",
+      "skills": "Historia, Persuasión",
+      "tools": "Un tipo de juego",
+      "recommendations": "Paladín (encaje clásico), Bardo (un diplomático refinado), o un Guerrero (un oficial de noble cuna).",
+      "image": "image_47.png"
+    }
   },
   {
     "slug": "soldado",
@@ -387,7 +541,18 @@
     ],
     "toolProficiency": "Un tipo de juego",
     "recommendations": "Guerrero (el arquetipo de soldado), Paladín (un cruzado sagrado), o un Bárbaro (un guerrero de vanguardia).",
-    "sortOrder": 14
+    "sortOrder": 14,
+    "legacy": {
+      "name": "Soldado",
+      "icon": "🛡️",
+      "concept": "Te entrenaron para la guerra desde la edad adulta, protegiendo el reino en el campo de batalla.",
+      "statImprovement": "Fuerza, Destreza, Constitución",
+      "keyFeat": "Atacante salvaje",
+      "skills": "Atletismo, Intimidación",
+      "tools": "Un tipo de juego",
+      "recommendations": "Guerrero (el arquetipo de soldado), Paladín (un cruzado sagrado), o un Bárbaro (un guerrero de vanguardia).",
+      "image": "image_48.png"
+    }
   },
   {
     "slug": "trotamundos",
@@ -413,6 +578,17 @@
     ],
     "toolProficiency": "Herramientas de ladrón",
     "recommendations": "Pícaro (la opción obvia), Bardo (un artista callejero que sobrevive), o un Brujo (que pacta por necesidad).",
-    "sortOrder": 15
+    "sortOrder": 15,
+    "legacy": {
+      "name": "Vagabundo",
+      "icon": "👣",
+      "concept": "Creciste en las calles, durmiendo donde podías y recurriendo al robo por hambre.",
+      "statImprovement": "Destreza, Sabiduría, Carisma",
+      "keyFeat": "Afortunado",
+      "skills": "Perspicacia, Sigilo",
+      "tools": "Herramientas de ladrón",
+      "recommendations": "Pícaro (la opción obvia), Bardo (un artista callejero que sobrevive), o un Brujo (que pacta por necesidad).",
+      "image": "image_49.png"
+    }
   }
 ]

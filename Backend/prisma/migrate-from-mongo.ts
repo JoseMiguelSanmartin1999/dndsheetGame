@@ -12,7 +12,7 @@
 import dns from 'node:dns';
 import mongoose from 'mongoose';
 import { PrismaClient } from '@prisma/client';
-import { mapLegacyCharacter, mapLegacyUser, type ContentLookup } from './legacy-mapping';
+import { mapLegacyCharacter, mapLegacyUser, type ContentLookup } from '../src/infrastructure/persistence/prisma/legacy-character.mapper';
 
 const apply = process.argv.includes('--apply');
 const prisma = new PrismaClient();

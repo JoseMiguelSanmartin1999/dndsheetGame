@@ -1,8 +1,10 @@
 import { Controller, Get, Post, Query, Body } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiQuery } from '@nestjs/swagger';
 import { GameRulesService } from '../../application/services/game-rules.service';
+import { Public } from '../../infrastructure/security/auth.decorators';
 
 @ApiTags('Game Rules')
+@Public()
 @Controller('game-rules')
 export class GameRulesController {
   constructor(private readonly gameRulesService: GameRulesService) {}

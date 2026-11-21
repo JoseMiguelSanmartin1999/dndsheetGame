@@ -30,7 +30,7 @@ export async function seedContent(prisma: any, dataDir: string, mode: Mode = 'mi
       slug: c.slug, name: c.name, source: c.source, needsRewrite: c.needsRewrite,
       hitDie: c.hitDie, primaryAbilities: c.primaryAbilities, complexity: c.complexity,
       playstyle: c.playstyle, tagline: c.tagline, description: c.description,
-      icon: c.icon, image: c.image, sortOrder: c.sortOrder,
+      icon: c.icon, image: c.image, sortOrder: c.sortOrder, data: { legacy: c.legacy },
     });
     classIds.set(c.slug, row.id);
   }
@@ -77,6 +77,7 @@ export async function seedContent(prisma: any, dataDir: string, mode: Mode = 'mi
       featId: b.featSlug ? featIds.get(b.featSlug) : null, featOption: b.featOption,
       skillProficiencies: b.skillProficiencies, toolProficiency: b.toolProficiency,
       recommendations: b.recommendations, icon: b.icon, image: b.image, sortOrder: b.sortOrder,
+      data: { legacy: b.legacy },
     });
   }
   log.push(`trasfondos: ${backgrounds.length}`);
@@ -90,6 +91,7 @@ export async function seedContent(prisma: any, dataDir: string, mode: Mode = 'mi
       legacyNames: s.legacyNames, description: s.description, creatureType: s.creatureType,
       size: s.size, speedMeters: s.speedMeters, languages: s.languages, traits: s.traits,
       legacyAbilityBonuses: s.legacyAbilityBonuses, icon: s.icon, image: s.image, sortOrder: s.sortOrder,
+      data: { legacy: s.legacy },
     });
     for (const l of s.lineages) {
       await upsert('speciesLineage', { speciesId_slug: { speciesId: row.id, slug: l.slug } }, {

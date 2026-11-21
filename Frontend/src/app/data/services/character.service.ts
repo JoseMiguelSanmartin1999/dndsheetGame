@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_URL } from '../../core/api.config';
 
 export interface Character {
   id?: string;
@@ -65,12 +66,13 @@ export interface Character {
   providedIn: 'root'
 })
 export class CharacterService {
-  private apiUrl = 'http://localhost:3000/characters';
+  private apiUrl = `${API_URL}/characters`;
 
   constructor(private http: HttpClient) {}
 
-  getCharacters(userId: string): Observable<Character[]> {
-    return this.http.get<Character[]>(`${this.apiUrl}?userId=${encodeURIComponent(userId)}`);
+  /** Personajes del usuario de la sesión (el servidor lo identifica por el token). */
+  getCharacters(): Observable<Character[]> {
+    return this.http.get<Character[]>(this.apiUrl);
   }
 
   getCharacterById(id: string): Observable<Character> {

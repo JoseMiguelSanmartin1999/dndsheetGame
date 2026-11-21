@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_URL } from '../../core/api.config';
 
 export interface DndClass {
   name: string;
@@ -42,7 +43,7 @@ export interface DndBackground {
   providedIn: 'root'
 })
 export class GameDataService {
-  private apiUrl = 'http://localhost:3000/game-data';
+  private apiUrl = `${API_URL}/game-data`;
 
   constructor(private http: HttpClient) {}
 
@@ -59,14 +60,14 @@ export class GameDataService {
   }
 
   getRaceSizeInfo(raceName: string): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/game-rules/sizes?raceName=${encodeURIComponent(raceName)}`);
+    return this.http.get<any>(`${API_URL}/game-rules/sizes?raceName=${encodeURIComponent(raceName)}`);
   }
 
   calculateCarryingCapacity(strength: number, sizeClass: string, isGoliath: boolean): Observable<any> {
-    return this.http.post<any>(`http://localhost:3000/game-rules/carrying-capacity`, { strength, sizeClass, isGoliath });
+    return this.http.post<any>(`${API_URL}/game-rules/carrying-capacity`, { strength, sizeClass, isGoliath });
   }
 
   rollSingleStat(): Observable<any> {
-    return this.http.post<any>(`http://localhost:3000/game-rules/roll-dice`, {});
+    return this.http.post<any>(`${API_URL}/game-rules/roll-dice`, {});
   }
 }
